@@ -1,5 +1,11 @@
+import BtnSelectBoard from './components/Buttons/BtnSelectBoard';
+
 const App = () => {
-  return <div>Kanban Task Management App</div>;
+  return (
+    <div className="App dark">
+      <BtnSelectBoard text="select board" />
+    </div>
+  );
 };
 
 export default App;

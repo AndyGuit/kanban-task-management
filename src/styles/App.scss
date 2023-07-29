@@ -7,8 +7,6 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
   font-size: 17px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
@@ -16,4 +14,9 @@ body {
   @media (max-width: 425px) {
     font-size: 14px;
   }
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
 }

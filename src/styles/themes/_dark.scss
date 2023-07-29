@@ -1,0 +1,13 @@
+.dark {
+  &.App {
+    background: $dark-theme-bg;
+  }
+  .btn-select-board {
+    background-color: $dark-btn-bg;
+    color: $dark-text-primary;
+
+    svg path {
+      fill: $dark-text-primary;
+    }
+  }
+}
