@@ -4,6 +4,11 @@
   border: none;
   cursor: pointer;
   font: inherit;
+  background-color: transparent;
   transition: background 0.2s ease, color 0.2s ease, scale 0.3s ease,
     transform 0.3s ease;
+
+  svg path {
+    transition: fill 0.3s ease;
+  }
 }

@@ -4,7 +4,7 @@ type Props = {
   children: JSX.Element;
   classes?: string;
   type?: 'submit' | 'reset' | 'button';
-  onClickButton?: () => void;
+  onClick?: () => void;
 };
 
 const Button = (props: Props) => {
@@ -12,7 +12,7 @@ const Button = (props: Props) => {
 
   return (
     <button
-      onClick={props.onClickButton}
+      onClick={props.onClick}
       type={props.type || 'button'}
       className={styles}>
       {props.children}

@@ -2,10 +2,26 @@
   &.App {
     background: $dark-theme-bg;
   }
+
   .btn-select-board {
+    color: $dark-text-secondary;
+    svg path {
+      fill: $dark-text-secondary;
+    }
+  }
+
+  .btn-create-board {
+    color: $dark-btn-bg;
+    svg path {
+      fill: $dark-btn-bg;
+    }
+  }
+
+  .btn-select-board.active,
+  .btn-select-board:hover,
+  .btn-create-board:hover {
     background-color: $dark-btn-bg;
     color: $dark-text-primary;
-
     svg path {
       fill: $dark-text-primary;
     }

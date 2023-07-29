@@ -1,9 +1,10 @@
-import BtnSelectBoard from './components/Buttons/BtnSelectBoard';
+import BtnBoard from './components/Buttons/BtnBoard';
 
 const App = () => {
   return (
     <div className="App dark">
-      <BtnSelectBoard text="select board" />
+      <BtnBoard type="select" text="select board" />
+      <BtnBoard type="create" text="+create board" />
     </div>
   );
 };
