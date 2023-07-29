@@ -17,8 +17,22 @@
     }
   }
 
-  .btn-select-board.active,
-  .btn-select-board:hover,
+  .btn-select-board.active {
+    background-color: $dark-btn-bg;
+    color: $dark-text-primary;
+    svg path {
+      fill: $dark-text-primary;
+    }
+  }
+
+  .btn-select-board:hover {
+    background-color: $dark-btn-hover;
+    color: $dark-text-primary;
+    svg path {
+      fill: $dark-text-primary;
+    }
+  }
+
   .btn-create-board:hover {
     background-color: $dark-btn-bg;
     color: $dark-text-primary;
