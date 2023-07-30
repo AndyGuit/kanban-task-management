@@ -3,4 +3,5 @@ export type btnStyle =
   | 'form-primary'
   | 'form-secondary'
   | 'select-board'
-  | 'create-board';
+  | 'create-board'
+  | 'hide-sidebar';

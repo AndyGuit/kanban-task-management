@@ -12,24 +12,24 @@ type Props = {
 const Button = (props: Props) => {
   let styles = `${classes.button} ${props.classes ? props.classes : ''}`;
 
-  if (props.btnStyle === 'add-task') {
-    styles += `button-add-task ${classes['button-add-task']}`;
-  }
-
-  if (props.btnStyle === 'form-primary') {
-    styles += `button-form-primary ${classes['button-form-primary']}`;
-  }
-
-  if (props.btnStyle === 'form-secondary') {
-    styles += `button-form-secondary ${classes['button-form-secondary']}`;
-  }
-
-  if (props.btnStyle === 'select-board') {
-    styles += `btn-select-board ${classes['btn-board']}`;
-  }
-
-  if (props.btnStyle === 'create-board') {
-    styles += `btn-create-board ${classes['btn-create-board']}`;
+  switch (props.btnStyle) {
+    case 'add-task':
+      styles += `button-add-task ${classes['button-add-task']}`;
+      break;
+    case 'form-primary':
+      styles += `button-form-primary ${classes['button-form-primary']}`;
+      break;
+    case 'form-secondary':
+      styles += `button-form-secondary ${classes['button-form-secondary']}`;
+      break;
+    case 'select-board':
+      styles += `btn-select-board ${classes['btn-board']}`;
+      break;
+    case 'create-board':
+      styles += `btn-create-board ${classes['btn-create-board']}`;
+      break;
+    default:
+      break;
   }
 
   return (
