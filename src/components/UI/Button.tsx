@@ -31,6 +31,12 @@ const Button = (props: Props) => {
     case 'hide-sidebar':
       styles += `button-hide-sidebar ${classes['button-hide-sidebar']}`;
       break;
+    case 'text-primary':
+      styles += `button-text-primary ${classes['button-text-primary']}`;
+      break;
+    case 'text-warning':
+      styles += `button-text-warning ${classes['button-text-warning']}`;
+      break;
     default:
       break;
   }

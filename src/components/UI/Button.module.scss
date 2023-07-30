@@ -6,7 +6,7 @@
   font: inherit;
   background-color: transparent;
   transition: background 0.2s ease, color 0.2s ease, scale 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease, opacity 0.3s ease;
 
   svg path {
     transition: fill 0.3s ease;
@@ -53,5 +53,16 @@
 
   &:hover {
     transform: translateX(5%);
+  }
+}
+
+.button-text-primary,
+.button-text-warning {
+  width: unset;
+  padding: 0;
+  font-weight: 400;
+
+  &:hover {
+    opacity: 0.7;
   }
 }

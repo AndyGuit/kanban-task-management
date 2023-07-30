@@ -8,7 +8,9 @@ const App = () => {
         <IconBoard />
         Select Board
       </Button>
-      <Button btnStyle="create-board">{<IconBoard />}+ Create Board</Button>
+      <Button btnStyle="create-board">
+        <IconBoard />+ Create Board
+      </Button>
       <Button btnStyle="add-task">+ Add new task</Button>
       <Button btnStyle="form-primary">Save Changes</Button>
       <Button btnStyle="form-secondary">+ Add New Task</Button>
@@ -16,6 +18,8 @@ const App = () => {
         <IconHideSidebar />
         Hide Sidebar
       </Button>
+      <Button btnStyle="text-primary">Edit Board</Button>
+      <Button btnStyle="text-warning">Delete Board</Button>
     </div>
   );
 };
