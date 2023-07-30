@@ -108,4 +108,12 @@
   .theme-toggler {
     background-color: $light-board-bg;
   }
+
+  .sidebar {
+    background-color: $light-primary;
+
+    h3 {
+      color: $light-text-secondary;
+    }
+  }
 }

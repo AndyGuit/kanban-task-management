@@ -25,6 +25,9 @@ const Button = (props: Props) => {
     case 'select-board':
       styles += `button-select-board ${classes['button-board']}`;
       break;
+    case 'active-board':
+      styles += `button-select-board active ${classes['button-board']}`;
+      break;
     case 'create-board':
       styles += `button-create-board ${classes['button-create-board']}`;
       break;

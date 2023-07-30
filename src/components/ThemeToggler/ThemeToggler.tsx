@@ -14,11 +14,11 @@ const ThemeToggler = () => {
 
   return (
     <div className={`theme-toggler ${classes['theme-toggler']}`}>
-      <IconSun />
+      <IconMoon />
       <Button onClick={toggleTheme} classes={toggleBtnStyles}>
         <span></span>
       </Button>
-      <IconMoon />
+      <IconSun />
     </div>
   );
 };

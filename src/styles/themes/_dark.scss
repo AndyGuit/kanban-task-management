@@ -116,4 +116,12 @@
   .theme-toggler {
     background-color: $dark-board-bg;
   }
+
+  .sidebar {
+    background-color: $dark-primary;
+
+    h3 {
+      color: $dark-text-secondary;
+    }
+  }
 }

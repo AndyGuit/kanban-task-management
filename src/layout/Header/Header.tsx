@@ -1,5 +1,5 @@
-import HeaderBoardInfo from '../components/Header/HeaderBoardInfo/HeaderBoardInfo';
-import HeaderLogo from '../components/Header/HeaderLogo/HeaderLogo';
+import HeaderBoardInfo from '../../components/Header/HeaderBoardInfo/HeaderBoardInfo';
+import HeaderLogo from '../../components/Header/HeaderLogo/HeaderLogo';
 import classes from './Header.module.scss';
 
 const Header = () => {

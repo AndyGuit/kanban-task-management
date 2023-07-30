@@ -8,7 +8,8 @@ import {
 } from './components/Icons/Icons';
 import ThemeToggler from './components/ThemeToggler/ThemeToggler';
 import Button from './components/UI/Button';
-import Header from './layout/Header';
+import Header from './layout/Header/Header';
+import Sidebar from './layout/Sidebar/Sidebar';
 
 const App = () => {
   return (
@@ -33,11 +34,11 @@ const App = () => {
       <Button btnStyle="popup">
         <IconPopupDots />
       </Button> */}
-      <Header />
-      <Button btnStyle="show-sidebar">
+      {/* <Button btnStyle="show-sidebar">
         <IconShowSidebar />
-      </Button>
-      <ThemeToggler />
+      </Button> */}
+      <Header />
+      <Sidebar />
     </div>
   );
 };

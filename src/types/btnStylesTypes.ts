@@ -3,6 +3,7 @@ export type btnStyle =
   | 'form-primary'
   | 'form-secondary'
   | 'select-board'
+  | 'active-board'
   | 'create-board'
   | 'hide-sidebar'
   | 'text-primary'
