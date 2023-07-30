@@ -6,6 +6,7 @@ import {
   IconPopupDots,
 } from './components/Icons/Icons';
 import Button from './components/UI/Button';
+import Header from './layout/Header';
 
 const App = () => {
   return (
@@ -30,10 +31,7 @@ const App = () => {
       <Button btnStyle="popup">
         <IconPopupDots />
       </Button> */}
-      <header>
-        <HeaderLogo />
-        <HeaderBoardInfo boardName="board name" />
-      </header>
+      <Header />
     </div>
   );
 };

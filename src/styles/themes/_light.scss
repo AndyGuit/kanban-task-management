@@ -95,4 +95,13 @@
       background-color: $light-board-bg;
     }
   }
+
+  .header {
+    background-color: $light-primary;
+    border: 1px solid $light-border;
+  }
+
+  .header-logo {
+    border-right: 1px solid $light-border;
+  }
 }
