@@ -6,6 +6,7 @@ import {
   IconPopupDots,
   IconShowSidebar,
 } from './components/Icons/Icons';
+import ThemeToggler from './components/ThemeToggler/ThemeToggler';
 import Button from './components/UI/Button';
 import Header from './layout/Header';
 
@@ -36,6 +37,7 @@ const App = () => {
       <Button btnStyle="show-sidebar">
         <IconShowSidebar />
       </Button>
+      <ThemeToggler />
     </div>
   );
 };

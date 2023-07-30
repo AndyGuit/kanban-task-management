@@ -1,0 +1,32 @@
+.theme-toggler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 235px;
+  padding: 14px 0;
+  border-radius: 5px;
+}
+
+.button-toggle {
+  background-color: #635fc7;
+  width: 40px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+
+  span {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+  }
+
+  &.active {
+    span {
+      transform: translateX(100%);
+    }
+  }
+}

@@ -9,4 +9,5 @@ export type btnStyle =
   | 'text-warning'
   | 'add-column'
   | 'popup'
-  | 'show-sidebar';
+  | 'show-sidebar'
+  | 'toggle';
