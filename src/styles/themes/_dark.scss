@@ -40,4 +40,13 @@
       fill: $dark-text-primary;
     }
   }
+
+  .button-add-task {
+    background-color: $dark-btn-bg;
+    color: $dark-text-primary;
+
+    &:hover {
+      background-color: $dark-btn-hover;
+    }
+  }
 }

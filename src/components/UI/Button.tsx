@@ -1,3 +1,4 @@
+import { btnStyle } from '../../types/btnStylesTypes';
 import classes from './Button.module.scss';
 
 type Props = {
@@ -5,10 +6,15 @@ type Props = {
   classes?: string;
   type?: 'submit' | 'reset' | 'button';
   onClick?: () => void;
+  btnStyle?: btnStyle;
 };
 
 const Button = (props: Props) => {
-  const styles = `${classes.button} ${props.classes ? props.classes : ''}`;
+  let styles = `${classes.button} ${props.classes ? props.classes : ''}`;
+
+  if (props.btnStyle === 'add-task') {
+    styles += `button-add-task ${classes['button-add-task']}`;
+  }
 
   return (
     <button

@@ -1,5 +1,5 @@
-import Button from '../UI/Button';
-import { IconBoard } from '../Icons/Icons';
+import Button from '../../UI/Button';
+import { IconBoard } from '../../Icons/Icons';
 import classes from './BtnBoard.module.scss';
 
 type Props = {
