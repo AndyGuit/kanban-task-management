@@ -1,6 +1,7 @@
 .dark {
   &.App {
     background: $dark-theme-bg;
+    color: $dark-text-primary;
   }
 
   .button-select-board {

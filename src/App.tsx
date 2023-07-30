@@ -1,3 +1,4 @@
+import HeaderLogo from './components/Header/HeaderLogo/HeaderLogo';
 import {
   IconBoard,
   IconHideSidebar,
@@ -8,7 +9,7 @@ import Button from './components/UI/Button';
 const App = () => {
   return (
     <div className="App dark">
-      <Button btnStyle="select-board">
+      {/* <Button btnStyle="select-board">
         <IconBoard />
         Select Board
       </Button>
@@ -27,7 +28,8 @@ const App = () => {
       <Button btnStyle="add-column">+ New Column</Button>
       <Button btnStyle="popup">
         <IconPopupDots />
-      </Button>
+      </Button> */}
+      <HeaderLogo />
     </div>
   );
 };

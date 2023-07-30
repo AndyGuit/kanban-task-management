@@ -1,6 +1,7 @@
 .light {
   &.App {
     background: $light-theme-bg;
+    color: $light-text-primary;
   }
 
   .button-select-board {
