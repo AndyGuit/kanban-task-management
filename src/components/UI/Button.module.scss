@@ -24,3 +24,22 @@
   border-radius: 30px;
   font-size: 0.8em;
 }
+
+.btn-board,
+.btn-create-board {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: 275px;
+  border-radius: 0 30px 30px 0;
+
+  &:hover {
+    scale: 1.05;
+  }
+}
+
+.btn-create-board {
+  &:hover {
+    text-decoration: underline;
+  }
+}

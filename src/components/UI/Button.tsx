@@ -24,6 +24,14 @@ const Button = (props: Props) => {
     styles += `button-form-secondary ${classes['button-form-secondary']}`;
   }
 
+  if (props.btnStyle === 'select-board') {
+    styles += `btn-select-board ${classes['btn-board']}`;
+  }
+
+  if (props.btnStyle === 'create-board') {
+    styles += `btn-create-board ${classes['btn-create-board']}`;
+  }
+
   return (
     <button
       onClick={props.onClick}
