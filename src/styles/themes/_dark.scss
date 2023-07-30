@@ -79,4 +79,13 @@
   .button-text-warning {
     color: $dark-warning;
   }
+
+  .button-add-column {
+    background: $dark-gradient;
+    color: $dark-text-secondary;
+
+    &:hover {
+      color: $dark-btn-bg;
+    }
+  }
 }

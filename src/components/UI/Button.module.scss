@@ -5,7 +5,7 @@
   cursor: pointer;
   font: inherit;
   background-color: transparent;
-  transition: background 0.2s ease, color 0.2s ease, scale 0.3s ease,
+  transition: background 0.3s ease, color 0.3s ease, scale 0.3s ease,
     transform 0.3s ease, opacity 0.3s ease;
 
   svg path {
@@ -64,5 +64,16 @@
 
   &:hover {
     opacity: 0.7;
+  }
+}
+
+.button-add-column {
+  max-width: 280px;
+  border-radius: 10px;
+  font-size: 1.5em;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
   }
 }

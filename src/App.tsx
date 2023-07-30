@@ -20,6 +20,7 @@ const App = () => {
       </Button>
       <Button btnStyle="text-primary">Edit Board</Button>
       <Button btnStyle="text-warning">Delete Board</Button>
+      <Button btnStyle="add-column">+ New Column</Button>
     </div>
   );
 };

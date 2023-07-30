@@ -6,4 +6,5 @@ export type btnStyle =
   | 'create-board'
   | 'hide-sidebar'
   | 'text-primary'
-  | 'text-warning';
+  | 'text-warning'
+  | 'add-column';

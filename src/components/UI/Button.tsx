@@ -37,6 +37,9 @@ const Button = (props: Props) => {
     case 'text-warning':
       styles += `button-text-warning ${classes['button-text-warning']}`;
       break;
+    case 'add-column':
+      styles += `button-add-column ${classes['button-add-column']}`;
+      break;
     default:
       break;
   }
