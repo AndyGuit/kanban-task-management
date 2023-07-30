@@ -7,6 +7,8 @@ const App = () => {
       <BtnBoard type="select" text="select board" />
       <BtnBoard type="create" text="+create board" />
       <Button btnStyle="add-task">+ Add new task</Button>
+      <Button btnStyle="form-primary">Save Changes</Button>
+      <Button btnStyle="form-secondary">+ Add New Task</Button>
     </div>
   );
 };

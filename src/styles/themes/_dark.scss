@@ -41,12 +41,23 @@
     }
   }
 
-  .button-add-task {
+  .button-add-task,
+  .button-form-primary {
     background-color: $dark-btn-bg;
     color: $dark-text-primary;
 
     &:hover {
       background-color: $dark-btn-hover;
+    }
+  }
+
+  .button-form-secondary {
+    color: $dark-btn-bg;
+    background-color: $dark-text-primary;
+
+    &:hover {
+      color: $dark-text-primary;
+      background-color: $dark-btn-bg;
     }
   }
 }

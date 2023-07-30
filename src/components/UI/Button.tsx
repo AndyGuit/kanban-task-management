@@ -16,6 +16,14 @@ const Button = (props: Props) => {
     styles += `button-add-task ${classes['button-add-task']}`;
   }
 
+  if (props.btnStyle === 'form-primary') {
+    styles += `button-form-primary ${classes['button-form-primary']}`;
+  }
+
+  if (props.btnStyle === 'form-secondary') {
+    styles += `button-form-secondary ${classes['button-form-secondary']}`;
+  }
+
   return (
     <button
       onClick={props.onClick}
