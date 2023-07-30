@@ -8,4 +8,5 @@ export type btnStyle =
   | 'text-primary'
   | 'text-warning'
   | 'add-column'
-  | 'popup';
+  | 'popup'
+  | 'show-sidebar';

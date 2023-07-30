@@ -43,6 +43,9 @@ const Button = (props: Props) => {
     case 'popup':
       styles += `button-popup ${classes['button-popup']}`;
       break;
+    case 'show-sidebar':
+      styles += `button-show-sidebar ${classes['button-show-sidebar']}`;
+      break;
     default:
       break;
   }

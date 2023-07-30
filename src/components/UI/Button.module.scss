@@ -83,3 +83,12 @@
   border-radius: 30px;
   padding: 0.5em 0.75em;
 }
+
+.button-show-sidebar {
+  max-width: 60px;
+  padding: 0.75em 1em;
+  border-radius: 0 30px 30px 0;
+  &:hover {
+    transform: scale(1.15);
+  }
+}

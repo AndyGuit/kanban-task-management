@@ -96,6 +96,14 @@
     }
   }
 
+  .button-show-sidebar {
+    background-color: $dark-btn-bg;
+
+    &:hover {
+      background-color: $dark-btn-hover;
+    }
+  }
+
   .header {
     background-color: $dark-primary;
     border: 1px solid $dark-border;
