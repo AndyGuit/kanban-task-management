@@ -23,10 +23,13 @@ const Button = (props: Props) => {
       styles += `button-form-secondary ${classes['button-form-secondary']}`;
       break;
     case 'select-board':
-      styles += `btn-select-board ${classes['btn-board']}`;
+      styles += `button-select-board ${classes['button-board']}`;
       break;
     case 'create-board':
-      styles += `btn-create-board ${classes['btn-create-board']}`;
+      styles += `button-create-board ${classes['button-create-board']}`;
+      break;
+    case 'hide-sidebar':
+      styles += `button-hide-sidebar ${classes['button-hide-sidebar']}`;
       break;
     default:
       break;

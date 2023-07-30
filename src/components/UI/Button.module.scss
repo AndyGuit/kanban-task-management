@@ -25,8 +25,8 @@
   font-size: 0.8em;
 }
 
-.btn-board,
-.btn-create-board {
+.button-board,
+.button-create-board {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -38,8 +38,20 @@
   }
 }
 
-.btn-create-board {
+.button-create-board {
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.button-hide-sidebar {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 0.75em;
+  }
+
+  &:hover {
+    transform: translateX(5%);
   }
 }

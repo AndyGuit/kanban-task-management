@@ -3,21 +3,21 @@
     background: $dark-theme-bg;
   }
 
-  .btn-select-board {
+  .button-select-board {
     color: $dark-text-secondary;
     svg path {
       fill: $dark-text-secondary;
     }
   }
 
-  .btn-create-board {
+  .button-create-board {
     color: $dark-btn-bg;
     svg path {
       fill: $dark-btn-bg;
     }
   }
 
-  .btn-select-board.active {
+  .button-select-board.active {
     background-color: $dark-btn-bg;
     color: $dark-text-primary;
     svg path {
@@ -25,7 +25,7 @@
     }
   }
 
-  .btn-select-board:hover {
+  .button-select-board:hover {
     background-color: $dark-btn-hover;
     color: $dark-text-primary;
     svg path {
@@ -33,7 +33,7 @@
     }
   }
 
-  .btn-create-board:hover {
+  .button-create-board:hover {
     background-color: $dark-btn-bg;
     color: $dark-text-primary;
     svg path {
@@ -58,6 +58,17 @@
     &:hover {
       color: $dark-text-primary;
       background-color: $dark-btn-bg;
+    }
+  }
+
+  .button-hide-sidebar {
+    color: $dark-text-secondary;
+
+    &:hover {
+      color: $dark-text-primary;
+      svg path {
+        fill: $dark-text-primary;
+      }
     }
   }
 }
