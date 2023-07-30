@@ -88,4 +88,10 @@
       color: $dark-btn-bg;
     }
   }
+
+  .button-popup {
+    &:hover {
+      background-color: $dark-board-bg;
+    }
+  }
 }

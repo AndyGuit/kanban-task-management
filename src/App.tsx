@@ -1,4 +1,8 @@
-import { IconBoard, IconHideSidebar } from './components/Icons/Icons';
+import {
+  IconBoard,
+  IconHideSidebar,
+  IconPopupDots,
+} from './components/Icons/Icons';
 import Button from './components/UI/Button';
 
 const App = () => {
@@ -21,6 +25,9 @@ const App = () => {
       <Button btnStyle="text-primary">Edit Board</Button>
       <Button btnStyle="text-warning">Delete Board</Button>
       <Button btnStyle="add-column">+ New Column</Button>
+      <Button btnStyle="popup">
+        <IconPopupDots />
+      </Button>
     </div>
   );
 };

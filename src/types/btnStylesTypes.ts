@@ -7,4 +7,5 @@ export type btnStyle =
   | 'hide-sidebar'
   | 'text-primary'
   | 'text-warning'
-  | 'add-column';
+  | 'add-column'
+  | 'popup';

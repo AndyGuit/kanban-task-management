@@ -88,4 +88,10 @@
       color: $light-btn-bg;
     }
   }
+
+  .button-popup {
+    &:hover {
+      background-color: $light-board-bg;
+    }
+  }
 }

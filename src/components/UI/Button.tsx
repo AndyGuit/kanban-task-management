@@ -40,6 +40,9 @@ const Button = (props: Props) => {
     case 'add-column':
       styles += `button-add-column ${classes['button-add-column']}`;
       break;
+    case 'popup':
+      styles += `button-popup ${classes['button-popup']}`;
+      break;
     default:
       break;
   }
