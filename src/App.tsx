@@ -1,3 +1,4 @@
+import HeaderBoardInfo from './components/Header/HeaderBoardInfo/HeaderBoardInfo';
 import HeaderLogo from './components/Header/HeaderLogo/HeaderLogo';
 import {
   IconBoard,
@@ -29,7 +30,10 @@ const App = () => {
       <Button btnStyle="popup">
         <IconPopupDots />
       </Button> */}
-      <HeaderLogo />
+      <header>
+        <HeaderLogo />
+        <HeaderBoardInfo boardName="board name" />
+      </header>
     </div>
   );
 };
