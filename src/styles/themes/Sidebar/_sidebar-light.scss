@@ -1,6 +1,7 @@
 .light {
   .sidebar {
     background-color: $light-primary;
+    border-right: 1px solid $light-border;
 
     h3 {
       color: $light-text-secondary;
