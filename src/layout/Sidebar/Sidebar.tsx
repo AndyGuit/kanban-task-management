@@ -11,8 +11,8 @@ const Sidebar = () => {
       <nav>
         <h3>all boards ({BOARD_NAMES.length})</h3>
         <ul className={classes['boards-list']}>
-          {BOARD_NAMES.map(board => (
-            <li>
+          {BOARD_NAMES.map((board, i) => (
+            <li key={i}>
               <Button btnStyle="select-board">
                 <IconBoard /> {board}
               </Button>
