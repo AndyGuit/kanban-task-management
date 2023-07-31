@@ -8,12 +8,15 @@ import {
 } from './components/Icons/Icons';
 import ThemeToggler from './components/ThemeToggler/ThemeToggler';
 import Button from './components/UI/Button';
+import { useSelector } from 'react-redux';
+import { RootState } from './store/index';
 import Header from './layout/Header/Header';
 import Sidebar from './layout/Sidebar/Sidebar';
 
 const App = () => {
+  const theme = useSelector((state: RootState) => state.ui.appTheme);
   return (
-    <div className="App dark">
+    <div className={`App ${theme}`}>
       {/* <Button btnStyle="select-board">
         <IconBoard />
         Select Board
