@@ -68,6 +68,14 @@
     }
   }
 
+  .button-show-sidebar {
+    background-color: $light-btn-bg;
+
+    &:hover {
+      background-color: $light-btn-hover;
+    }
+  }
+
   .button-text-primary {
     color: $light-text-secondary;
   }
