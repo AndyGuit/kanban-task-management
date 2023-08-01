@@ -1,0 +1,30 @@
+.column {
+  max-width: 280px;
+}
+
+.column-title {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 2em;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+
+.column-dot {
+  display: block;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 3em);
+  border-radius: 10px;
+  min-width: 280px;
+  border: 2px dashed transparent;
+}

@@ -1,0 +1,9 @@
+.light {
+  .column-title {
+    color: $light-text-secondary;
+  }
+
+  .task-list--empty {
+    border-color: $light-task-empty-border;
+  }
+}

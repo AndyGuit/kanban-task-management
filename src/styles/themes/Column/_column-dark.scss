@@ -1,0 +1,9 @@
+.dark {
+  .column-title {
+    color: $dark-text-secondary;
+  }
+
+  .task-list--empty {
+    border-color: $dark-task-empty-border;
+  }
+}
