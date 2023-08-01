@@ -1,3 +1,4 @@
+import Task from '../Task/Task';
 import classes from './Column.module.scss';
 
 const Column = () => {
@@ -7,7 +8,17 @@ const Column = () => {
         <span className={`${classes['column-dot']} column-dot--1`}></span>
         <h4>Column(0)</h4>
       </div>
-      <ul className={`${classes['task-list']} task-list--empty`}></ul>
+      <ul className={`${classes['task-list']}`}>
+        <li>
+          <Task />
+        </li>
+        <li>
+          <Task />
+        </li>
+        <li>
+          <Task />
+        </li>
+      </ul>
     </div>
   );
 };

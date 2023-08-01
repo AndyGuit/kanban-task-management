@@ -1,0 +1,12 @@
+.light {
+  .task {
+    box-shadow: $light-shadow;
+    background-color: $light-primary;
+    &-name {
+      color: $light-text-primary;
+    }
+    &-subtasks {
+      color: $light-text-secondary;
+    }
+  }
+}

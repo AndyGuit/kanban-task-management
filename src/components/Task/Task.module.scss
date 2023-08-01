@@ -1,0 +1,22 @@
+.task {
+  display: block;
+  width: 100%;
+  min-height: 90px;
+  margin-bottom: 1em;
+  padding: 1.5em 1em;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+  cursor: default;
+
+  h5 {
+    margin-bottom: 5px;
+    font-size: 1em;
+  }
+  p {
+    font-size: 0.7em;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

@@ -70,7 +70,9 @@
 }
 
 .button-add-column {
-  max-width: 280px;
+  min-width: 280px;
+  height: calc(100% - 2em);
+  margin-top: 1.5em;
   border-radius: 10px;
   font-size: 1.5em;
   opacity: 0.6;
