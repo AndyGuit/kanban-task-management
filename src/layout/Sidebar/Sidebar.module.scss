@@ -5,8 +5,9 @@
   min-width: 300px;
   height: calc(100vh - 96px);
   padding: 1.5em 0;
+  position: relative;
 
-  transition: left 0.3s ease;
+  transition: transform 0.3s ease;
 
   h3 {
     margin-left: 2.5em;
@@ -18,7 +19,7 @@
 
 .hidden {
   position: absolute;
-  left: -100%;
+  transform: translateX(-100%);
 }
 
 .boards-list {
