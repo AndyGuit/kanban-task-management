@@ -15,9 +15,9 @@
 
   .button-select-board.active {
     background-color: $light-btn-bg;
-    color: $light-text-primary;
+    color: $light-primary;
     svg path {
-      fill: $light-text-primary;
+      fill: $light-primary;
     }
   }
 
