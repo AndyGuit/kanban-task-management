@@ -2,7 +2,7 @@ import { btnStyle } from '../../types/btnStylesTypes';
 import classes from './Button.module.scss';
 
 type Props = {
-  children: JSX.Element;
+  children: React.ReactNode;
   classes?: string;
   type?: 'submit' | 'reset' | 'button';
   onClick?: () => void;
