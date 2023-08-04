@@ -7,10 +7,10 @@ const uiSlice = createSlice({
     hasSidebar: true,
   },
   reducers: {
-    toggleAppTheme: (state: { appTheme: string }) => {
+    toggleAppTheme: state => {
       state.appTheme = state.appTheme === 'dark' ? 'light' : 'dark';
     },
-    toggleSidebar: (state: { hasSidebar: boolean }) => {
+    toggleSidebar: state => {
       state.hasSidebar = !state.hasSidebar;
     },
   },

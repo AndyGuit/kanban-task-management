@@ -2,18 +2,15 @@ import { useSelector } from 'react-redux';
 import HeaderBoardInfo from '../../components/Header/HeaderBoardInfo/HeaderBoardInfo';
 import HeaderLogo from '../../components/Header/HeaderLogo/HeaderLogo';
 import { RootState } from '../../store/index';
-import { IBoard } from '../../types/dataTypes';
 import classes from './Header.module.scss';
 
 const Header = () => {
-  const boards = useSelector((state: RootState) => state.data.boards);
-  const activeBoardName = boards.filter((board: IBoard) => board.isActive)[0]
-    .name;
+  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
 
   return (
     <header className={`header ${classes.header}`}>
       <HeaderLogo />
-      <HeaderBoardInfo boardName={activeBoardName} />
+      <HeaderBoardInfo boardName={activeBoard.name} />
     </header>
   );
 };
