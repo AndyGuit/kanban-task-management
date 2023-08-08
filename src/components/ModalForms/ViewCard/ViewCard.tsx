@@ -35,7 +35,11 @@ const ViewCard = () => {
           </li>
         </ul>
       </div>
-      <SelectInput disabled={true} options={['opt 1', 'opt 2']} />
+      <SelectInput
+        label="Current Status"
+        disabled={true}
+        options={['opt 1', 'opt 2']}
+      />
     </form>
   );
 };
