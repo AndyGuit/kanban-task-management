@@ -1,23 +1,21 @@
-.label {
-  background-color: $dark-theme-bg;
+.dark {
+  .label {
+    background-color: $dark-theme-bg;
 
-  &:hover {
-    background-color: $dark-checkbox-hover;
+    &:hover {
+      background-color: $dark-checkbox-hover;
+    }
+
+    &.completed {
+      color: $dark-text-secondary;
+    }
+
+    input {
+      border-color: $dark-text-secondary;
+    }
+
+    input:checked {
+      background-color: $dark-btn-bg;
+    }
   }
-
-  &.completed {
-    color: $dark-text-secondary;
-  }
-
-  input {
-    border-color: $dark-text-secondary;
-  }
-
-  input:checked {
-    background-color: $dark-btn-bg;
-  }
-}
-
-.form {
-  color: $dark-text-primary;
 }

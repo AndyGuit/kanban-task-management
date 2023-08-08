@@ -1,9 +1,11 @@
-.select {
-  border-color: $dark-border;
-  color: $dark-text-primary;
-  background-color: transparent;
+.dark {
+  .select {
+    border-color: $dark-border;
+    color: $dark-text-primary;
+    background-color: transparent;
 
-  option {
-    background-color: $dark-theme-bg;
+    option {
+      background-color: $dark-theme-bg;
+    }
   }
 }

@@ -8,9 +8,10 @@
 @import './Checkbox/checkbox-dark.scss';
 @import './SelectInput/select-input-dark.scss';
 @import './Form/form-dark.scss';
+@import './Modal/modal-dark.scss';
 
 .dark {
-  &.App {
+  .App {
     background: $dark-theme-bg;
     color: $dark-text-primary;
   }

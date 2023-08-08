@@ -1,0 +1,21 @@
+.light {
+  .label {
+    background-color: $light-theme-bg;
+
+    &:hover {
+      background-color: $light-checkbox-hover;
+    }
+
+    &.completed {
+      color: $light-text-secondary;
+    }
+
+    input {
+      border-color: $light-text-secondary;
+    }
+
+    input:checked {
+      background-color: $light-btn-bg;
+    }
+  }
+}

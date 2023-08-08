@@ -5,9 +5,13 @@
 @import './Board/board-light.scss';
 @import './Task/task-light.scss';
 @import './PopupWindow/popup-window-light.scss';
+@import './Checkbox/checkbox-light.scss';
+@import './SelectInput/select-input-light.scss';
+@import './Form/form-light.scss';
+@import './Modal/modal-light.scss';
 
 .light {
-  &.App {
+  .App {
     background: $light-theme-bg;
     color: $light-text-primary;
   }

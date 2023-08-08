@@ -1,0 +1,11 @@
+.light {
+  .select {
+    border-color: $light-border;
+    color: $light-text-primary;
+    background-color: transparent;
+
+    option {
+      background-color: $light-theme-bg;
+    }
+  }
+}

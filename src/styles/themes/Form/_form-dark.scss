@@ -1,3 +1,9 @@
-.form-description {
-  color: $dark-text-secondary;
+.dark {
+  .form {
+    color: $dark-text-primary;
+  }
+
+  .form-description {
+    color: $dark-text-secondary;
+  }
 }

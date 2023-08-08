@@ -7,6 +7,7 @@ import Container from './components/UI/Container';
 import Modal from './components/UI/Modal';
 import ModalContentForm from './components/ModalForms/ModalContentForm';
 import { uiActions } from './store/slices/ui-slice';
+import { useEffect } from 'react';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,13 @@ const App = () => {
   const isModal = useSelector((state: RootState) => state.ui.modal.isVisible);
   const closeModal = () => dispatch(uiActions.hideModal());
 
+  useEffect(() => {
+    document.body.className = '';
+    document.body.classList.add(theme);
+  }, [theme]);
+
   return (
-    <div className={`App ${theme}`}>
+    <div className="App">
       <Header />
       <Container>
         <Sidebar />
