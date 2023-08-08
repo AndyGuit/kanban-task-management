@@ -9,7 +9,7 @@ const ModalContentForm = () => {
     (state: RootState) => state.ui.modal.formContent
   );
 
-  let content: string | JSX.Element = 'No Modal Content were added';
+  let content: React.ReactNode = 'No Modal Content were added';
 
   switch (contentType) {
     case ModalContent.viewCard:

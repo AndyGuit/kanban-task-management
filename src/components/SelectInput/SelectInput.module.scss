@@ -1,0 +1,13 @@
+.select {
+  width: 100%;
+  padding: 0.5em 1em;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 4px;
+  outline: none;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}

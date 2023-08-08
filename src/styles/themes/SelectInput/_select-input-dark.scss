@@ -1,0 +1,9 @@
+.select {
+  border-color: $dark-border;
+  color: $dark-text-primary;
+  background-color: transparent;
+
+  option {
+    background-color: $dark-theme-bg;
+  }
+}
