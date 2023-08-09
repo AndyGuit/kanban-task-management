@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import Checkbox from '../../Checkbox/Checkbox';
 import { IconPopupDots } from '../../Icons/Icons';
+import PopupWindow from '../../PopupWindow/PopupWindow';
 import SelectInput from '../../SelectInput/SelectInput';
 import Button from '../../UI/Button';
 import classes from './ViewTask.module.scss';
@@ -35,6 +36,7 @@ const ViewTask = () => {
         <Button onClick={togglePopup} btnStyle="popup">
           <IconPopupDots />
         </Button>
+        {isPopupShown && <PopupWindow btnText="Task" />}
       </div>
       <p className={`form-description ${classes['form-description']}`}>
         {modalData.description || 'No Description'}
