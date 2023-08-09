@@ -4,6 +4,7 @@ import classes from './Checkbox.module.scss';
 type Props = {
   title: string;
   isCompleted: boolean;
+  onChange: () => void;
 };
 
 const Checkbox = (props: Props) => {
@@ -11,6 +12,7 @@ const Checkbox = (props: Props) => {
 
   const changeCompletedHandler = () => {
     setIsCompleted(prevState => !prevState);
+    props.onChange();
   };
 
   const labelClasses = `label ${classes['label']} ${
