@@ -3,9 +3,9 @@ import Checkbox from '../../Checkbox/Checkbox';
 import { IconPopupDots } from '../../Icons/Icons';
 import SelectInput from '../../SelectInput/SelectInput';
 import Button from '../../UI/Button';
-import classes from './ViewCard.module.scss';
+import classes from './ViewTask.module.scss';
 
-const ViewCard = () => {
+const ViewTask = () => {
   const [isPopupShown, setIsPopupShown] = useState(false);
 
   const togglePopup = () => {
@@ -44,4 +44,4 @@ const ViewCard = () => {
   );
 };
 
-export default ViewCard;
+export default ViewTask;

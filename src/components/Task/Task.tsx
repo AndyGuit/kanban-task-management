@@ -10,7 +10,7 @@ const Task = (props: ITask) => {
     (subt: ISubtask) => subt.isCompleted
   );
   const showModal = () => {
-    dispatch(uiActions.setModalContent(ModalContent.viewCard));
+    dispatch(uiActions.setModalContent(ModalContent.viewTask));
     dispatch(uiActions.showModal());
   };
 

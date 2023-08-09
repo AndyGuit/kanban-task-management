@@ -1,4 +1,4 @@
 export enum ModalContent {
-  viewCard,
-  editCard,
+  viewTask,
+  editTask,
 }

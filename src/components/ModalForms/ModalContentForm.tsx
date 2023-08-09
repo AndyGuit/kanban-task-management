@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { ModalContent } from '../../types/modalFormContentTypes';
-import ViewCard from './ViewCard/ViewCard';
+import ViewTask from './ViewTask/ViewTask';
 
 const ModalContentForm = () => {
   const contentType = useSelector(
@@ -12,8 +12,8 @@ const ModalContentForm = () => {
   let content: React.ReactNode = 'No Modal Content were added';
 
   switch (contentType) {
-    case ModalContent.viewCard:
-      content = <ViewCard />;
+    case ModalContent.viewTask:
+      content = <ViewTask />;
       break;
     default:
       break;
