@@ -8,7 +8,7 @@ const uiSlice = createSlice({
     hasSidebar: true,
     modal: {
       isVisible: false,
-      formContent: ModalContent.editCard,
+      formContent: ModalContent.editTask,
     },
   },
   reducers: {

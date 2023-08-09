@@ -2,7 +2,7 @@ import { useState } from 'react';
 import classes from './Checkbox.module.scss';
 
 type Props = {
-  name: string;
+  title: string;
   isCompleted: boolean;
 };
 
@@ -24,7 +24,7 @@ const Checkbox = (props: Props) => {
         type="checkbox"
         onChange={changeCompletedHandler}
       />
-      {props.name}
+      {props.title}
     </label>
   );
 };

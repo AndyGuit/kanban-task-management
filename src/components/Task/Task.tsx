@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ISubtask, ITask } from '../../types/dataTypes';
 import { ModalContent } from '../../types/modalFormContentTypes';
@@ -10,6 +11,7 @@ const Task = (props: ITask) => {
     (subt: ISubtask) => subt.isCompleted
   );
   const showModal = () => {
+    dispatch(dataActions.setModalData(props));
     dispatch(uiActions.setModalContent(ModalContent.viewTask));
     dispatch(uiActions.showModal());
   };
