@@ -13,7 +13,7 @@ export const initialData = [
             title: 'Build UI for onboarding flow',
             description: '',
             status: 'Todo',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Sign up page',
@@ -34,7 +34,7 @@ export const initialData = [
             title: 'Build UI for search',
             description: '',
             status: 'Todo',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Search page',
@@ -47,7 +47,7 @@ export const initialData = [
             title: 'Build settings UI',
             description: '',
             status: 'Todo',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Account page',
@@ -65,7 +65,7 @@ export const initialData = [
             description:
               'Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.',
             status: 'Todo',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Internal testing',
@@ -84,11 +84,11 @@ export const initialData = [
         name: 'Doing',
         tasks: [
           {
-            id: '4',
+            id: 't4',
             title: 'Design settings and search pages',
             description: '',
             status: 'Doing',
-            statusId: '1',
+            statusId: 'c1',
             subtasks: [
               {
                 title: 'Settings - Account page',
@@ -105,11 +105,11 @@ export const initialData = [
             ],
           },
           {
-            id: '5',
+            id: 't5',
             title: 'Add account management endpoints',
             description: '',
             status: 'Doing',
-            statusId: '1',
+            statusId: 'c1',
             subtasks: [
               {
                 title: 'Upgrade plan',
@@ -126,11 +126,11 @@ export const initialData = [
             ],
           },
           {
-            id: '6',
+            id: 't6',
             title: 'Design onboarding flow',
             description: '',
             status: 'Doing',
-            statusId: '1',
+            statusId: 'c1',
             subtasks: [
               {
                 title: 'Sign up page',
@@ -147,11 +147,11 @@ export const initialData = [
             ],
           },
           {
-            id: '7',
+            id: 't7',
             title: 'Add search enpoints',
             description: '',
             status: 'Doing',
-            statusId: '1',
+            statusId: 'c1',
             subtasks: [
               {
                 title: 'Add search endpoint',
@@ -164,11 +164,11 @@ export const initialData = [
             ],
           },
           {
-            id: '8',
+            id: 't8',
             title: 'Add authentication endpoints',
             description: '',
             status: 'Doing',
-            statusId: '1',
+            statusId: 'c1',
             subtasks: [
               {
                 title: 'Define user model',
@@ -181,13 +181,13 @@ export const initialData = [
             ],
           },
           {
-            id: '9',
+            id: 't9',
             title:
               'Research pricing points of various competitors and trial different business models',
             description:
               "We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.",
             status: 'Doing',
-            statusId: '1',
+            statusId: 'c1',
             subtasks: [
               {
                 title: 'Research competitor pricing and business models',
@@ -211,12 +211,12 @@ export const initialData = [
         name: 'Done',
         tasks: [
           {
-            id: '10',
+            id: 't10',
             title: 'Conduct 5 wireframe tests',
             description:
               'Ensure the layout continues to make sense and we have strong buy-in from potential users.',
             status: 'Done',
-            statusId: '2',
+            statusId: 'c2',
             subtasks: [
               {
                 title: 'Complete 5 wireframe prototype tests',
@@ -225,12 +225,12 @@ export const initialData = [
             ],
           },
           {
-            id: '11',
+            id: 't11',
             title: 'Create wireframe prototype',
             description:
               'Create a greyscale clickable wireframe prototype to test our asssumptions so far.',
             status: 'Done',
-            statusId: '2',
+            statusId: 'c2',
             subtasks: [
               {
                 title: 'Create clickable wireframe prototype in Balsamiq',
@@ -239,12 +239,12 @@ export const initialData = [
             ],
           },
           {
-            id: '12',
+            id: 't12',
             title: 'Review results of usability tests and iterate',
             description:
               "Keep iterating through the subtasks until we're clear on the core concepts for the app.",
             status: 'Done',
-            statusId: '2',
+            statusId: 'c2',
             subtasks: [
               {
                 title:
@@ -262,12 +262,12 @@ export const initialData = [
             ],
           },
           {
-            id: '13',
+            id: 't13',
             title:
               'Create paper prototypes and conduct 10 usability tests with potential customers',
             description: '',
             status: 'Done',
-            statusId: '2',
+            statusId: 'c2',
             subtasks: [
               {
                 title: 'Create paper prototypes for version one',
@@ -280,12 +280,12 @@ export const initialData = [
             ],
           },
           {
-            id: '14',
+            id: 't14',
             title: 'Market discovery',
             description:
               'We need to define and refine our core product. Interviews will help us learn common pain points and help us define the strongest MVP.',
             status: 'Done',
-            statusId: '2',
+            statusId: 'c2',
             subtasks: [
               {
                 title: 'Interview 10 prospective customers',
@@ -294,11 +294,11 @@ export const initialData = [
             ],
           },
           {
-            id: '15',
+            id: 't15',
             title: 'Competitor analysis',
             description: '',
             status: 'Done',
-            statusId: '2',
+            statusId: 'c2',
             subtasks: [
               {
                 title: 'Find direct and indirect competitors',
@@ -311,12 +311,12 @@ export const initialData = [
             ],
           },
           {
-            id: '16',
+            id: 't16',
             title: 'Research the market',
             description:
               'We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.',
             status: 'Done',
-            statusId: '2',
+            statusId: 'c2',
             subtasks: [
               {
                 title: 'Write up research analysis',
@@ -346,7 +346,7 @@ export const initialData = [
             title: 'Plan Product Hunt launch',
             description: '11',
             status: 'Todo',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Find hunter',
@@ -379,7 +379,7 @@ export const initialData = [
             title: 'Share on Show HN',
             description: '',
             status: 'Todo',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Draft out HN post',
@@ -400,7 +400,7 @@ export const initialData = [
             title: 'Write launch article to publish on multiple channels',
             description: '',
             status: 'Todo',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Write article',
@@ -443,7 +443,7 @@ export const initialData = [
             title: 'Launch version one',
             description: '',
             status: 'Now',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Launch privately to our waitlist',
@@ -461,7 +461,7 @@ export const initialData = [
             description:
               "Beyond the initial launch, we're keeping the initial roadmap completely empty. This meeting will help us plan out our next steps based on actual customer feedback.",
             status: 'Now',
-            statusId: '0',
+            statusId: 'c0',
             subtasks: [
               {
                 title: 'Interview 10 customers',
