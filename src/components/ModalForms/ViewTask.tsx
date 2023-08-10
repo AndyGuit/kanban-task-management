@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../store';
-import Checkbox from '../../Checkbox/Checkbox';
-import { IconPopupDots } from '../../Icons/Icons';
-import PopupWindow from '../../PopupWindow/PopupWindow';
-import SelectInput from '../../SelectInput/SelectInput';
-import Button from '../../UI/Button';
-import classes from './ViewTask.module.scss';
+import { RootState } from '../../store';
+import Checkbox from '../Checkbox/Checkbox';
+import { IconPopupDots } from '../Icons/Icons';
+import PopupWindow from '../PopupWindow/PopupWindow';
+import SelectInput from '../SelectInput/SelectInput';
+import Button from '../UI/Button';
+import classes from './Form.module.scss';
 import { useDispatch } from 'react-redux';
-import { dataActions } from '../../../store/slices/data-slice';
-import { uiActions } from '../../../store/slices/ui-slice';
-import { ModalContent } from '../../../types/modalFormContentTypes';
+import { dataActions } from '../../store/slices/data-slice';
+import { uiActions } from '../../store/slices/ui-slice';
+import { ModalContent } from '../../types/modalFormContentTypes';
 
 const ViewTask = () => {
   const dispatch = useDispatch();

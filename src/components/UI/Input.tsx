@@ -1,3 +1,4 @@
+import { ChangeEvent, useState } from 'react';
 import { IconCross } from '../Icons/Icons';
 import Button from './Button';
 import classes from './Input.module.scss';
@@ -12,12 +13,20 @@ type Props = {
 };
 
 const Input = (props: Props) => {
+  const [value, setValue] = useState(props.value);
+
+  const changeHandler = (e: ChangeEvent) => {
+    const target = e.target as HTMLInputElement;
+    setValue(target.value);
+  };
+
   let content: React.ReactNode;
   if (props.type === 'textarea') {
     content = (
       <textarea
         id={props.id}
-        value={props.value}
+        value={value}
+        onChange={changeHandler}
         className={`input ${classes.input}`}
         rows={6}></textarea>
     );
@@ -27,7 +36,8 @@ const Input = (props: Props) => {
     content = (
       <input
         id={props.id}
-        value={props.value}
+        value={value}
+        onChange={changeHandler}
         className={`input ${classes.input}`}
         type="text"
       />

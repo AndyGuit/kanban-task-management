@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { ModalContent } from '../../types/modalFormContentTypes';
-import EditTask from './EditTask/EditTask';
-import ViewTask from './ViewTask/ViewTask';
+import EditTask from './EditTask';
+import ViewTask from './ViewTask';
 
 const ModalContentForm = () => {
   const contentType = useSelector(

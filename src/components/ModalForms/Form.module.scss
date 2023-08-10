@@ -38,3 +38,21 @@
     font-size: 0.75em;
   }
 }
+
+.form-subtasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  max-height: 6em;
+  padding-right: 0.85em;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
+}
