@@ -1,0 +1,11 @@
+.dark {
+  .input {
+    border-color: $dark-border;
+    color: $dark-text-primary;
+    caret-color: $dark-btn-bg;
+
+    &:focus {
+      border-color: $dark-btn-bg;
+    }
+  }
+}

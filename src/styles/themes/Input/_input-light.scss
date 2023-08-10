@@ -1,0 +1,11 @@
+.light {
+  .input {
+    border-color: $light-border;
+    color: $light-text-primary;
+    caret-color: $light-btn-bg;
+
+    &:focus {
+      border-color: $light-btn-bg;
+    }
+  }
+}

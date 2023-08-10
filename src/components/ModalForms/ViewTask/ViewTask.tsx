@@ -9,6 +9,8 @@ import Button from '../../UI/Button';
 import classes from './ViewTask.module.scss';
 import { useDispatch } from 'react-redux';
 import { dataActions } from '../../../store/slices/data-slice';
+import { uiActions } from '../../../store/slices/ui-slice';
+import { ModalContent } from '../../../types/modalFormContentTypes';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
@@ -24,6 +26,10 @@ const ViewTask = () => {
 
   const togglePopup = () => {
     setIsPopupShown(prevState => !prevState);
+  };
+
+  const editTaskHandler = () => {
+    dispatch(uiActions.setModalContent(ModalContent.editTask));
   };
 
   const subtasksList = (
@@ -46,7 +52,9 @@ const ViewTask = () => {
         <Button onClick={togglePopup} btnStyle="popup">
           <IconPopupDots />
         </Button>
-        {isPopupShown && <PopupWindow btnText="Task" />}
+        {isPopupShown && (
+          <PopupWindow onClickEdit={editTaskHandler} btnText="Task" />
+        )}
       </div>
       <p className={`form-description ${classes['form-description']}`}>
         {modalTask.description || 'No Description'}
