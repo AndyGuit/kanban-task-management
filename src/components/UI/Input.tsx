@@ -6,6 +6,7 @@ type Props = {
   type: 'text' | 'textarea';
   isRemovable: boolean;
   value?: string;
+  id?: string;
   onRemove?: () => void;
   onChange?: () => void;
 };
@@ -15,6 +16,7 @@ const Input = (props: Props) => {
   if (props.type === 'textarea') {
     content = (
       <textarea
+        id={props.id}
         value={props.value}
         className={`input ${classes.input}`}
         rows={6}></textarea>
@@ -24,6 +26,7 @@ const Input = (props: Props) => {
   if (props.type === 'text') {
     content = (
       <input
+        id={props.id}
         value={props.value}
         className={`input ${classes.input}`}
         type="text"

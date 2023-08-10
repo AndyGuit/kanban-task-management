@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  h3 {
+    font-size: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.form-input {
+  label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-size: 0.75em;
+  }
+}
+
+.form-description {
+  margin-bottom: 1.5em;
+  font-size: 0.75em;
+  font-weight: 400;
+}
+
+.form-subtasks {
+  margin-bottom: 1em;
+
+  h5 {
+    margin-bottom: 1em;
+    font-size: 0.75em;
+  }
+}
