@@ -36,30 +36,38 @@ const dataSlice = createSlice({
       const index = action.payload;
       const newValue = !state.modalTask.subtasks[index].isCompleted;
       state.modalTask.subtasks[index].isCompleted = newValue;
-
-      // Replace Task in Column
-      const taskIndex = state.modalColumn.tasks.findIndex(
-        task => task.id === state.modalTask.id
-      );
-      state.modalColumn.tasks[taskIndex] = state.modalTask;
-
-      // Replace Column in Active board
-      const colIndex = state.activeBoard.columns.findIndex(
-        col => col.id === state.modalColumn.id
-      );
-      state.activeBoard.columns[colIndex] = state.modalColumn;
-
-      // Replace Active board in boards
-      const boardIndex = state.boards.findIndex(
-        board => board.id === state.activeBoard.id
-      );
-      state.boards[boardIndex] = state.activeBoard;
     },
     addSubtask: (state, action: PayloadAction<ISubtask>) => {
       state.modalTask.subtasks.push(action.payload);
     },
     removeSubtask: (state, action: PayloadAction<number>) => {
       state.modalTask.subtasks.splice(action.payload, 1);
+    },
+    saveChanges: (
+      state,
+      action: PayloadAction<'board' | 'column' | 'task'>
+    ) => {
+      // Replace Task in Column
+      if (action.payload === 'task') {
+        const taskIndex = state.modalColumn.tasks.findIndex(
+          task => task.id === state.modalTask.id
+        );
+        state.modalColumn.tasks[taskIndex] = state.modalTask;
+      }
+
+      if (action.payload === 'task' || action.payload === 'column') {
+        // Replace Column in Active board
+        const colIndex = state.activeBoard.columns.findIndex(
+          col => col.id === state.modalColumn.id
+        );
+        state.activeBoard.columns[colIndex] = state.modalColumn;
+      }
+
+      // Replace Active board in boards
+      const boardIndex = state.boards.findIndex(
+        board => board.id === state.activeBoard.id
+      );
+      state.boards[boardIndex] = state.activeBoard;
     },
   },
 });

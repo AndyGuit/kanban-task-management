@@ -27,6 +27,7 @@ const ViewTask = () => {
 
   const changeSubtaskStatus = (index: number) => {
     dispatch(dataActions.toggleSubtaskStatus(index));
+    dispatch(dataActions.saveChanges('task'));
   };
 
   const togglePopup = () => {
