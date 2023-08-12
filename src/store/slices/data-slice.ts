@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { initialData } from '../../data';
-import { IColumn, ITask } from '../../types/dataTypes';
+import { IColumn, ISubtask, ITask } from '../../types/dataTypes';
 
 const dataSlice = createSlice({
   name: 'data',
@@ -54,6 +54,9 @@ const dataSlice = createSlice({
         board => board.id === state.activeBoard.id
       );
       state.boards[boardIndex] = state.activeBoard;
+    },
+    addSubtask: (state, action: PayloadAction<ISubtask>) => {
+      state.modalTask.subtasks.push(action.payload);
     },
   },
 });

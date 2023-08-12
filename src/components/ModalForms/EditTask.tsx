@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { FormEvent } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../hooks/use-input';
 import SelectInput from '../SelectInput/SelectInput';
@@ -6,10 +7,13 @@ import Button from '../UI/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import validate from '../../functions/validate';
+import { dataActions } from '../../store/slices/data-slice';
 
 const EditTask = () => {
+  const dispatch = useDispatch();
   const taskData = useSelector((state: RootState) => state.data.modalTask);
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
+
   const columnNames = activeBoard.columns.map(col => col.name);
 
   const titleInput = useInput(validate.notEmpty, taskData.title);
@@ -29,8 +33,16 @@ const EditTask = () => {
     </ul>
   );
 
+  const addSubtaskHandler = () => {
+    dispatch(dataActions.addSubtask({ isCompleted: false, title: '' }));
+  };
+
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className={`form ${classes.form}`}>
+    <form onSubmit={submitHandler} className={`form ${classes.form}`}>
       <h3>Edit Task</h3>
       <div className={classes['form-input']}>
         <label htmlFor="edit-task">Title</label>
@@ -58,7 +70,9 @@ const EditTask = () => {
         <label>Subtasks</label>
         {subtasksList}
       </div>
-      <Button btnStyle="form-secondary">+ Add New Subtask</Button>
+      <Button onClick={addSubtaskHandler} btnStyle="form-secondary">
+        + Add New Subtask
+      </Button>
       <SelectInput label="Status" disabled={false} options={columnNames} />
       <Button btnStyle="form-primary" type="submit">
         Save Changes
