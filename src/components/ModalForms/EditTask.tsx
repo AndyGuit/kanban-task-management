@@ -1,4 +1,4 @@
-import { FormEvent } from 'react';
+import { ChangeEvent, FormEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../hooks/use-input';
@@ -46,8 +46,17 @@ const EditTask = () => {
     dispatch(dataActions.addSubtask({ isCompleted: false, title: '' }));
   };
 
+  const statusChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+    statusInput.valueChangeHandler(e);
+
+    const newStatus = columns.find(col => col.name === e.target.value)!;
+    dispatch(dataActions.setTaskStatus(newStatus));
+  };
+
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    console.log(taskData);
   };
 
   return (
@@ -84,7 +93,7 @@ const EditTask = () => {
       </Button>
       <SelectInput
         value={statusInput.value}
-        onChange={statusInput.valueChangeHandler}
+        onChange={statusChangeHandler}
         label="Status"
         disabled={false}
         options={columns}

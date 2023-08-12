@@ -22,9 +22,11 @@ const dataSlice = createSlice({
         }
       });
     },
+
     setModalTask: (state, action: PayloadAction<ITask>) => {
       state.modalTask = action.payload;
     },
+
     setModalColumn: (state, action: PayloadAction<string>) => {
       const selectedColumn = state.activeBoard.columns.find(
         col => col.id === action.payload
@@ -32,17 +34,29 @@ const dataSlice = createSlice({
 
       if (selectedColumn) state.modalColumn = selectedColumn;
     },
+
     toggleSubtaskStatus: (state, action: PayloadAction<number>) => {
       const index = action.payload;
       const newValue = !state.modalTask.subtasks[index].isCompleted;
       state.modalTask.subtasks[index].isCompleted = newValue;
     },
+
     addSubtask: (state, action: PayloadAction<ISubtask>) => {
       state.modalTask.subtasks.push(action.payload);
     },
+
     removeSubtask: (state, action: PayloadAction<number>) => {
       state.modalTask.subtasks.splice(action.payload, 1);
     },
+
+    setTaskStatus: (
+      state,
+      action: PayloadAction<{ name: string; statusId: string }>
+    ) => {
+      state.modalTask.status = action.payload.name;
+      state.modalTask.statusId = action.payload.statusId;
+    },
+
     saveChanges: (
       state,
       action: PayloadAction<'board' | 'column' | 'task'>
