@@ -1,15 +1,19 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import useInput from '../../hooks/use-input';
 import SelectInput from '../SelectInput/SelectInput';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
+import validate from '../../functions/validate';
 
 const EditTask = () => {
   const taskData = useSelector((state: RootState) => state.data.modalTask);
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
-
   const columnNames = activeBoard.columns.map(col => col.name);
+
+  const titleInput = useInput(validate.notEmpty, taskData.title);
+  const descriptionInput = useInput(validate.notEmpty, taskData.description);
 
   const subtasksList = (
     <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
@@ -32,7 +36,9 @@ const EditTask = () => {
         <label htmlFor="edit-task">Title</label>
         <Input
           id="edit-task"
-          value={taskData.title}
+          value={titleInput.value}
+          onChange={titleInput.valueChangeHandler}
+          onBlur={descriptionInput.inputBlurHandler}
           isRemovable={false}
           type="text"
         />
@@ -41,7 +47,9 @@ const EditTask = () => {
         <label htmlFor="edit-description">Description</label>
         <Input
           id="edit-description"
-          value={taskData.description}
+          value={descriptionInput.value}
+          onChange={descriptionInput.valueChangeHandler}
+          onBlur={descriptionInput.inputBlurHandler}
           isRemovable={false}
           type="textarea"
         />

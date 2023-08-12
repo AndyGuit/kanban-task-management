@@ -13,15 +13,15 @@ interface InputActions {
   payload?: string;
 }
 
-const initialInputState = {
-  value: '',
-  isTouched: false,
-};
+interface InputState {
+  value: string;
+  isTouched: boolean;
+}
 
 const inputStateReducer = (
-  state: typeof initialInputState,
+  state: InputState,
   action: InputActions
-): typeof initialInputState => {
+): InputState => {
   switch (action.type) {
     case InputActionType.INPUT:
       return {
@@ -43,11 +43,11 @@ const inputStateReducer = (
   }
 };
 
-const useInput = (validateValue: validateFnType) => {
-  const [inputState, dispatch] = useReducer(
-    inputStateReducer,
-    initialInputState
-  );
+const useInput = (validateValue: validateFnType, initialValue?: string) => {
+  const [inputState, dispatch] = useReducer(inputStateReducer, {
+    value: initialValue ?? '',
+    isTouched: false,
+  });
 
   const valueIsValid = validateValue(inputState.value);
   const hasError = !valueIsValid && inputState.isTouched;

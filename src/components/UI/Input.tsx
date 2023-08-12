@@ -9,7 +9,8 @@ type Props = {
   value?: string;
   id?: string;
   onRemove?: () => void;
-  onChange?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
 };
 
 const Input = (props: Props) => {
