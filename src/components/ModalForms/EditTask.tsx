@@ -12,11 +12,15 @@ import { dataActions } from '../../store/slices/data-slice';
 const EditTask = () => {
   const dispatch = useDispatch();
   const taskData = useSelector((state: RootState) => state.data.modalTask);
+  const modalColumn = useSelector((state: RootState) => state.data.modalColumn);
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
-  const columnNames = activeBoard.columns.map(col => col.name);
+  const columns = activeBoard.columns.map(col => {
+    return { name: col.name, statusId: col.id };
+  });
 
   const titleInput = useInput(validate.notEmpty, taskData.title);
   const descriptionInput = useInput(validate.notEmpty, taskData.description);
+  const statusInput = useInput(validate.notEmpty, modalColumn.name);
 
   const removeSubtaskHandler = (index: number) => {
     dispatch(dataActions.removeSubtask(index));
@@ -78,7 +82,13 @@ const EditTask = () => {
       <Button onClick={addSubtaskHandler} btnStyle="form-secondary">
         + Add New Subtask
       </Button>
-      <SelectInput label="Status" disabled={false} options={columnNames} />
+      <SelectInput
+        value={statusInput.value}
+        onChange={statusInput.valueChangeHandler}
+        label="Status"
+        disabled={false}
+        options={columns}
+      />
       <Button btnStyle="form-primary" type="submit">
         Save Changes
       </Button>

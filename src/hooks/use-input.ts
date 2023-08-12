@@ -52,7 +52,9 @@ const useInput = (validateValue: validateFnType, initialValue?: string) => {
   const valueIsValid = validateValue(inputState.value);
   const hasError = !valueIsValid && inputState.isTouched;
 
-  const valueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const valueChangeHandler = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     dispatch({ type: InputActionType.INPUT, payload: e.target.value });
   };
 

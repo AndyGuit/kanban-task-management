@@ -15,10 +15,15 @@ import { ModalContent } from '../../types/modalFormContentTypes';
 const ViewTask = () => {
   const dispatch = useDispatch();
   const modalTask = useSelector((state: RootState) => state.data.modalTask);
+  const modalColumn = useSelector((state: RootState) => state.data.modalColumn);
+  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
   const [isPopupShown, setIsPopupShown] = useState(false);
 
   const completedSubtasks = modalTask.subtasks.filter(subt => subt.isCompleted);
   const completedSubtasksString = `(${completedSubtasks.length} of ${modalTask.subtasks.length})`;
+  const columns = activeBoard.columns.map(col => {
+    return { name: col.name, statusId: col.id };
+  });
 
   const changeSubtaskStatus = (index: number) => {
     dispatch(dataActions.toggleSubtaskStatus(index));
@@ -66,7 +71,8 @@ const ViewTask = () => {
       <SelectInput
         label="Current Status"
         disabled={true}
-        options={[modalTask.status]}
+        value={modalColumn.name}
+        options={columns}
       />
     </form>
   );
