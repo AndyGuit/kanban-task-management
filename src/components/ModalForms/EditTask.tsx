@@ -13,19 +13,24 @@ const EditTask = () => {
   const dispatch = useDispatch();
   const taskData = useSelector((state: RootState) => state.data.modalTask);
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
-
   const columnNames = activeBoard.columns.map(col => col.name);
 
   const titleInput = useInput(validate.notEmpty, taskData.title);
   const descriptionInput = useInput(validate.notEmpty, taskData.description);
 
+  const removeSubtaskHandler = (index: number) => {
+    dispatch(dataActions.removeSubtask(index));
+  };
+
   const subtasksList = (
     <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
       {taskData.subtasks.map((subtask, index) => (
-        <li key={index}>
+        // TODO: generate random id for key
+        <li key={`${subtask.title}${index}`}>
           <Input
             value={subtask.title}
             isRemovable={taskData.subtasks.length > 1}
+            onRemove={removeSubtaskHandler.bind(null, index)}
             type="text"
           />
         </li>

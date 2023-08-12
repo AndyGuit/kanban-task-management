@@ -58,6 +58,9 @@ const dataSlice = createSlice({
     addSubtask: (state, action: PayloadAction<ISubtask>) => {
       state.modalTask.subtasks.push(action.payload);
     },
+    removeSubtask: (state, action: PayloadAction<number>) => {
+      state.modalTask.subtasks.splice(action.payload, 1);
+    },
   },
 });
 
