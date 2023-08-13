@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../hooks/use-input';
@@ -9,6 +9,7 @@ import classes from './Form.module.scss';
 import validate from '../../functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
 import { ITask } from '../../types/dataTypes';
+import { uiActions } from '../../store/slices/ui-slice';
 
 const EditTask = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const EditTask = () => {
     <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
       {taskData.subtasks.map((subtask, index) => (
         // TODO: generate random id for key
+        // TODO: validate each input separately
         <li key={`${subtask.title}${index}`}>
           <Input
             value={subtask.title}
@@ -62,6 +64,8 @@ const EditTask = () => {
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!titleInput.isValid) return;
+
     const editedTask: ITask = {
       title: titleInput.value,
       description: descriptionInput.value,
@@ -70,7 +74,19 @@ const EditTask = () => {
       statusId: newStatus.statusId,
       subtasks: taskData.subtasks,
     };
-    console.log(editedTask);
+
+    if (taskData.statusId !== newStatus.statusId) {
+      dispatch(dataActions.removeTask(taskData.id));
+      dispatch(dataActions.saveChanges('column'));
+      dispatch(dataActions.setModalColumn(newStatus.statusId));
+      dispatch(dataActions.addTask(editedTask));
+      dispatch(dataActions.setModalTask(editedTask));
+      dispatch(dataActions.saveChanges('task'));
+    } else {
+      dispatch(dataActions.setModalTask(editedTask));
+      dispatch(dataActions.saveChanges('task'));
+    }
+    dispatch(uiActions.hideModal());
   };
 
   return (

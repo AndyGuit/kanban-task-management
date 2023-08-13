@@ -63,7 +63,7 @@ const Input = (props: Props) => {
           </Button>
         )}
       </div>
-      {props.invalid && <p className="error-text">Please, enter title</p>}
+      {props.invalid && <p className="error-text">Invalid value</p>}
     </Fragment>
   );
 };

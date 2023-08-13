@@ -49,6 +49,16 @@ const dataSlice = createSlice({
       state.modalTask.subtasks.splice(action.payload, 1);
     },
 
+    removeTask: (state, action: PayloadAction<string>) => {
+      const id = action.payload;
+      const index = state.modalColumn.tasks.findIndex(task => task.id === id);
+      state.modalColumn.tasks.splice(index, 1);
+    },
+
+    addTask: (state, action: PayloadAction<ITask>) => {
+      state.modalColumn.tasks.push(action.payload);
+    },
+
     saveChanges: (
       state,
       action: PayloadAction<'board' | 'column' | 'task'>
