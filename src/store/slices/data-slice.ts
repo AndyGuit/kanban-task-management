@@ -49,14 +49,6 @@ const dataSlice = createSlice({
       state.modalTask.subtasks.splice(action.payload, 1);
     },
 
-    setTaskStatus: (
-      state,
-      action: PayloadAction<{ name: string; statusId: string }>
-    ) => {
-      state.modalTask.status = action.payload.name;
-      state.modalTask.statusId = action.payload.statusId;
-    },
-
     saveChanges: (
       state,
       action: PayloadAction<'board' | 'column' | 'task'>

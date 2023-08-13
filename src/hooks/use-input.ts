@@ -53,7 +53,7 @@ const useInput = (validateValue: validateFnType, initialValue?: string) => {
   const hasError = !valueIsValid && inputState.isTouched;
 
   const valueChangeHandler = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     dispatch({ type: InputActionType.INPUT, payload: e.target.value });
   };

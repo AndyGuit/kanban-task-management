@@ -9,16 +9,18 @@ type Props = {
   value?: string;
   id?: string;
   onRemove?: () => void;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onBlur?: () => void;
 };
 
 const Input = (props: Props) => {
   const [value, setValue] = useState(props.value);
 
-  const changeHandler = (e: ChangeEvent) => {
-    const target = e.target as HTMLInputElement;
-    setValue(target.value);
+  const changeHandler = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setValue(e.target.value);
+    props.onChange(e);
   };
 
   let content: React.ReactNode;

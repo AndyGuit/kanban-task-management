@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../hooks/use-input';
@@ -8,6 +8,7 @@ import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import validate from '../../functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
+import { ITask } from '../../types/dataTypes';
 
 const EditTask = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,11 @@ const EditTask = () => {
   const columns = activeBoard.columns.map(col => {
     return { name: col.name, statusId: col.id };
   });
+
+  const [newStatus, setNewStatus] = useState<{
+    name: string;
+    statusId: string;
+  }>({ name: modalColumn.name, statusId: modalColumn.id });
 
   const titleInput = useInput(validate.notEmpty, taskData.title);
   const descriptionInput = useInput(validate.notEmpty, taskData.description);
@@ -49,14 +55,22 @@ const EditTask = () => {
   const statusChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     statusInput.valueChangeHandler(e);
 
-    const newStatus = columns.find(col => col.name === e.target.value)!;
-    dispatch(dataActions.setTaskStatus(newStatus));
+    const selectedStatus = columns.find(col => col.name === e.target.value)!;
+    setNewStatus(selectedStatus);
   };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(taskData);
+    const editedTask: ITask = {
+      title: titleInput.value,
+      description: descriptionInput.value,
+      id: taskData.id,
+      status: newStatus.name,
+      statusId: newStatus.statusId,
+      subtasks: taskData.subtasks,
+    };
+    console.log(editedTask);
   };
 
   return (
@@ -68,7 +82,7 @@ const EditTask = () => {
           id="edit-task"
           value={titleInput.value}
           onChange={titleInput.valueChangeHandler}
-          onBlur={descriptionInput.inputBlurHandler}
+          onBlur={titleInput.inputBlurHandler}
           isRemovable={false}
           type="text"
         />
