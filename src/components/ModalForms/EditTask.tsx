@@ -87,9 +87,6 @@ const EditTask = () => {
           isRemovable={false}
           type="text"
         />
-        {!titleInput.isValid && (
-          <p className="error-text">Please, enter title</p>
-        )}
       </div>
       <div className={classes['form-input']}>
         <label htmlFor="edit-description">Description</label>

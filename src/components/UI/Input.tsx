@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, Fragment, useState } from 'react';
 import { IconCross } from '../Icons/Icons';
 import Button from './Button';
 import classes from './Input.module.scss';
@@ -54,14 +54,17 @@ const Input = (props: Props) => {
   }
 
   return (
-    <div className={classes['input-wrapper']}>
-      {content}
-      {props.isRemovable && (
-        <Button onClick={props.onRemove}>
-          <IconCross />
-        </Button>
-      )}
-    </div>
+    <Fragment>
+      <div className={classes['input-wrapper']}>
+        {content}
+        {props.isRemovable && (
+          <Button onClick={props.onRemove}>
+            <IconCross />
+          </Button>
+        )}
+      </div>
+      {props.invalid && <p className="error-text">Please, enter title</p>}
+    </Fragment>
   );
 };
 
