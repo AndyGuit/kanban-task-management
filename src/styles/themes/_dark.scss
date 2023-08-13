@@ -16,4 +16,11 @@
     background: $dark-theme-bg;
     color: $dark-text-primary;
   }
+
+  .error-text {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 0.75em;
+    color: $dark-warning;
+  }
 }

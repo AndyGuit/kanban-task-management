@@ -7,5 +7,9 @@
     &:focus {
       border-color: $light-btn-bg;
     }
+
+    &.invalid {
+      border-color: $light-warning;
+    }
   }
 }

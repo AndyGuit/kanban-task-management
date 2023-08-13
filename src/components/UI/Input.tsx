@@ -6,21 +6,27 @@ import classes from './Input.module.scss';
 type Props = {
   type: 'text' | 'textarea';
   isRemovable: boolean;
+  invalid?: boolean;
   value?: string;
   id?: string;
   onRemove?: () => void;
-  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onBlur?: () => void;
 };
 
 const Input = (props: Props) => {
   const [value, setValue] = useState(props.value);
 
+  const inputClasses = `input ${classes.input} ${
+    props.invalid ? 'invalid' : ''
+  }`;
+
   const changeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setValue(e.target.value);
-    props.onChange(e);
+
+    if (props.onChange) props.onChange(e);
   };
 
   let content: React.ReactNode;
@@ -30,7 +36,7 @@ const Input = (props: Props) => {
         id={props.id}
         value={value}
         onChange={changeHandler}
-        className={`input ${classes.input}`}
+        className={inputClasses}
         rows={6}></textarea>
     );
   }
@@ -41,7 +47,7 @@ const Input = (props: Props) => {
         id={props.id}
         value={value}
         onChange={changeHandler}
-        className={`input ${classes.input}`}
+        className={inputClasses}
         type="text"
       />
     );

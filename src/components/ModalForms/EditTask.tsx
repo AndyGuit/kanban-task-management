@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../hooks/use-input';
@@ -25,7 +25,7 @@ const EditTask = () => {
   }>({ name: modalColumn.name, statusId: modalColumn.id });
 
   const titleInput = useInput(validate.notEmpty, taskData.title);
-  const descriptionInput = useInput(validate.notEmpty, taskData.description);
+  const descriptionInput = useInput(() => true, taskData.description);
   const statusInput = useInput(validate.notEmpty, modalColumn.name);
 
   const removeSubtaskHandler = (index: number) => {
@@ -77,15 +77,19 @@ const EditTask = () => {
     <form onSubmit={submitHandler} className={`form ${classes.form}`}>
       <h3>Edit Task</h3>
       <div className={classes['form-input']}>
-        <label htmlFor="edit-task">Title</label>
+        <label htmlFor="edit-title">Title</label>
         <Input
-          id="edit-task"
+          id="edit-title"
+          invalid={!titleInput.isValid}
           value={titleInput.value}
           onChange={titleInput.valueChangeHandler}
           onBlur={titleInput.inputBlurHandler}
           isRemovable={false}
           type="text"
         />
+        {!titleInput.isValid && (
+          <p className="error-text">Please, enter title</p>
+        )}
       </div>
       <div className={classes['form-input']}>
         <label htmlFor="edit-description">Description</label>
