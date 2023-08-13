@@ -27,7 +27,7 @@ const EditTask = () => {
 
   const titleInput = useInput(validate.notEmpty, taskData.title);
   const descriptionInput = useInput(() => true, taskData.description);
-  const statusInput = useInput(validate.notEmpty, modalColumn.name);
+  const statusInput = useInput(validate.notEmpty, modalColumn.id);
 
   const removeSubtaskHandler = (index: number) => {
     dispatch(dataActions.removeSubtask(index));
@@ -57,7 +57,9 @@ const EditTask = () => {
   const statusChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     statusInput.valueChangeHandler(e);
 
-    const selectedStatus = columns.find(col => col.name === e.target.value)!;
+    const selectedStatus = columns.find(
+      col => col.statusId === e.target.value
+    )!;
     setNewStatus(selectedStatus);
   };
 

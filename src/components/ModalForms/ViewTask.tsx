@@ -72,7 +72,7 @@ const ViewTask = () => {
       <SelectInput
         label="Current Status"
         disabled={true}
-        value={modalColumn.name}
+        value={modalColumn.id}
         options={columns}
       />
     </form>

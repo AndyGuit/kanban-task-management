@@ -22,7 +22,7 @@ const SelectInput = (props: Props) => {
         className={selectClasses}>
         {props.options.map((option, index) => {
           return (
-            <option key={index} value={option.name}>
+            <option key={index} value={option.statusId}>
               {option.name}
             </option>
           );
