@@ -15,7 +15,7 @@ type Props = {
 };
 
 const Input = (props: Props) => {
-  const [value, setValue] = useState(props.value);
+  const [value, setValue] = useState(props.value ?? '');
 
   const inputClasses = `input ${classes.input} ${
     props.invalid ? 'invalid' : ''

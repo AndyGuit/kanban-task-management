@@ -33,14 +33,21 @@ const EditTask = () => {
     dispatch(dataActions.removeSubtask(index));
   };
 
+  const subtasksCopy = taskData.subtasks.map(subt => ({ ...subt }));
+
+  const subtaskChangeHandler = (value: string, index: number) => {
+    subtasksCopy[index].title = value;
+  };
+
   const subtasksList = (
     <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
       {taskData.subtasks.map((subtask, index) => (
         // TODO: generate random id for key
         // TODO: validate each input separately
-        <li key={`${subtask.title}${index}`}>
+        <li tabIndex={index} key={`${subtask.title}${index}`}>
           <Input
             value={subtask.title}
+            onChange={e => subtaskChangeHandler(e.target.value, index)}
             isRemovable={taskData.subtasks.length > 1}
             onRemove={removeSubtaskHandler.bind(null, index)}
             type="text"
@@ -74,7 +81,7 @@ const EditTask = () => {
       id: taskData.id,
       status: newStatus.name,
       statusId: newStatus.statusId,
-      subtasks: taskData.subtasks,
+      subtasks: subtasksCopy,
     };
 
     if (taskData.statusId !== newStatus.statusId) {
