@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { ModalContent } from '../../types/modalFormContentTypes';
+import AddNewTask from './AddNewTask';
 import EditTask from './EditTask';
 import ViewTask from './ViewTask';
 
@@ -18,6 +19,9 @@ const ModalContentForm = () => {
       break;
     case ModalContent.editTask:
       content = <EditTask />;
+      break;
+    case ModalContent.addNewTask:
+      content = <AddNewTask />;
       break;
     default:
       break;
