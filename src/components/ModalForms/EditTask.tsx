@@ -10,6 +10,7 @@ import validate from '../../functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
 import { ITask } from '../../types/dataTypes';
 import { uiActions } from '../../store/slices/ui-slice';
+import InputWithValidation from '../UI/InputWithValidation';
 
 const EditTask = () => {
   const dispatch = useDispatch();
@@ -43,11 +44,11 @@ const EditTask = () => {
     <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
       {taskData.subtasks.map((subtask, index) => (
         // TODO: generate random id for key
-        // TODO: validate each input separately
-        <li tabIndex={index} key={`${subtask.title}${index}`}>
-          <Input
+        <li key={`${subtask.title}${index}`}>
+          <InputWithValidation
+            onChange={(value: string) => subtaskChangeHandler(value, index)}
+            validateFn={validate.notEmpty}
             value={subtask.title}
-            onChange={e => subtaskChangeHandler(e.target.value, index)}
             isRemovable={taskData.subtasks.length > 1}
             onRemove={removeSubtaskHandler.bind(null, index)}
             type="text"
