@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../hooks/use-input';
@@ -25,6 +25,7 @@ const EditTask = () => {
     name: string;
     statusId: string;
   }>({ name: modalColumn.name, statusId: modalColumn.id });
+  const [subtasksHasNames, setSubtasksHasNames] = useState(true);
 
   const titleInput = useInput(validate.notEmpty, taskData.title);
   const descriptionInput = useInput(() => true, taskData.description);
@@ -38,24 +39,30 @@ const EditTask = () => {
 
   const subtaskChangeHandler = (value: string, index: number) => {
     subtasksCopy[index].title = value;
+    setSubtasksHasNames(true);
   };
 
   const subtasksList = (
-    <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
-      {taskData.subtasks.map((subtask, index) => (
-        // TODO: generate random id for key
-        <li key={`${subtask.title}${index}`}>
-          <InputWithValidation
-            onChange={(value: string) => subtaskChangeHandler(value, index)}
-            validateFn={validate.notEmpty}
-            value={subtask.title}
-            isRemovable={taskData.subtasks.length > 1}
-            onRemove={removeSubtaskHandler.bind(null, index)}
-            type="text"
-          />
-        </li>
-      ))}
-    </ul>
+    <Fragment>
+      <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
+        {taskData.subtasks.map((subtask, index) => (
+          // TODO: generate random id for key
+          <li key={`${subtask.title}${index}`}>
+            <InputWithValidation
+              onChange={(value: string) => subtaskChangeHandler(value, index)}
+              validateFn={validate.notEmpty}
+              value={subtask.title}
+              isRemovable={taskData.subtasks.length > 1}
+              onRemove={removeSubtaskHandler.bind(null, index)}
+              type="text"
+            />
+          </li>
+        ))}
+      </ul>
+      {!subtasksHasNames && (
+        <p className="error-text">All subtasks should have title</p>
+      )}
+    </Fragment>
   );
 
   const addSubtaskHandler = () => {
@@ -74,29 +81,32 @@ const EditTask = () => {
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!titleInput.isValid) return;
+    const subtasksHasValues = subtasksCopy.every(subt => subt.title !== '');
+    setSubtasksHasNames(subtasksHasValues);
 
-    const editedTask: ITask = {
-      title: titleInput.value,
-      description: descriptionInput.value,
-      id: taskData.id,
-      status: newStatus.name,
-      statusId: newStatus.statusId,
-      subtasks: subtasksCopy,
-    };
+    if (titleInput.isValid && subtasksHasValues) {
+      const editedTask: ITask = {
+        title: titleInput.value,
+        description: descriptionInput.value,
+        id: taskData.id,
+        status: newStatus.name,
+        statusId: newStatus.statusId,
+        subtasks: subtasksCopy,
+      };
 
-    if (taskData.statusId !== newStatus.statusId) {
-      dispatch(dataActions.removeTask(taskData.id));
-      dispatch(dataActions.saveChanges('column'));
-      dispatch(dataActions.setModalColumn(newStatus.statusId));
-      dispatch(dataActions.addTask(editedTask));
-      dispatch(dataActions.setModalTask(editedTask));
-      dispatch(dataActions.saveChanges('task'));
-    } else {
-      dispatch(dataActions.setModalTask(editedTask));
-      dispatch(dataActions.saveChanges('task'));
+      if (taskData.statusId !== newStatus.statusId) {
+        dispatch(dataActions.removeTask(taskData.id));
+        dispatch(dataActions.saveChanges('column'));
+        dispatch(dataActions.setModalColumn(newStatus.statusId));
+        dispatch(dataActions.addTask(editedTask));
+        dispatch(dataActions.setModalTask(editedTask));
+        dispatch(dataActions.saveChanges('task'));
+      } else {
+        dispatch(dataActions.setModalTask(editedTask));
+        dispatch(dataActions.saveChanges('task'));
+      }
+      dispatch(uiActions.hideModal());
     }
-    dispatch(uiActions.hideModal());
   };
 
   return (
