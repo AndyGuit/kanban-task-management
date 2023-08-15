@@ -7,6 +7,7 @@ import classes from './Input.module.scss';
 type Props = {
   type: 'text' | 'textarea';
   isRemovable: boolean;
+  onBlur?: () => void;
   onChange?: (val: string) => void;
   validateFn?: (val: string) => boolean;
   value?: string;
@@ -30,6 +31,12 @@ const InputWithValidation = (props: Props) => {
     if (props.onChange) props.onChange(e.target.value);
   };
 
+  const blurHandler = () => {
+    inputState.inputBlurHandler();
+
+    if (props.onBlur) props.onBlur();
+  };
+
   let content: React.ReactNode;
   if (props.type === 'textarea') {
     content = (
@@ -49,7 +56,7 @@ const InputWithValidation = (props: Props) => {
         id={props.id}
         value={inputState.value}
         onChange={changeHandler}
-        onBlur={inputState.inputBlurHandler}
+        onBlur={blurHandler}
         className={inputClasses}
         type="text"
       />

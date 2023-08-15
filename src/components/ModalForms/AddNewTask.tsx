@@ -23,7 +23,9 @@ const AddNewTask = () => {
     { title: '', isCompleted: false },
   ]);
 
-  const subtaskChangeHandler = (value: string, index: number) => {};
+  const subtaskChangeHandler = (value: string, index: number) => {
+    subtasks[index].title = value;
+  };
 
   const addSubtaskHandler = () => {
     setSubtasks(state => [...state, { title: '', isCompleted: false }]);
@@ -40,6 +42,7 @@ const AddNewTask = () => {
           // TODO: generate random id for key
           <li key={`${subtask.title}${index}`}>
             <InputWithValidation
+              onBlur={() => setSubtasks([...subtasks])}
               onChange={(value: string) => subtaskChangeHandler(value, index)}
               validateFn={validate.notEmpty}
               value={subtask.title}
