@@ -43,8 +43,8 @@ const InputWithValidation = (props: Props) => {
       <textarea
         id={props.id}
         value={inputState.value}
-        onChange={inputState.valueChangeHandler}
-        onBlur={inputState.inputBlurHandler}
+        onChange={changeHandler}
+        onBlur={blurHandler}
         className={inputClasses}
         rows={6}></textarea>
     );

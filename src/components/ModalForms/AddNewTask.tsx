@@ -2,7 +2,7 @@ import { useState, Fragment, ChangeEvent, FormEvent } from 'react';
 import { useSelector } from 'react-redux';
 import validate from '../../functions/validate';
 import { RootState } from '../../store';
-import { ISubtask } from '../../types/dataTypes';
+import { ISubtask, ITask } from '../../types/dataTypes';
 import SelectInput from '../SelectInput/SelectInput';
 import Button from '../UI/Button';
 import InputWithValidation from '../UI/InputWithValidation';
@@ -14,14 +14,17 @@ const AddNewTask = () => {
     return { name: col.name, statusId: col.id };
   });
 
-  const [selectedColumn, setSelectedColumn] = useState<{
-    name: string;
-    statusId: string;
-  }>({ ...columns[0] });
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const [subtasks, setSubtasks] = useState<ISubtask[]>([
     { title: '', isCompleted: false },
   ]);
+
+  const [selectedColumn, setSelectedColumn] = useState<{
+    name: string;
+    statusId: string;
+  }>({ ...columns[0] });
 
   const subtaskChangeHandler = (value: string, index: number) => {
     subtasks[index].title = value;
@@ -66,6 +69,18 @@ const AddNewTask = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const newTask: ITask = {
+      // TODO: create function that generates random Id
+      id: Math.random().toString(),
+      title,
+      description,
+      status: selectedColumn.name,
+      statusId: selectedColumn.statusId,
+      subtasks: subtasks,
+    };
+
+    console.log(newTask);
   };
 
   return (
@@ -74,6 +89,7 @@ const AddNewTask = () => {
       <div className={classes['form-input']}>
         <label htmlFor="new-title">Title</label>
         <InputWithValidation
+          onChange={(value: string) => setTitle(value)}
           validateFn={validate.notEmpty}
           isRemovable={false}
           type="text"
@@ -83,6 +99,7 @@ const AddNewTask = () => {
       <div className={classes['form-input']}>
         <label htmlFor="new-description">Description</label>
         <InputWithValidation
+          onChange={(value: string) => setDescription(value)}
           isRemovable={false}
           type="textarea"
           id="new-description"

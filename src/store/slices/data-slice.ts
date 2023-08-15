@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { initialData } from '../../data';
-import { IColumn, ISubtask, ITask } from '../../types/dataTypes';
+import { IColumn, ITask } from '../../types/dataTypes';
 
 const dataSlice = createSlice({
   name: 'data',
