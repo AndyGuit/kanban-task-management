@@ -1,7 +1,10 @@
 import { useState, Fragment, ChangeEvent, FormEvent } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import validate from '../../functions/validate';
 import { RootState } from '../../store';
+import { dataActions } from '../../store/slices/data-slice';
+import { uiActions } from '../../store/slices/ui-slice';
 import { ISubtask, ITask } from '../../types/dataTypes';
 import SelectInput from '../SelectInput/SelectInput';
 import Button from '../UI/Button';
@@ -9,6 +12,7 @@ import InputWithValidation from '../UI/InputWithValidation';
 import classes from './Form.module.scss';
 
 const AddNewTask = () => {
+  const dispatch = useDispatch();
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
   const columns = activeBoard.columns.map(col => {
     return { name: col.name, statusId: col.id };
@@ -21,6 +25,8 @@ const AddNewTask = () => {
     { title: '', isCompleted: false },
   ]);
 
+  const [subtasksHasNames, setSubtasksHasNames] = useState(true);
+
   const [selectedColumn, setSelectedColumn] = useState<{
     name: string;
     statusId: string;
@@ -28,6 +34,7 @@ const AddNewTask = () => {
 
   const subtaskChangeHandler = (value: string, index: number) => {
     subtasks[index].title = value;
+    setSubtasksHasNames(true);
   };
 
   const addSubtaskHandler = () => {
@@ -56,9 +63,9 @@ const AddNewTask = () => {
           </li>
         ))}
       </ul>
-      {/* {!subtasksHasNames && (
+      {!subtasksHasNames && (
         <p className="error-text">All subtasks should have title</p>
-      )} */}
+      )}
     </Fragment>
   );
 
@@ -70,17 +77,25 @@ const AddNewTask = () => {
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const newTask: ITask = {
-      // TODO: create function that generates random Id
-      id: Math.random().toString(),
-      title,
-      description,
-      status: selectedColumn.name,
-      statusId: selectedColumn.statusId,
-      subtasks: subtasks,
-    };
+    const titleValid = validate.notEmpty(title);
+    setSubtasksHasNames(subtasks.every(subt => subt.title !== ''));
 
-    console.log(newTask);
+    if (titleValid && subtasksHasNames) {
+      const newTask: ITask = {
+        // TODO: create function that generates random Id
+        id: Math.random().toString(),
+        title,
+        description,
+        status: selectedColumn.name,
+        statusId: selectedColumn.statusId,
+        subtasks: subtasks,
+      };
+
+      dispatch(dataActions.setModalColumn(selectedColumn.statusId));
+      dispatch(dataActions.addTask(newTask));
+      dispatch(dataActions.saveChanges('task'));
+      dispatch(uiActions.hideModal());
+    }
   };
 
   return (
