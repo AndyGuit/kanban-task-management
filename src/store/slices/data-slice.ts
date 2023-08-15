@@ -41,14 +41,6 @@ const dataSlice = createSlice({
       state.modalTask.subtasks[index].isCompleted = newValue;
     },
 
-    addSubtask: (state, action: PayloadAction<ISubtask>) => {
-      state.modalTask.subtasks.push(action.payload);
-    },
-
-    removeSubtask: (state, action: PayloadAction<number>) => {
-      state.modalTask.subtasks.splice(action.payload, 1);
-    },
-
     removeTask: (state, action: PayloadAction<string>) => {
       const id = action.payload;
       const index = state.modalColumn.tasks.findIndex(task => task.id === id);
