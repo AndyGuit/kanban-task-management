@@ -11,8 +11,8 @@ const Task = (props: ITask) => {
     (subt: ISubtask) => subt.isCompleted
   );
   const showModal = () => {
-    dispatch(dataActions.setModalTask(props));
-    dispatch(dataActions.setModalColumn(props.statusId));
+    dispatch(dataActions.setSelectedTask(props));
+    dispatch(dataActions.setSelectedColumn(props.statusId));
     dispatch(uiActions.setModalContent(ModalContent.viewTask));
     dispatch(uiActions.showModal());
   };

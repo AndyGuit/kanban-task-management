@@ -91,7 +91,7 @@ const AddNewTask = () => {
         subtasks: subtasks,
       };
 
-      dispatch(dataActions.setModalColumn(selectedColumn.statusId));
+      dispatch(dataActions.setSelectedColumn(selectedColumn.statusId));
       dispatch(dataActions.addTask(newTask));
       dispatch(dataActions.saveChanges('task'));
       dispatch(uiActions.hideModal());

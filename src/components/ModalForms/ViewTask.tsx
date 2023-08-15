@@ -14,13 +14,19 @@ import { ModalContent } from '../../types/modalFormContentTypes';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
-  const modalTask = useSelector((state: RootState) => state.data.modalTask);
-  const modalColumn = useSelector((state: RootState) => state.data.modalColumn);
+  const selectedTask = useSelector(
+    (state: RootState) => state.data.selectedTask
+  );
+  const selectedColumn = useSelector(
+    (state: RootState) => state.data.selectedColumn
+  );
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
   const [isPopupShown, setIsPopupShown] = useState(false);
 
-  const completedSubtasks = modalTask.subtasks.filter(subt => subt.isCompleted);
-  const completedSubtasksString = `(${completedSubtasks.length} of ${modalTask.subtasks.length})`;
+  const completedSubtasks = selectedTask.subtasks.filter(
+    subt => subt.isCompleted
+  );
+  const completedSubtasksString = `(${completedSubtasks.length} of ${selectedTask.subtasks.length})`;
   const columns = activeBoard.columns.map(col => {
     return { name: col.name, statusId: col.id };
   });
@@ -40,7 +46,7 @@ const ViewTask = () => {
 
   const subtasksList = (
     <ul className={classes['subtasks-list']}>
-      {modalTask.subtasks.map((subtask, index) => (
+      {selectedTask.subtasks.map((subtask, index) => (
         <li key={index}>
           <Checkbox
             onChange={changeSubtaskStatus.bind(null, index)}
@@ -54,7 +60,7 @@ const ViewTask = () => {
   return (
     <form className={`form ${classes.form}`}>
       <div className={classes['form-header']}>
-        <h4>{modalTask.title}</h4>
+        <h4>{selectedTask.title}</h4>
         <Button onClick={togglePopup} btnStyle="popup">
           <IconPopupDots />
         </Button>
@@ -63,7 +69,7 @@ const ViewTask = () => {
         )}
       </div>
       <p className={`form-description ${classes['form-description']}`}>
-        {modalTask.description || 'No Description'}
+        {selectedTask.description || 'No Description'}
       </p>
       <div className={classes['form-subtasks']}>
         <h5>Subtasks {completedSubtasksString}</h5>
@@ -72,7 +78,7 @@ const ViewTask = () => {
       <SelectInput
         label="Current Status"
         disabled={true}
-        value={modalColumn.id}
+        value={selectedColumn.id}
         options={columns}
       />
     </form>

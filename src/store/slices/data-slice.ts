@@ -8,8 +8,8 @@ const dataSlice = createSlice({
   initialState: {
     boards: initialData,
     activeBoard: initialData.filter(board => board.isActive)[0],
-    modalTask: {} as ITask,
-    modalColumn: {} as IColumn,
+    selectedTask: {} as ITask,
+    selectedColumn: {} as IColumn,
   },
   reducers: {
     setActiveBoard: (state, action: PayloadAction<string>) => {
@@ -23,32 +23,34 @@ const dataSlice = createSlice({
       });
     },
 
-    setModalTask: (state, action: PayloadAction<ITask>) => {
-      state.modalTask = action.payload;
+    setSelectedTask: (state, action: PayloadAction<ITask>) => {
+      state.selectedTask = action.payload;
     },
 
-    setModalColumn: (state, action: PayloadAction<string>) => {
+    setSelectedColumn: (state, action: PayloadAction<string>) => {
       const selectedColumn = state.activeBoard.columns.find(
         col => col.id === action.payload
       );
 
-      if (selectedColumn) state.modalColumn = selectedColumn;
+      if (selectedColumn) state.selectedColumn = selectedColumn;
     },
 
     toggleSubtaskStatus: (state, action: PayloadAction<number>) => {
       const index = action.payload;
-      const newValue = !state.modalTask.subtasks[index].isCompleted;
-      state.modalTask.subtasks[index].isCompleted = newValue;
+      const newValue = !state.selectedTask.subtasks[index].isCompleted;
+      state.selectedTask.subtasks[index].isCompleted = newValue;
     },
 
     removeTask: (state, action: PayloadAction<string>) => {
       const id = action.payload;
-      const index = state.modalColumn.tasks.findIndex(task => task.id === id);
-      state.modalColumn.tasks.splice(index, 1);
+      const index = state.selectedColumn.tasks.findIndex(
+        task => task.id === id
+      );
+      state.selectedColumn.tasks.splice(index, 1);
     },
 
     addTask: (state, action: PayloadAction<ITask>) => {
-      state.modalColumn.tasks.push(action.payload);
+      state.selectedColumn.tasks.push(action.payload);
     },
 
     saveChanges: (
@@ -57,18 +59,18 @@ const dataSlice = createSlice({
     ) => {
       // Replace Task in Column
       if (action.payload === 'task') {
-        const taskIndex = state.modalColumn.tasks.findIndex(
-          task => task.id === state.modalTask.id
+        const taskIndex = state.selectedColumn.tasks.findIndex(
+          task => task.id === state.selectedTask.id
         );
-        state.modalColumn.tasks[taskIndex] = state.modalTask;
+        state.selectedColumn.tasks[taskIndex] = state.selectedTask;
       }
 
       if (action.payload === 'task' || action.payload === 'column') {
         // Replace Column in Active board
         const colIndex = state.activeBoard.columns.findIndex(
-          col => col.id === state.modalColumn.id
+          col => col.id === state.selectedColumn.id
         );
-        state.activeBoard.columns[colIndex] = state.modalColumn;
+        state.activeBoard.columns[colIndex] = state.selectedColumn;
       }
 
       // Replace Active board in boards

@@ -14,8 +14,10 @@ import InputWithValidation from '../UI/InputWithValidation';
 
 const EditTask = () => {
   const dispatch = useDispatch();
-  const taskData = useSelector((state: RootState) => state.data.modalTask);
-  const modalColumn = useSelector((state: RootState) => state.data.modalColumn);
+  const taskData = useSelector((state: RootState) => state.data.selectedTask);
+  const selectedColumn = useSelector(
+    (state: RootState) => state.data.selectedColumn
+  );
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
   const columns = activeBoard.columns.map(col => {
     return { name: col.name, statusId: col.id };
@@ -24,12 +26,12 @@ const EditTask = () => {
   const [newStatus, setNewStatus] = useState<{
     name: string;
     statusId: string;
-  }>({ name: modalColumn.name, statusId: modalColumn.id });
+  }>({ name: selectedColumn.name, statusId: selectedColumn.id });
   const [subtasksHasNames, setSubtasksHasNames] = useState(true);
 
   const titleInput = useInput(validate.notEmpty, taskData.title);
   const descriptionInput = useInput(() => true, taskData.description);
-  const statusInput = useInput(validate.notEmpty, modalColumn.id);
+  const statusInput = useInput(validate.notEmpty, selectedColumn.id);
 
   const removeSubtaskHandler = (index: number) => {
     const left = subtasksCopy.slice(0, index);
@@ -103,12 +105,12 @@ const EditTask = () => {
       if (taskData.statusId !== newStatus.statusId) {
         dispatch(dataActions.removeTask(taskData.id));
         dispatch(dataActions.saveChanges('column'));
-        dispatch(dataActions.setModalColumn(newStatus.statusId));
+        dispatch(dataActions.setSelectedColumn(newStatus.statusId));
         dispatch(dataActions.addTask(editedTask));
-        dispatch(dataActions.setModalTask(editedTask));
+        dispatch(dataActions.setSelectedTask(editedTask));
         dispatch(dataActions.saveChanges('task'));
       } else {
-        dispatch(dataActions.setModalTask(editedTask));
+        dispatch(dataActions.setSelectedTask(editedTask));
         dispatch(dataActions.saveChanges('task'));
       }
       dispatch(uiActions.hideModal());
