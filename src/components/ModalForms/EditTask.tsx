@@ -8,7 +8,7 @@ import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import validate from '../../functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
-import { ITask } from '../../types/dataTypes';
+import { ISubtask, ITask } from '../../types/dataTypes';
 import { uiActions } from '../../store/slices/ui-slice';
 import InputWithValidation from '../UI/InputWithValidation';
 
@@ -32,10 +32,15 @@ const EditTask = () => {
   const statusInput = useInput(validate.notEmpty, modalColumn.id);
 
   const removeSubtaskHandler = (index: number) => {
-    dispatch(dataActions.removeSubtask(index));
+    const left = subtasksCopy.slice(0, index);
+    const right = subtasksCopy.slice(index + 1);
+
+    setSubtasksCopy(left.concat(right));
   };
 
-  const subtasksCopy = taskData.subtasks.map(subt => ({ ...subt }));
+  const [subtasksCopy, setSubtasksCopy] = useState<ISubtask[]>(
+    taskData.subtasks.map(subt => ({ ...subt }))
+  );
 
   const subtaskChangeHandler = (value: string, index: number) => {
     subtasksCopy[index].title = value;
@@ -45,14 +50,15 @@ const EditTask = () => {
   const subtasksList = (
     <Fragment>
       <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
-        {taskData.subtasks.map((subtask, index) => (
+        {subtasksCopy.map((subtask, index) => (
           // TODO: generate random id for key
           <li key={`${subtask.title}${index}`}>
             <InputWithValidation
               onChange={(value: string) => subtaskChangeHandler(value, index)}
+              onBlur={() => setSubtasksCopy(subtasksCopy)}
               validateFn={validate.notEmpty}
               value={subtask.title}
-              isRemovable={taskData.subtasks.length > 1}
+              isRemovable={subtasksCopy.length > 1}
               onRemove={removeSubtaskHandler.bind(null, index)}
               type="text"
             />
@@ -66,7 +72,7 @@ const EditTask = () => {
   );
 
   const addSubtaskHandler = () => {
-    dispatch(dataActions.addSubtask({ isCompleted: false, title: '' }));
+    setSubtasksCopy(state => [...state, { isCompleted: false, title: '' }]);
   };
 
   const statusChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
