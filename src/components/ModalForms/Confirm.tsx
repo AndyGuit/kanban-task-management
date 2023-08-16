@@ -20,7 +20,7 @@ const Confirm = () => {
   );
 
   let headerName = '';
-  let descriptionText = '';
+  let description: React.ReactNode;
 
   const onCancel = () => dispatch(uiActions.hideModal());
   let onConfirm = () => {};
@@ -28,8 +28,13 @@ const Confirm = () => {
   switch (deletionType) {
     case ModalContent.confirmDeleteTask:
       headerName = 'task';
-      descriptionText = `Are you sure you want to delete the '${selectedTask.title}' task? This
-        action will remove all subtasks and cannot be reversed.`;
+      description = (
+        <p className={`form-description ${classes['form-description']}`}>
+          Are you sure you want to delete the{' '}
+          <span>'{selectedTask.title}'</span> task? This action will remove all
+          subtasks and cannot be reversed.
+        </p>
+      );
 
       onConfirm = () => {
         dispatch(dataActions.removeTask(selectedTask.id));
@@ -39,10 +44,14 @@ const Confirm = () => {
       break;
     case ModalContent.confirmDeleteBoard:
       headerName = 'board';
-      descriptionText = `Are you sure you want to delete the '${selectedBoard.name}' board? This
-        action will remove all columns and tasks and cannot be reversed.`;
+      description = (
+        <p className={`form-description ${classes['form-description']}`}>
+          Are you sure you want to delete the{' '}
+          <span>'{selectedBoard.name}'</span> board? This action will remove all
+          columns and tasks and cannot be reversed.
+        </p>
+      );
       break;
-
     default:
       break;
   }
@@ -52,9 +61,7 @@ const Confirm = () => {
       <h3 className={classes['form-warning-text']}>
         Delete this {headerName}?
       </h3>
-      <p className={`form-description ${classes['form-description']}`}>
-        {descriptionText}
-      </p>
+      {description}
       <div className={classes['form-confirm-buttons']}>
         <Button onClick={onConfirm} btnStyle="form-warning">
           Delete

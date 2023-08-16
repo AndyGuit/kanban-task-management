@@ -5,6 +5,10 @@
 
   .form-description {
     color: $dark-text-secondary;
+
+    span {
+      color: $dark-text-primary;
+    }
   }
 
   .form-subtasks-list {
