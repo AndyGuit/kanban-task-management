@@ -57,6 +57,16 @@
     }
   }
 
+  .button-form-warning {
+    color: $dark-text-primary;
+    background-color: $dark-warning;
+
+    &:hover {
+      color: $dark-text-primary;
+      background-color: $dark-btn-bg;
+    }
+  }
+
   .button-hide-sidebar {
     color: $dark-text-secondary;
 

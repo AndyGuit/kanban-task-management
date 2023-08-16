@@ -2,6 +2,7 @@ export type btnStyle =
   | 'add-task'
   | 'form-primary'
   | 'form-secondary'
+  | 'form-warning'
   | 'select-board'
   | 'active-board'
   | 'create-board'

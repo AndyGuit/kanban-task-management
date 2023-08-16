@@ -22,6 +22,9 @@ const Button = (props: Props) => {
     case 'form-secondary':
       styles += `button-form-secondary ${classes['button-form-secondary']}`;
       break;
+    case 'form-warning':
+      styles += `button-form-warning ${classes['button-form-warning']}`;
+      break;
     case 'select-board':
       styles += `button-select-board ${classes['button-board']}`;
       break;

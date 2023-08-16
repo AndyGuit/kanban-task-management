@@ -9,6 +9,10 @@
   }
 }
 
+.form-warning-text {
+  color: #ea5555;
+}
+
 .form-header {
   display: flex;
   justify-content: space-between;
@@ -55,4 +59,9 @@
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
   }
+}
+
+.form-confirm-buttons {
+  display: flex;
+  gap: 2em;
 }

@@ -44,6 +44,10 @@ const ViewTask = () => {
     dispatch(uiActions.setModalContent(ModalContent.editTask));
   };
 
+  const deleteTaskHandler = () => {
+    dispatch(uiActions.setModalContent(ModalContent.confirmDeleteTask));
+  };
+
   const subtasksList = (
     <ul className={classes['subtasks-list']}>
       {selectedTask.subtasks.map((subtask, index) => (
@@ -65,7 +69,11 @@ const ViewTask = () => {
           <IconPopupDots />
         </Button>
         {isPopupShown && (
-          <PopupWindow onClickEdit={editTaskHandler} btnText="Task" />
+          <PopupWindow
+            onClickEdit={editTaskHandler}
+            onClickDelete={deleteTaskHandler}
+            btnText="Task"
+          />
         )}
       </div>
       <p className={`form-description ${classes['form-description']}`}>

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { ModalContent } from '../../types/modalFormContentTypes';
 import AddNewTask from './AddNewTask';
+import Confirm from './Confirm';
 import EditTask from './EditTask';
 import ViewTask from './ViewTask';
 
@@ -22,6 +23,10 @@ const ModalContentForm = () => {
       break;
     case ModalContent.addNewTask:
       content = <AddNewTask />;
+      break;
+    case ModalContent.confirmDeleteTask:
+    case ModalContent.confirmDeleteBoard:
+      content = <Confirm />;
       break;
     default:
       break;
