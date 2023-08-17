@@ -35,7 +35,6 @@
 
   span {
     font-weight: 700;
-    font-size: 1em;
   }
 }
 
@@ -48,12 +47,16 @@
   }
 }
 
-.form-subtasks-list {
+.form-subtasks-list,
+.form-columns-list {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  max-height: 6em;
   padding-right: 0.85em;
+}
+
+.form-subtasks-list {
+  max-height: 6em;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {

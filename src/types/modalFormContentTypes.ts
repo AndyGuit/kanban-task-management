@@ -4,4 +4,5 @@ export enum ModalContent {
   addNewTask = 'ADD_NEW_TASK',
   confirmDeleteTask = 'CONFIRM_DELETE_TASK',
   confirmDeleteBoard = 'CONFIRM_DELETE_BOARD',
+  addNewColumn = 'ADD_NEW_COLUMN',
 }

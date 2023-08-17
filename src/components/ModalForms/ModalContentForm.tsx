@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { ModalContent } from '../../types/modalFormContentTypes';
+import AddNewColumn from './AddNewColumn';
 import AddNewTask from './AddNewTask';
 import Confirm from './Confirm';
 import EditTask from './EditTask';
@@ -27,6 +28,9 @@ const ModalContentForm = () => {
     case ModalContent.confirmDeleteTask:
     case ModalContent.confirmDeleteBoard:
       content = <Confirm />;
+      break;
+    case ModalContent.addNewColumn:
+      content = <AddNewColumn />;
       break;
     default:
       break;

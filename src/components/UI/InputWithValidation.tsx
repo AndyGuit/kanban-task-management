@@ -12,6 +12,7 @@ type Props = {
   validateFn?: (val: string) => boolean;
   value?: string;
   id?: string;
+  disabled?: boolean;
   onRemove?: () => void;
 };
 
@@ -43,6 +44,7 @@ const InputWithValidation = (props: Props) => {
       <textarea
         id={props.id}
         value={inputState.value}
+        disabled={props.disabled}
         onChange={changeHandler}
         onBlur={blurHandler}
         className={inputClasses}
@@ -55,6 +57,7 @@ const InputWithValidation = (props: Props) => {
       <input
         id={props.id}
         value={inputState.value}
+        disabled={props.disabled}
         onChange={changeHandler}
         onBlur={blurHandler}
         className={inputClasses}

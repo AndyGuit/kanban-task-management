@@ -20,4 +20,9 @@
   outline: none;
   resize: none;
   transition: border 0.2s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
 }

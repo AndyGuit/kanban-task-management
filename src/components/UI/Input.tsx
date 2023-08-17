@@ -9,6 +9,7 @@ type Props = {
   invalid?: boolean;
   value?: string;
   id?: string;
+  disabled?: boolean;
   onRemove?: () => void;
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onBlur?: () => void;
@@ -44,6 +45,7 @@ const Input = (props: Props) => {
   if (props.type === 'text') {
     content = (
       <input
+        disabled={props.disabled}
         id={props.id}
         value={value}
         onChange={changeHandler}
