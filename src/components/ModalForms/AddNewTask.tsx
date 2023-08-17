@@ -1,6 +1,7 @@
 import { useState, Fragment, ChangeEvent, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
 import { RootState } from '../../store';
 import { dataActions } from '../../store/slices/data-slice';
@@ -83,7 +84,7 @@ const AddNewTask = () => {
     if (titleValid && subtasksHasNames) {
       const newTask: ITask = {
         // TODO: create function that generates random Id
-        id: Math.random().toString(),
+        id: generateRandomId(),
         title,
         description,
         status: selectedColumn.name,
@@ -93,7 +94,7 @@ const AddNewTask = () => {
 
       dispatch(dataActions.setSelectedColumn(selectedColumn.statusId));
       dispatch(dataActions.addTask(newTask));
-      dispatch(dataActions.saveChanges('task'));
+      dispatch(dataActions.saveChanges('column'));
       dispatch(uiActions.hideModal());
     }
   };
