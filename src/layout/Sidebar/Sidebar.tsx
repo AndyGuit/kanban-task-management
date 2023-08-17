@@ -12,6 +12,7 @@ import { RootState } from '../../store/index';
 import { uiActions } from '../../store/slices/ui-slice';
 import classes from './Sidebar.module.scss';
 import { dataActions } from '../../store/slices/data-slice';
+import { ModalContent } from '../../types/modalFormContentTypes';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,11 @@ const Sidebar = () => {
   const asideClasses = `sidebar ${classes['sidebar']} ${
     hasSidebar ? '' : classes['hidden']
   }`;
+
+  const handleAddBoard = () => {
+    dispatch(uiActions.setModalContent(ModalContent.addNewBoard));
+    dispatch(uiActions.showModal());
+  };
 
   return (
     <Fragment>
@@ -50,7 +56,7 @@ const Sidebar = () => {
                 </li>
               );
             })}
-            <Button btnStyle="create-board">
+            <Button onClick={handleAddBoard} btnStyle="create-board">
               <IconBoard />+ Create New Board
             </Button>
           </ul>

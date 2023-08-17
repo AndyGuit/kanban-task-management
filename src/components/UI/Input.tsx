@@ -37,6 +37,7 @@ const Input = (props: Props) => {
         id={props.id}
         value={value}
         onChange={changeHandler}
+        onBlur={props.onBlur}
         className={inputClasses}
         rows={6}></textarea>
     );
@@ -49,6 +50,7 @@ const Input = (props: Props) => {
         id={props.id}
         value={value}
         onChange={changeHandler}
+        onBlur={props.onBlur}
         className={inputClasses}
         type="text"
       />

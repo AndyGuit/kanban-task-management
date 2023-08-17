@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { initialData } from '../../data';
-import { IColumn, ITask } from '../../types/dataTypes';
+import { IBoard, IColumn, ITask } from '../../types/dataTypes';
 
 const dataSlice = createSlice({
   name: 'data',
@@ -55,6 +55,10 @@ const dataSlice = createSlice({
 
     setColumns: (state, action: PayloadAction<IColumn[]>) => {
       state.activeBoard.columns = action.payload;
+    },
+
+    addBoard: (state, action: PayloadAction<IBoard>) => {
+      state.boards.push(action.payload);
     },
 
     saveChanges: (
