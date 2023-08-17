@@ -53,6 +53,10 @@ const dataSlice = createSlice({
       state.selectedColumn.tasks.push(action.payload);
     },
 
+    setColumns: (state, action: PayloadAction<IColumn[]>) => {
+      state.activeBoard.columns = action.payload;
+    },
+
     saveChanges: (
       state,
       action: PayloadAction<'board' | 'column' | 'task'>
