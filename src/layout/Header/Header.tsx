@@ -7,10 +7,12 @@ import classes from './Header.module.scss';
 const Header = () => {
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
 
+  const title = activeBoard?.name || 'No Boards Found';
+
   return (
     <header className={`header ${classes.header}`}>
       <HeaderLogo />
-      <HeaderBoardInfo boardName={activeBoard.name} />
+      <HeaderBoardInfo boardName={title} />
     </header>
   );
 };
