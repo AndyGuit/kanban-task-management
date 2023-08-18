@@ -27,6 +27,8 @@ const HeaderBoardInfo = (props: Props) => {
 
   const onDeleteBoard = () => {
     setIsPopupShown(false);
+    dispatch(uiActions.setModalContent(ModalContent.confirmDeleteBoard));
+    dispatch(uiActions.showModal());
   };
 
   const addNewTask = () => {

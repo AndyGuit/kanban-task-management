@@ -51,6 +51,11 @@ const Confirm = () => {
           columns and tasks and cannot be reversed.
         </p>
       );
+
+      onConfirm = () => {
+        dispatch(dataActions.deleteActiveBoard());
+        dispatch(uiActions.hideModal());
+      };
       break;
     default:
       break;

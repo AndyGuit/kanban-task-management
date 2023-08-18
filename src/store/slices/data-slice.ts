@@ -72,6 +72,16 @@ const dataSlice = createSlice({
       });
     },
 
+    deleteActiveBoard: state => {
+      state.boards = state.boards.filter(board => !board.isActive);
+
+      if (state.boards[0]) {
+        state.boards[0].isActive = true;
+      }
+
+      state.activeBoard = state.boards[0];
+    },
+
     saveChanges: (
       state,
       action: PayloadAction<'board' | 'column' | 'task'>
