@@ -61,6 +61,17 @@ const dataSlice = createSlice({
       state.boards.push(action.payload);
     },
 
+    replaceActiveBoard: (state, action: PayloadAction<IBoard>) => {
+      state.activeBoard = action.payload;
+      state.boards = state.boards.map(board => {
+        if (board.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return board;
+        }
+      });
+    },
+
     saveChanges: (
       state,
       action: PayloadAction<'board' | 'column' | 'task'>

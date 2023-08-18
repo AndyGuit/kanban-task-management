@@ -21,6 +21,8 @@ const HeaderBoardInfo = (props: Props) => {
 
   const onEditBoard = () => {
     setIsPopupShown(false);
+    dispatch(uiActions.setModalContent(ModalContent.editBoard));
+    dispatch(uiActions.showModal());
   };
 
   const onDeleteBoard = () => {
@@ -28,8 +30,8 @@ const HeaderBoardInfo = (props: Props) => {
   };
 
   const addNewTask = () => {
-    dispatch(uiActions.showModal());
     dispatch(uiActions.setModalContent(ModalContent.addNewTask));
+    dispatch(uiActions.showModal());
   };
 
   return (

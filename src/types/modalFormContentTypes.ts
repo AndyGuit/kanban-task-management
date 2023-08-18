@@ -6,4 +6,5 @@ export enum ModalContent {
   confirmDeleteBoard = 'CONFIRM_DELETE_BOARD',
   addNewColumn = 'ADD_NEW_COLUMN',
   addNewBoard = 'ADD_NEW_BOARD',
+  editBoard = 'EDIT_BOARD',
 }

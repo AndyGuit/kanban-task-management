@@ -6,6 +6,7 @@ import AddNewBoard from './AddNewBoard';
 import AddNewColumn from './AddNewColumn';
 import AddNewTask from './AddNewTask';
 import Confirm from './Confirm';
+import EditBoard from './EditBoard';
 import EditTask from './EditTask';
 import ViewTask from './ViewTask';
 
@@ -35,6 +36,9 @@ const ModalContentForm = () => {
       break;
     case ModalContent.addNewBoard:
       content = <AddNewBoard />;
+      break;
+    case ModalContent.editBoard:
+      content = <EditBoard />;
       break;
     default:
       break;
