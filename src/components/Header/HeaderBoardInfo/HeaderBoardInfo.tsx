@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { RootState } from '../../../store';
 import { uiActions } from '../../../store/slices/ui-slice';
 import { ModalContent } from '../../../types/modalFormContentTypes';
 import { IconPopupDots } from '../../Icons/Icons';
@@ -13,6 +15,8 @@ type Props = {
 
 const HeaderBoardInfo = (props: Props) => {
   const dispatch = useDispatch();
+  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
+
   const [isPopupShown, setIsPopupShown] = useState(false);
 
   const togglePopup = () => {
@@ -21,17 +25,25 @@ const HeaderBoardInfo = (props: Props) => {
 
   const onEditBoard = () => {
     setIsPopupShown(false);
+
+    if (!activeBoard) return;
+
     dispatch(uiActions.setModalContent(ModalContent.editBoard));
     dispatch(uiActions.showModal());
   };
 
   const onDeleteBoard = () => {
     setIsPopupShown(false);
+
+    if (!activeBoard) return;
+
     dispatch(uiActions.setModalContent(ModalContent.confirmDeleteBoard));
     dispatch(uiActions.showModal());
   };
 
   const addNewTask = () => {
+    if (!activeBoard) return;
+
     dispatch(uiActions.setModalContent(ModalContent.addNewTask));
     dispatch(uiActions.showModal());
   };
