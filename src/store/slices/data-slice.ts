@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 import {
   loadDataFromLocalStorage,
-  saveStateToLocalStorage,
-} from '../../functions/saveDataToLocalStorage';
+  saveDataToLocalStorage,
+} from '../../functions/saveToLocalStorage';
 import { IBoard, IColumn, ITask } from '../../types/dataTypes';
 
 const dataSlice = createSlice({
@@ -25,7 +25,7 @@ const dataSlice = createSlice({
         }
       });
 
-      saveStateToLocalStorage(state.boards);
+      saveDataToLocalStorage(state.boards);
     },
 
     setSelectedTask: (state, action: PayloadAction<ITask>) => {
@@ -113,7 +113,7 @@ const dataSlice = createSlice({
       );
       state.boards[boardIndex] = state.activeBoard;
 
-      saveStateToLocalStorage(state.boards);
+      saveDataToLocalStorage(state.boards);
     },
   },
 });
