@@ -81,6 +81,7 @@ const EditBoard = () => {
       };
 
       dispatch(dataActions.replaceActiveBoard(editedBoard));
+      dispatch(dataActions.saveChanges('board'));
       dispatch(uiActions.hideModal());
     }
   };

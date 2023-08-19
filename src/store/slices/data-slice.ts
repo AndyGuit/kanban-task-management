@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { initialData } from '../../data';
+import {
+  loadDataFromLocalStorage,
+  saveStateToLocalStorage,
+} from '../../functions/saveDataToLocalStorage';
 import { IBoard, IColumn, ITask } from '../../types/dataTypes';
 
 const dataSlice = createSlice({
   name: 'data',
   initialState: {
-    boards: initialData,
-    activeBoard: initialData.filter(board => board.isActive)[0],
+    boards: loadDataFromLocalStorage(),
+    activeBoard: loadDataFromLocalStorage().filter(board => board.isActive)[0],
     selectedTask: {} as ITask,
     selectedColumn: {} as IColumn,
   },
@@ -21,6 +24,8 @@ const dataSlice = createSlice({
           return { ...board, isActive: false };
         }
       });
+
+      saveStateToLocalStorage(state.boards);
     },
 
     setSelectedTask: (state, action: PayloadAction<ITask>) => {
@@ -107,6 +112,8 @@ const dataSlice = createSlice({
         board => board.id === state.activeBoard.id
       );
       state.boards[boardIndex] = state.activeBoard;
+
+      saveStateToLocalStorage(state.boards);
     },
   },
 });

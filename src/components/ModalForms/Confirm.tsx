@@ -54,6 +54,7 @@ const Confirm = () => {
 
       onConfirm = () => {
         dispatch(dataActions.deleteActiveBoard());
+        dispatch(dataActions.saveChanges('board'));
         dispatch(uiActions.hideModal());
       };
       break;
