@@ -52,6 +52,9 @@ const Button = (props: Props) => {
     case 'show-sidebar':
       styles += `button-show-sidebar ${classes['button-show-sidebar']}`;
       break;
+    case 'boards-mobile':
+      styles += `button-boards-mobile ${classes['button-boards-mobile']}`;
+      break;
     default:
       break;
   }

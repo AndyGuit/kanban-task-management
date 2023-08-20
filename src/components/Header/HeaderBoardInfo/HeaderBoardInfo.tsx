@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { RootState } from '../../../store';
 import { uiActions } from '../../../store/slices/ui-slice';
 import { ModalContent } from '../../../types/modalFormContentTypes';
-import { IconPopupDots } from '../../Icons/Icons';
+import { ChevronDown, IconPopupDots } from '../../Icons/Icons';
 import PopupWindow from '../../PopupWindow/PopupWindow';
 import Button from '../../UI/Button';
 import classes from './HeaderBoardInfo.module.scss';
@@ -52,10 +52,13 @@ const HeaderBoardInfo = (props: Props) => {
     <div className={classes['board-info']}>
       <div className={classes['board-name']}>
         <h2>{props.boardName}</h2>
+        <Button btnStyle="boards-mobile">
+          <ChevronDown />
+        </Button>
       </div>
       <div className={classes['board-controls']}>
         <Button onClick={addNewTask} btnStyle="add-task">
-          + Add New Task
+          +<span> Add New Task</span>
         </Button>
         <div className={classes['popup-wrapper']}>
           <Button onClick={togglePopup} btnStyle="popup">

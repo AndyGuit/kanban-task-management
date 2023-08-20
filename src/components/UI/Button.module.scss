@@ -16,6 +16,14 @@
 .button-add-task {
   min-width: 10em;
   border-radius: 30px;
+
+  @media (max-width: 768px) {
+    padding: 0.5em 1em;
+    min-width: unset;
+    span {
+      display: none;
+    }
+  }
 }
 
 .button-form-primary,
@@ -98,5 +106,15 @@
   border-radius: 0 30px 30px 0;
   &:hover {
     transform: scale(1.15);
+  }
+}
+
+.button-boards-mobile {
+  display: none;
+  width: auto;
+  padding: 0 0.8em;
+  border-radius: 30px;
+  @media (max-width: 768px) {
+    display: block;
   }
 }

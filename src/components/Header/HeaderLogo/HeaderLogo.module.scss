@@ -4,5 +4,17 @@
   gap: 12px;
   min-width: 299px;
   padding-left: 35px;
+  border-right-width: 1px;
+  border-right-style: solid;
   cursor: default;
+
+  @media (max-width: 768px) {
+    min-width: unset;
+    border-right: none;
+    padding-left: 1em;
+
+    h1 {
+      display: none;
+    }
+  }
 }

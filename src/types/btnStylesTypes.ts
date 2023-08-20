@@ -12,4 +12,5 @@ export type btnStyle =
   | 'add-column'
   | 'popup'
   | 'show-sidebar'
-  | 'toggle';
+  | 'toggle'
+  | 'boards-mobile';
