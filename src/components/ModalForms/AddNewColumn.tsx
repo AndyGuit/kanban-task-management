@@ -10,6 +10,7 @@ import Button from '../UI/Button';
 import Input from '../UI/Input';
 import InputWithValidation from '../UI/InputWithValidation';
 import classes from './Form.module.scss';
+import cloneDeep from 'lodash.clonedeep';
 
 const AddNewColumn = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const AddNewColumn = () => {
     (state: RootState) => state.data.activeBoard.columns
   );
 
-  const [newColumns, setNewColumns] = useState([...columns]);
+  const [newColumns, setNewColumns] = useState(cloneDeep(columns));
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
