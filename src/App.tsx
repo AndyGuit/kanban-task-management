@@ -51,6 +51,7 @@ const App = () => {
       dispatch(dataActions.removeTask(draggableId));
       dispatch(dataActions.saveChanges('column'));
       dispatch(dataActions.setSelectedColumn(destination.droppableId));
+      dispatch(dataActions.setNewTaskStatus());
       dispatch(dataActions.insertSelectedTask(destination.index));
       dispatch(dataActions.saveChanges('column'));
     }

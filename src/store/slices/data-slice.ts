@@ -66,6 +66,12 @@ const dataSlice = createSlice({
       state.selectedColumn.tasks.splice(index, 1);
     },
 
+    setNewTaskStatus: state => {
+      const { id, name } = state.selectedColumn;
+      state.selectedTask.statusId = id;
+      state.selectedTask.status = name;
+    },
+
     addTask: (state, action: PayloadAction<ITask>) => {
       state.selectedColumn.tasks.push(action.payload);
     },
