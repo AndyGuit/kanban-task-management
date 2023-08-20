@@ -12,12 +12,18 @@ const uiSlice = createSlice({
     toggleAppTheme: state => {
       state.appTheme = state.appTheme === 'dark' ? 'light' : 'dark';
 
-      saveUiToLocalStorage(state);
+      saveUiToLocalStorage({
+        ...state,
+        modal: { isVisible: false, formContent: '' },
+      });
     },
     toggleSidebar: state => {
       state.hasSidebar = !state.hasSidebar;
 
-      saveUiToLocalStorage(state);
+      saveUiToLocalStorage({
+        ...state,
+        modal: { isVisible: false, formContent: '' },
+      });
     },
     showModal: state => {
       state.modal.isVisible = true;

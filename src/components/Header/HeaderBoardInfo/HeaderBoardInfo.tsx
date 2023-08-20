@@ -48,11 +48,16 @@ const HeaderBoardInfo = (props: Props) => {
     dispatch(uiActions.showModal());
   };
 
+  const showSidebarModal = () => {
+    dispatch(uiActions.setModalContent(ModalContent.sidebarMobile));
+    dispatch(uiActions.showModal());
+  };
+
   return (
     <div className={classes['board-info']}>
       <div className={classes['board-name']}>
         <h2>{props.boardName}</h2>
-        <Button btnStyle="boards-mobile">
+        <Button onClick={showSidebarModal} btnStyle="boards-mobile">
           <ChevronDown />
         </Button>
       </div>

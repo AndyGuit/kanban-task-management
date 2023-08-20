@@ -73,3 +73,27 @@
   display: flex;
   gap: 2em;
 }
+
+.form-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  ul {
+    width: 275px;
+    button {
+      border-radius: 30px;
+    }
+  }
+
+  // selector for toggle theme button
+  div {
+    margin-left: 0;
+  }
+}

@@ -8,6 +8,7 @@ import AddNewTask from './AddNewTask';
 import Confirm from './Confirm';
 import EditBoard from './EditBoard';
 import EditTask from './EditTask';
+import SidebarMobile from './SidebarMobile';
 import ViewTask from './ViewTask';
 
 const ModalContentForm = () => {
@@ -39,6 +40,9 @@ const ModalContentForm = () => {
       break;
     case ModalContent.editBoard:
       content = <EditBoard />;
+      break;
+    case ModalContent.sidebarMobile:
+      content = <SidebarMobile />;
       break;
     default:
       break;
