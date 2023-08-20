@@ -28,11 +28,7 @@ const dataSlice = createSlice({
       saveDataToLocalStorage(state.boards);
     },
 
-    setSelectedTask: (state, action: PayloadAction<ITask>) => {
-      state.selectedTask = action.payload;
-    },
-
-    setSelectedTaskById: (state, action: PayloadAction<string>) => {
+    setSelectedTask: (state, action: PayloadAction<string>) => {
       const selectedTask = state.selectedColumn.tasks.find(
         task => task.id === action.payload
       );

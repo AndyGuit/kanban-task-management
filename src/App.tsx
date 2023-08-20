@@ -38,7 +38,7 @@ const App = () => {
     // if card dropped on same column
     if (destination.droppableId === source.droppableId) {
       dispatch(dataActions.setSelectedColumn(destination.droppableId));
-      dispatch(dataActions.setSelectedTaskById(draggableId));
+      dispatch(dataActions.setSelectedTask(draggableId));
       dispatch(dataActions.removeTask(draggableId));
       dispatch(dataActions.insertSelectedTask(destination.index));
       dispatch(dataActions.saveChanges('column'));
@@ -47,7 +47,7 @@ const App = () => {
     // if card dropped on other column
     if (destination.droppableId !== source.droppableId) {
       dispatch(dataActions.setSelectedColumn(source.droppableId));
-      dispatch(dataActions.setSelectedTaskById(draggableId));
+      dispatch(dataActions.setSelectedTask(draggableId));
       dispatch(dataActions.removeTask(draggableId));
       dispatch(dataActions.saveChanges('column'));
       dispatch(dataActions.setSelectedColumn(destination.droppableId));
