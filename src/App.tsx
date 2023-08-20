@@ -8,6 +8,8 @@ import Modal from './components/UI/Modal';
 import ModalContentForm from './components/ModalForms/ModalContentForm';
 import { uiActions } from './store/slices/ui-slice';
 import { useEffect } from 'react';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import { dataActions } from './store/slices/data-slice';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,19 +22,55 @@ const App = () => {
     document.body.classList.add(theme);
   }, [theme]);
 
+  const onDragEnd = (result: DropResult) => {
+    const { destination, source, draggableId } = result;
+
+    // If user drops outside of the list
+    if (!destination) return;
+
+    // if task dropped on the same place
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    )
+      return;
+
+    // if card dropped on same column
+    if (destination.droppableId === source.droppableId) {
+      dispatch(dataActions.setSelectedColumn(destination.droppableId));
+      dispatch(dataActions.setSelectedTaskById(draggableId));
+      dispatch(dataActions.removeTask(draggableId));
+      dispatch(dataActions.insertSelectedTask(destination.index));
+      dispatch(dataActions.saveChanges('column'));
+    }
+
+    // if card dropped on other column
+    if (destination.droppableId !== source.droppableId) {
+      dispatch(dataActions.setSelectedColumn(source.droppableId));
+      dispatch(dataActions.setSelectedTaskById(draggableId));
+      dispatch(dataActions.removeTask(draggableId));
+      dispatch(dataActions.saveChanges('column'));
+      dispatch(dataActions.setSelectedColumn(destination.droppableId));
+      dispatch(dataActions.insertSelectedTask(destination.index));
+      dispatch(dataActions.saveChanges('column'));
+    }
+  };
+
   return (
-    <div className="App">
-      <Header />
-      <Container>
-        <Sidebar />
-        <Board />
-      </Container>
-      {isModal && (
-        <Modal onClose={closeModal}>
-          <ModalContentForm />
-        </Modal>
-      )}
-    </div>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div className="App">
+        <Header />
+        <Container>
+          <Sidebar />
+          <Board />
+        </Container>
+        {isModal && (
+          <Modal onClose={closeModal}>
+            <ModalContentForm />
+          </Modal>
+        )}
+      </div>
+    </DragDropContext>
   );
 };
 

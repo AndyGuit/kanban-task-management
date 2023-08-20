@@ -1,3 +1,4 @@
+import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 import { IColumn, ITask } from '../../types/dataTypes';
 import Task from '../Task/Task';
 import classes from './Column.module.scss';
@@ -22,13 +23,21 @@ const Column = (props: Props) => {
           {props.name}({props.tasks.length})
         </h4>
       </div>
-      <ul className={columnListClasses}>
-        {props.tasks.map((task: ITask) => (
-          <li key={task.id}>
-            <Task {...task} />
-          </li>
-        ))}
-      </ul>
+      <Droppable droppableId={props.id}>
+        {(provided: DroppableProvided) => (
+          <ul
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            className={columnListClasses}>
+            {props.tasks.map((task: ITask, index) => (
+              <li key={task.id}>
+                <Task {...task} index={index} />
+              </li>
+            ))}
+            {provided.placeholder}
+          </ul>
+        )}
+      </Droppable>
     </div>
   );
 };

@@ -5,15 +5,6 @@ import {
 } from '../../functions/saveToLocalStorage';
 import { ModalContent } from '../../types/modalFormContentTypes';
 
-// const initialState = {
-//   appTheme: 'dark',
-//   hasSidebar: true,
-//   modal: {
-//     isVisible: false,
-//     formContent: ModalContent.editTask,
-//   },
-// };
-
 const uiSlice = createSlice({
   name: 'ui',
   initialState: lodaUiFromLocalStorage(),

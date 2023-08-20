@@ -32,18 +32,30 @@ const dataSlice = createSlice({
       state.selectedTask = action.payload;
     },
 
+    setSelectedTaskById: (state, action: PayloadAction<string>) => {
+      const selectedTask = state.selectedColumn.tasks.find(
+        task => task.id === action.payload
+      );
+
+      state.selectedTask = selectedTask!;
+    },
+
     setSelectedColumn: (state, action: PayloadAction<string>) => {
       const selectedColumn = state.activeBoard.columns.find(
         col => col.id === action.payload
       );
 
-      if (selectedColumn) state.selectedColumn = selectedColumn;
+      state.selectedColumn = selectedColumn!;
     },
 
     toggleSubtaskStatus: (state, action: PayloadAction<number>) => {
       const index = action.payload;
       const newValue = !state.selectedTask.subtasks[index].isCompleted;
       state.selectedTask.subtasks[index].isCompleted = newValue;
+    },
+
+    insertSelectedTask: (state, action: PayloadAction<number>) => {
+      state.selectedColumn.tasks.splice(action.payload, 0, state.selectedTask);
     },
 
     removeTask: (state, action: PayloadAction<string>) => {
