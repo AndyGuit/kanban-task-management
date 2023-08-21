@@ -27,20 +27,16 @@ const SidebarMobile = () => {
       <nav className={`form-nav ${classes['form-nav']}`}>
         <h3>all boards ({boards.length})</h3>
         <ul>
-          {boards.map((board: IBoard) => {
-            const buttonClass = board.isActive
-              ? 'active-board'
-              : 'select-board';
-            return (
-              <li key={board.id}>
-                <Button
-                  onClick={setActiveBoard.bind(null, board.id)}
-                  btnStyle={buttonClass}>
-                  <IconBoard /> {board.name}
-                </Button>
-              </li>
-            );
-          })}
+          {boards.map((board: IBoard) => (
+            <li key={board.id}>
+              <Button
+                onClick={setActiveBoard.bind(null, board.id)}
+                btnStyle="select-board"
+                isActive={board.isActive}>
+                <IconBoard /> {board.name}
+              </Button>
+            </li>
+          ))}
           <Button onClick={handleAddBoard} btnStyle="create-board">
             <IconBoard />+ Create New Board
           </Button>

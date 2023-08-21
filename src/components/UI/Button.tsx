@@ -3,60 +3,24 @@ import classes from './Button.module.scss';
 
 type Props = {
   children: React.ReactNode;
-  classes?: string;
+  isActive?: boolean;
   type?: 'submit' | 'reset' | 'button';
   onClick?: () => void;
   btnStyle?: btnStyle;
 };
 
 const Button = (props: Props) => {
-  let styles = `${classes.button} ${props.classes ? props.classes : ''}`;
+  let styles = `${classes.button} button-${props.btnStyle} ${
+    classes[`button-${props.btnStyle}`]
+  }`;
 
-  switch (props.btnStyle) {
-    case 'add-task':
-      styles += `button-add-task ${classes['button-add-task']}`;
-      break;
-    case 'form-primary':
-      styles += `button-form-primary ${classes['button-form-primary']}`;
-      break;
-    case 'form-secondary':
-      styles += `button-form-secondary ${classes['button-form-secondary']}`;
-      break;
-    case 'form-warning':
-      styles += `button-form-warning ${classes['button-form-warning']}`;
-      break;
-    case 'select-board':
-      styles += `button-select-board ${classes['button-board']}`;
-      break;
-    case 'active-board':
-      styles += `button-select-board active ${classes['button-board']}`;
-      break;
-    case 'create-board':
-      styles += `button-create-board ${classes['button-create-board']}`;
-      break;
-    case 'hide-sidebar':
-      styles += `button-hide-sidebar ${classes['button-hide-sidebar']}`;
-      break;
-    case 'text-primary':
-      styles += `button-text-primary ${classes['button-text-primary']}`;
-      break;
-    case 'text-warning':
-      styles += `button-text-warning ${classes['button-text-warning']}`;
-      break;
-    case 'add-column':
-      styles += `button-add-column ${classes['button-add-column']}`;
-      break;
-    case 'popup':
-      styles += `button-popup ${classes['button-popup']}`;
-      break;
-    case 'show-sidebar':
-      styles += `button-show-sidebar ${classes['button-show-sidebar']}`;
-      break;
-    case 'boards-mobile':
-      styles += `button-boards-mobile ${classes['button-boards-mobile']}`;
-      break;
-    default:
-      break;
+  if (props.isActive && classes[`active-${props.btnStyle}`]) {
+    // if we have active class for chosen button in classes module
+    // add class from there
+    styles += ` ${classes[`active-${props.btnStyle}`]}`;
+  } else if (props.isActive && !classes[`active-${props.btnStyle}`]) {
+    // else just add string 'active' to button type name
+    styles += ` active-${props.btnStyle}`;
   }
 
   return (

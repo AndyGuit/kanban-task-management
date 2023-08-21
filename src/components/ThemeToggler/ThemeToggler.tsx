@@ -11,10 +11,6 @@ const ThemeToggler = () => {
   const theme = useSelector((state: RootState) => state.ui.appTheme);
   const [isDark, setIsDark] = useState(theme === 'dark');
 
-  const toggleBtnStyles = `${classes['button-toggle']} ${
-    isDark ? '' : classes['active']
-  }`;
-
   const toggleTheme = () => {
     dispatch(uiActions.toggleAppTheme());
     setIsDark(prevState => !prevState);
@@ -23,7 +19,7 @@ const ThemeToggler = () => {
   return (
     <div className={`theme-toggler ${classes['theme-toggler']}`}>
       <IconMoon />
-      <Button onClick={toggleTheme} classes={toggleBtnStyles}>
+      <Button onClick={toggleTheme} btnStyle="toggle" isActive={!isDark}>
         <span></span>
       </Button>
       <IconSun />

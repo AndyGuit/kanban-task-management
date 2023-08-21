@@ -13,7 +13,7 @@
     }
   }
 
-  .button-select-board.active {
+  .button-select-board.active-select-board {
     background-color: $dark-btn-bg;
     color: $dark-text-primary;
     svg path {
@@ -115,5 +115,13 @@
 
   .button-boards-mobile {
     background-color: $dark-border;
+  }
+
+  .button-toggle {
+    background-color: $dark-btn-bg;
+
+    span {
+      background-color: $dark-text-primary;
+    }
   }
 }
