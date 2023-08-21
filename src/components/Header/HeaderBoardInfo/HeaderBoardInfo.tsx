@@ -26,8 +26,6 @@ const HeaderBoardInfo = (props: Props) => {
   const onEditBoard = () => {
     setIsPopupShown(false);
 
-    if (!activeBoard) return;
-
     dispatch(uiActions.setModalContent(ModalContent.editBoard));
     dispatch(uiActions.showModal());
   };
@@ -35,15 +33,11 @@ const HeaderBoardInfo = (props: Props) => {
   const onDeleteBoard = () => {
     setIsPopupShown(false);
 
-    if (!activeBoard) return;
-
     dispatch(uiActions.setModalContent(ModalContent.confirmDeleteBoard));
     dispatch(uiActions.showModal());
   };
 
   const addNewTask = () => {
-    if (!activeBoard) return;
-
     dispatch(uiActions.setModalContent(ModalContent.addNewTask));
     dispatch(uiActions.showModal());
   };
@@ -61,23 +55,25 @@ const HeaderBoardInfo = (props: Props) => {
           <ChevronDown />
         </Button>
       </div>
-      <div className={classes['board-controls']}>
-        <Button onClick={addNewTask} btnStyle="add-task">
-          +<span> Add New Task</span>
-        </Button>
-        <div className={classes['popup-wrapper']}>
-          <Button onClick={togglePopup} btnStyle="popup">
-            <IconPopupDots />
+      {activeBoard && (
+        <div className={classes['board-controls']}>
+          <Button onClick={addNewTask} btnStyle="add-task">
+            +<span> Add New Task</span>
           </Button>
-          {isPopupShown && (
-            <PopupWindow
-              onClickEdit={onEditBoard}
-              onClickDelete={onDeleteBoard}
-              btnText="Board"
-            />
-          )}
+          <div className={classes['popup-wrapper']}>
+            <Button onClick={togglePopup} btnStyle="popup">
+              <IconPopupDots />
+            </Button>
+            {isPopupShown && (
+              <PopupWindow
+                onClickEdit={onEditBoard}
+                onClickDelete={onDeleteBoard}
+                btnText="Board"
+              />
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
