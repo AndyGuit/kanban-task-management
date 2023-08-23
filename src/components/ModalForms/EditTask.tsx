@@ -107,10 +107,10 @@ const EditTask = () => {
         dispatch(dataActions.saveChanges('column'));
         dispatch(dataActions.setSelectedColumn(newStatus.statusId));
         dispatch(dataActions.addTask(editedTask));
-        dispatch(dataActions.setSelectedTask(editedTask));
+        dispatch(dataActions.setSelectedTask(editedTask.id));
         dispatch(dataActions.saveChanges('task'));
       } else {
-        dispatch(dataActions.setSelectedTask(editedTask));
+        dispatch(dataActions.setSelectedTask(editedTask.id));
         dispatch(dataActions.saveChanges('task'));
       }
       dispatch(uiActions.hideModal());
