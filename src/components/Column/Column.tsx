@@ -9,7 +9,9 @@ interface Props extends IColumn {
 
 const Column = (props: Props) => {
   const columnListClasses = `${classes['task-list']} ${
-    props.tasks.length === 0 ? 'task-list--empty' : ''
+    props.tasks.length === 0
+      ? `task-list--empty ${classes['task-list--empty']}`
+      : ''
   }`;
 
   return (

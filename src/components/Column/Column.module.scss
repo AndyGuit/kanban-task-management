@@ -23,8 +23,12 @@
 .task-list {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 3em);
+  height: fit-content;
   border-radius: 10px;
   min-width: 280px;
   border: 2px dashed transparent;
+}
+
+.task-list--empty {
+  height: calc(100% - 3em);
 }
