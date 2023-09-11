@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../store';
 import { uiActions } from '../../../store/slices/ui-slice';
 import { ModalContent } from '../../../types/modalFormContentTypes';
-import { ChevronDown, IconPopupDots } from '../../Icons/Icons';
+import { ChevronDown } from '../../Icons/Icons';
 import PopupWindow from '../../PopupWindow/PopupWindow';
 import Button from '../../UI/Button';
 import classes from './HeaderBoardInfo.module.scss';
@@ -17,43 +15,12 @@ const HeaderBoardInfo = (props: Props) => {
   const dispatch = useDispatch();
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
 
-  const [isPopupShown, setIsPopupShown] = useState(false);
-
-  const togglePopup = () => {
-    setIsPopupShown(prevState => !prevState);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-
-      const isClickedOnButton = target.closest('.button-popup');
-      const isClickedOutside = !target.classList.contains('popup-window');
-
-      if (isClickedOutside && !isClickedOnButton) {
-        setIsPopupShown(false);
-      }
-    };
-
-    if (isPopupShown) {
-      document.addEventListener('click', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [isPopupShown]);
-
   const onEditBoard = () => {
-    setIsPopupShown(false);
-
     dispatch(uiActions.setModalContent(ModalContent.editBoard));
     dispatch(uiActions.showModal());
   };
 
   const onDeleteBoard = () => {
-    setIsPopupShown(false);
-
     dispatch(uiActions.setModalContent(ModalContent.confirmDeleteBoard));
     dispatch(uiActions.showModal());
   };
@@ -81,18 +48,11 @@ const HeaderBoardInfo = (props: Props) => {
           <Button onClick={addNewTask} btnStyle="add-task">
             +<span> Add New Task</span>
           </Button>
-          <div className={classes['popup-wrapper']}>
-            <Button onClick={togglePopup} btnStyle="popup">
-              <IconPopupDots />
-            </Button>
-            {isPopupShown && (
-              <PopupWindow
-                onClickEdit={onEditBoard}
-                onClickDelete={onDeleteBoard}
-                btnText="Board"
-              />
-            )}
-          </div>
+          <PopupWindow
+            onClickEdit={onEditBoard}
+            onClickDelete={onDeleteBoard}
+            btnText="Board"
+          />
         </div>
       )}
     </div>
