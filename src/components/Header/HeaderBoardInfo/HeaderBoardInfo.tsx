@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { RootState } from '../../../store';
@@ -22,6 +22,27 @@ const HeaderBoardInfo = (props: Props) => {
   const togglePopup = () => {
     setIsPopupShown(prevState => !prevState);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+
+      const isClickedOnButton = target.closest('.button-popup');
+      const isClickedOutside = !target.classList.contains('popup-window');
+
+      if (isClickedOutside && !isClickedOnButton) {
+        setIsPopupShown(false);
+      }
+    };
+
+    if (isPopupShown) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isPopupShown]);
 
   const onEditBoard = () => {
     setIsPopupShown(false);
