@@ -44,6 +44,12 @@ const dataSlice = createSlice({
       state.selectedColumn = selectedColumn!;
     },
 
+    replaceTask: (state, action: PayloadAction<ITask>) => {
+      state.selectedColumn.tasks = state.selectedColumn.tasks.map(task =>
+        task.id === action.payload.id ? action.payload : task
+      );
+    },
+
     toggleSubtaskStatus: (state, action: PayloadAction<number>) => {
       const index = action.payload;
       const newValue = !state.selectedTask.subtasks[index].isCompleted;
