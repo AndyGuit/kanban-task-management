@@ -7,13 +7,11 @@ import PopupWindow from '../../PopupWindow/PopupWindow';
 import Button from '../../UI/Button';
 import classes from './HeaderBoardInfo.module.scss';
 
-type Props = {
-  boardName: string;
-};
-
-const HeaderBoardInfo = (props: Props) => {
+const HeaderBoardInfo = () => {
   const dispatch = useDispatch();
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
+
+  const title = activeBoard?.name || 'No Boards Found';
 
   const onEditBoard = () => {
     dispatch(uiActions.setModalContent(ModalContent.editBoard));
@@ -38,7 +36,7 @@ const HeaderBoardInfo = (props: Props) => {
   return (
     <div className={classes['board-info']}>
       <div className={classes['board-name']}>
-        <h2>{props.boardName}</h2>
+        <h2>{title}</h2>
         <Button onClick={showSidebarModal} btnStyle="boards-mobile">
           <ChevronDown />
         </Button>
