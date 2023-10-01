@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import Checkbox from '../Checkbox/Checkbox';
 import PopupWindow from '../PopupWindow/PopupWindow';
 import SelectInput from '../SelectInput/SelectInput';
 import classes from './Form.module.scss';
-import { useDispatch } from 'react-redux';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ModalContent } from '../../types/modalFormContentTypes';

@@ -1,6 +1,5 @@
 import { FormEvent, Fragment, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
 import useInput from '../../hooks/use-input';

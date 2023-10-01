@@ -1,7 +1,7 @@
 import classes from './Container.module.scss';
 
 type Props = {
-  children: JSX.Element[];
+  children: React.ReactNode;
 };
 
 const Container = (props: Props) => {

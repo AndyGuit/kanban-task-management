@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
