@@ -8,7 +8,7 @@
   border-right-style: solid;
   cursor: default;
 
-  @media (max-width: 768px) {
+  @media (max-width: 768px) or (max-height: 600px) {
     min-width: unset;
     border-right: none;
     padding-left: 1em;
