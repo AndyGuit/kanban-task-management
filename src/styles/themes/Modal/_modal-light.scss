@@ -2,5 +2,19 @@
   .modal {
     background-color: $light-primary;
     box-shadow: $light-shadow;
+
+    &::-webkit-scrollbar {
+      background: $light-primary;
+    }
+    &::-webkit-scrollbar-corner {
+      background: $light-board-bg;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $light-scroll-bg;
+
+      &:hover {
+        background: $light-btn-bg;
+      }
+    }
   }
 }

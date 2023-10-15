@@ -2,5 +2,18 @@
   .modal {
     background-color: $dark-primary;
     box-shadow: $dark-shadow;
+    &::-webkit-scrollbar {
+      background: $dark-primary;
+    }
+    &::-webkit-scrollbar-corner {
+      background: $dark-board-bg;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $dark-scroll-bg;
+
+      &:hover {
+        background: $dark-btn-bg;
+      }
+    }
   }
 }
