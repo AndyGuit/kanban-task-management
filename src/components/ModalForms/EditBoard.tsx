@@ -17,7 +17,7 @@ const EditBoard = () => {
   const dispatch = useDispatch();
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
 
-  const nameInput = useInput(validate.notEmpty, activeBoard.name);
+  const boardNameInput = useInput(validate.notEmpty, activeBoard.name);
 
   const [newColumns, setNewColumns] = useState<IColumn[]>(
     cloneDeep(activeBoard.columns)
@@ -75,10 +75,10 @@ const EditBoard = () => {
     const inputsNotEmpty = newColumns.every(col => col.name !== '');
     setColumnsHasNames(inputsNotEmpty);
 
-    if (nameInput.isValid && inputsNotEmpty) {
+    if (boardNameInput.isValid && inputsNotEmpty) {
       const editedBoard: IBoard = {
         ...activeBoard,
-        name: nameInput.value,
+        name: boardNameInput.value,
         columns: newColumns,
       };
 
@@ -95,10 +95,10 @@ const EditBoard = () => {
         <label htmlFor="board-name">Board Name</label>
         <Input
           id="board-name"
-          invalid={nameInput.hasError}
-          onChange={nameInput.valueChangeHandler}
-          onBlur={nameInput.inputBlurHandler}
-          value={nameInput.value}
+          invalid={boardNameInput.hasError}
+          onChange={boardNameInput.valueChangeHandler}
+          onBlur={boardNameInput.inputBlurHandler}
+          value={boardNameInput.value}
           isRemovable={false}
           type="text"
         />

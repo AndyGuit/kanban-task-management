@@ -2,12 +2,14 @@ import { useState, Fragment, ChangeEvent, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
+import useInput from '../../hooks/use-input';
 import { RootState } from '../../store';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ISubtask, ITask } from '../../types/dataTypes';
 import SelectInput from '../SelectInput/SelectInput';
 import Button from '../UI/Button';
+import Input from '../UI/Input';
 import InputWithValidation from '../UI/InputWithValidation';
 import classes from './Form.module.scss';
 
@@ -18,8 +20,8 @@ const AddNewTask = () => {
     return { name: col.name, statusId: col.id };
   });
 
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const titleInput = useInput(validate.notEmpty);
+  const descriptionInput = useInput(() => true);
 
   const [subtasks, setSubtasks] = useState<ISubtask[]>([
     { title: '', isCompleted: false },
@@ -79,16 +81,14 @@ const AddNewTask = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const titleValid = validate.notEmpty(title);
     setSubtasksHasNames(subtasks.every(subt => subt.title !== ''));
+    titleInput.inputBlurHandler();
 
-    if (titleValid && subtasksHasNames) {
+    if (titleInput.isValid && subtasksHasNames) {
       const newTask: ITask = {
-        // TODO: create function that generates random Id
         id: generateRandomId(),
-        title,
-        description,
+        title: titleInput.value,
+        description: descriptionInput.value,
         status: selectedColumn.name,
         statusId: selectedColumn.statusId,
         subtasks: subtasks,
@@ -106,21 +106,26 @@ const AddNewTask = () => {
       <h3>Add New Task</h3>
       <div className={classes['form-input']}>
         <label htmlFor="new-title">Title</label>
-        <InputWithValidation
-          onChange={(value: string) => setTitle(value)}
-          validateFn={validate.notEmpty}
-          isRemovable={false}
+        <Input
           type="text"
           id="new-title"
+          invalid={titleInput.hasError}
+          onChange={titleInput.valueChangeHandler}
+          onBlur={titleInput.inputBlurHandler}
+          value={titleInput.value}
+          isRemovable={false}
         />
       </div>
       <div className={classes['form-input']}>
         <label htmlFor="new-description">Description</label>
-        <InputWithValidation
-          onChange={(value: string) => setDescription(value)}
-          isRemovable={false}
+        <Input
           type="textarea"
           id="new-description"
+          invalid={descriptionInput.hasError}
+          onChange={descriptionInput.valueChangeHandler}
+          onBlur={descriptionInput.inputBlurHandler}
+          value={descriptionInput.value}
+          isRemovable={false}
         />
       </div>
       <div className={classes['form-input']}>

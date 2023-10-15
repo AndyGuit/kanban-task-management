@@ -14,7 +14,7 @@ import classes from './Form.module.scss';
 const AddNewBoard = () => {
   const dispatch = useDispatch();
 
-  const nameInput = useInput(validate.notEmpty);
+  const titleInput = useInput(validate.notEmpty);
 
   const [newColumns, setNewColumns] = useState<IColumn[]>([
     { name: '', id: generateRandomId(), tasks: [] },
@@ -72,13 +72,14 @@ const AddNewBoard = () => {
 
     const inputsNotEmpty = newColumns.every(col => col.name !== '');
     setColumnsHasNames(inputsNotEmpty);
+    titleInput.inputBlurHandler();
 
-    if (nameInput.isValid && inputsNotEmpty) {
+    if (titleInput.isValid && inputsNotEmpty) {
       const newBoard: IBoard = {
         id: generateRandomId(),
         isActive: true,
         columns: newColumns,
-        name: nameInput.value,
+        name: titleInput.value,
       };
 
       dispatch(dataActions.addBoard(newBoard));
@@ -94,10 +95,10 @@ const AddNewBoard = () => {
         <label htmlFor="board-name">Board Name</label>
         <Input
           id="board-name"
-          invalid={nameInput.hasError}
-          onChange={nameInput.valueChangeHandler}
-          onBlur={nameInput.inputBlurHandler}
-          value={nameInput.value}
+          invalid={titleInput.hasError}
+          onChange={titleInput.valueChangeHandler}
+          onBlur={titleInput.inputBlurHandler}
+          value={titleInput.value}
           isRemovable={false}
           type="text"
         />

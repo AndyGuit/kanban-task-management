@@ -19,7 +19,6 @@ const SidebarMobile = () => {
   };
   const handleAddBoard = () => {
     dispatch(uiActions.setModalContent(ModalContent.addNewBoard));
-    dispatch(uiActions.showModal());
   };
 
   return (
