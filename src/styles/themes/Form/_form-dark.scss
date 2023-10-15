@@ -11,7 +11,8 @@
     }
   }
 
-  .form-subtasks-list {
+  .form-subtasks-list,
+  .form-columns-list {
     &::-webkit-scrollbar {
       background: $dark-board-bg;
     }

@@ -39,9 +39,12 @@ const AddNewColumn = () => {
     setNewColumns(state => state.filter((_, i) => i !== index));
   };
 
+  const isScrollable = newColumns.length > 1 ? classes['scrollable'] : '';
+
   const columnsList = (
     <Fragment>
-      <ul className={`form-columns-list ${classes['form-columns-list']}`}>
+      <ul
+        className={`form-columns-list ${classes['form-columns-list']} ${isScrollable}`}>
         {newColumns.map((column, index) => (
           // TODO: generate random id for key
           <li key={`${column.name}${index}`}>

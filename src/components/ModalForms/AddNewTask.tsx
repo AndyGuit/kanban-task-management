@@ -45,9 +45,12 @@ const AddNewTask = () => {
     setSubtasks(state => state.filter((_, i) => i !== index));
   };
 
+  const isScrollable = subtasks.length > 1 ? classes['scrollable'] : '';
+
   const subtasksList = (
     <Fragment>
-      <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
+      <ul
+        className={`form-subtasks-list ${classes['form-subtasks-list']} ${isScrollable}`}>
         {subtasks.map((subtask, index) => (
           // TODO: generate random id for key
           <li key={`${subtask.title}${index}`}>

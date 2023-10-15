@@ -49,9 +49,12 @@ const EditTask = () => {
     setSubtasksHasNames(true);
   };
 
+  const isScrollable = subtasksCopy.length > 1 ? classes['scrollable'] : '';
+
   const subtasksList = (
     <Fragment>
-      <ul className={`form-subtasks-list ${classes['form-subtasks-list']}`}>
+      <ul
+        className={`form-subtasks-list ${classes['form-subtasks-list']} ${isScrollable}`}>
         {subtasksCopy.map((subtask, index) => (
           // TODO: generate random id for key
           <li key={`${subtask.title}${index}`}>

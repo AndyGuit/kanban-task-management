@@ -40,9 +40,12 @@ const EditBoard = () => {
     setNewColumns(state => state.filter((_, i) => i !== index));
   };
 
+  const isScrollable = newColumns.length > 1 ? classes['scrollable'] : '';
+
   const columnsList = (
     <Fragment>
-      <ul className={`form-columns-list ${classes['form-columns-list']}`}>
+      <ul
+        className={`form-columns-list ${classes['form-columns-list']} ${isScrollable}`}>
         {newColumns.map((column, index) => (
           <li key={`${column.name}${index}`}>
             <InputWithValidation
