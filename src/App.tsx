@@ -18,8 +18,7 @@ const App = () => {
   const closeModal = () => dispatch(uiActions.hideModal());
 
   useEffect(() => {
-    document.body.className = '';
-    document.body.classList.add(theme);
+    document.body.className = theme;
   }, [theme]);
 
   const onDragEnd = (result: DropResult) => {
