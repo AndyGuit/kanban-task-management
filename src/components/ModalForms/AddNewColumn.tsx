@@ -2,7 +2,6 @@ import { FormEvent, Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
-import { RootState } from '../../store';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import Button from '../UI/Button';
@@ -10,16 +9,16 @@ import Input from '../UI/Input';
 import InputWithValidation from '../UI/InputWithValidation';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
+import {
+  getActiveBoardName,
+  getColumns,
+} from '../../store/selectors/data-selectors';
 
 const AddNewColumn = () => {
   const dispatch = useDispatch();
-  const boardName = useSelector(
-    (state: RootState) => state.data.activeBoard.name
-  );
+  const boardName = useSelector(getActiveBoardName);
 
-  const columns = useSelector(
-    (state: RootState) => state.data.activeBoard.columns
-  );
+  const columns = useSelector(getColumns);
 
   const [newColumns, setNewColumns] = useState(cloneDeep(columns));
   const [columnsHasNames, setColumnsHasNames] = useState(true);

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
 import useInput from '../../hooks/use-input';
-import { RootState } from '../../store';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { IBoard, IColumn } from '../../types/dataTypes';
@@ -12,10 +11,11 @@ import Input from '../UI/Input';
 import InputWithValidation from '../UI/InputWithValidation';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
+import { getActiveBoard } from '../../store/selectors/data-selectors';
 
 const EditBoard = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
+  const activeBoard = useSelector(getActiveBoard);
 
   const boardNameInput = useInput(validate.notEmpty, activeBoard.name);
 

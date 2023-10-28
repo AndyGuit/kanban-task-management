@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
 import useInput from '../../hooks/use-input';
-import { RootState } from '../../store';
+import { getColumnsStatus } from '../../store/selectors/data-selectors';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ISubtask, ITask } from '../../types/dataTypes';
@@ -15,10 +15,7 @@ import classes from './Form.module.scss';
 
 const AddNewTask = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
-  const columns = activeBoard.columns.map(col => {
-    return { name: col.name, statusId: col.id };
-  });
+  const columns = useSelector(getColumnsStatus);
 
   const titleInput = useInput(validate.notEmpty);
   const descriptionInput = useInput(() => true);

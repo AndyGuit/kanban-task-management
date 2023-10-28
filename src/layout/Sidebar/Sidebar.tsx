@@ -8,16 +8,17 @@ import {
 import { IBoard } from '../../types/dataTypes';
 import ThemeToggler from '../../components/ThemeToggler/ThemeToggler';
 import Button from '../../components/UI/Button';
-import { RootState } from '../../store/index';
 import { uiActions } from '../../store/slices/ui-slice';
 import classes from './Sidebar.module.scss';
 import { dataActions } from '../../store/slices/data-slice';
 import { ModalContent } from '../../types/modalFormContentTypes';
+import { getIsHasSidebar } from '../../store/selectors/ui-selectors';
+import { getAllBoards } from '../../store/selectors/data-selectors';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const hasSidebar = useSelector((state: RootState) => state.ui.hasSidebar);
-  const boards = useSelector((state: RootState) => state.data.boards);
+  const hasSidebar = useSelector(getIsHasSidebar);
+  const boards = useSelector(getAllBoards);
 
   const toggleAside = () => {
     dispatch(uiActions.toggleSidebar());

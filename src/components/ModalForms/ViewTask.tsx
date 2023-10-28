@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store';
 import Checkbox from '../Checkbox/Checkbox';
 import PopupWindow from '../PopupWindow/PopupWindow';
 import SelectInput from '../SelectInput/SelectInput';
@@ -7,24 +6,21 @@ import classes from './Form.module.scss';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ModalContent } from '../../types/modalFormContentTypes';
+import {
+  getColumnsStatus,
+  getCompletedSubtasksOnSelectedTask,
+  getSelectedColumn,
+  getSelectedTask,
+} from '../../store/selectors/data-selectors';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
-  const selectedTask = useSelector(
-    (state: RootState) => state.data.selectedTask
-  );
-  const selectedColumn = useSelector(
-    (state: RootState) => state.data.selectedColumn
-  );
-  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
+  const selectedTask = useSelector(getSelectedTask);
+  const selectedColumn = useSelector(getSelectedColumn);
+  const completedSubtasks = useSelector(getCompletedSubtasksOnSelectedTask);
+  const columns = useSelector(getColumnsStatus);
 
-  const completedSubtasks = selectedTask.subtasks.filter(
-    subt => subt.isCompleted
-  );
   const completedSubtasksString = `(${completedSubtasks.length} of ${selectedTask.subtasks.length})`;
-  const columns = activeBoard.columns.map(col => {
-    return { name: col.name, statusId: col.id };
-  });
 
   const changeSubtaskStatus = (index: number) => {
     dispatch(dataActions.toggleSubtaskStatus(index));

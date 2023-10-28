@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from './store/index';
 import Header from './layout/Header/Header';
 import Sidebar from './layout/Sidebar/Sidebar';
 import Board from './layout/Board/Board';
@@ -10,11 +9,12 @@ import { uiActions } from './store/slices/ui-slice';
 import { useEffect } from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { dataActions } from './store/slices/data-slice';
+import { getIsModal, getTheme } from './store/selectors/ui-selectors';
 
 const App = () => {
   const dispatch = useDispatch();
-  const theme = useSelector((state: RootState) => state.ui.appTheme);
-  const isModal = useSelector((state: RootState) => state.ui.modal.isVisible);
+  const theme = useSelector(getTheme);
+  const isModal = useSelector(getIsModal);
   const closeModal = () => dispatch(uiActions.hideModal());
 
   useEffect(() => {

@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import {
+  getActiveBoard,
+  getSelectedTask,
+} from '../../store/selectors/data-selectors';
+import { getModalFormContent } from '../../store/selectors/ui-selectors';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ModalContent } from '../../types/modalFormContentTypes';
@@ -8,15 +12,9 @@ import classes from './Form.module.scss';
 
 const Confirm = () => {
   const dispatch = useDispatch();
-  const deletionType = useSelector(
-    (state: RootState) => state.ui.modal.formContent
-  );
-  const selectedTask = useSelector(
-    (state: RootState) => state.data.selectedTask
-  );
-  const selectedBoard = useSelector(
-    (state: RootState) => state.data.activeBoard
-  );
+  const deletionType = useSelector(getModalFormContent);
+  const selectedTask = useSelector(getSelectedTask);
+  const selectedBoard = useSelector(getActiveBoard);
 
   let headerName = '';
   let description: React.ReactNode;

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { getAllBoards } from '../../store/selectors/data-selectors';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { IBoard } from '../../types/dataTypes';
@@ -11,7 +11,7 @@ import classes from './Form.module.scss';
 
 const SidebarMobile = () => {
   const dispatch = useDispatch();
-  const boards = useSelector((state: RootState) => state.data.boards);
+  const boards = useSelector(getAllBoards);
 
   const setActiveBoard = (boardId: string) => {
     dispatch(dataActions.setActiveBoard(boardId));

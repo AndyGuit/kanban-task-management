@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { getModalFormContent } from '../../store/selectors/ui-selectors';
 import { ModalContent } from '../../types/modalFormContentTypes';
 import AddNewBoard from './AddNewBoard';
 import AddNewColumn from './AddNewColumn';
@@ -12,9 +12,7 @@ import SidebarMobile from './SidebarMobile';
 import ViewTask from './ViewTask';
 
 const ModalContentForm = () => {
-  const contentType = useSelector(
-    (state: RootState) => state.ui.modal.formContent
-  );
+  const contentType = useSelector(getModalFormContent);
 
   // The goal of this component
   // is to simply return the content for modal

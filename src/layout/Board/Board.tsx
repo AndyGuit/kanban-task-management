@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ColumnComponent from '../../components/Column/Column';
 import Button from '../../components/UI/Button';
-import { RootState } from '../../store/index';
+import { getActiveBoard } from '../../store/selectors/data-selectors';
 import { uiActions } from '../../store/slices/ui-slice';
 import { IColumn } from '../../types/dataTypes';
 import { ModalContent } from '../../types/modalFormContentTypes';
@@ -13,7 +13,7 @@ const Column = memo(ColumnComponent);
 
 const Board = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
+  const activeBoard = useSelector(getActiveBoard);
 
   const addNewColumnHandler = () => {
     dispatch(uiActions.setModalContent(ModalContent.addNewColumn));

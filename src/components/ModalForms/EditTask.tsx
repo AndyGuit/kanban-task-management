@@ -11,10 +11,11 @@ import { dataActions } from '../../store/slices/data-slice';
 import { ISubtask, ITask } from '../../types/dataTypes';
 import { uiActions } from '../../store/slices/ui-slice';
 import InputWithValidation from '../UI/InputWithValidation';
+import { getSelectedTask } from '../../store/selectors/data-selectors';
 
 const EditTask = () => {
   const dispatch = useDispatch();
-  const taskData = useSelector((state: RootState) => state.data.selectedTask);
+  const taskData = useSelector(getSelectedTask);
   const selectedColumn = useSelector(
     (state: RootState) => state.data.selectedColumn
   );

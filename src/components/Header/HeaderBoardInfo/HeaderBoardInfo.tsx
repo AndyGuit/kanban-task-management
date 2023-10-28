@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../store';
+import { getActiveBoard } from '../../../store/selectors/data-selectors';
 import { uiActions } from '../../../store/slices/ui-slice';
 import { ModalContent } from '../../../types/modalFormContentTypes';
 import { ChevronDown } from '../../Icons/Icons';
@@ -9,7 +9,7 @@ import classes from './HeaderBoardInfo.module.scss';
 
 const HeaderBoardInfo = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
+  const activeBoard = useSelector(getActiveBoard);
 
   const title = activeBoard?.name || 'No Boards Found';
 
