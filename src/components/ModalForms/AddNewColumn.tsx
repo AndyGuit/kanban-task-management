@@ -1,4 +1,4 @@
-import { FormEvent, Fragment, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
@@ -6,13 +6,13 @@ import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
-import InputWithValidation from '../UI/InputWithValidation';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
 import {
   getActiveBoardName,
   getColumns,
 } from '../../store/selectors/data-selectors';
+import InputsList from '../InputsList/InputsList';
 
 const AddNewColumn = () => {
   const dispatch = useDispatch();
@@ -37,37 +37,6 @@ const AddNewColumn = () => {
   const removeColumnHandler = (index: number) => {
     setNewColumns(state => state.filter((_, i) => i !== index));
   };
-
-  const isScrollable = newColumns.length > 1 ? classes['scrollable'] : '';
-
-  const columnsList = (
-    <Fragment>
-      <ul
-        className={`form-columns-list ${classes['form-columns-list']} ${isScrollable}`}>
-        {newColumns.map((column, index) => (
-          // TODO: generate random id for key
-          <li key={`${column.name}${index}`}>
-            <InputWithValidation
-              onBlur={() => {
-                setNewColumns([...newColumns]);
-                setColumnsHasNames(true);
-              }}
-              onChange={(value: string) => columnChangeHandler(value, index)}
-              disabled={column.tasks.length !== 0}
-              validateFn={validate.notEmpty}
-              value={column.name}
-              isRemovable={column.tasks.length === 0}
-              onRemove={removeColumnHandler.bind(null, index)}
-              type="text"
-            />
-          </li>
-        ))}
-      </ul>
-      {!columnsHasNames && (
-        <p className="error-text">All columns should have title</p>
-      )}
-    </Fragment>
-  );
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -97,7 +66,20 @@ const AddNewColumn = () => {
       </div>
       <div className={classes['form-input']}>
         <label>Columns</label>
-        {columnsList}
+        {
+          <InputsList
+            listItems={newColumns}
+            isScrollable={newColumns.length > 1}
+            isValidFunc={validate.notEmpty}
+            isInputsNotEmpty={columnsHasNames}
+            setIsInputsNotEmpty={setColumnsHasNames}
+            blurInputHandler={() => setNewColumns([...newColumns])}
+            changeInputHandler={(value, index) =>
+              columnChangeHandler(value, index)
+            }
+            removeInputHandler={removeColumnHandler}
+          />
+        }
       </div>
       <Button onClick={addColumnHandler} btnStyle="form-secondary">
         + Add New Column

@@ -1,0 +1,17 @@
+.dark {
+  .inputs-list {
+    &::-webkit-scrollbar {
+      background: $dark-board-bg;
+    }
+    &::-webkit-scrollbar-corner {
+      background: $dark-board-bg;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $dark-scroll-bg;
+
+      &:hover {
+        background: $dark-btn-bg;
+      }
+    }
+  }
+}
