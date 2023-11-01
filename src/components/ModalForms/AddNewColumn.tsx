@@ -66,20 +66,22 @@ const AddNewColumn = () => {
       </div>
       <div className={classes['form-input']}>
         <label>Columns</label>
-        {
-          <InputsList
-            listItems={newColumns}
-            isScrollable={newColumns.length > 1}
-            isValidFunc={validate.notEmpty}
-            isInputsNotEmpty={columnsHasNames}
-            setIsInputsNotEmpty={setColumnsHasNames}
-            blurInputHandler={() => setNewColumns([...newColumns])}
-            changeInputHandler={(value, index) =>
-              columnChangeHandler(value, index)
-            }
-            removeInputHandler={removeColumnHandler}
-          />
-        }
+        <InputsList
+          listItems={newColumns.map(col => ({
+            name: col.name,
+            isDisabled: col.tasks.length !== 0,
+            isRemovable: col.tasks.length === 0,
+          }))}
+          isScrollable={newColumns.length > 1}
+          isValidFunc={validate.notEmpty}
+          isInputsNotEmpty={columnsHasNames}
+          setIsInputsNotEmpty={setColumnsHasNames}
+          blurInputHandler={() => setNewColumns([...newColumns])}
+          changeInputHandler={(value, index) =>
+            columnChangeHandler(value, index)
+          }
+          removeInputHandler={removeColumnHandler}
+        />
       </div>
       <Button onClick={addColumnHandler} btnStyle="form-secondary">
         + Add New Column

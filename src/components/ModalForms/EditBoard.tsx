@@ -1,4 +1,4 @@
-import { FormEvent, Fragment, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
@@ -8,10 +8,10 @@ import { uiActions } from '../../store/slices/ui-slice';
 import { IBoard, IColumn } from '../../types/dataTypes';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
-import InputWithValidation from '../UI/InputWithValidation';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
 import { getActiveBoard } from '../../store/selectors/data-selectors';
+import InputsList from '../InputsList/InputsList';
 
 const EditBoard = () => {
   const dispatch = useDispatch();
@@ -39,35 +39,6 @@ const EditBoard = () => {
   const removeColumnHandler = (index: number) => {
     setNewColumns(state => state.filter((_, i) => i !== index));
   };
-
-  const isScrollable = newColumns.length > 1 ? classes['scrollable'] : '';
-
-  const columnsList = (
-    <Fragment>
-      <ul
-        className={`form-columns-list ${classes['form-columns-list']} ${isScrollable}`}>
-        {newColumns.map((column, index) => (
-          <li key={`${column.name}${index}`}>
-            <InputWithValidation
-              onBlur={() => {
-                setNewColumns([...newColumns]);
-                setColumnsHasNames(true);
-              }}
-              onChange={(value: string) => columnChangeHandler(value, index)}
-              validateFn={validate.notEmpty}
-              value={column.name}
-              isRemovable={newColumns.length > 1}
-              onRemove={removeColumnHandler.bind(null, index)}
-              type="text"
-            />
-          </li>
-        ))}
-      </ul>
-      {!columnsHasNames && (
-        <p className="error-text">All columns should have title</p>
-      )}
-    </Fragment>
-  );
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -105,7 +76,22 @@ const EditBoard = () => {
       </div>
       <div className={classes['form-input']}>
         <label>Columns</label>
-        {columnsList}
+        <InputsList
+          listItems={newColumns.map(col => ({
+            name: col.name,
+            isDisabled: col.tasks.length !== 0,
+            isRemovable: col.tasks.length === 0,
+          }))}
+          isScrollable={newColumns.length > 1}
+          isInputsNotEmpty={columnsHasNames}
+          setIsInputsNotEmpty={setColumnsHasNames}
+          isValidFunc={validate.notEmpty}
+          blurInputHandler={() => setNewColumns([...newColumns])}
+          changeInputHandler={(value, index) =>
+            columnChangeHandler(value, index)
+          }
+          removeInputHandler={index => removeColumnHandler(index)}
+        />
       </div>
       <Button onClick={addColumnHandler} btnStyle="form-secondary">
         + Add New Column

@@ -1,10 +1,9 @@
 import { Fragment } from 'react';
 import classes from './InputsList.module.scss';
 import InputWithValidation from '../UI/InputWithValidation';
-import { IColumn } from '../../types/dataTypes';
 
 type Props = {
-  listItems: IColumn[];
+  listItems: { name: string; isDisabled: boolean; isRemovable: boolean }[];
   isScrollable: boolean;
   isInputsNotEmpty: boolean;
   setIsInputsNotEmpty: React.Dispatch<React.SetStateAction<boolean>>;
@@ -32,18 +31,18 @@ export default function InputsList(props: Props) {
         className={`inputs-list ${classes['inputs-list']} ${
           isScrollable && classes['scrollable']
         }`}>
-        {listItems.map((column, index) => (
-          <li key={`${column.name}${index}`}>
+        {listItems.map((item, index) => (
+          <li key={`${item.name}${index}`}>
             <InputWithValidation
               onBlur={() => {
                 setIsInputsNotEmpty(true);
                 blurInputHandler();
               }}
               onChange={(value: string) => changeInputHandler(value, index)}
-              disabled={column.tasks.length !== 0}
+              disabled={item.isDisabled}
               validateFn={isValidFunc}
-              value={column.name}
-              isRemovable={column.tasks.length === 0}
+              value={item.name}
+              isRemovable={item.isRemovable}
               onRemove={removeInputHandler.bind(null, index)}
               type="text"
             />

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../hooks/use-input';
@@ -10,8 +10,8 @@ import validate from '../../functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
 import { ISubtask, ITask } from '../../types/dataTypes';
 import { uiActions } from '../../store/slices/ui-slice';
-import InputWithValidation from '../UI/InputWithValidation';
 import { getSelectedTask } from '../../store/selectors/data-selectors';
+import InputsList from '../InputsList/InputsList';
 
 const EditTask = () => {
   const dispatch = useDispatch();
@@ -49,33 +49,6 @@ const EditTask = () => {
     subtasksCopy[index].title = value;
     setSubtasksHasNames(true);
   };
-
-  const isScrollable = subtasksCopy.length > 1 ? classes['scrollable'] : '';
-
-  const subtasksList = (
-    <Fragment>
-      <ul
-        className={`form-subtasks-list ${classes['form-subtasks-list']} ${isScrollable}`}>
-        {subtasksCopy.map((subtask, index) => (
-          // TODO: generate random id for key
-          <li key={`${subtask.title}${index}`}>
-            <InputWithValidation
-              onChange={(value: string) => subtaskChangeHandler(value, index)}
-              onBlur={() => setSubtasksCopy(subtasksCopy)}
-              validateFn={validate.notEmpty}
-              value={subtask.title}
-              isRemovable={subtasksCopy.length > 1}
-              onRemove={removeSubtaskHandler.bind(null, index)}
-              type="text"
-            />
-          </li>
-        ))}
-      </ul>
-      {!subtasksHasNames && (
-        <p className="error-text">All subtasks should have title</p>
-      )}
-    </Fragment>
-  );
 
   const addSubtaskHandler = () => {
     setSubtasksCopy(state => [...state, { isCompleted: false, title: '' }]);
@@ -149,7 +122,22 @@ const EditTask = () => {
       </div>
       <div className={classes['form-input']}>
         <label>Subtasks</label>
-        {subtasksList}
+        <InputsList
+          listItems={subtasksCopy.map(subt => ({
+            name: subt.title,
+            isDisabled: false,
+            isRemovable: subtasksCopy.length > 1,
+          }))}
+          isScrollable={subtasksCopy.length > 1}
+          isInputsNotEmpty={subtasksHasNames}
+          setIsInputsNotEmpty={setSubtasksHasNames}
+          isValidFunc={validate.notEmpty}
+          blurInputHandler={() => setSubtasksCopy([...subtasksCopy])}
+          changeInputHandler={(value, index) =>
+            subtaskChangeHandler(value, index)
+          }
+          removeInputHandler={index => removeSubtaskHandler(index)}
+        />
       </div>
       <Button onClick={addSubtaskHandler} btnStyle="form-secondary">
         + Add New Subtask
