@@ -11,23 +11,6 @@
     }
   }
 
-  .form-subtasks-list,
-  .form-columns-list {
-    &::-webkit-scrollbar {
-      background: $light-border;
-    }
-    &::-webkit-scrollbar-corner {
-      background: $light-board-bg;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: $light-scroll-bg;
-
-      &:hover {
-        background: $light-btn-bg;
-      }
-    }
-  }
-
   .form-nav {
     h3 {
       color: $light-text-secondary;
