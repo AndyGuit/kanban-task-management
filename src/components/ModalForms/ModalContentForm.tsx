@@ -1,15 +1,15 @@
-import { Fragment } from 'react';
+import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { getModalFormContent } from '../../store/selectors/ui-selectors';
 import { ModalContent } from '../../types/modalFormContentTypes';
-import AddNewBoard from './AddNewBoard';
-import AddNewColumn from './AddNewColumn';
-import AddNewTask from './AddNewTask';
-import Confirm from './Confirm';
-import EditBoard from './EditBoard';
-import EditTask from './EditTask';
-import SidebarMobile from './SidebarMobile';
-import ViewTask from './ViewTask';
+const AddNewBoard = lazy(() => import('./AddNewBoard'));
+const AddNewColumn = lazy(() => import('./AddNewColumn'));
+const AddNewTask = lazy(() => import('./AddNewTask'));
+const Confirm = lazy(() => import('./Confirm'));
+const EditBoard = lazy(() => import('./EditBoard'));
+const EditTask = lazy(() => import('./EditTask'));
+const SidebarMobile = lazy(() => import('./SidebarMobile'));
+const ViewTask = lazy(() => import('./ViewTask'));
 
 const ModalContentForm = () => {
   const contentType = useSelector(getModalFormContent);
@@ -68,7 +68,7 @@ const ModalContentForm = () => {
       break;
   }
 
-  return <Fragment>{content}</Fragment>;
+  return <Suspense fallback="Loading...">{content}</Suspense>;
 };
 
 export default ModalContentForm;
