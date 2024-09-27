@@ -1,34 +1,42 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  lodaUiFromLocalStorage,
-  saveUiToLocalStorage,
-} from '../../functions/saveToLocalStorage';
+import { loadFromLocalStorage, saveToLocalStorage } from '../../functions/saveToLocalStorage';
 import { ModalContent } from '../../types/modalFormContentTypes';
+
+export interface IUIState {
+  appTheme: 'dark' | 'light';
+  hasSidebar: boolean;
+  modal: {
+    isVisible: boolean;
+    formContent: ModalContent;
+  };
+}
+
+const initialState = loadFromLocalStorage<IUIState>('kanban/ui');
 
 const uiSlice = createSlice({
   name: 'ui',
-  initialState: lodaUiFromLocalStorage(),
+  initialState,
   reducers: {
-    toggleAppTheme: state => {
+    toggleAppTheme: (state) => {
       state.appTheme = state.appTheme === 'dark' ? 'light' : 'dark';
 
-      saveUiToLocalStorage({
+      saveToLocalStorage<IUIState>('kanban/ui', {
         ...state,
-        modal: { isVisible: false, formContent: '' },
+        modal: { isVisible: false, formContent: ModalContent.none },
       });
     },
-    toggleSidebar: state => {
+    toggleSidebar: (state) => {
       state.hasSidebar = !state.hasSidebar;
 
-      saveUiToLocalStorage({
+      saveToLocalStorage<IUIState>('kanban/ui', {
         ...state,
-        modal: { isVisible: false, formContent: '' },
+        modal: { isVisible: false, formContent: ModalContent.none },
       });
     },
-    showModal: state => {
+    showModal: (state) => {
       state.modal.isVisible = true;
     },
-    hideModal: state => {
+    hideModal: (state) => {
       state.modal.isVisible = false;
     },
     setModalContent: (state, action: PayloadAction<ModalContent>) => {

@@ -46,3 +46,13 @@ export const lodaUiFromLocalStorage = () => {
     return null;
   }
 };
+
+export const saveToLocalStorage = <T>(key: string, data: T) => {
+  const json = JSON.stringify(data);
+  localStorage.setItem(key, json);
+};
+
+export const loadFromLocalStorage = <T>(key: string) => {
+  const data = JSON.parse(localStorage.getItem(key) || '') as T;
+  return data;
+};

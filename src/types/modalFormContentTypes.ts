@@ -8,4 +8,5 @@ export enum ModalContent {
   addNewBoard = 'ADD_NEW_BOARD',
   editBoard = 'EDIT_BOARD',
   sidebarMobile = 'SIDEBAR_MOBILE',
+  none = '',
 }
