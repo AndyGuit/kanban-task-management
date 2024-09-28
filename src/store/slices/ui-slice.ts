@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loadFromLocalStorage, saveToLocalStorage } from '../../functions/saveToLocalStorage';
+import { loadFromLocalStorage, LocalStorageKeys, saveToLocalStorage } from '../../functions/saveToLocalStorage';
 import { ModalContent } from '../../types/modalFormContentTypes';
 
 export interface IUIState {
@@ -11,7 +11,7 @@ export interface IUIState {
   };
 }
 
-const initialState = loadFromLocalStorage<IUIState>('kanban/ui');
+const initialState = loadFromLocalStorage<IUIState>(LocalStorageKeys.UI);
 
 const uiSlice = createSlice({
   name: 'ui',
@@ -20,7 +20,7 @@ const uiSlice = createSlice({
     toggleAppTheme: (state) => {
       state.appTheme = state.appTheme === 'dark' ? 'light' : 'dark';
 
-      saveToLocalStorage<IUIState>('kanban/ui', {
+      saveToLocalStorage<IUIState>(LocalStorageKeys.UI, {
         ...state,
         modal: { isVisible: false, formContent: ModalContent.none },
       });
@@ -28,7 +28,7 @@ const uiSlice = createSlice({
     toggleSidebar: (state) => {
       state.hasSidebar = !state.hasSidebar;
 
-      saveToLocalStorage<IUIState>('kanban/ui', {
+      saveToLocalStorage<IUIState>(LocalStorageKeys.UI, {
         ...state,
         modal: { isVisible: false, formContent: ModalContent.none },
       });

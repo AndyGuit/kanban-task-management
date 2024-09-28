@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loadFromLocalStorage, saveToLocalStorage } from '../../functions/saveToLocalStorage';
+import { loadFromLocalStorage, LocalStorageKeys, saveToLocalStorage } from '../../functions/saveToLocalStorage';
 import { IBoard, IColumn, ITask } from '../../types/dataTypes';
 
-const storedBoards = loadFromLocalStorage<IBoard[]>('kanban/data');
+const storedBoards = loadFromLocalStorage<IBoard[]>(LocalStorageKeys.data);
 
 const dataSlice = createSlice({
   name: 'data',
@@ -23,7 +23,7 @@ const dataSlice = createSlice({
         }
       });
 
-      saveToLocalStorage<IBoard[]>('kanban/data', state.boards);
+      saveToLocalStorage<IBoard[]>(LocalStorageKeys.data, state.boards);
     },
 
     setSelectedTask: (state, action: PayloadAction<string>) => {
@@ -116,7 +116,7 @@ const dataSlice = createSlice({
       const boardIndex = state.boards.findIndex((board) => board.id === state.activeBoard.id);
       state.boards[boardIndex] = state.activeBoard;
 
-      saveToLocalStorage('kanban/data', state.boards);
+      saveToLocalStorage(LocalStorageKeys.data, state.boards);
     },
   },
 });
