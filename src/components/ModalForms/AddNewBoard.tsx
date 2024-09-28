@@ -10,23 +10,19 @@ import InputsList from '../InputsList/InputsList';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
+import Select from '../Select/Select';
 
 const AddNewBoard = () => {
   const dispatch = useDispatch();
 
   const titleInput = useInput(validate.notEmpty);
 
-  const [newColumns, setNewColumns] = useState<IColumn[]>([
-    { name: '', id: generateRandomId(), tasks: [] },
-  ]);
+  const [newColumns, setNewColumns] = useState<IColumn[]>([{ name: '', id: generateRandomId(), tasks: [] }]);
 
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
-    setNewColumns(state => [
-      ...state,
-      { id: generateRandomId(), name: '', tasks: [] },
-    ]);
+    setNewColumns((state) => [...state, { id: generateRandomId(), name: '', tasks: [] }]);
   };
 
   const columnChangeHandler = (value: string, index: number) => {
@@ -34,13 +30,13 @@ const AddNewBoard = () => {
   };
 
   const removeColumnHandler = (index: number) => {
-    setNewColumns(state => state.filter((_, i) => i !== index));
+    setNewColumns((state) => state.filter((_, i) => i !== index));
   };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const inputsNotEmpty = newColumns.every(col => col.name !== '');
+    const inputsNotEmpty = newColumns.every((col) => col.name !== '');
     setColumnsHasNames(inputsNotEmpty);
     titleInput.inputBlurHandler();
 
@@ -76,7 +72,7 @@ const AddNewBoard = () => {
       <div className={classes['form-input']}>
         <label>Columns</label>
         <InputsList
-          listItems={newColumns.map(col => ({
+          listItems={newColumns.map((col) => ({
             name: col.name,
             isDisabled: col.tasks.length !== 0,
             isRemovable: col.tasks.length === 0,
@@ -88,10 +84,8 @@ const AddNewBoard = () => {
           blurInputHandler={() => {
             setNewColumns([...newColumns]);
           }}
-          changeInputHandler={(value, index) =>
-            columnChangeHandler(value, index)
-          }
-          removeInputHandler={index => removeColumnHandler(index)}
+          changeInputHandler={(value, index) => columnChangeHandler(value, index)}
+          removeInputHandler={(index) => removeColumnHandler(index)}
         />
       </div>
       <Button onClick={addColumnHandler} btnStyle="form-secondary">
