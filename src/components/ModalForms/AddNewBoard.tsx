@@ -10,7 +10,6 @@ import InputsList from '../InputsList/InputsList';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
-import Select from '../Select/Select';
 
 const AddNewBoard = () => {
   const dispatch = useDispatch();

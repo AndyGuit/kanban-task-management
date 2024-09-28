@@ -48,7 +48,8 @@ const Select: React.FC<Props> = (props) => {
     <div className={classes['select-wrapper']}>
       <div className={classes['select-label']}>label</div>
       <div onClick={handleToggleOptions} className={classes['select-selected']}>
-        <span>{selectedOption.name}</span> <ChevronDown />
+        <span>{selectedOption.name}</span>{' '}
+        <ChevronDown className={`${classes.chevron} ${isOptionsVisible ? classes.rotate : ''}`} stroke="#828FA3" />
       </div>
       <div className={classes['select-options'] + ` ${isOptionsVisible ? classes.visible : ''}`}>
         {options.map((option) => (
