@@ -11,7 +11,7 @@ import {
   getSelectedColumn,
   getSelectedTask,
 } from '../../store/selectors/data-selectors';
-import Select from '../Select/Select';
+import Select from '../../shared/ui/Select/Select';
 
 const ViewTask = () => {
   const dispatch = useDispatch();

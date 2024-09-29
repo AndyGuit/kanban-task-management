@@ -11,7 +11,7 @@ import InputsList from '../InputsList/InputsList';
 import Button from '../../shared/ui/Button/Button';
 import Input from '../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
-import Select, { TOptionType } from '../Select/Select';
+import Select, { TOptionType } from '../../shared/ui/Select/Select';
 import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const AddNewTask = () => {

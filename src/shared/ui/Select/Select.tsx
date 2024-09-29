@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown } from '../../shared/ui/Icons/Icons';
+import { ChevronDown } from '../Icons/Icons';
 import classes from './Select.module.scss';
 
 export type TOptionType = {
@@ -7,13 +7,13 @@ export type TOptionType = {
   id: string;
 };
 
-type Props = {
+interface Props {
   value: string;
   options: TOptionType[];
   label?: string;
   onSelect?: (option: TOptionType) => void;
   disabled?: boolean;
-};
+}
 
 function Select(props: Props) {
   const { options, onSelect, label = 'Select Value', disabled } = props;

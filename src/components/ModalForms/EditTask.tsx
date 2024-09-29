@@ -11,7 +11,7 @@ import { ISubtask, ITask } from '../../shared/types/dataTypes';
 import { uiActions } from '../../store/slices/ui-slice';
 import { getSelectedTask } from '../../store/selectors/data-selectors';
 import InputsList from '../InputsList/InputsList';
-import Select, { TOptionType } from '../Select/Select';
+import Select, { TOptionType } from '../../shared/ui/Select/Select';
 import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const EditTask = () => {
