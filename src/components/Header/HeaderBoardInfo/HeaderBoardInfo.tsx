@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getActiveBoard } from '../../../store/selectors/data-selectors';
 import { uiActions } from '../../../store/slices/ui-slice';
 import { ModalContent } from '../../../shared/types/modalFormContentTypes';
-import { ChevronDown } from '../../Icons/Icons';
+import { ChevronDown } from '../../Icons/Props';
 import PopupWindow from '../../PopupWindow/PopupWindow';
 import Button from '../../../shared/ui/Button/Button';
 import classes from './HeaderBoardInfo.module.scss';

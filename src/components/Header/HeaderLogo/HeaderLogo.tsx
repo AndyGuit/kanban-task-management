@@ -1,4 +1,4 @@
-import { IconLogo } from '../../Icons/Icons';
+import { IconLogo } from '../../Icons/Props';
 import classes from './HeaderLogo.module.scss';
 
 const HeaderLogo = () => {

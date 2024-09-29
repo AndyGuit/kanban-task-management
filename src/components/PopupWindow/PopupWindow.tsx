@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IconPopupDots } from '../Icons/Icons';
+import { IconPopupDots } from '../Icons/Props';
 import Button from '../../shared/ui/Button/Button';
 import classes from './PopupWindow.module.scss';
 import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';

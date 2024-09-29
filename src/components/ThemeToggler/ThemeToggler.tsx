@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTheme } from '../../store/selectors/ui-selectors';
 import { uiActions } from '../../store/slices/ui-slice';
-import { IconMoon, IconSun } from '../Icons/Icons';
+import { IconMoon, IconSun } from '../Icons/Props';
 import Button from '../../shared/ui/Button/Button';
 import classes from './ThemeToggler.module.scss';
 import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
