@@ -1,6 +1,6 @@
 import { ChangeEvent, Fragment, useState } from 'react';
-import { IconCross } from '../Icons/Props';
-import Button from '../../shared/ui/Button/Button';
+import { IconCross } from '../../../shared/ui/Icons/Icons';
+import Button from '../Button/Button';
 import classes from './Input.module.scss';
 
 type Props = {

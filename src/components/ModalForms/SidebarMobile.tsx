@@ -4,7 +4,7 @@ import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { IBoard } from '../../shared/types/dataTypes';
 import { ModalContent } from '../../shared/types/modalFormContentTypes';
-import { IconBoard } from '../Icons/Props';
+import { IconBoard } from '../../shared/ui/Icons/Icons';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import Button from '../../shared/ui/Button/Button';
 import classes from './Form.module.scss';

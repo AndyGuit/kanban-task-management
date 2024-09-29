@@ -5,7 +5,7 @@ import validate from '../../shared/functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import Button from '../../shared/ui/Button/Button';
-import Input from '../UI/Input';
+import Input from '../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
 import { getActiveBoardName, getColumns } from '../../store/selectors/data-selectors';

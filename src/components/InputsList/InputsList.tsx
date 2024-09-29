@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import classes from './InputsList.module.scss';
-import InputWithValidation from '../UI/InputWithValidation';
+import InputWithValidation from '../../shared/ui/Input/InputWithValidation';
 
 type Props = {
   listItems: { name: string; isDisabled: boolean; isRemovable: boolean }[];
@@ -27,10 +27,7 @@ export default function InputsList(props: Props) {
 
   return (
     <Fragment>
-      <ul
-        className={`inputs-list ${classes['inputs-list']} ${
-          isScrollable && classes['scrollable']
-        }`}>
+      <ul className={`inputs-list ${classes['inputs-list']} ${isScrollable && classes['scrollable']}`}>
         {listItems.map((item, index) => (
           <li key={`${item.name}${index}`}>
             <InputWithValidation
@@ -49,9 +46,7 @@ export default function InputsList(props: Props) {
           </li>
         ))}
       </ul>
-      {!isInputsNotEmpty && (
-        <p className="error-text">All columns should have title</p>
-      )}
+      {!isInputsNotEmpty && <p className="error-text">All columns should have title</p>}
     </Fragment>
   );
 }

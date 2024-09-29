@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown } from '../Icons/Props';
+import { ChevronDown } from '../../shared/ui/Icons/Icons';
 import classes from './Select.module.scss';
 
 export type TOptionType = {

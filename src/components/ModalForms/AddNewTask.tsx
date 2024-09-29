@@ -9,7 +9,7 @@ import { uiActions } from '../../store/slices/ui-slice';
 import { ISubtask, ITask } from '../../shared/types/dataTypes';
 import InputsList from '../InputsList/InputsList';
 import Button from '../../shared/ui/Button/Button';
-import Input from '../UI/Input';
+import Input from '../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import Select, { TOptionType } from '../Select/Select';
 import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';

@@ -8,7 +8,7 @@ import { uiActions } from '../../store/slices/ui-slice';
 import { IBoard, IColumn } from '../../shared/types/dataTypes';
 import InputsList from '../InputsList/InputsList';
 import Button from '../../shared/ui/Button/Button';
-import Input from '../UI/Input';
+import Input from '../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 

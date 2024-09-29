@@ -7,7 +7,7 @@ import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { IBoard, IColumn } from '../../shared/types/dataTypes';
 import Button from '../../shared/ui/Button/Button';
-import Input from '../UI/Input';
+import Input from '../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
 import { getActiveBoard } from '../../store/selectors/data-selectors';
