@@ -1,17 +1,14 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from '../../functions/randomId';
-import validate from '../../functions/validate';
+import generateRandomId from '../../shared/functions/randomId';
+import validate from '../../shared/functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
-import {
-  getActiveBoardName,
-  getColumns,
-} from '../../store/selectors/data-selectors';
+import { getActiveBoardName, getColumns } from '../../store/selectors/data-selectors';
 import InputsList from '../InputsList/InputsList';
 
 const AddNewColumn = () => {
@@ -24,10 +21,7 @@ const AddNewColumn = () => {
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
-    setNewColumns(state => [
-      ...state,
-      { id: generateRandomId(), name: '', tasks: [] },
-    ]);
+    setNewColumns((state) => [...state, { id: generateRandomId(), name: '', tasks: [] }]);
   };
 
   const columnChangeHandler = (value: string, index: number) => {
@@ -35,13 +29,13 @@ const AddNewColumn = () => {
   };
 
   const removeColumnHandler = (index: number) => {
-    setNewColumns(state => state.filter((_, i) => i !== index));
+    setNewColumns((state) => state.filter((_, i) => i !== index));
   };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const inputsNotEmpty = newColumns.every(col => col.name !== '');
+    const inputsNotEmpty = newColumns.every((col) => col.name !== '');
     setColumnsHasNames(inputsNotEmpty);
 
     if (inputsNotEmpty) {
@@ -56,18 +50,12 @@ const AddNewColumn = () => {
       <h3>Add New Column</h3>
       <div className={classes['form-input']}>
         <label htmlFor="board-name">Board Name</label>
-        <Input
-          disabled={true}
-          value={boardName}
-          type="text"
-          id="board-name"
-          isRemovable={false}
-        />
+        <Input disabled={true} value={boardName} type="text" id="board-name" isRemovable={false} />
       </div>
       <div className={classes['form-input']}>
         <label>Columns</label>
         <InputsList
-          listItems={newColumns.map(col => ({
+          listItems={newColumns.map((col) => ({
             name: col.name,
             isDisabled: col.tasks.length !== 0,
             isRemovable: col.tasks.length === 0,
@@ -77,9 +65,7 @@ const AddNewColumn = () => {
           isInputsNotEmpty={columnsHasNames}
           setIsInputsNotEmpty={setColumnsHasNames}
           blurInputHandler={() => setNewColumns([...newColumns])}
-          changeInputHandler={(value, index) =>
-            columnChangeHandler(value, index)
-          }
+          changeInputHandler={(value, index) => columnChangeHandler(value, index)}
           removeInputHandler={removeColumnHandler}
         />
       </div>

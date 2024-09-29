@@ -1,8 +1,8 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from '../../functions/randomId';
-import validate from '../../functions/validate';
-import useInput from '../../hooks/use-input';
+import generateRandomId from '../../shared/functions/randomId';
+import validate from '../../shared/functions/validate';
+import useInput from '../../shared/hooks/use-input';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { IBoard, IColumn } from '../../types/dataTypes';
@@ -19,17 +19,12 @@ const EditBoard = () => {
 
   const boardNameInput = useInput(validate.notEmpty, activeBoard.name);
 
-  const [newColumns, setNewColumns] = useState<IColumn[]>(
-    cloneDeep(activeBoard.columns)
-  );
+  const [newColumns, setNewColumns] = useState<IColumn[]>(cloneDeep(activeBoard.columns));
 
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
-    setNewColumns(state => [
-      ...state,
-      { id: generateRandomId(), name: '', tasks: [] },
-    ]);
+    setNewColumns((state) => [...state, { id: generateRandomId(), name: '', tasks: [] }]);
   };
 
   const columnChangeHandler = (value: string, index: number) => {
@@ -37,13 +32,13 @@ const EditBoard = () => {
   };
 
   const removeColumnHandler = (index: number) => {
-    setNewColumns(state => state.filter((_, i) => i !== index));
+    setNewColumns((state) => state.filter((_, i) => i !== index));
   };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const inputsNotEmpty = newColumns.every(col => col.name !== '');
+    const inputsNotEmpty = newColumns.every((col) => col.name !== '');
     setColumnsHasNames(inputsNotEmpty);
 
     if (boardNameInput.isValid && inputsNotEmpty) {
@@ -77,7 +72,7 @@ const EditBoard = () => {
       <div className={classes['form-input']}>
         <label>Columns</label>
         <InputsList
-          listItems={newColumns.map(col => ({
+          listItems={newColumns.map((col) => ({
             name: col.name,
             isDisabled: col.tasks.length !== 0,
             isRemovable: col.tasks.length === 0,
@@ -87,10 +82,8 @@ const EditBoard = () => {
           setIsInputsNotEmpty={setColumnsHasNames}
           isValidFunc={validate.notEmpty}
           blurInputHandler={() => setNewColumns([...newColumns])}
-          changeInputHandler={(value, index) =>
-            columnChangeHandler(value, index)
-          }
-          removeInputHandler={index => removeColumnHandler(index)}
+          changeInputHandler={(value, index) => columnChangeHandler(value, index)}
+          removeInputHandler={(index) => removeColumnHandler(index)}
         />
       </div>
       <Button onClick={addColumnHandler} btnStyle="form-secondary">

@@ -1,5 +1,5 @@
 import { ChangeEvent, Fragment } from 'react';
-import useInput from '../../hooks/use-input';
+import useInput from '../../shared/hooks/use-input';
 import { IconCross } from '../Icons/Icons';
 import Button from './Button';
 import classes from './Input.module.scss';
@@ -20,13 +20,9 @@ const InputWithValidation = (props: Props) => {
   const validateFn = props.validateFn ?? (() => true);
   const inputState = useInput(validateFn, props.value ?? '');
 
-  const inputClasses = `input ${classes.input} ${
-    inputState.hasError ? 'invalid' : ''
-  }`;
+  const inputClasses = `input ${classes.input} ${inputState.hasError ? 'invalid' : ''}`;
 
-  const changeHandler = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const changeHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     inputState.valueChangeHandler(e);
 
     if (props.onChange) props.onChange(e.target.value);
@@ -48,7 +44,8 @@ const InputWithValidation = (props: Props) => {
         onChange={changeHandler}
         onBlur={blurHandler}
         className={inputClasses}
-        rows={6}></textarea>
+        rows={6}
+      ></textarea>
     );
   }
 

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loadFromLocalStorage, LocalStorageKeys, saveToLocalStorage } from '../../functions/saveToLocalStorage';
+import { loadFromLocalStorage, LocalStorageKeys, saveToLocalStorage } from '../../shared/functions/localStorage';
 import { ModalContent } from '../../types/modalFormContentTypes';
 
 export interface IUIState {
