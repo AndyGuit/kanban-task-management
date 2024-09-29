@@ -3,7 +3,7 @@ import Header from '../layout/Header/Header';
 import Sidebar from '../layout/Sidebar/Sidebar';
 import Board from '../layout/Board/Board';
 import Container from '../components/UI/Container';
-import Modal from '../components/UI/Modal';
+import Modal from '../shared/ui/Modal/Modal';
 import ModalContentForm from '../components/ModalForms/ModalContentForm';
 import { uiActions } from '../store/slices/ui-slice';
 import { useEffect } from 'react';
