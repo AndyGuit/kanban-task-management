@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react';
 import { ChevronDown } from '../Icons/Icons';
-import { IColumn } from '../../types/dataTypes';
 import classes from './Select.module.scss';
 
-type Props = {
-  options: Omit<IColumn, 'tasks'>[];
-  onSelect?: () => void;
+export type TOptionType = {
+  name: string;
+  id: string;
 };
 
-const Select: React.FC<Props> = (props) => {
-  const { options, onSelect } = props;
+type Props = {
+  value: string;
+  options: TOptionType[];
+  label?: string;
+  onSelect?: (option: TOptionType) => void;
+  disabled?: boolean;
+};
+
+function Select(props: Props) {
+  const { options, onSelect, label = 'Select Value', disabled } = props;
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0] || 'select option');
 
@@ -17,8 +24,8 @@ const Select: React.FC<Props> = (props) => {
     setIsOptionsVisible((prev) => !prev);
   };
 
-  const handleSelectOption = (option: Omit<IColumn, 'tasks'>) => {
-    onSelect?.();
+  const handleSelectOption = (option: TOptionType) => {
+    onSelect?.(option);
     setSelectedOption(option);
     setIsOptionsVisible(false);
   };
@@ -46,7 +53,7 @@ const Select: React.FC<Props> = (props) => {
 
   return (
     <div className={classes['select-wrapper']}>
-      <div className={classes['select-label']}>label</div>
+      <div className={classes['select-label']}>{label}</div>
       <div onClick={handleToggleOptions} className={classes['select-selected']}>
         <span>{selectedOption.name}</span>{' '}
         <ChevronDown className={`${classes.chevron} ${isOptionsVisible ? classes.rotate : ''}`} stroke="#828FA3" />
@@ -60,6 +67,6 @@ const Select: React.FC<Props> = (props) => {
       </div>
     </div>
   );
-};
+}
 
 export default Select;

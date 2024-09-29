@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../functions/randomId';
 import validate from '../../functions/validate';
@@ -8,10 +8,10 @@ import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ISubtask, ITask } from '../../types/dataTypes';
 import InputsList from '../InputsList/InputsList';
-import SelectInput from '../SelectInput/SelectInput';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
+import Select, { TOptionType } from '../Select/Select';
 
 const AddNewTask = () => {
   const dispatch = useDispatch();
@@ -20,9 +20,7 @@ const AddNewTask = () => {
   const titleInput = useInput(validate.notEmpty);
   const descriptionInput = useInput(() => true);
 
-  const [subtasks, setSubtasks] = useState<ISubtask[]>([
-    { title: '', isCompleted: false },
-  ]);
+  const [subtasks, setSubtasks] = useState<ISubtask[]>([{ title: '', isCompleted: false }]);
 
   const [subtasksHasNames, setSubtasksHasNames] = useState(true);
 
@@ -37,21 +35,21 @@ const AddNewTask = () => {
   };
 
   const addSubtaskHandler = () => {
-    setSubtasks(state => [...state, { title: '', isCompleted: false }]);
+    setSubtasks((state) => [...state, { title: '', isCompleted: false }]);
   };
 
   const removeSubtaskHandler = (index: number) => {
-    setSubtasks(state => state.filter((_, i) => i !== index));
+    setSubtasks((state) => state.filter((_, i) => i !== index));
   };
 
-  const statusChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    const status = columns.find(col => col.statusId === e.target.value)!;
-    setSelectedColumn(status);
+  const statusChangeHandler = (option: TOptionType) => {
+    console.log(option);
+    setSelectedColumn({ ...option, statusId: option.id });
   };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubtasksHasNames(subtasks.every(subt => subt.title !== ''));
+    setSubtasksHasNames(subtasks.every((subt) => subt.title !== ''));
     titleInput.inputBlurHandler();
 
     if (titleInput.isValid && subtasksHasNames) {
@@ -101,7 +99,7 @@ const AddNewTask = () => {
       <div className={classes['form-input']}>
         <label>Subtasks</label>
         <InputsList
-          listItems={subtasks.map(subt => ({
+          listItems={subtasks.map((subt) => ({
             name: subt.title,
             isDisabled: false,
             isRemovable: subtasks.length > 1,
@@ -111,21 +109,18 @@ const AddNewTask = () => {
           setIsInputsNotEmpty={setSubtasksHasNames}
           isValidFunc={validate.notEmpty}
           blurInputHandler={() => setSubtasks([...subtasks])}
-          changeInputHandler={(value, index) =>
-            subtaskChangeHandler(value, index)
-          }
-          removeInputHandler={index => removeSubtaskHandler(index)}
+          changeInputHandler={(value, index) => subtaskChangeHandler(value, index)}
+          removeInputHandler={(index) => removeSubtaskHandler(index)}
         />
       </div>
       <Button onClick={addSubtaskHandler} btnStyle="form-secondary">
         + Add New Subtask
       </Button>
-      <SelectInput
-        value={selectedColumn.statusId}
-        onChange={statusChangeHandler}
+      <Select
+        value={selectedColumn.name}
+        onSelect={statusChangeHandler}
         label="Status"
-        disabled={false}
-        options={columns}
+        options={columns.map((col) => ({ ...col, id: col.statusId }))}
       />
       <Button btnStyle="form-primary" type="submit">
         Create Task
