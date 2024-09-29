@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IconBoard, IconHideSidebar, IconShowSidebar } from '../../components/Icons/Icons';
 import { IBoard } from '../../shared/types/dataTypes';
 import ThemeToggler from '../../components/ThemeToggler/ThemeToggler';
-import Button from '../../components/UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import { uiActions } from '../../store/slices/ui-slice';
 import classes from './Sidebar.module.scss';
 import { dataActions } from '../../store/slices/data-slice';

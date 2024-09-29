@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTheme } from '../../store/selectors/ui-selectors';
 import { uiActions } from '../../store/slices/ui-slice';
 import { IconMoon, IconSun } from '../Icons/Icons';
-import Button from '../UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import classes from './ThemeToggler.module.scss';
 
 const ThemeToggler = () => {
@@ -13,7 +13,7 @@ const ThemeToggler = () => {
 
   const toggleTheme = () => {
     dispatch(uiActions.toggleAppTheme());
-    setIsDark(prevState => !prevState);
+    setIsDark((prevState) => !prevState);
   };
 
   return (

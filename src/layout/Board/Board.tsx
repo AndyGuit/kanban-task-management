@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ColumnComponent from '../../components/Column/Column';
-import Button from '../../components/UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import { getActiveBoard } from '../../store/selectors/data-selectors';
 import { uiActions } from '../../store/slices/ui-slice';
 import { IColumn } from '../../shared/types/dataTypes';

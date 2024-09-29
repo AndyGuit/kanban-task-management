@@ -6,7 +6,7 @@ import { IBoard } from '../../shared/types/dataTypes';
 import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import { IconBoard } from '../Icons/Icons';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
-import Button from '../UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import classes from './Form.module.scss';
 
 const SidebarMobile = () => {

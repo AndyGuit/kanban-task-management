@@ -4,7 +4,7 @@ import generateRandomId from '../../shared/functions/randomId';
 import validate from '../../shared/functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
-import Button from '../UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';

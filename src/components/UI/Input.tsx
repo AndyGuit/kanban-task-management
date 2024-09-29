@@ -1,6 +1,6 @@
 import { ChangeEvent, Fragment, useState } from 'react';
 import { IconCross } from '../Icons/Icons';
-import Button from './Button';
+import Button from '../../shared/ui/Button/Button';
 import classes from './Input.module.scss';
 
 type Props = {
@@ -18,13 +18,9 @@ type Props = {
 const Input = (props: Props) => {
   const [value, setValue] = useState(props.value ?? '');
 
-  const inputClasses = `input ${classes.input} ${
-    props.invalid ? 'invalid' : ''
-  }`;
+  const inputClasses = `input ${classes.input} ${props.invalid ? 'invalid' : ''}`;
 
-  const changeHandler = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const changeHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValue(e.target.value);
 
     if (props.onChange) props.onChange(e);
@@ -39,7 +35,8 @@ const Input = (props: Props) => {
         onChange={changeHandler}
         onBlur={props.onBlur}
         className={inputClasses}
-        rows={6}></textarea>
+        rows={6}
+      ></textarea>
     );
   }
 

@@ -1,4 +1,4 @@
-import { btnStyle } from '../../shared/types/btnStylesTypes';
+import { btnStyle } from '../../types/btnStylesTypes';
 import classes from './Button.module.scss';
 
 type Props = {

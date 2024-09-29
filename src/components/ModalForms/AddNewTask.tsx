@@ -8,7 +8,7 @@ import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ISubtask, ITask } from '../../shared/types/dataTypes';
 import InputsList from '../InputsList/InputsList';
-import Button from '../UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import Select, { TOptionType } from '../Select/Select';

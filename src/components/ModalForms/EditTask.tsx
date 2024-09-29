@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../shared/hooks/use-input';
-import Button from '../UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import validate from '../../shared/functions/validate';

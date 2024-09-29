@@ -4,7 +4,7 @@ import { uiActions } from '../../../store/slices/ui-slice';
 import { ModalContent } from '../../../shared/types/modalFormContentTypes';
 import { ChevronDown } from '../../Icons/Icons';
 import PopupWindow from '../../PopupWindow/PopupWindow';
-import Button from '../../UI/Button';
+import Button from '../../../shared/ui/Button/Button';
 import classes from './HeaderBoardInfo.module.scss';
 
 const HeaderBoardInfo = () => {

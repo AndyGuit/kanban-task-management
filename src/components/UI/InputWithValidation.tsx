@@ -1,7 +1,7 @@
 import { ChangeEvent, Fragment } from 'react';
 import useInput from '../../shared/hooks/use-input';
 import { IconCross } from '../Icons/Icons';
-import Button from './Button';
+import Button from '../../shared/ui/Button/Button';
 import classes from './Input.module.scss';
 
 type Props = {

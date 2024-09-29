@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import Button from '../../components/UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ModalContent } from '../../shared/types/modalFormContentTypes';
 

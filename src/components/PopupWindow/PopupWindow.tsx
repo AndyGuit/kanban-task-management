@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { IconPopupDots } from '../Icons/Icons';
-import Button from '../UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import classes from './PopupWindow.module.scss';
 
 type Props = {
@@ -9,11 +9,11 @@ type Props = {
   onClickEdit?: () => void;
 };
 
-const PopupWindow: React.FC<Props> = props => {
+const PopupWindow: React.FC<Props> = (props) => {
   const [isPopupShown, setIsPopupShown] = useState(false);
 
   const togglePopup = () => {
-    setIsPopupShown(prevState => !prevState);
+    setIsPopupShown((prevState) => !prevState);
   };
 
   useEffect(() => {

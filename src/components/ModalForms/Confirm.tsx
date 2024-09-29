@@ -4,7 +4,7 @@ import { getModalFormContent } from '../../store/selectors/ui-selectors';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import { ModalContent } from '../../shared/types/modalFormContentTypes';
-import Button from '../UI/Button';
+import Button from '../../shared/ui/Button/Button';
 import classes from './Form.module.scss';
 
 const Confirm = () => {
