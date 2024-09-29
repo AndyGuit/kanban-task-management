@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 import { IColumn, ITask } from '../../shared/types/dataTypes';
 import Task from '../Task/Task';
@@ -7,7 +8,7 @@ interface Props extends IColumn {
   index: number;
 }
 
-const Column = (props: Props) => {
+const Column = memo((props: Props) => {
   const columnListClasses = `${classes['task-list']} ${
     props.tasks.length === 0 ? `task-list--empty ${classes['task-list--empty']}` : ''
   }`;
@@ -34,6 +35,6 @@ const Column = (props: Props) => {
       </Droppable>
     </div>
   );
-};
+});
 
 export default Column;

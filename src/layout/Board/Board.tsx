@@ -1,6 +1,5 @@
-import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ColumnComponent from '../../components/Column/Column';
+import Column from '../../components/Column/Column';
 import Button from '../../shared/ui/Button/Button';
 import { getActiveBoard } from '../../store/selectors/data-selectors';
 import { uiActions } from '../../store/slices/ui-slice';
@@ -9,8 +8,6 @@ import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import classes from './Board.module.scss';
 import NoBoards from './NoBoards';
 import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
-
-const Column = memo(ColumnComponent);
 
 const Board = () => {
   const dispatch = useDispatch();
