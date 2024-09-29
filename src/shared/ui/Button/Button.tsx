@@ -4,8 +4,6 @@ import { ButtonStyle } from './buttonStyles';
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   isActive?: boolean;
-  type?: 'submit' | 'reset' | 'button';
-  onClick?: () => void;
   styleClass?: ButtonStyle;
 }
 
