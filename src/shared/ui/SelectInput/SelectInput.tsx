@@ -1,26 +1,23 @@
-import { ChangeEvent } from 'react';
 import classes from './SelectInput.module.scss';
 
-type Props = {
-  disabled: boolean;
+interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: { name: string; statusId: string }[];
   label: string;
-  value: string;
-  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
-};
+}
 
+/**
+ * @deprecated
+ * Use "Select" component instead
+ */
 const SelectInput = (props: Props) => {
+  const { onChange, disabled, value, label, options } = props;
   const selectClasses = `select ${classes['select']}`;
 
   return (
     <div className={classes['select-wrapper']}>
-      <label>{props.label}</label>
-      <select
-        value={props.value}
-        onChange={props.onChange}
-        disabled={props.disabled}
-        className={selectClasses}>
-        {props.options.map((option, index) => {
+      <label>{label}</label>
+      <select value={value} onChange={onChange} disabled={disabled} className={selectClasses}>
+        {options.map((option, index) => {
           return (
             <option key={index} value={option.statusId}>
               {option.name}
