@@ -6,7 +6,7 @@ import useInput from '../../shared/hooks/use-input';
 import { getColumnsStatus } from '../../store/selectors/data-selectors';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
-import { ISubtask, ITask } from '../../types/dataTypes';
+import { ISubtask, ITask } from '../../shared/types/dataTypes';
 import InputsList from '../InputsList/InputsList';
 import Button from '../UI/Button';
 import Input from '../UI/Input';

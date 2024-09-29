@@ -5,7 +5,7 @@ import validate from '../../shared/functions/validate';
 import useInput from '../../shared/hooks/use-input';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
-import { IBoard, IColumn } from '../../types/dataTypes';
+import { IBoard, IColumn } from '../../shared/types/dataTypes';
 import InputsList from '../InputsList/InputsList';
 import Button from '../UI/Button';
 import Input from '../UI/Input';

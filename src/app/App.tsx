@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
-import Header from './layout/Header/Header';
-import Sidebar from './layout/Sidebar/Sidebar';
-import Board from './layout/Board/Board';
-import Container from './components/UI/Container';
-import Modal from './components/UI/Modal';
-import ModalContentForm from './components/ModalForms/ModalContentForm';
-import { uiActions } from './store/slices/ui-slice';
+import Header from '../layout/Header/Header';
+import Sidebar from '../layout/Sidebar/Sidebar';
+import Board from '../layout/Board/Board';
+import Container from '../components/UI/Container';
+import Modal from '../components/UI/Modal';
+import ModalContentForm from '../components/ModalForms/ModalContentForm';
+import { uiActions } from '../store/slices/ui-slice';
 import { useEffect } from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { dataActions } from './store/slices/data-slice';
-import { getIsModal, getTheme } from './store/selectors/ui-selectors';
+import { dataActions } from '../store/slices/data-slice';
+import { getIsModal, getTheme } from '../store/selectors/ui-selectors';
 
 const App = () => {
   const dispatch = useDispatch();

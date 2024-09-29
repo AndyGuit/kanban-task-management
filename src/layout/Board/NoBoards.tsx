@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import Button from '../../components/UI/Button';
 import { uiActions } from '../../store/slices/ui-slice';
-import { ModalContent } from '../../types/modalFormContentTypes';
+import { ModalContent } from '../../shared/types/modalFormContentTypes';
 
 import classes from './Board.module.scss';
 

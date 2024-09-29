@@ -1,5 +1,5 @@
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
-import { IColumn, ITask } from '../../types/dataTypes';
+import { IColumn, ITask } from '../../shared/types/dataTypes';
 import Task from '../Task/Task';
 import classes from './Column.module.scss';
 
@@ -9,28 +9,20 @@ interface Props extends IColumn {
 
 const Column = (props: Props) => {
   const columnListClasses = `${classes['task-list']} ${
-    props.tasks.length === 0
-      ? `task-list--empty ${classes['task-list--empty']}`
-      : ''
+    props.tasks.length === 0 ? `task-list--empty ${classes['task-list--empty']}` : ''
   }`;
 
   return (
     <div className={classes['column']}>
       <div className={`column-title ${classes['column-title']}`}>
-        <span
-          className={`${classes['column-dot']} column-dot--${
-            props.index % 6
-          }`}></span>
+        <span className={`${classes['column-dot']} column-dot--${props.index % 6}`}></span>
         <h4>
           {props.name}({props.tasks.length})
         </h4>
       </div>
       <Droppable droppableId={props.id}>
         {(provided: DroppableProvided) => (
-          <ul
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            className={columnListClasses}>
+          <ul {...provided.droppableProps} ref={provided.innerRef} className={columnListClasses}>
             {props.tasks.map((task: ITask, index) => (
               <li key={task.id}>
                 <Task {...task} index={index} />

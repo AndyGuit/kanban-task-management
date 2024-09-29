@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getActiveBoard } from '../../../store/selectors/data-selectors';
 import { uiActions } from '../../../store/slices/ui-slice';
-import { ModalContent } from '../../../types/modalFormContentTypes';
+import { ModalContent } from '../../../shared/types/modalFormContentTypes';
 import { ChevronDown } from '../../Icons/Icons';
 import PopupWindow from '../../PopupWindow/PopupWindow';
 import Button from '../../UI/Button';
@@ -46,11 +46,7 @@ const HeaderBoardInfo = () => {
           <Button onClick={addNewTask} btnStyle="add-task">
             +<span> Add New Task</span>
           </Button>
-          <PopupWindow
-            onClickEdit={onEditBoard}
-            onClickDelete={onDeleteBoard}
-            btnText="Board"
-          />
+          <PopupWindow onClickEdit={onEditBoard} onClickDelete={onDeleteBoard} btnText="Board" />
         </div>
       )}
     </div>

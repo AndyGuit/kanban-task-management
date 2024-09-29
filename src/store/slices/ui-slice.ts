@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loadFromLocalStorage, LocalStorageKeys, saveToLocalStorage } from '../../shared/functions/localStorage';
-import { ModalContent } from '../../types/modalFormContentTypes';
+import { ModalContent } from '../../shared/types/modalFormContentTypes';
 
 export interface IUIState {
   appTheme: 'dark' | 'light';

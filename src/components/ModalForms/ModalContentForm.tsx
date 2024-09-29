@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { getModalFormContent } from '../../store/selectors/ui-selectors';
-import { ModalContent } from '../../types/modalFormContentTypes';
+import { ModalContent } from '../../shared/types/modalFormContentTypes';
 const AddNewBoard = lazy(() => import('./AddNewBoard'));
 const AddNewColumn = lazy(() => import('./AddNewColumn'));
 const AddNewTask = lazy(() => import('./AddNewTask'));

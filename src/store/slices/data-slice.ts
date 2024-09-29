@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loadFromLocalStorage, LocalStorageKeys, saveToLocalStorage } from '../../shared/functions/localStorage';
-import { IBoard, IColumn, ITask } from '../../types/dataTypes';
+import { IBoard, IColumn, ITask } from '../../shared/types/dataTypes';
 
 const storedBoards = loadFromLocalStorage<IBoard[]>(LocalStorageKeys.data);
 

@@ -2,8 +2,8 @@ import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
-import { ISubtask, ITask } from '../../types/dataTypes';
-import { ModalContent } from '../../types/modalFormContentTypes';
+import { ISubtask, ITask } from '../../shared/types/dataTypes';
+import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import classes from './Task.module.scss';
 
 interface Props extends ITask {
@@ -12,9 +12,7 @@ interface Props extends ITask {
 
 const Task = (props: Props) => {
   const dispatch = useDispatch();
-  const completedSubtasks = props.subtasks.filter(
-    (subt: ISubtask) => subt.isCompleted
-  );
+  const completedSubtasks = props.subtasks.filter((subt: ISubtask) => subt.isCompleted);
   const showModal = () => {
     dispatch(dataActions.setSelectedColumn(props.statusId));
     dispatch(dataActions.setSelectedTask(props.id));
@@ -30,7 +28,8 @@ const Task = (props: Props) => {
           {...draggableProps}
           {...dragHandleProps}
           onClick={showModal}
-          className={`task ${classes['task']}`}>
+          className={`task ${classes['task']}`}
+        >
           <h5 className="task-name">{props.title}</h5>
           <p className="task-subtasks">
             {completedSubtasks.length} of {props.subtasks.length} subtasks

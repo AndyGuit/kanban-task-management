@@ -7,7 +7,7 @@ import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import validate from '../../shared/functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
-import { ISubtask, ITask } from '../../types/dataTypes';
+import { ISubtask, ITask } from '../../shared/types/dataTypes';
 import { uiActions } from '../../store/slices/ui-slice';
 import { getSelectedTask } from '../../store/selectors/data-selectors';
 import InputsList from '../InputsList/InputsList';

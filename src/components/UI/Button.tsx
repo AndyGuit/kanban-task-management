@@ -1,4 +1,4 @@
-import { btnStyle } from '../../types/btnStylesTypes';
+import { btnStyle } from '../../shared/types/btnStylesTypes';
 import classes from './Button.module.scss';
 
 type Props = {
@@ -10,9 +10,7 @@ type Props = {
 };
 
 const Button = (props: Props) => {
-  let styles = `${classes.button} button-${props.btnStyle} ${
-    classes[`button-${props.btnStyle}`]
-  }`;
+  let styles = `${classes.button} button-${props.btnStyle} ${classes[`button-${props.btnStyle}`]}`;
 
   if (props.isActive && classes[`active-${props.btnStyle}`]) {
     // if we have active class for chosen button in classes module
@@ -24,10 +22,7 @@ const Button = (props: Props) => {
   }
 
   return (
-    <button
-      onClick={props.onClick}
-      type={props.type || 'button'}
-      className={styles}>
+    <button onClick={props.onClick} type={props.type || 'button'} className={styles}>
       {props.children}
     </button>
   );

@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllBoards } from '../../store/selectors/data-selectors';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
-import { IBoard } from '../../types/dataTypes';
-import { ModalContent } from '../../types/modalFormContentTypes';
+import { IBoard } from '../../shared/types/dataTypes';
+import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import { IconBoard } from '../Icons/Icons';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import Button from '../UI/Button';
@@ -28,10 +28,7 @@ const SidebarMobile = () => {
         <ul>
           {boards.map((board: IBoard) => (
             <li key={board.id}>
-              <Button
-                onClick={setActiveBoard.bind(null, board.id)}
-                btnStyle="select-board"
-                isActive={board.isActive}>
+              <Button onClick={setActiveBoard.bind(null, board.id)} btnStyle="select-board" isActive={board.isActive}>
                 <IconBoard /> {board.name}
               </Button>
             </li>

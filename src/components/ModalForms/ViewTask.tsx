@@ -4,7 +4,7 @@ import PopupWindow from '../PopupWindow/PopupWindow';
 import classes from './Form.module.scss';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
-import { ModalContent } from '../../types/modalFormContentTypes';
+import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import {
   getColumnsStatus,
   getCompletedSubtasksOnSelectedTask,

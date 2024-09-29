@@ -1,17 +1,13 @@
 import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  IconBoard,
-  IconHideSidebar,
-  IconShowSidebar,
-} from '../../components/Icons/Icons';
-import { IBoard } from '../../types/dataTypes';
+import { IconBoard, IconHideSidebar, IconShowSidebar } from '../../components/Icons/Icons';
+import { IBoard } from '../../shared/types/dataTypes';
 import ThemeToggler from '../../components/ThemeToggler/ThemeToggler';
 import Button from '../../components/UI/Button';
 import { uiActions } from '../../store/slices/ui-slice';
 import classes from './Sidebar.module.scss';
 import { dataActions } from '../../store/slices/data-slice';
-import { ModalContent } from '../../types/modalFormContentTypes';
+import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import { getIsHasSidebar } from '../../store/selectors/ui-selectors';
 import { getAllBoards } from '../../store/selectors/data-selectors';
 
@@ -28,9 +24,7 @@ const Sidebar = () => {
     dispatch(dataActions.setActiveBoard(boardId));
   };
 
-  const asideClasses = `sidebar ${classes['sidebar']} ${
-    hasSidebar ? '' : classes['hidden']
-  }`;
+  const asideClasses = `sidebar ${classes['sidebar']} ${hasSidebar ? '' : classes['hidden']}`;
 
   const handleAddBoard = () => {
     dispatch(uiActions.setModalContent(ModalContent.addNewBoard));
@@ -45,10 +39,7 @@ const Sidebar = () => {
           <ul className={classes['boards-list']}>
             {boards.map((board: IBoard) => (
               <li key={board.id}>
-                <Button
-                  onClick={setActiveBoard.bind(null, board.id)}
-                  btnStyle="select-board"
-                  isActive={board.isActive}>
+                <Button onClick={setActiveBoard.bind(null, board.id)} btnStyle="select-board" isActive={board.isActive}>
                   <IconBoard /> {board.name}
                 </Button>
               </li>
