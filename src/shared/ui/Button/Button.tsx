@@ -1,24 +1,24 @@
-import { btnStyle } from '../../types/btnStylesTypes';
 import classes from './Button.module.scss';
+import { ButtonStyle } from './buttonStyles';
 
-type Props = {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   isActive?: boolean;
   type?: 'submit' | 'reset' | 'button';
   onClick?: () => void;
-  btnStyle?: btnStyle;
-};
+  styleClass?: ButtonStyle;
+}
 
 const Button = (props: Props) => {
-  let styles = `${classes.button} button-${props.btnStyle} ${classes[`button-${props.btnStyle}`]}`;
+  let styles = `${classes.button} button-${props.styleClass} ${classes[`button-${props.styleClass}`]}`;
 
-  if (props.isActive && classes[`active-${props.btnStyle}`]) {
+  if (props.isActive && classes[`active-${props.styleClass}`]) {
     // if we have active class for chosen button in classes module
     // add class from there
-    styles += ` ${classes[`active-${props.btnStyle}`]}`;
-  } else if (props.isActive && !classes[`active-${props.btnStyle}`]) {
+    styles += ` ${classes[`active-${props.styleClass}`]}`;
+  } else if (props.isActive && !classes[`active-${props.styleClass}`]) {
     // else just add string 'active' to button type name
-    styles += ` active-${props.btnStyle}`;
+    styles += ` active-${props.styleClass}`;
   }
 
   return (

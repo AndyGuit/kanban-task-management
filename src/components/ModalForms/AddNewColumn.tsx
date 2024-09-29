@@ -10,6 +10,7 @@ import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
 import { getActiveBoardName, getColumns } from '../../store/selectors/data-selectors';
 import InputsList from '../InputsList/InputsList';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const AddNewColumn = () => {
   const dispatch = useDispatch();
@@ -69,10 +70,10 @@ const AddNewColumn = () => {
           removeInputHandler={removeColumnHandler}
         />
       </div>
-      <Button onClick={addColumnHandler} btnStyle="form-secondary">
+      <Button onClick={addColumnHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
         + Add New Column
       </Button>
-      <Button btnStyle="form-primary" type="submit">
+      <Button styleClass={ButtonStyle.FORM_PRIMARY} type="submit">
         Save Changes
       </Button>
     </form>

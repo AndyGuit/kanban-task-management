@@ -12,6 +12,7 @@ import Button from '../../shared/ui/Button/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
 import Select, { TOptionType } from '../Select/Select';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const AddNewTask = () => {
   const dispatch = useDispatch();
@@ -113,7 +114,7 @@ const AddNewTask = () => {
           removeInputHandler={(index) => removeSubtaskHandler(index)}
         />
       </div>
-      <Button onClick={addSubtaskHandler} btnStyle="form-secondary">
+      <Button onClick={addSubtaskHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
         + Add New Subtask
       </Button>
       <Select
@@ -122,7 +123,7 @@ const AddNewTask = () => {
         label="Status"
         options={columns.map((col) => ({ ...col, id: col.statusId }))}
       />
-      <Button btnStyle="form-primary" type="submit">
+      <Button styleClass={ButtonStyle.FORM_PRIMARY} type="submit">
         Create Task
       </Button>
     </form>

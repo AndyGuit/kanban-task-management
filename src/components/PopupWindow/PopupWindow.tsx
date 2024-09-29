@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { IconPopupDots } from '../Icons/Icons';
 import Button from '../../shared/ui/Button/Button';
 import classes from './PopupWindow.module.scss';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 type Props = {
   btnText: 'Board' | 'Task';
@@ -39,15 +40,15 @@ const PopupWindow: React.FC<Props> = (props) => {
 
   return (
     <div className={classes['popup-wrapper']}>
-      <Button onClick={togglePopup} btnStyle="popup">
+      <Button onClick={togglePopup} styleClass={ButtonStyle.POPUP}>
         <IconPopupDots />
       </Button>
       {isPopupShown && (
         <div className={`popup-window ${classes['popup-window']}`}>
-          <Button onClick={props.onClickEdit} btnStyle="text-primary">
+          <Button onClick={props.onClickEdit} styleClass={ButtonStyle.TEXT_PRIMARY}>
             Edit {props.btnText}
           </Button>
-          <Button onClick={props.onClickDelete} btnStyle="text-warning">
+          <Button onClick={props.onClickDelete} styleClass={ButtonStyle.TEXT_WARNING}>
             Delete {props.btnText}
           </Button>
         </div>

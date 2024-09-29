@@ -8,6 +8,7 @@ import { IColumn } from '../../shared/types/dataTypes';
 import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import classes from './Board.module.scss';
 import NoBoards from './NoBoards';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const Column = memo(ColumnComponent);
 
@@ -24,7 +25,7 @@ const Board = () => {
     <main className={`board ${classes['board']}`}>
       {activeBoard && activeBoard.columns.map((col: IColumn, index) => <Column key={col.id} index={index} {...col} />)}
       {activeBoard && (
-        <Button onClick={addNewColumnHandler} btnStyle="add-column">
+        <Button onClick={addNewColumnHandler} styleClass={ButtonStyle.ADD_COLUMN}>
           + New Column
         </Button>
       )}

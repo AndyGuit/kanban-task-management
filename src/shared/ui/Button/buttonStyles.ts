@@ -1,0 +1,17 @@
+export enum ButtonStyle {
+  ADD_TASK = 'add-task',
+  FORM_PRIMARY = 'form-primary',
+  FORM_SECONDARY = 'form-secondary',
+  FORM_WARNING = 'form-warning',
+  SELECT_BOARD = 'select-board',
+  ACTIVE_BOARD = 'active-board',
+  CREATE_BOARD = 'create-board',
+  HIDE_SIDEBAR = 'hide-sidebar',
+  TEXT_PRIMARY = 'text-primary',
+  TEXT_WARNING = 'text-warning',
+  ADD_COLUMN = 'add-column',
+  POPUP = 'popup',
+  SHOW_SIDEBAR = 'show-sidebar',
+  TOGGLE = 'toggle',
+  BOARDS_MOBILE = 'boards-mobile',
+}

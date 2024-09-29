@@ -6,6 +6,7 @@ import { ChevronDown } from '../../Icons/Icons';
 import PopupWindow from '../../PopupWindow/PopupWindow';
 import Button from '../../../shared/ui/Button/Button';
 import classes from './HeaderBoardInfo.module.scss';
+import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
 
 const HeaderBoardInfo = () => {
   const dispatch = useDispatch();
@@ -37,13 +38,13 @@ const HeaderBoardInfo = () => {
     <div className={classes['board-info']}>
       <div className={classes['board-name']}>
         <h2>{title}</h2>
-        <Button onClick={showSidebarModal} btnStyle="boards-mobile">
+        <Button onClick={showSidebarModal} styleClass={ButtonStyle.BOARDS_MOBILE}>
           <ChevronDown />
         </Button>
       </div>
       {activeBoard && (
         <div className={classes['board-controls']}>
-          <Button onClick={addNewTask} btnStyle="add-task">
+          <Button onClick={addNewTask} styleClass={ButtonStyle.ADD_TASK}>
             +<span> Add New Task</span>
           </Button>
           <PopupWindow onClickEdit={onEditBoard} onClickDelete={onDeleteBoard} btnText="Board" />

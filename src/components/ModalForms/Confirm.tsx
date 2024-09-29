@@ -6,6 +6,7 @@ import { uiActions } from '../../store/slices/ui-slice';
 import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import Button from '../../shared/ui/Button/Button';
 import classes from './Form.module.scss';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const Confirm = () => {
   const dispatch = useDispatch();
@@ -59,10 +60,10 @@ const Confirm = () => {
       <h3 className={classes['form-warning-text']}>Delete this {headerName}?</h3>
       {description}
       <div className={classes['form-confirm-buttons']}>
-        <Button onClick={onConfirm} btnStyle="form-warning">
+        <Button onClick={onConfirm} styleClass={ButtonStyle.FORM_WARNING}>
           Delete
         </Button>
-        <Button onClick={onCancel} btnStyle="form-secondary">
+        <Button onClick={onCancel} styleClass={ButtonStyle.FORM_SECONDARY}>
           Cancel
         </Button>
       </div>

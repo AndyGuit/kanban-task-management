@@ -10,6 +10,7 @@ import { dataActions } from '../../store/slices/data-slice';
 import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import { getIsHasSidebar } from '../../store/selectors/ui-selectors';
 import { getAllBoards } from '../../store/selectors/data-selectors';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -39,25 +40,29 @@ const Sidebar = () => {
           <ul className={classes['boards-list']}>
             {boards.map((board: IBoard) => (
               <li key={board.id}>
-                <Button onClick={setActiveBoard.bind(null, board.id)} btnStyle="select-board" isActive={board.isActive}>
+                <Button
+                  onClick={setActiveBoard.bind(null, board.id)}
+                  styleClass={ButtonStyle.SELECT_BOARD}
+                  isActive={board.isActive}
+                >
                   <IconBoard /> {board.name}
                 </Button>
               </li>
             ))}
-            <Button onClick={handleAddBoard} btnStyle="create-board">
+            <Button onClick={handleAddBoard} styleClass={ButtonStyle.CREATE_BOARD}>
               <IconBoard />+ Create New Board
             </Button>
           </ul>
         </nav>
         <div>
           <ThemeToggler />
-          <Button onClick={toggleAside} btnStyle="hide-sidebar">
+          <Button onClick={toggleAside} styleClass={ButtonStyle.HIDE_SIDEBAR}>
             <IconHideSidebar /> Hide Sidebar
           </Button>
         </div>
       </aside>
       {!hasSidebar && (
-        <Button onClick={toggleAside} btnStyle="show-sidebar">
+        <Button onClick={toggleAside} styleClass={ButtonStyle.SHOW_SIDEBAR}>
           <IconShowSidebar />
         </Button>
       )}

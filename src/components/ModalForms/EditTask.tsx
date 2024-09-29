@@ -12,6 +12,7 @@ import { uiActions } from '../../store/slices/ui-slice';
 import { getSelectedTask } from '../../store/selectors/data-selectors';
 import InputsList from '../InputsList/InputsList';
 import Select, { TOptionType } from '../Select/Select';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const EditTask = () => {
   const dispatch = useDispatch();
@@ -128,7 +129,7 @@ const EditTask = () => {
           removeInputHandler={(index) => removeSubtaskHandler(index)}
         />
       </div>
-      <Button onClick={addSubtaskHandler} btnStyle="form-secondary">
+      <Button onClick={addSubtaskHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
         + Add New Subtask
       </Button>
       <Select
@@ -137,7 +138,7 @@ const EditTask = () => {
         label="Status"
         options={columns.map((col) => ({ id: col.statusId, name: col.name }))}
       />
-      <Button btnStyle="form-primary" type="submit">
+      <Button styleClass={ButtonStyle.FORM_PRIMARY} type="submit">
         Save Changes
       </Button>
     </form>

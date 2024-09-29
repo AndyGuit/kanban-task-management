@@ -5,6 +5,7 @@ import { uiActions } from '../../store/slices/ui-slice';
 import { IconMoon, IconSun } from '../Icons/Icons';
 import Button from '../../shared/ui/Button/Button';
 import classes from './ThemeToggler.module.scss';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const ThemeToggler = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const ThemeToggler = () => {
   return (
     <div className={`theme-toggler ${classes['theme-toggler']}`}>
       <IconMoon />
-      <Button onClick={toggleTheme} btnStyle="toggle" isActive={!isDark}>
+      <Button onClick={toggleTheme} styleClass={ButtonStyle.TOGGLE} isActive={!isDark}>
         <span></span>
       </Button>
       <IconSun />

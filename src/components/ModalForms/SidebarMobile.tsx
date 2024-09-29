@@ -8,6 +8,7 @@ import { IconBoard } from '../Icons/Icons';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import Button from '../../shared/ui/Button/Button';
 import classes from './Form.module.scss';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const SidebarMobile = () => {
   const dispatch = useDispatch();
@@ -28,12 +29,16 @@ const SidebarMobile = () => {
         <ul>
           {boards.map((board: IBoard) => (
             <li key={board.id}>
-              <Button onClick={setActiveBoard.bind(null, board.id)} btnStyle="select-board" isActive={board.isActive}>
+              <Button
+                onClick={setActiveBoard.bind(null, board.id)}
+                styleClass={ButtonStyle.SELECT_BOARD}
+                isActive={board.isActive}
+              >
                 <IconBoard /> {board.name}
               </Button>
             </li>
           ))}
-          <Button onClick={handleAddBoard} btnStyle="create-board">
+          <Button onClick={handleAddBoard} styleClass={ButtonStyle.CREATE_BOARD}>
             <IconBoard />+ Create New Board
           </Button>
         </ul>

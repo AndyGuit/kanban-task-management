@@ -10,6 +10,7 @@ import InputsList from '../InputsList/InputsList';
 import Button from '../../shared/ui/Button/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
+import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
 
 const AddNewBoard = () => {
   const dispatch = useDispatch();
@@ -87,10 +88,10 @@ const AddNewBoard = () => {
           removeInputHandler={(index) => removeColumnHandler(index)}
         />
       </div>
-      <Button onClick={addColumnHandler} btnStyle="form-secondary">
+      <Button onClick={addColumnHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
         + Add New Column
       </Button>
-      <Button btnStyle="form-primary" type="submit">
+      <Button styleClass={ButtonStyle.FORM_PRIMARY} type="submit">
         Save Changes
       </Button>
     </form>
