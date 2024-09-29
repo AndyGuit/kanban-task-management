@@ -1,8 +1,7 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import useInput from '../../hooks/use-input';
-import SelectInput from '../SelectInput/SelectInput';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import classes from './Form.module.scss';
@@ -12,15 +11,14 @@ import { ISubtask, ITask } from '../../types/dataTypes';
 import { uiActions } from '../../store/slices/ui-slice';
 import { getSelectedTask } from '../../store/selectors/data-selectors';
 import InputsList from '../InputsList/InputsList';
+import Select, { TOptionType } from '../Select/Select';
 
 const EditTask = () => {
   const dispatch = useDispatch();
   const taskData = useSelector(getSelectedTask);
-  const selectedColumn = useSelector(
-    (state: RootState) => state.data.selectedColumn
-  );
+  const selectedColumn = useSelector((state: RootState) => state.data.selectedColumn);
   const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
-  const columns = activeBoard.columns.map(col => {
+  const columns = activeBoard.columns.map((col) => {
     return { name: col.name, statusId: col.id };
   });
 
@@ -41,9 +39,7 @@ const EditTask = () => {
     setSubtasksCopy(left.concat(right));
   };
 
-  const [subtasksCopy, setSubtasksCopy] = useState<ISubtask[]>(
-    taskData.subtasks.map(subt => ({ ...subt }))
-  );
+  const [subtasksCopy, setSubtasksCopy] = useState<ISubtask[]>(taskData.subtasks.map((subt) => ({ ...subt })));
 
   const subtaskChangeHandler = (value: string, index: number) => {
     subtasksCopy[index].title = value;
@@ -51,22 +47,17 @@ const EditTask = () => {
   };
 
   const addSubtaskHandler = () => {
-    setSubtasksCopy(state => [...state, { isCompleted: false, title: '' }]);
+    setSubtasksCopy((state) => [...state, { isCompleted: false, title: '' }]);
   };
 
-  const statusChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    statusInput.valueChangeHandler(e);
-
-    const selectedStatus = columns.find(
-      col => col.statusId === e.target.value
-    )!;
-    setNewStatus(selectedStatus);
+  const statusHandler = (option: TOptionType) => {
+    setNewStatus({ statusId: option.id, name: option.name });
   };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const subtasksHasValues = subtasksCopy.every(subt => subt.title !== '');
+    const subtasksHasValues = subtasksCopy.every((subt) => subt.title !== '');
     setSubtasksHasNames(subtasksHasValues);
 
     if (titleInput.isValid && subtasksHasValues) {
@@ -123,7 +114,7 @@ const EditTask = () => {
       <div className={classes['form-input']}>
         <label>Subtasks</label>
         <InputsList
-          listItems={subtasksCopy.map(subt => ({
+          listItems={subtasksCopy.map((subt) => ({
             name: subt.title,
             isDisabled: false,
             isRemovable: subtasksCopy.length > 1,
@@ -133,21 +124,18 @@ const EditTask = () => {
           setIsInputsNotEmpty={setSubtasksHasNames}
           isValidFunc={validate.notEmpty}
           blurInputHandler={() => setSubtasksCopy([...subtasksCopy])}
-          changeInputHandler={(value, index) =>
-            subtaskChangeHandler(value, index)
-          }
-          removeInputHandler={index => removeSubtaskHandler(index)}
+          changeInputHandler={(value, index) => subtaskChangeHandler(value, index)}
+          removeInputHandler={(index) => removeSubtaskHandler(index)}
         />
       </div>
       <Button onClick={addSubtaskHandler} btnStyle="form-secondary">
         + Add New Subtask
       </Button>
-      <SelectInput
+      <Select
         value={statusInput.value}
-        onChange={statusChangeHandler}
+        onSelect={statusHandler}
         label="Status"
-        disabled={false}
-        options={columns}
+        options={columns.map((col) => ({ id: col.statusId, name: col.name }))}
       />
       <Button btnStyle="form-primary" type="submit">
         Save Changes

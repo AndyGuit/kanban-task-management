@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Checkbox from '../Checkbox/Checkbox';
 import PopupWindow from '../PopupWindow/PopupWindow';
-import SelectInput from '../SelectInput/SelectInput';
 import classes from './Form.module.scss';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
@@ -12,6 +11,7 @@ import {
   getSelectedColumn,
   getSelectedTask,
 } from '../../store/selectors/data-selectors';
+import Select from '../Select/Select';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
@@ -39,10 +39,7 @@ const ViewTask = () => {
     <ul className={classes['subtasks-list']}>
       {selectedTask.subtasks.map((subtask, index) => (
         <li key={index}>
-          <Checkbox
-            onChange={changeSubtaskStatus.bind(null, index)}
-            {...subtask}
-          />
+          <Checkbox onChange={changeSubtaskStatus.bind(null, index)} {...subtask} />
         </li>
       ))}
     </ul>
@@ -52,11 +49,7 @@ const ViewTask = () => {
     <form className={`form ${classes.form}`}>
       <div className={classes['form-header']}>
         <h4>{selectedTask.title}</h4>
-        <PopupWindow
-          onClickEdit={editTaskHandler}
-          onClickDelete={deleteTaskHandler}
-          btnText="Task"
-        />
+        <PopupWindow onClickEdit={editTaskHandler} onClickDelete={deleteTaskHandler} btnText="Task" />
       </div>
       <p className={`form-description ${classes['form-description']}`}>
         {selectedTask.description || 'No Description'}
@@ -65,11 +58,11 @@ const ViewTask = () => {
         <h5>Subtasks {completedSubtasksString}</h5>
         {subtasksList}
       </div>
-      <SelectInput
+      <Select
         label="Current Status"
         disabled={true}
-        value={selectedColumn.id}
-        options={columns}
+        value={selectedColumn.name}
+        options={columns.map((col) => ({ id: col.statusId, name: col.name }))}
       />
     </form>
   );
