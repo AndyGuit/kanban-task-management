@@ -1,37 +1,33 @@
-import { ChangeEvent, Fragment } from 'react';
+import { ChangeEvent } from 'react';
 import useInput from '../../hooks/use-input';
 import { IconCross } from '../../../shared/ui/Icons/Icons';
 import Button from '../Button/Button';
 import classes from './Input.module.scss';
 
-type Props = {
-  type: 'text' | 'textarea';
+interface Props extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   isRemovable: boolean;
-  onBlur?: () => void;
-  onChange?: (val: string) => void;
+  onBlurHandler?: () => void;
+  onChangeHandler?: (val: string) => void;
   validateFn?: (val: string) => boolean;
-  value?: string;
-  id?: string;
-  disabled?: boolean;
   onRemove?: () => void;
-};
+}
 
 const InputWithValidation = (props: Props) => {
-  const validateFn = props.validateFn ?? (() => true);
-  const inputState = useInput(validateFn, props.value ?? '');
+  const { validateFn = () => true } = props;
+  const inputState = useInput(validateFn, props.value?.toString() ?? '');
 
   const inputClasses = `input ${classes.input} ${inputState.hasError ? 'invalid' : ''}`;
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     inputState.valueChangeHandler(e);
 
-    if (props.onChange) props.onChange(e.target.value);
+    props.onChangeHandler?.(e.target.value);
   };
 
   const blurHandler = () => {
     inputState.inputBlurHandler();
 
-    if (props.onBlur) props.onBlur();
+    props.onBlurHandler?.();
   };
 
   let content: React.ReactNode;
@@ -64,7 +60,7 @@ const InputWithValidation = (props: Props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <div className={classes['input-wrapper']}>
         {content}
         {props.isRemovable && (
@@ -74,7 +70,7 @@ const InputWithValidation = (props: Props) => {
         )}
       </div>
       {inputState.hasError && <p className="error-text">Invalid value</p>}
-    </Fragment>
+    </>
   );
 };
 

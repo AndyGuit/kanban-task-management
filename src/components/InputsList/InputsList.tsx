@@ -31,11 +31,11 @@ export default function InputsList(props: Props) {
         {listItems.map((item, index) => (
           <li key={`${item.name}${index}`}>
             <InputWithValidation
-              onBlur={() => {
+              onBlurHandler={() => {
                 setIsInputsNotEmpty(true);
                 blurInputHandler();
               }}
-              onChange={(value: string) => changeInputHandler(value, index)}
+              onChangeHandler={(value: string) => changeInputHandler(value, index)}
               disabled={item.isDisabled}
               validateFn={isValidFunc}
               value={item.name}

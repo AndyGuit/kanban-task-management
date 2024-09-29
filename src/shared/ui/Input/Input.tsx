@@ -3,17 +3,11 @@ import { IconCross } from '../../../shared/ui/Icons/Icons';
 import Button from '../Button/Button';
 import classes from './Input.module.scss';
 
-type Props = {
-  type: 'text' | 'textarea';
+interface Props extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   isRemovable: boolean;
   invalid?: boolean;
-  value?: string;
-  id?: string;
-  disabled?: boolean;
   onRemove?: () => void;
-  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onBlur?: () => void;
-};
+}
 
 const Input = (props: Props) => {
   const [value, setValue] = useState(props.value ?? '');
