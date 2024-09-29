@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import Checkbox from '../Checkbox/Checkbox';
+import Checkbox from '../../shared/ui/Checkbox/Checkbox';
 import PopupWindow from '../PopupWindow/PopupWindow';
 import classes from './Form.module.scss';
 import { dataActions } from '../../store/slices/data-slice';
@@ -39,7 +39,11 @@ const ViewTask = () => {
     <ul className={classes['subtasks-list']}>
       {selectedTask.subtasks.map((subtask, index) => (
         <li key={index}>
-          <Checkbox onChange={changeSubtaskStatus.bind(null, index)} {...subtask} />
+          <Checkbox
+            onChange={changeSubtaskStatus.bind(null, index)}
+            checked={subtask.isCompleted}
+            title={subtask.title}
+          />
         </li>
       ))}
     </ul>
