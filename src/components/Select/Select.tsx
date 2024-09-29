@@ -57,16 +57,20 @@ function Select(props: Props) {
       <div className={classes['select-label']}>{label}</div>
       <div
         onClick={handleToggleOptions}
-        className={classes['select-selected'] + ` ${disabled ? classes.disabled : ''}`}
+        className={'select-selected ' + classes['select-selected'] + ` ${disabled ? classes.disabled : ''}`}
       >
         <span>{selectedOption.name}</span>
         {!disabled && (
           <ChevronDown className={`${classes.chevron} ${isOptionsVisible ? classes.rotate : ''}`} stroke="#828FA3" />
         )}
       </div>
-      <div className={classes['select-options'] + ` ${isOptionsVisible ? classes.visible : ''}`}>
+      <div className={'select-options ' + classes['select-options'] + ` ${isOptionsVisible ? classes.visible : ''}`}>
         {options.map((option) => (
-          <div onClick={() => handleSelectOption(option)} key={option.id} className={classes['select-option']}>
+          <div
+            onClick={() => handleSelectOption(option)}
+            key={option.id}
+            className={'select-option ' + classes['select-option']}
+          >
             {option.name}
           </div>
         ))}

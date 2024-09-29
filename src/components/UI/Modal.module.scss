@@ -14,20 +14,11 @@
   left: 5%;
   width: 90%;
   max-height: 84vh;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   padding: 2rem calc(2rem - 10px) 2rem 2rem;
   border-radius: 5px;
   z-index: 30;
   animation: slide-down 0.3s ease-out forwards;
-
-  &::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-  }
 }
 
 @media (min-width: 768px) {

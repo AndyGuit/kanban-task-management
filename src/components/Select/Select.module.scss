@@ -15,7 +15,6 @@
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
-  border-color: #3e3f4e;
 }
 
 .select-selected,
@@ -32,8 +31,9 @@
   }
 }
 .select-options {
-  margin-bottom: 0.5em;
   width: 100%;
+  max-height: 15vh;
+  overflow-y: scroll;
   position: absolute;
   top: 100%;
   opacity: 0;
@@ -41,11 +41,17 @@
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
-  border-color: #3e3f4e;
-  box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.15);
   transform: translateY(-15px);
   transition: transform 0.2s ease, opacity 0.3s ease;
-  background: #2b2c37;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
 }
 
 .disabled {
@@ -68,17 +74,11 @@
 }
 
 .select-option {
-  background: #2b2c37;
-  transition: transform 150ms ease-in, background 150ms ease;
+  transition: background 150ms ease;
 
   &:hover {
-    background: #635fc7;
-    transform: scale(1.03);
-    box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.15);
-
     border-width: 1px;
     border-style: solid;
     border-radius: 4px;
-    border-color: #3e3f4e;
   }
 }
