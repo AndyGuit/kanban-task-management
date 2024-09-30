@@ -5,15 +5,14 @@ import Board from '../layout/Board/Board';
 import Container from '../shared/layout/Container';
 import Modal from '../shared/ui/Modal/Modal';
 import ModalContentForm from '../components/ModalForms/ModalContentForm';
-import { uiActions } from '../store/slices/ui-slice';
 import { useEffect } from 'react';
-import { getIsModal, getTheme } from '../store/selectors/ui-selectors';
+import { UIActions, UISelectors } from './providers/StoreProvider';
 
 const App = () => {
   const dispatch = useDispatch();
-  const theme = useSelector(getTheme);
-  const isModal = useSelector(getIsModal);
-  const closeModal = () => dispatch(uiActions.hideModal());
+  const theme = useSelector(UISelectors.getTheme);
+  const isModal = useSelector(UISelectors.getIsModal);
+  const closeModal = () => dispatch(UIActions.hideModal());
 
   useEffect(() => {
     document.body.className = theme;
