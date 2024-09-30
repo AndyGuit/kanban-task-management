@@ -5,8 +5,7 @@
   cursor: pointer;
   font: inherit;
   background-color: transparent;
-  transition: background 0.3s ease, color 0.3s ease, scale 0.3s ease,
-    transform 0.3s ease, opacity 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, scale 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 
   svg path {
     transition: fill 0.3s ease;
@@ -81,6 +80,7 @@
 .button-add-column {
   flex-shrink: 0;
   max-width: 280px;
+  margin-left: auto;
   height: calc(100% - 2em);
   margin-top: 1.5em;
   border-radius: 10px;
