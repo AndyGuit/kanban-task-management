@@ -8,7 +8,6 @@ import ModalContentForm from '../components/ModalForms/ModalContentForm';
 import { uiActions } from '../store/slices/ui-slice';
 import { useEffect } from 'react';
 import { getIsModal, getTheme } from '../store/selectors/ui-selectors';
-import { DragDropContextProvider } from './providers/DragDropContext';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,20 +20,18 @@ const App = () => {
   }, [theme]);
 
   return (
-    <DragDropContextProvider>
-      <div className="App">
-        <Header />
-        <Container>
-          <Sidebar />
-          <Board />
-        </Container>
-        {isModal && (
-          <Modal onClose={closeModal}>
-            <ModalContentForm />
-          </Modal>
-        )}
-      </div>
-    </DragDropContextProvider>
+    <div className="App">
+      <Header />
+      <Container>
+        <Sidebar />
+        <Board />
+      </Container>
+      {isModal && (
+        <Modal onClose={closeModal}>
+          <ModalContentForm />
+        </Modal>
+      )}
+    </div>
   );
 };
 
