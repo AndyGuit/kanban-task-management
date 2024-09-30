@@ -4,15 +4,30 @@ import { IColumn, ITask } from '../../shared/types/dataTypes';
 import { DraggableComponent } from '../../shared/lib/providers/DragNDrop';
 import { TaskCard } from '../../shared/ui/TaskCard/TaskCard';
 import classes from './Column.module.scss';
+import { dataActions } from '../../store/slices/data-slice';
+import { uiActions } from '../../store/slices/ui-slice';
+import { ModalContent } from '../../shared/types/modalFormContentTypes';
+import { useDispatch } from 'react-redux';
 
 interface Props extends IColumn {
   index: number;
 }
-
+/**
+ * @TODO
+ * Remove this component
+ */
 const Column = memo((props: Props) => {
+  const dispatch = useDispatch();
   const columnListClasses = `${classes['task-list']} ${
     props.tasks.length === 0 ? `task-list--empty ${classes['task-list--empty']}` : ''
   }`;
+
+  const ShowTaskDetails = (columnId: string, taskId: string) => {
+    dispatch(dataActions.setSelectedColumn(columnId));
+    dispatch(dataActions.setSelectedTask(taskId));
+    dispatch(uiActions.setModalContent(ModalContent.viewTask));
+    dispatch(uiActions.showModal());
+  };
 
   return (
     <div className={classes['column']}>
@@ -30,7 +45,11 @@ const Column = memo((props: Props) => {
               const completedSubtasks = subtasks.filter((subtask) => subtask.isCompleted).length;
               return (
                 <DraggableComponent key={task.id} draggableId={task.id} index={index}>
-                  <TaskCard title={task.title} subtitle={`${completedSubtasks} of ${subtasks.length} subtasks`} />
+                  <TaskCard
+                    onClick={() => ShowTaskDetails(task.statusId, task.id)}
+                    title={task.title}
+                    subtitle={`${completedSubtasks} of ${subtasks.length} subtasks`}
+                  />
                 </DraggableComponent>
               );
             })}

@@ -9,7 +9,10 @@ import classes from './Task.module.scss';
 interface Props extends ITask {
   index: number;
 }
-
+/**
+ * @TODO
+ * Remove this component
+ */
 const Task = (props: Props) => {
   const dispatch = useDispatch();
   const completedSubtasks = props.subtasks.filter((subt: ISubtask) => subt.isCompleted);
