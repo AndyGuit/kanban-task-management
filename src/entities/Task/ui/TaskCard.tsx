@@ -1,8 +1,8 @@
 import classes from './TaskCard.module.scss';
-import { ITask } from '../../../shared/types/dataTypes';
 
-interface Props extends ITask {
+interface Props {
   subtitle: string;
+  title: string;
   onClick?: () => void;
 }
 
