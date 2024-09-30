@@ -7,9 +7,8 @@ import Modal from '../shared/ui/Modal/Modal';
 import ModalContentForm from '../components/ModalForms/ModalContentForm';
 import { uiActions } from '../store/slices/ui-slice';
 import { useEffect } from 'react';
-import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { dataActions } from '../store/slices/data-slice';
 import { getIsModal, getTheme } from '../store/selectors/ui-selectors';
+import { DragDropContextProvider } from './providers/DragDropContext';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,39 +20,8 @@ const App = () => {
     document.body.className = theme;
   }, [theme]);
 
-  const onDragEnd = (result: DropResult) => {
-    const { destination, source, draggableId } = result;
-
-    // If user drops outside of the list
-    if (!destination) return;
-
-    // if task dropped on the same place
-    if (destination.droppableId === source.droppableId && destination.index === source.index) return;
-
-    // if card dropped on same column
-    if (destination.droppableId === source.droppableId) {
-      dispatch(dataActions.setSelectedColumn(destination.droppableId));
-      dispatch(dataActions.setSelectedTask(draggableId));
-      dispatch(dataActions.removeTask(draggableId));
-      dispatch(dataActions.insertSelectedTask(destination.index));
-      dispatch(dataActions.saveChanges('column'));
-    }
-
-    // if card dropped on other column
-    if (destination.droppableId !== source.droppableId) {
-      dispatch(dataActions.setSelectedColumn(source.droppableId));
-      dispatch(dataActions.setSelectedTask(draggableId));
-      dispatch(dataActions.removeTask(draggableId));
-      dispatch(dataActions.saveChanges('column'));
-      dispatch(dataActions.setSelectedColumn(destination.droppableId));
-      dispatch(dataActions.setNewTaskStatus());
-      dispatch(dataActions.insertSelectedTask(destination.index));
-      dispatch(dataActions.saveChanges('column'));
-    }
-  };
-
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContextProvider>
       <div className="App">
         <Header />
         <Container>
@@ -66,7 +34,7 @@ const App = () => {
           </Modal>
         )}
       </div>
-    </DragDropContext>
+    </DragDropContextProvider>
   );
 };
 
