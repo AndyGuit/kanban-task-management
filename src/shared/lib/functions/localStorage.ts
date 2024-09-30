@@ -3,6 +3,10 @@ export enum LocalStorageKeys {
   data = 'kanban/data',
 }
 
+/**
+ * @todo
+ * Remove unnecessary generic
+ */
 export const saveToLocalStorage = <T>(key: LocalStorageKeys, data: T) => {
   const json = JSON.stringify(data);
   localStorage.setItem(key, json);
