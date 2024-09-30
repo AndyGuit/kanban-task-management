@@ -1,8 +1,8 @@
 import { useState, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from '../../shared/functions/randomId';
-import validate from '../../shared/functions/validate';
-import useInput from '../../shared/hooks/use-input';
+import generateRandomId from '../../shared/lib/functions/randomId';
+import validate from '../../shared/lib/functions/validate';
+import useInput from '../../shared/lib/hooks/use-input';
 import { getColumnsStatus } from '../../store/selectors/data-selectors';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';

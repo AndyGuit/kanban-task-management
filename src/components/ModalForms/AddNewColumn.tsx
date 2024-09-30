@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from '../../shared/functions/randomId';
-import validate from '../../shared/functions/validate';
+import generateRandomId from '../../shared/lib/functions/randomId';
+import validate from '../../shared/lib/functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
 import { uiActions } from '../../store/slices/ui-slice';
 import Button from '../../shared/ui/Button/Button';

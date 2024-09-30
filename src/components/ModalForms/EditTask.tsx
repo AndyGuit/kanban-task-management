@@ -1,11 +1,11 @@
 import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
-import useInput from '../../shared/hooks/use-input';
+import useInput from '../../shared/lib/hooks/use-input';
 import Button from '../../shared/ui/Button/Button';
 import Input from '../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
-import validate from '../../shared/functions/validate';
+import validate from '../../shared/lib/functions/validate';
 import { dataActions } from '../../store/slices/data-slice';
 import { ISubtask, ITask } from '../../shared/types/dataTypes';
 import { uiActions } from '../../store/slices/ui-slice';
