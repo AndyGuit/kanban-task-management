@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 import { IColumn, ITask } from '../../shared/types/dataTypes';
-import { TaskCard } from '../../entities/Task';
 import { DraggableComponent } from '../../shared/lib/providers/DragNDrop';
+import { TaskCard } from '../../shared/ui/TaskCard/TaskCard';
 import classes from './Column.module.scss';
 
 interface Props extends IColumn {
