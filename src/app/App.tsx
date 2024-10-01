@@ -4,19 +4,13 @@ import Sidebar from '../layout/Sidebar/Sidebar';
 import Container from '../shared/layout/Container';
 import Modal from '../shared/ui/Modal/Modal';
 import ModalContentForm from '../components/ModalForms/ModalContentForm';
-import { useEffect } from 'react';
 import { UIActions, UISelectors } from './providers/StoreProvider';
 import { BoardDragDrop } from '../features/Board';
 
 const App = () => {
   const dispatch = useDispatch();
-  const theme = useSelector(UISelectors.getTheme);
   const isModal = useSelector(UISelectors.getIsModal);
   const closeModal = () => dispatch(UIActions.hideModal());
-
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
 
   return (
     <div className="App">

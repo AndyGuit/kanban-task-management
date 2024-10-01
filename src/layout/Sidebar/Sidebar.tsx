@@ -11,6 +11,7 @@ import { ModalContent } from '../../shared/types/modalFormContentTypes';
 import { getIsHasSidebar } from '../../store/selectors/ui-selectors';
 import { getAllBoards } from '../../store/selectors/data-selectors';
 import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
+import { ThemeToggle } from '../../features/ThemeToggle';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const Sidebar = () => {
           </ul>
         </nav>
         <div>
-          <ThemeToggler />
+          <ThemeToggle />
           <Button onClick={toggleAside} styleClass={ButtonStyle.HIDE_SIDEBAR}>
             <IconHideSidebar /> Hide Sidebar
           </Button>
