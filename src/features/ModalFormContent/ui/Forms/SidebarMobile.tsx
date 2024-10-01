@@ -1,25 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllBoards } from '../../../../store/selectors/data-selectors';
-import { dataActions } from '../../../../store/slices/data-slice';
-import { uiActions } from '../../../../store/slices/ui-slice';
 import { IBoard } from '../../../../shared/types/dataTypes';
 import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 import { IconBoard } from '../../../../shared/ui/Icons/Icons';
-import ThemeToggler from '../../../../components/ThemeToggler/ThemeToggler';
 import Button from '../../../../shared/ui/Button/Button';
-import classes from './Form.module.scss';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
+import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
+import classes from './Form.module.scss';
+import { ThemeToggle } from '../../../ThemeToggle';
 
 const SidebarMobile = () => {
   const dispatch = useDispatch();
-  const boards = useSelector(getAllBoards);
+  const boards = useSelector(DataSelectors.getAllBoards);
 
   const setActiveBoard = (boardId: string) => {
-    dispatch(dataActions.setActiveBoard(boardId));
-    dispatch(uiActions.hideModal());
+    dispatch(DataActions.setActiveBoard(boardId));
+    dispatch(UIActions.hideModal());
   };
   const handleAddBoard = () => {
-    dispatch(uiActions.setModalContent(ModalContent.addNewBoard));
+    dispatch(UIActions.setModalContent(ModalContent.addNewBoard));
   };
 
   return (
@@ -42,7 +40,7 @@ const SidebarMobile = () => {
             <IconBoard />+ Create New Board
           </Button>
         </ul>
-        <ThemeToggler />
+        <ThemeToggle />
       </nav>
     </form>
   );

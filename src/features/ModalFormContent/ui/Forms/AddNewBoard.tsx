@@ -3,14 +3,13 @@ import { useDispatch } from 'react-redux';
 import generateRandomId from '../../../../shared/lib/functions/randomId';
 import validate from '../../../../shared/lib/functions/validate';
 import useInput from '../../../../shared/lib/hooks/use-input';
-import { dataActions } from '../../../../store/slices/data-slice';
-import { uiActions } from '../../../../store/slices/ui-slice';
 import { IBoard, IColumn } from '../../../../shared/types/dataTypes';
-import InputsList from '../../../../components/InputsList/InputsList';
+import InputsList from '../../../InputsList/ui/InputsList';
 import Button from '../../../../shared/ui/Button/Button';
 import Input from '../../../../shared/ui/Input/Input';
-import classes from './Form.module.scss';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
+import { DataActions, UIActions } from '../../../../app/providers/StoreProvider';
+import classes from './Form.module.scss';
 
 const AddNewBoard = () => {
   const dispatch = useDispatch();
@@ -48,9 +47,9 @@ const AddNewBoard = () => {
         name: titleInput.value,
       };
 
-      dispatch(dataActions.addBoard(newBoard));
-      dispatch(dataActions.setActiveBoard(newBoard.id));
-      dispatch(uiActions.hideModal());
+      dispatch(DataActions.addBoard(newBoard));
+      dispatch(DataActions.setActiveBoard(newBoard.id));
+      dispatch(UIActions.hideModal());
     }
   };
 

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { UIActions } from '../../../../app/providers/StoreProvider';
+import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
 import { DraggableComponent } from '../../../../shared/lib/providers/DragNDrop';
 import { DroppableComponent } from '../../../../shared/lib/providers/DragNDrop/ui/DroppableComponent';
 import { IColumn } from '../../../../shared/types/dataTypes';
@@ -8,14 +8,11 @@ import Button from '../../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
 import { TaskCard } from '../../../../shared/ui/TaskCard/TaskCard';
 import { TasksColumn } from '../../../../shared/ui/TasksColumn/TasksColumn';
-import { getActiveBoard } from '../../../../store/selectors/data-selectors';
 import classes from './BoardDragDrop.module.scss';
-import { dataActions } from '../../../../store/slices/data-slice';
-import { uiActions } from '../../../../store/slices/ui-slice';
 
 export const BoardDragDrop = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector(getActiveBoard);
+  const activeBoard = useSelector(DataSelectors.getActiveBoard);
 
   const addNewColumnHandler = () => {
     dispatch(UIActions.setModalContent(ModalContent.addNewColumn));
@@ -23,10 +20,10 @@ export const BoardDragDrop = () => {
   };
 
   const viewTaskDetails = (columnId: string, taskId: string) => {
-    dispatch(dataActions.setSelectedColumn(columnId));
-    dispatch(dataActions.setSelectedTask(taskId));
-    dispatch(uiActions.setModalContent(ModalContent.viewTask));
-    dispatch(uiActions.showModal());
+    dispatch(DataActions.setSelectedColumn(columnId));
+    dispatch(DataActions.setSelectedTask(taskId));
+    dispatch(UIActions.setModalContent(ModalContent.viewTask));
+    dispatch(UIActions.showModal());
   };
 
   return (

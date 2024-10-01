@@ -1,23 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getActiveBoard, getSelectedTask } from '../../../../store/selectors/data-selectors';
-import { getModalFormContent } from '../../../../store/selectors/ui-selectors';
-import { dataActions } from '../../../../store/slices/data-slice';
-import { uiActions } from '../../../../store/slices/ui-slice';
 import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 import Button from '../../../../shared/ui/Button/Button';
 import classes from './Form.module.scss';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
+import { DataActions, DataSelectors, UIActions, UISelectors } from '../../../../app/providers/StoreProvider';
 
 const Confirm = () => {
   const dispatch = useDispatch();
-  const deletionType = useSelector(getModalFormContent);
-  const selectedTask = useSelector(getSelectedTask);
-  const selectedBoard = useSelector(getActiveBoard);
+  const deletionType = useSelector(UISelectors.getModalFormContent);
+  const selectedTask = useSelector(DataSelectors.getSelectedTask);
+  const selectedBoard = useSelector(DataSelectors.getActiveBoard);
 
   let headerName = '';
   let description: React.ReactNode;
 
-  const onCancel = () => dispatch(uiActions.hideModal());
+  const onCancel = () => dispatch(UIActions.hideModal());
   let onConfirm = () => {};
 
   switch (deletionType) {
@@ -31,9 +28,9 @@ const Confirm = () => {
       );
 
       onConfirm = () => {
-        dispatch(dataActions.removeTask(selectedTask.id));
-        dispatch(dataActions.saveChanges('column'));
-        dispatch(uiActions.hideModal());
+        dispatch(DataActions.removeTask(selectedTask.id));
+        dispatch(DataActions.saveChanges('column'));
+        dispatch(UIActions.hideModal());
       };
       break;
     case ModalContent.confirmDeleteBoard:
@@ -46,9 +43,9 @@ const Confirm = () => {
       );
 
       onConfirm = () => {
-        dispatch(dataActions.deleteActiveBoard());
-        dispatch(dataActions.saveChanges('board'));
-        dispatch(uiActions.hideModal());
+        dispatch(DataActions.deleteActiveBoard());
+        dispatch(DataActions.saveChanges('board'));
+        dispatch(UIActions.hideModal());
       };
       break;
     default:

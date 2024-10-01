@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import classes from './InputsList.module.scss';
-import InputWithValidation from '../../shared/ui/Input/InputWithValidation';
+import InputWithValidation from '../../../shared/ui/Input/InputWithValidation';
 
 type Props = {
   listItems: { name: string; isDisabled: boolean; isRemovable: boolean }[];

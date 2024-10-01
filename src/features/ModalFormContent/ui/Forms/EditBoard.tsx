@@ -3,20 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../../../shared/lib/functions/randomId';
 import validate from '../../../../shared/lib/functions/validate';
 import useInput from '../../../../shared/lib/hooks/use-input';
-import { dataActions } from '../../../../store/slices/data-slice';
-import { uiActions } from '../../../../store/slices/ui-slice';
 import { IBoard, IColumn } from '../../../../shared/types/dataTypes';
 import Button from '../../../../shared/ui/Button/Button';
 import Input from '../../../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
-import { getActiveBoard } from '../../../../store/selectors/data-selectors';
-import InputsList from '../../../../components/InputsList/InputsList';
+import InputsList from '../../../InputsList/ui/InputsList';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
+import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
 
 const EditBoard = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector(getActiveBoard);
+  const activeBoard = useSelector(DataSelectors.getActiveBoard);
 
   const boardNameInput = useInput(validate.notEmpty, activeBoard.name);
 
@@ -49,9 +47,9 @@ const EditBoard = () => {
         columns: newColumns,
       };
 
-      dispatch(dataActions.replaceActiveBoard(editedBoard));
-      dispatch(dataActions.saveChanges('board'));
-      dispatch(uiActions.hideModal());
+      dispatch(DataActions.replaceActiveBoard(editedBoard));
+      dispatch(DataActions.saveChanges('board'));
+      dispatch(UIActions.hideModal());
     }
   };
 

@@ -1,38 +1,32 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Checkbox from '../../../../shared/ui/Checkbox/Checkbox';
-import PopupWindow from '../../../../components/PopupWindow/PopupWindow';
 import classes from './Form.module.scss';
-import { dataActions } from '../../../../store/slices/data-slice';
-import { uiActions } from '../../../../store/slices/ui-slice';
 import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
-import {
-  getColumnsStatus,
-  getCompletedSubtasksOnSelectedTask,
-  getSelectedColumn,
-  getSelectedTask,
-} from '../../../../store/selectors/data-selectors';
+
 import Select from '../../../../shared/ui/Select/Select';
+import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
+import PopupWindow from '../../../../shared/ui/PopupWindow/PopupWindow';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
-  const selectedTask = useSelector(getSelectedTask);
-  const selectedColumn = useSelector(getSelectedColumn);
-  const completedSubtasks = useSelector(getCompletedSubtasksOnSelectedTask);
-  const columns = useSelector(getColumnsStatus);
+  const selectedTask = useSelector(DataSelectors.getSelectedTask);
+  const selectedColumn = useSelector(DataSelectors.getSelectedColumn);
+  const completedSubtasks = useSelector(DataSelectors.getCompletedSubtasksOnSelectedTask);
+  const columns = useSelector(DataSelectors.getColumnsStatus);
 
   const completedSubtasksString = `(${completedSubtasks.length} of ${selectedTask.subtasks.length})`;
 
   const changeSubtaskStatus = (index: number) => {
-    dispatch(dataActions.toggleSubtaskStatus(index));
-    dispatch(dataActions.saveChanges('task'));
+    dispatch(DataActions.toggleSubtaskStatus(index));
+    dispatch(DataActions.saveChanges('task'));
   };
 
   const editTaskHandler = () => {
-    dispatch(uiActions.setModalContent(ModalContent.editTask));
+    dispatch(UIActions.setModalContent(ModalContent.editTask));
   };
 
   const deleteTaskHandler = () => {
-    dispatch(uiActions.setModalContent(ModalContent.confirmDeleteTask));
+    dispatch(UIActions.setModalContent(ModalContent.confirmDeleteTask));
   };
 
   const subtasksList = (

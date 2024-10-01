@@ -3,20 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from '../../../../shared/lib/functions/randomId';
 import validate from '../../../../shared/lib/functions/validate';
 import useInput from '../../../../shared/lib/hooks/use-input';
-import { getColumnsStatus } from '../../../../store/selectors/data-selectors';
-import { dataActions } from '../../../../store/slices/data-slice';
-import { uiActions } from '../../../../store/slices/ui-slice';
 import { ISubtask, ITask } from '../../../../shared/types/dataTypes';
-import InputsList from '../../../../components/InputsList/InputsList';
+import InputsList from '../../../InputsList/ui/InputsList';
 import Button from '../../../../shared/ui/Button/Button';
 import Input from '../../../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import Select, { TOptionType } from '../../../../shared/ui/Select/Select';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
+import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
 
 const AddNewTask = () => {
   const dispatch = useDispatch();
-  const columns = useSelector(getColumnsStatus);
+  const columns = useSelector(DataSelectors.getColumnsStatus);
 
   const titleInput = useInput(validate.notEmpty);
   const descriptionInput = useInput(() => true);
@@ -63,10 +61,10 @@ const AddNewTask = () => {
         subtasks: subtasks,
       };
 
-      dispatch(dataActions.setSelectedColumn(selectedColumn.statusId));
-      dispatch(dataActions.addTask(newTask));
-      dispatch(dataActions.saveChanges('column'));
-      dispatch(uiActions.hideModal());
+      dispatch(DataActions.setSelectedColumn(selectedColumn.statusId));
+      dispatch(DataActions.addTask(newTask));
+      dispatch(DataActions.saveChanges('column'));
+      dispatch(UIActions.hideModal());
     }
   };
 

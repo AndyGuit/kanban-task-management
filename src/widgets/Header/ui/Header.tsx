@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppLogo } from '../../../shared/ui/AppLogo/AppLogo';
 import { ModalContent } from '../../../shared/types/modalFormContentTypes';
 import { DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
-import PopupWindow from '../../../components/PopupWindow/PopupWindow';
 import Button from '../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
 import { ChevronDown } from '../../../shared/ui/Icons/Icons';
+import PopupWindow from '../../../shared/ui/PopupWindow/PopupWindow';
 import classes from './Header.module.scss';
 
 export const Header = () => {

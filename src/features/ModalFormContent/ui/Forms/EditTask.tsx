@@ -1,24 +1,21 @@
 import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../../store';
 import useInput from '../../../../shared/lib/hooks/use-input';
 import Button from '../../../../shared/ui/Button/Button';
 import Input from '../../../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import validate from '../../../../shared/lib/functions/validate';
-import { dataActions } from '../../../../store/slices/data-slice';
 import { ISubtask, ITask } from '../../../../shared/types/dataTypes';
-import { uiActions } from '../../../../store/slices/ui-slice';
-import { getSelectedTask } from '../../../../store/selectors/data-selectors';
-import InputsList from '../../../../components/InputsList/InputsList';
+import InputsList from '../../../InputsList/ui/InputsList';
 import Select, { TOptionType } from '../../../../shared/ui/Select/Select';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
+import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
 
 const EditTask = () => {
   const dispatch = useDispatch();
-  const taskData = useSelector(getSelectedTask);
-  const selectedColumn = useSelector((state: RootState) => state.data.selectedColumn);
-  const activeBoard = useSelector((state: RootState) => state.data.activeBoard);
+  const taskData = useSelector(DataSelectors.getSelectedTask);
+  const selectedColumn = useSelector(DataSelectors.getSelectedColumn);
+  const activeBoard = useSelector(DataSelectors.getActiveBoard);
   const columns = activeBoard.columns.map((col) => {
     return { name: col.name, statusId: col.id };
   });
@@ -58,7 +55,7 @@ const EditTask = () => {
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const subtasksHasValues = subtasksCopy.every((subt) => subt.title !== '');
+    const subtasksHasValues = subtasksCopy.every((subtask) => subtask.title !== '');
     setSubtasksHasNames(subtasksHasValues);
 
     if (titleInput.isValid && subtasksHasValues) {
@@ -72,17 +69,17 @@ const EditTask = () => {
       };
 
       if (taskData.statusId !== newStatus.statusId) {
-        dispatch(dataActions.removeTask(taskData.id));
-        dispatch(dataActions.saveChanges('column'));
-        dispatch(dataActions.setSelectedColumn(newStatus.statusId));
-        dispatch(dataActions.addTask(editedTask));
-        dispatch(dataActions.setSelectedTask(editedTask.id));
-        dispatch(dataActions.saveChanges('task'));
+        dispatch(DataActions.removeTask(taskData.id));
+        dispatch(DataActions.saveChanges('column'));
+        dispatch(DataActions.setSelectedColumn(newStatus.statusId));
+        dispatch(DataActions.addTask(editedTask));
+        dispatch(DataActions.setSelectedTask(editedTask.id));
+        dispatch(DataActions.saveChanges('task'));
       } else {
-        dispatch(dataActions.replaceTask(editedTask));
-        dispatch(dataActions.saveChanges('column'));
+        dispatch(DataActions.replaceTask(editedTask));
+        dispatch(DataActions.saveChanges('column'));
       }
-      dispatch(uiActions.hideModal());
+      dispatch(UIActions.hideModal());
     }
   };
 

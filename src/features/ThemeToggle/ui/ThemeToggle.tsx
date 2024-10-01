@@ -3,17 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
 import { IconMoon, IconSun } from '../../../shared/ui/Icons/Icons';
-import { getTheme } from '../../../store/selectors/ui-selectors';
-import { uiActions } from '../../../store/slices/ui-slice';
 import classes from './ThemeToggle.module.scss';
+import { UIActions, UISelectors } from '../../../app/providers/StoreProvider';
 
 export const ThemeToggle = () => {
   const dispatch = useDispatch();
-  const theme = useSelector(getTheme);
+  const theme = useSelector(UISelectors.getTheme);
   const [isDark, setIsDark] = useState(theme === 'dark');
 
   const toggleTheme = () => {
-    dispatch(uiActions.toggleAppTheme());
+    dispatch(UIActions.toggleAppTheme());
     setIsDark((prevState) => !prevState);
   };
 
