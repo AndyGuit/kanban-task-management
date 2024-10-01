@@ -1,18 +1,18 @@
 import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store';
-import useInput from '../../shared/lib/hooks/use-input';
-import Button from '../../shared/ui/Button/Button';
-import Input from '../../shared/ui/Input/Input';
+import { RootState } from '../../../../store';
+import useInput from '../../../../shared/lib/hooks/use-input';
+import Button from '../../../../shared/ui/Button/Button';
+import Input from '../../../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
-import validate from '../../shared/lib/functions/validate';
-import { dataActions } from '../../store/slices/data-slice';
-import { ISubtask, ITask } from '../../shared/types/dataTypes';
-import { uiActions } from '../../store/slices/ui-slice';
-import { getSelectedTask } from '../../store/selectors/data-selectors';
-import InputsList from '../InputsList/InputsList';
-import Select, { TOptionType } from '../../shared/ui/Select/Select';
-import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
+import validate from '../../../../shared/lib/functions/validate';
+import { dataActions } from '../../../../store/slices/data-slice';
+import { ISubtask, ITask } from '../../../../shared/types/dataTypes';
+import { uiActions } from '../../../../store/slices/ui-slice';
+import { getSelectedTask } from '../../../../store/selectors/data-selectors';
+import InputsList from '../../../../components/InputsList/InputsList';
+import Select, { TOptionType } from '../../../../shared/ui/Select/Select';
+import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
 
 const EditTask = () => {
   const dispatch = useDispatch();

@@ -1,23 +1,27 @@
 import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { getModalFormContent } from '../../store/selectors/ui-selectors';
-import { ModalContent } from '../../shared/types/modalFormContentTypes';
-const AddNewBoard = lazy(() => import('./AddNewBoard'));
-const AddNewColumn = lazy(() => import('./AddNewColumn'));
-const AddNewTask = lazy(() => import('./AddNewTask'));
-const Confirm = lazy(() => import('./Confirm'));
-const EditBoard = lazy(() => import('./EditBoard'));
-const EditTask = lazy(() => import('./EditTask'));
-const SidebarMobile = lazy(() => import('./SidebarMobile'));
-const ViewTask = lazy(() => import('./ViewTask'));
+import { ModalContent } from '../../../shared/types/modalFormContentTypes';
+import { getModalFormContent } from '../../../store/selectors/ui-selectors';
+
+const AddNewBoard = lazy(() => import('./Forms/AddNewBoard'));
+const AddNewColumn = lazy(() => import('./Forms/AddNewColumn'));
+const AddNewTask = lazy(() => import('./Forms/AddNewTask'));
+const Confirm = lazy(() => import('./Forms/Confirm'));
+const EditBoard = lazy(() => import('./Forms/EditBoard'));
+const EditTask = lazy(() => import('./Forms/EditTask'));
+const SidebarMobile = lazy(() => import('./Forms/SidebarMobile'));
+const ViewTask = lazy(() => import('./Forms/ViewTask'));
+
+/**
+ * @description
+ * The goal of this component
+ * is to simply return the content for modal
+ * based on 'modal.formContent' value in global state.
+ * We set this global state from different parts of UI
+ * */
 
 const ModalContentForm = () => {
   const contentType = useSelector(getModalFormContent);
-
-  // The goal of this component
-  // is to simply return the content for modal
-  // based on 'modal.formContent' value in global state.
-  // We set this global state from different parts of UI
 
   let content: React.ReactNode = 'No Modal Content were added';
 
@@ -70,5 +74,4 @@ const ModalContentForm = () => {
 
   return <Suspense fallback="Loading...">{content}</Suspense>;
 };
-
 export default ModalContentForm;

@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getActiveBoard, getSelectedTask } from '../../store/selectors/data-selectors';
-import { getModalFormContent } from '../../store/selectors/ui-selectors';
-import { dataActions } from '../../store/slices/data-slice';
-import { uiActions } from '../../store/slices/ui-slice';
-import { ModalContent } from '../../shared/types/modalFormContentTypes';
-import Button from '../../shared/ui/Button/Button';
+import { getActiveBoard, getSelectedTask } from '../../../../store/selectors/data-selectors';
+import { getModalFormContent } from '../../../../store/selectors/ui-selectors';
+import { dataActions } from '../../../../store/slices/data-slice';
+import { uiActions } from '../../../../store/slices/ui-slice';
+import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
+import Button from '../../../../shared/ui/Button/Button';
 import classes from './Form.module.scss';
-import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
+import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
 
 const Confirm = () => {
   const dispatch = useDispatch();

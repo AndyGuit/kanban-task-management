@@ -1,17 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
-import Checkbox from '../../shared/ui/Checkbox/Checkbox';
-import PopupWindow from '../PopupWindow/PopupWindow';
+import Checkbox from '../../../../shared/ui/Checkbox/Checkbox';
+import PopupWindow from '../../../../components/PopupWindow/PopupWindow';
 import classes from './Form.module.scss';
-import { dataActions } from '../../store/slices/data-slice';
-import { uiActions } from '../../store/slices/ui-slice';
-import { ModalContent } from '../../shared/types/modalFormContentTypes';
+import { dataActions } from '../../../../store/slices/data-slice';
+import { uiActions } from '../../../../store/slices/ui-slice';
+import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 import {
   getColumnsStatus,
   getCompletedSubtasksOnSelectedTask,
   getSelectedColumn,
   getSelectedTask,
-} from '../../store/selectors/data-selectors';
-import Select from '../../shared/ui/Select/Select';
+} from '../../../../store/selectors/data-selectors';
+import Select from '../../../../shared/ui/Select/Select';
 
 const ViewTask = () => {
   const dispatch = useDispatch();

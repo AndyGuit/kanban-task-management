@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllBoards } from '../../store/selectors/data-selectors';
-import { dataActions } from '../../store/slices/data-slice';
-import { uiActions } from '../../store/slices/ui-slice';
-import { IBoard } from '../../shared/types/dataTypes';
-import { ModalContent } from '../../shared/types/modalFormContentTypes';
-import { IconBoard } from '../../shared/ui/Icons/Icons';
-import ThemeToggler from '../ThemeToggler/ThemeToggler';
-import Button from '../../shared/ui/Button/Button';
+import { getAllBoards } from '../../../../store/selectors/data-selectors';
+import { dataActions } from '../../../../store/slices/data-slice';
+import { uiActions } from '../../../../store/slices/ui-slice';
+import { IBoard } from '../../../../shared/types/dataTypes';
+import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
+import { IconBoard } from '../../../../shared/ui/Icons/Icons';
+import ThemeToggler from '../../../../components/ThemeToggler/ThemeToggler';
+import Button from '../../../../shared/ui/Button/Button';
 import classes from './Form.module.scss';
-import { ButtonStyle } from '../../shared/ui/Button/buttonStyles';
+import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
 
 const SidebarMobile = () => {
   const dispatch = useDispatch();

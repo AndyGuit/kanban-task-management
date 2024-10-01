@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import Header from '../layout/Header/Header';
 import { Header } from '../widgets/Header';
 import Container from '../shared/layout/Container';
 import Modal from '../shared/ui/Modal/Modal';
-import ModalContentForm from '../components/ModalForms/ModalContentForm';
 import { UIActions, UISelectors } from './providers/StoreProvider';
 import { BoardDragDrop } from '../features/Board';
 import { Sidebar } from '../widgets/Sidebar';
+import ModalContentForm from '../features/ModalFormContent/ui/ModalFormContent';
 
 const App = () => {
   const dispatch = useDispatch();
