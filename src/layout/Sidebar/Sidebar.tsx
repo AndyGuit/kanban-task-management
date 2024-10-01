@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IconBoard, IconHideSidebar, IconShowSidebar } from '../../shared/ui/Icons/Icons';
 import { IBoard } from '../../shared/types/dataTypes';
-import ThemeToggler from '../../components/ThemeToggler/ThemeToggler';
 import Button from '../../shared/ui/Button/Button';
 import { uiActions } from '../../store/slices/ui-slice';
 import classes from './Sidebar.module.scss';
