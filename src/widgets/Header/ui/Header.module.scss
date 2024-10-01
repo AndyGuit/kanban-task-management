@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  height: 96px;
+
+  @media (max-width: 768px) or (max-height: 600px) {
+    height: 80px;
+  }
+}
