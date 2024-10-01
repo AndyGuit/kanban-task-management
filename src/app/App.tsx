@@ -7,6 +7,7 @@ import Modal from '../shared/ui/Modal/Modal';
 import ModalContentForm from '../components/ModalForms/ModalContentForm';
 import { useEffect } from 'react';
 import { UIActions, UISelectors } from './providers/StoreProvider';
+import { BoardDragDrop } from '../features/Board/ui/BoardDragDrop/BoardDragDrop';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const App = () => {
       <Header />
       <Container>
         <Sidebar />
-        <Board />
+        <BoardDragDrop />
       </Container>
       {isModal && (
         <Modal onClose={closeModal}>
