@@ -6,7 +6,7 @@ import Modal from '../shared/ui/Modal/Modal';
 import ModalContentForm from '../components/ModalForms/ModalContentForm';
 import { useEffect } from 'react';
 import { UIActions, UISelectors } from './providers/StoreProvider';
-import { BoardDragDrop } from '../features/Board/ui/BoardDragDrop/BoardDragDrop';
+import { BoardDragDrop } from '../features/Board';
 
 const App = () => {
   const dispatch = useDispatch();
