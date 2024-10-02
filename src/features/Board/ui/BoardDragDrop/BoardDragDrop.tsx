@@ -54,7 +54,10 @@ export const BoardDragDrop = () => {
         );
       })}
       {activeBoard && (
-        <Button onClick={addNewColumnHandler} styleClass={ButtonStyle.ADD_COLUMN}>
+        <Button
+          onClick={addNewColumnHandler}
+          styleClass={activeBoard.columns.length > 0 ? ButtonStyle.ADD_COLUMN : ButtonStyle.ADD_COLUMN_EMPTY_BOARD}
+        >
           + New Column
         </Button>
       )}

@@ -77,10 +77,10 @@
   }
 }
 
-.button-add-column {
+.button-add-column,
+.button-add-column-empty-board {
   flex-shrink: 0;
   max-width: 280px;
-  margin-left: auto;
   height: calc(100% - 2em);
   margin-top: 1.5em;
   border-radius: 10px;
@@ -90,6 +90,10 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.button-add-column {
+  margin-left: auto;
 }
 
 .button-popup {
