@@ -12,6 +12,8 @@ export const Popover = (props: Props) => {
   const { children, trigger, direction } = props;
   const [isContentVisible, setIsContentVisible] = useState(false);
 
+  const contentClasses = `popover-content ${classes['popover-content']} ${classes[direction]}`;
+
   const toggleContent = () => {
     setIsContentVisible((prevState) => !prevState);
   };
@@ -42,7 +44,7 @@ export const Popover = (props: Props) => {
       <div onClick={toggleContent} className={classes.trigger}>
         {trigger}
       </div>
-      {isContentVisible && <div className={`${classes.content} ${classes[direction]}`}>{children}</div>}
+      {isContentVisible && <div className={contentClasses}>{children}</div>}
     </div>
   );
 };

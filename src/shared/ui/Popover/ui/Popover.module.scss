@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 
-.content {
+.popover-content {
   position: absolute;
   z-index: 1;
   display: flex;
@@ -17,7 +17,6 @@
   padding: 1em;
   border-radius: 8px;
   font-weight: 400;
-  background-color: #20212c;
   animation: fadeIn 0.3s ease;
 }
 
