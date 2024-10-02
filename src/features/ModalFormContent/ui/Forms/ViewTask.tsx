@@ -5,7 +5,10 @@ import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 
 import Select from '../../../../shared/ui/Select/Select';
 import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
-import PopupWindow from '../../../../shared/ui/PopupWindow/PopupWindow';
+import Button from '../../../../shared/ui/Button/Button';
+import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
+import { IconPopupDots } from '../../../../shared/ui/Icons/Icons';
+import { Popover, PopoverContentPosition } from '../../../../shared/ui/Popover';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
@@ -47,7 +50,21 @@ const ViewTask = () => {
     <form className={`form ${classes.form}`}>
       <div className={classes['form-header']}>
         <h4>{selectedTask.title}</h4>
-        <PopupWindow onClickEdit={editTaskHandler} onClickDelete={deleteTaskHandler} btnText="Task" />
+        <Popover
+          direction={PopoverContentPosition.BOTTOM_LEFT}
+          trigger={
+            <Button styleClass={ButtonStyle.POPUP}>
+              <IconPopupDots />
+            </Button>
+          }
+        >
+          <Button onClick={editTaskHandler} styleClass={ButtonStyle.TEXT_PRIMARY}>
+            Edit Task
+          </Button>
+          <Button onClick={deleteTaskHandler} styleClass={ButtonStyle.TEXT_WARNING}>
+            Delete Task
+          </Button>
+        </Popover>
       </div>
       <p className={`form-description ${classes['form-description']}`}>
         {selectedTask.description || 'No Description'}
