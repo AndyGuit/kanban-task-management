@@ -1,14 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Checkbox from '../../../../shared/ui/Checkbox/Checkbox';
 import classes from './Form.module.scss';
-import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 
 import Select from '../../../../shared/ui/Select/Select';
-import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
-import Button from '../../../../shared/ui/Button/Button';
-import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
-import { IconPopupDots } from '../../../../shared/ui/Icons/Icons';
-import { Popover, PopoverContentPosition } from '../../../../shared/ui/Popover';
+import { DataActions, DataSelectors } from '../../../../app/providers/StoreProvider';
+import { PopupEditTask } from '../../../Popup';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
@@ -22,14 +18,6 @@ const ViewTask = () => {
   const changeSubtaskStatus = (index: number) => {
     dispatch(DataActions.toggleSubtaskStatus(index));
     dispatch(DataActions.saveChanges('task'));
-  };
-
-  const editTaskHandler = () => {
-    dispatch(UIActions.setModalContent(ModalContent.editTask));
-  };
-
-  const deleteTaskHandler = () => {
-    dispatch(UIActions.setModalContent(ModalContent.confirmDeleteTask));
   };
 
   const subtasksList = (
@@ -50,21 +38,7 @@ const ViewTask = () => {
     <form className={`form ${classes.form}`}>
       <div className={classes['form-header']}>
         <h4>{selectedTask.title}</h4>
-        <Popover
-          direction={PopoverContentPosition.BOTTOM_LEFT}
-          trigger={
-            <Button styleClass={ButtonStyle.POPUP}>
-              <IconPopupDots />
-            </Button>
-          }
-        >
-          <Button onClick={editTaskHandler} styleClass={ButtonStyle.TEXT_PRIMARY}>
-            Edit Task
-          </Button>
-          <Button onClick={deleteTaskHandler} styleClass={ButtonStyle.TEXT_WARNING}>
-            Delete Task
-          </Button>
-        </Popover>
+        <PopupEditTask />
       </div>
       <p className={`form-description ${classes['form-description']}`}>
         {selectedTask.description || 'No Description'}

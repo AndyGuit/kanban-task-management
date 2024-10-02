@@ -5,11 +5,11 @@ import { PopoverContentPosition } from '../constants/PopoverContentPosition';
 interface Props {
   trigger: React.ReactNode;
   children: React.ReactNode;
-  direction: PopoverContentPosition;
+  direction?: PopoverContentPosition;
 }
 
 export const Popover = (props: Props) => {
-  const { children, trigger, direction } = props;
+  const { children, trigger, direction = PopoverContentPosition.BOTTOM_LEFT } = props;
   const [isContentVisible, setIsContentVisible] = useState(false);
 
   const contentClasses = `popover-content ${classes['popover-content']} ${classes[direction]}`;
