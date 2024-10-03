@@ -6,7 +6,7 @@ import {
 } from '../../../../shared/lib/functions/localStorage';
 import { IBoard, ITask, IColumn } from '../../../../shared/types/dataTypes';
 
-const storedBoards = loadFromLocalStorage<IBoard[]>(LocalStorageKeys.data);
+const storedBoards = loadFromLocalStorage(LocalStorageKeys.boards);
 
 const initialState = {
   boards: storedBoards,
@@ -29,7 +29,7 @@ const dataSlice = createSlice({
         }
       });
 
-      saveToLocalStorage<IBoard[]>(LocalStorageKeys.data, state.boards);
+      saveToLocalStorage(LocalStorageKeys.boards, state.boards);
     },
 
     setSelectedTask: (state, action: PayloadAction<string>) => {
@@ -122,7 +122,7 @@ const dataSlice = createSlice({
       const boardIndex = state.boards.findIndex((board) => board.id === state.activeBoard.id);
       state.boards[boardIndex] = state.activeBoard;
 
-      saveToLocalStorage(LocalStorageKeys.data, state.boards);
+      saveToLocalStorage(LocalStorageKeys.boards, state.boards);
     },
   },
 });

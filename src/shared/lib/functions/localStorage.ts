@@ -1,18 +1,30 @@
+import { UIStateSchema, DataSchema } from '../../../app/providers/StoreProvider/types/StateSchema';
+
 export enum LocalStorageKeys {
   UI = 'kanban/ui',
-  data = 'kanban/data',
+  boards = 'kanban/boards',
 }
-
 /**
  * @todo
- * Remove unnecessary generic
+ * Refactor: use LocalStorageKeys as keys to interface
  */
-export const saveToLocalStorage = <T>(key: LocalStorageKeys, data: T) => {
+interface LocalStorageKeysMap {
+  'kanban/ui': UIStateSchema;
+  'kanban/boards': DataSchema['boards'];
+}
+
+export const saveToLocalStorage = <K extends keyof LocalStorageKeysMap>(key: K, data: LocalStorageKeysMap[K]) => {
   const json = JSON.stringify(data);
   localStorage.setItem(key, json);
 };
 
-export const loadFromLocalStorage = <T>(key: LocalStorageKeys) => {
-  const data = JSON.parse(localStorage.getItem(key) || '') as T;
-  return data;
+// export const loadFromLocalStorage = <T>(key: LocalStorageKeys) => {
+//   const data = JSON.parse(localStorage.getItem(key) || '') as T;
+//   return data;
+// };
+
+export const loadFromLocalStorage = <K extends keyof LocalStorageKeysMap>(key: K): LocalStorageKeysMap[K] => {
+  return JSON.parse(localStorage.getItem(key)!) as LocalStorageKeysMap[K];
 };
+
+// const uI = lsFunc(LocalStorageKeys.data);
