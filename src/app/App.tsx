@@ -1,17 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { Header } from '../widgets/Header';
 import Container from '../shared/layout/Container';
-import Modal from '../shared/ui/Modal/Modal';
-import { UIActions, UISelectors } from './providers/StoreProvider';
 import { BoardDragDrop } from '../features/Board';
 import { Sidebar } from '../widgets/Sidebar';
-import ModalContentForm from '../features/ModalFormContent/ui/ModalFormContent';
+import { ModalWithForms } from '../widgets/ModalWithForms';
 
 const App = () => {
-  const dispatch = useDispatch();
-  const isModal = useSelector(UISelectors.getIsModal);
-  const closeModal = () => dispatch(UIActions.hideModal());
-
   return (
     <div className="App">
       <Header />
@@ -19,11 +12,7 @@ const App = () => {
         <Sidebar />
         <BoardDragDrop />
       </Container>
-      {isModal && (
-        <Modal onClose={closeModal}>
-          <ModalContentForm />
-        </Modal>
-      )}
+      <ModalWithForms />
     </div>
   );
 };

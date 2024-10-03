@@ -18,13 +18,6 @@ export const saveToLocalStorage = <K extends keyof LocalStorageKeysMap>(key: K, 
   localStorage.setItem(key, json);
 };
 
-// export const loadFromLocalStorage = <T>(key: LocalStorageKeys) => {
-//   const data = JSON.parse(localStorage.getItem(key) || '') as T;
-//   return data;
-// };
-
 export const loadFromLocalStorage = <K extends keyof LocalStorageKeysMap>(key: K): LocalStorageKeysMap[K] => {
   return JSON.parse(localStorage.getItem(key)!) as LocalStorageKeysMap[K];
 };
-
-// const uI = lsFunc(LocalStorageKeys.data);
