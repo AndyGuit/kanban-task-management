@@ -6,12 +6,15 @@ import { useDispatch } from 'react-redux';
 import { DataActions, UIActions } from '../../../app/providers/StoreProvider';
 import { ModalContent } from '../../../shared/types/modalFormContentTypes';
 
-interface TaskDraggableProps extends ITask {
-  taskIndex: number;
+interface TaskDraggableProps {
+  draggableIndex: number;
+  task: ITask;
 }
 
 export const TaskDraggable = (props: TaskDraggableProps) => {
-  const { subtasks, taskIndex, title, id, statusId } = props;
+  const { draggableIndex, task } = props;
+  const { title, id, statusId, subtasks } = task;
+
   const dispatch = useDispatch();
 
   const completedSubtasks = useMemo(() => subtasks.filter((subtask) => subtask.isCompleted).length, [subtasks]);
@@ -24,7 +27,7 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
   };
 
   return (
-    <DraggableComponent key={id} draggableId={id} index={taskIndex}>
+    <DraggableComponent key={id} draggableId={id} index={draggableIndex}>
       <TaskCard
         onClick={() => viewTaskDetails(statusId, id)}
         title={title}

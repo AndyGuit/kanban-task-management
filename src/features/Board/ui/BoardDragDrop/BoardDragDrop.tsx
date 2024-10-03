@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
-import { DroppableComponent } from '../../../../shared/lib/providers/DragNDrop/ui/DroppableComponent';
 import { IColumn } from '../../../../shared/types/dataTypes';
 import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 import Button from '../../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
-import { TasksColumn } from '../../../../shared/ui/TasksColumn/TasksColumn';
 import classes from './BoardDragDrop.module.scss';
 import { TaskDraggable } from '../../../../entities/Task';
+import { ColumnDroppable } from '../../../../entities/Column';
 
 export const BoardDragDrop = () => {
   const dispatch = useDispatch();
@@ -20,20 +19,13 @@ export const BoardDragDrop = () => {
 
   return (
     <main className={`board ${classes['board']}`}>
-      {activeBoard.columns.map((column: IColumn, columnIndex) => {
-        const { tasks } = column;
-        const columnTitle = `${column.name}(${tasks.length})`;
-
-        return (
-          <DroppableComponent key={column.id} droppableId={column.id}>
-            <TasksColumn title={columnTitle} isEmpty={tasks.length === 0} dotNumber={columnIndex % 6}>
-              {tasks.map((task, taskIndex) => (
-                <TaskDraggable {...task} taskIndex={taskIndex} />
-              ))}
-            </TasksColumn>
-          </DroppableComponent>
-        );
-      })}
+      {activeBoard.columns.map((column: IColumn, columnIndex) => (
+        <ColumnDroppable column={column} index={columnIndex} key={column.id}>
+          {column.tasks.map((task, taskIndex) => (
+            <TaskDraggable task={task} draggableIndex={taskIndex} />
+          ))}
+        </ColumnDroppable>
+      ))}
       {activeBoard && (
         <Button
           onClick={addNewColumnHandler}
