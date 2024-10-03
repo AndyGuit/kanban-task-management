@@ -7,6 +7,10 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   styleClass?: ButtonStyle;
 }
 
+// type ButtonProps = React.ComponentProps<'button'> & { isActive?: boolean, styleClass?: ButtonStyle };
+// type ButtonProps = React.ComponentPropsWithRef<'button'> & { isActive?: boolean, styleClass?: ButtonStyle };
+// type ButtonProps = React.ComponentPropsWithoutRef<'button'> & { isActive?: boolean, styleClass?: ButtonStyle };
+
 const Button = (props: Props) => {
   let styles = `${classes.button} button-${props.styleClass} ${classes[`button-${props.styleClass}`]}`;
 

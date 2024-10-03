@@ -5,6 +5,10 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   title: string;
 }
 
+// type CheckboxProps = React.ComponentProps<'input'> & { title: string };
+// type CheckboxProps = React.ComponentPropsWithRef<'input'> & { title: string };
+// type CheckboxProps = React.ComponentPropsWithoutRef<'input'> & { title: string };
+
 const Checkbox = (props: Props) => {
   const { onChange, checked, title } = props;
   const [completed, setIsCompleted] = useState(checked);
