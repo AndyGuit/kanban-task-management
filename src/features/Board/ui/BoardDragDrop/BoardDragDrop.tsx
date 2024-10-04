@@ -4,10 +4,10 @@ import { IColumn } from '../../../../shared/types/dataTypes';
 import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 import Button from '../../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
-import classes from './BoardDragDrop.module.scss';
 import { TaskDraggable } from '../../../../entities/Task';
 import { ColumnDroppable } from '../../../../entities/Column';
 import { BoardEmpty } from '../BoardEmpty/BoardEmpty';
+import classes from './BoardDragDrop.module.scss';
 
 export const BoardDragDrop = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,11 @@ export const BoardDragDrop = () => {
   };
 
   if (!activeBoard) {
-    return <BoardEmpty />;
+    return (
+      <main className={`board ${classes['board']}`}>
+        <BoardEmpty />
+      </main>
+    );
   }
 
   return (
@@ -31,14 +35,12 @@ export const BoardDragDrop = () => {
           ))}
         </ColumnDroppable>
       ))}
-      {activeBoard && (
-        <Button
-          onClick={addNewColumnHandler}
-          styleClass={activeBoard.columns.length > 0 ? ButtonStyle.ADD_COLUMN : ButtonStyle.ADD_COLUMN_EMPTY_BOARD}
-        >
-          + New Column
-        </Button>
-      )}
+      <Button
+        onClick={addNewColumnHandler}
+        styleClass={activeBoard.columns.length > 0 ? ButtonStyle.ADD_COLUMN : ButtonStyle.ADD_COLUMN_EMPTY_BOARD}
+      >
+        + New Column
+      </Button>
     </main>
   );
 };

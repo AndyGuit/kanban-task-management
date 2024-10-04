@@ -9,7 +9,7 @@ const AddNewTask = lazy(() => import('./Forms/AddNewTask'));
 const Confirm = lazy(() => import('./Forms/Confirm'));
 const EditBoard = lazy(() => import('./Forms/EditBoard'));
 const EditTask = lazy(() => import('./Forms/EditTask'));
-const SidebarMobile = lazy(() => import('./Forms/SidebarMobile'));
+const SidebarMobile = lazy(() => import('../../../widgets/Sidebar/ui/SidebarMobile'));
 const ViewTask = lazy(() => import('./Forms/ViewTask'));
 
 /**

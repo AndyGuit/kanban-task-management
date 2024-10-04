@@ -24,3 +24,38 @@
   position: absolute;
   transform: translateX(-100%);
 }
+
+.sidebar-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  h3 {
+    font-size: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+.sidebar-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  ul {
+    width: 275px;
+    button {
+      border-radius: 30px;
+    }
+  }
+
+  // selector for toggle theme button
+  div {
+    margin-left: 0;
+  }
+}

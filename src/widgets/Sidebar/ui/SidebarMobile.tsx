@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { IBoard } from '../../../../shared/types/dataTypes';
-import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
-import { IconBoard } from '../../../../shared/ui/Icons/Icons';
-import Button from '../../../../shared/ui/Button/Button';
-import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
-import classes from './Form.module.scss';
-import { ThemeToggle } from '../../../ThemeToggle';
+import { IBoard } from '../../../shared/types/dataTypes';
+import { ModalContent } from '../../../shared/types/modalFormContentTypes';
+import { IconBoard } from '../../../shared/ui/Icons/Icons';
+import Button from '../../../shared/ui/Button/Button';
+import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
+import { DataActions, DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
+import classes from './Sidebar.module.scss';
+import { ThemeToggle } from '../../../features/ThemeToggle';
 
 const SidebarMobile = () => {
   const dispatch = useDispatch();
@@ -21,8 +21,8 @@ const SidebarMobile = () => {
   };
 
   return (
-    <form className={`form ${classes.form}`}>
-      <nav className={`form-nav ${classes['form-nav']}`}>
+    <form className={`sidebar-mobile ${classes['sidebar-mobile']}`}>
+      <nav className={`sidebar-mobile-nav ${classes['sidebar-mobile-nav']}`}>
         <h3>all boards ({boards.length})</h3>
         <ul>
           {boards.map((board: IBoard) => (
