@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
@@ -9,11 +9,10 @@ import { UIActions, UISelectors } from '../../../app/providers/StoreProvider';
 export const ThemeToggle = () => {
   const dispatch = useDispatch();
   const theme = useSelector(UISelectors.getTheme);
-  const [isDark, setIsDark] = useState(theme === 'dark');
+  const isDark = theme === 'dark';
 
   const toggleTheme = () => {
     dispatch(UIActions.toggleAppTheme());
-    setIsDark((prevState) => !prevState);
   };
 
   useEffect(() => {
