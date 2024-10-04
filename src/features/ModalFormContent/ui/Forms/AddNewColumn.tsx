@@ -6,7 +6,7 @@ import Button from '../../../../shared/ui/Button/Button';
 import Input from '../../../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
-import InputsList from '../../../InputsList/ui/InputsList';
+import { InputsList } from '../../../../entities/InputsList';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
 import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
 

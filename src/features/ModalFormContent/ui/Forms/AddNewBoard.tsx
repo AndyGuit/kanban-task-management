@@ -4,7 +4,7 @@ import generateRandomId from '../../../../shared/lib/functions/randomId';
 import validate from '../../../../shared/lib/functions/validate';
 import useInput from '../../../../shared/lib/hooks/use-input';
 import { IBoard, IColumn } from '../../../../shared/types/dataTypes';
-import InputsList from '../../../InputsList/ui/InputsList';
+import { InputsList } from '../../../../entities/InputsList';
 import Button from '../../../../shared/ui/Button/Button';
 import Input from '../../../../shared/ui/Input/Input';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';

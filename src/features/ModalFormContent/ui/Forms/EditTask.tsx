@@ -6,7 +6,7 @@ import Input from '../../../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import validate from '../../../../shared/lib/functions/validate';
 import { ISubtask, ITask } from '../../../../shared/types/dataTypes';
-import InputsList from '../../../InputsList/ui/InputsList';
+import { InputsList } from '../../../../entities/InputsList';
 import Select, { TOptionType } from '../../../../shared/ui/Select/Select';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
 import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
