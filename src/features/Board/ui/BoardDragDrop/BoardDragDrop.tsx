@@ -7,6 +7,7 @@ import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
 import classes from './BoardDragDrop.module.scss';
 import { TaskDraggable } from '../../../../entities/Task';
 import { ColumnDroppable } from '../../../../entities/Column';
+import { BoardEmpty } from '../BoardEmpty/BoardEmpty';
 
 export const BoardDragDrop = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,10 @@ export const BoardDragDrop = () => {
     dispatch(UIActions.setModalContent(ModalContent.addNewColumn));
     dispatch(UIActions.showModal());
   };
+
+  if (!activeBoard) {
+    return <BoardEmpty />;
+  }
 
   return (
     <main className={`board ${classes['board']}`}>
