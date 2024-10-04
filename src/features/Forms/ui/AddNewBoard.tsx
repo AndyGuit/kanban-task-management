@@ -1,22 +1,23 @@
 import { FormEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from '../../../../shared/lib/functions/randomId';
-import validate from '../../../../shared/lib/functions/validate';
-import Button from '../../../../shared/ui/Button/Button';
-import Input from '../../../../shared/ui/Input/Input';
+import { useDispatch } from 'react-redux';
+import generateRandomId from '../../../shared/lib/functions/randomId';
+import validate from '../../../shared/lib/functions/validate';
+import useInput from '../../../shared/lib/hooks/use-input';
+import { IBoard, IColumn } from '../../../shared/types/dataTypes';
+import { InputsList } from '../../../entities/InputsList';
+import Button from '../../../shared/ui/Button/Button';
+import Input from '../../../shared/ui/Input/Input';
+import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
+import { DataActions, UIActions } from '../../../app/providers/StoreProvider';
 import classes from './Form.module.scss';
-import cloneDeep from 'lodash.clonedeep';
-import { InputsList } from '../../../../entities/InputsList';
-import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
 
-const AddNewColumn = () => {
+const AddNewBoard = () => {
   const dispatch = useDispatch();
-  const boardName = useSelector(DataSelectors.getActiveBoardName);
 
-  const columns = useSelector(DataSelectors.getColumns);
+  const titleInput = useInput(validate.notEmpty);
 
-  const [newColumns, setNewColumns] = useState(cloneDeep(columns));
+  const [newColumns, setNewColumns] = useState<IColumn[]>([{ name: '', id: generateRandomId(), tasks: [] }]);
+
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
@@ -36,20 +37,36 @@ const AddNewColumn = () => {
 
     const inputsNotEmpty = newColumns.every((col) => col.name !== '');
     setColumnsHasNames(inputsNotEmpty);
+    titleInput.inputBlurHandler();
 
-    if (inputsNotEmpty) {
-      dispatch(DataActions.setColumns(newColumns));
-      dispatch(DataActions.saveChanges('board'));
+    if (titleInput.isValid && inputsNotEmpty) {
+      const newBoard: IBoard = {
+        id: generateRandomId(),
+        isActive: true,
+        columns: newColumns,
+        name: titleInput.value,
+      };
+
+      dispatch(DataActions.addBoard(newBoard));
+      dispatch(DataActions.setActiveBoard(newBoard.id));
       dispatch(UIActions.hideModal());
     }
   };
 
   return (
     <form onSubmit={submitHandler} className={`form ${classes.form}`}>
-      <h3>Add New Column</h3>
+      <h3>Add New Board</h3>
       <div className={classes['form-input']}>
         <label htmlFor="board-name">Board Name</label>
-        <Input disabled={true} value={boardName} type="text" id="board-name" isRemovable={false} />
+        <Input
+          id="board-name"
+          invalid={titleInput.hasError}
+          onChange={titleInput.valueChangeHandler}
+          onBlur={titleInput.inputBlurHandler}
+          value={titleInput.value}
+          isRemovable={false}
+          type="text"
+        />
       </div>
       <div className={classes['form-input']}>
         <label>Columns</label>
@@ -60,12 +77,14 @@ const AddNewColumn = () => {
             isRemovable: col.tasks.length === 0,
           }))}
           isScrollable={newColumns.length > 1}
-          isValidFunc={validate.notEmpty}
           isInputsNotEmpty={columnsHasNames}
           setIsInputsNotEmpty={setColumnsHasNames}
-          blurInputHandler={() => setNewColumns([...newColumns])}
+          isValidFunc={validate.notEmpty}
+          blurInputHandler={() => {
+            setNewColumns([...newColumns]);
+          }}
           changeInputHandler={(value, index) => columnChangeHandler(value, index)}
-          removeInputHandler={removeColumnHandler}
+          removeInputHandler={(index) => removeColumnHandler(index)}
         />
       </div>
       <Button onClick={addColumnHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
@@ -78,4 +97,4 @@ const AddNewColumn = () => {
   );
 };
 
-export default AddNewColumn;
+export default AddNewBoard;

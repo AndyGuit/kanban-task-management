@@ -1,16 +1,16 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from '../../../../shared/lib/functions/randomId';
-import validate from '../../../../shared/lib/functions/validate';
-import useInput from '../../../../shared/lib/hooks/use-input';
-import { IBoard, IColumn } from '../../../../shared/types/dataTypes';
-import Button from '../../../../shared/ui/Button/Button';
-import Input from '../../../../shared/ui/Input/Input';
+import generateRandomId from '../../../shared/lib/functions/randomId';
+import validate from '../../../shared/lib/functions/validate';
+import useInput from '../../../shared/lib/hooks/use-input';
+import { IBoard, IColumn } from '../../../shared/types/dataTypes';
+import Button from '../../../shared/ui/Button/Button';
+import Input from '../../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
-import { InputsList } from '../../../../entities/InputsList';
-import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
+import { InputsList } from '../../../entities/InputsList';
+import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
+import { DataActions, DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
 
 const EditBoard = () => {
   const dispatch = useDispatch();
