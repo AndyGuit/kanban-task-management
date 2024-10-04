@@ -20,7 +20,7 @@ export const Header = () => {
   };
 
   const showSidebarModal = () => {
-    dispatch(UIActions.setModalContent(ModalContent.sidebarMobile));
+    dispatch(UIActions.setModalContent(ModalContent.menuMobile));
     dispatch(UIActions.showModal());
   };
 

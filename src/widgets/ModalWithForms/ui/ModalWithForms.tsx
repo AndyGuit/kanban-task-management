@@ -11,7 +11,7 @@ const Confirm = lazy(() => import('../../../features/Forms/ui/Confirm'));
 const EditBoard = lazy(() => import('../../../features/Forms/ui/EditBoard'));
 const EditTask = lazy(() => import('../../../features/Forms/ui/EditTask'));
 const ViewTask = lazy(() => import('../../../features/Forms/ui/ViewTask'));
-const SidebarMobile = lazy(() => import('../../../widgets/Sidebar/ui/SidebarMobile'));
+const MobileMenu = lazy(() => import('../../../features/MenuMobile/ui/MenuMobile'));
 
 export const ModalWithForms = () => {
   const dispatch = useDispatch();
@@ -46,10 +46,11 @@ export const ModalWithForms = () => {
     case ModalContent.editBoard:
       form = <EditBoard />;
       break;
-    case ModalContent.sidebarMobile:
-      form = <SidebarMobile />;
+    case ModalContent.menuMobile:
+      form = <MobileMenu />;
       break;
     default:
+      form = 'No such form found';
       break;
   }
 

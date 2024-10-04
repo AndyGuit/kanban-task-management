@@ -5,10 +5,10 @@ import { IconBoard } from '../../../shared/ui/Icons/Icons';
 import Button from '../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
 import { DataActions, DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
-import classes from './Sidebar.module.scss';
-import { ThemeToggle } from '../../../features/ThemeToggle';
+import { ThemeToggle } from '../../ThemeToggle';
+import classes from './MenuMobile.module.scss';
 
-const SidebarMobile = () => {
+const MenuMobile = () => {
   const dispatch = useDispatch();
   const boards = useSelector(DataSelectors.getAllBoards);
 
@@ -21,8 +21,8 @@ const SidebarMobile = () => {
   };
 
   return (
-    <form className={`sidebar-mobile ${classes['sidebar-mobile']}`}>
-      <nav className={`sidebar-mobile-nav ${classes['sidebar-mobile-nav']}`}>
+    <form className={`menu-mobile ${classes['menu-mobile']}`}>
+      <nav className={`menu-mobile-nav ${classes['menu-mobile-nav']}`}>
         <h3>all boards ({boards.length})</h3>
         <ul>
           {boards.map((board: IBoard) => (
@@ -46,4 +46,4 @@ const SidebarMobile = () => {
   );
 };
 
-export default SidebarMobile;
+export default MenuMobile;

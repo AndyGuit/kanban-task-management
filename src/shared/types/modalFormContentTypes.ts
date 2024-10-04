@@ -7,6 +7,6 @@ export enum ModalContent {
   addNewColumn = 'ADD_NEW_COLUMN',
   addNewBoard = 'ADD_NEW_BOARD',
   editBoard = 'EDIT_BOARD',
-  sidebarMobile = 'SIDEBAR_MOBILE',
+  menuMobile = 'MENU_MOBILE',
   none = '',
 }
