@@ -5,8 +5,9 @@ import {
   saveToLocalStorage,
 } from '../../../../shared/lib/functions/localStorage';
 import { IBoard, ITask, IColumn } from '../../../../shared/types/dataTypes';
+import data from '../../../../../db/boards.json';
 
-const storedBoards = loadFromLocalStorage(LocalStorageKeys.boards);
+const storedBoards = loadFromLocalStorage(LocalStorageKeys.boards) || data.boards;
 
 const initialState = {
   boards: storedBoards,

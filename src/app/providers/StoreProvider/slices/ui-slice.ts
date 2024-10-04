@@ -7,7 +7,14 @@ import {
 } from '../../../../shared/lib/functions/localStorage';
 import { AppTheme } from '../../../../shared/types/appThemes';
 
-const initialState = loadFromLocalStorage(LocalStorageKeys.UI);
+const initialState = loadFromLocalStorage(LocalStorageKeys.UI) || {
+  appTheme: AppTheme.DARK,
+  hasSidebar: true,
+  modal: {
+    isVisible: false,
+    formContent: ModalContent.none,
+  },
+};
 
 const uiSlice = createSlice({
   name: 'ui',

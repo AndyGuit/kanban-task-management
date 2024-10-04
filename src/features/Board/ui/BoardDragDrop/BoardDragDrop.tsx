@@ -22,7 +22,7 @@ export const BoardDragDrop = () => {
       {activeBoard.columns.map((column: IColumn, columnIndex) => (
         <ColumnDroppable column={column} index={columnIndex} key={column.id}>
           {column.tasks.map((task, taskIndex) => (
-            <TaskDraggable task={task} draggableIndex={taskIndex} />
+            <TaskDraggable key={task.id} task={task} draggableIndex={taskIndex} />
           ))}
         </ColumnDroppable>
       ))}
