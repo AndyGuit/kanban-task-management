@@ -4,15 +4,17 @@ import Button from '../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
 import { IconMoon, IconSun } from '../../../shared/ui/Icons/Icons';
 import classes from './ThemeToggle.module.scss';
-import { UIActions, UISelectors } from '../../../app/providers/StoreProvider';
+import { getTheme } from '../model/selectors/get-theme';
+import { AppTheme } from '../../../shared/types/appThemes';
+import { ThemeActions } from '../model/slices/theme-slice';
 
 export const ThemeToggle = () => {
   const dispatch = useDispatch();
-  const theme = useSelector(UISelectors.getTheme);
-  const isDark = theme === 'dark';
+  const theme = useSelector(getTheme);
+  const isDark = theme === AppTheme.DARK;
 
   const toggleTheme = () => {
-    dispatch(UIActions.toggleAppTheme());
+    dispatch(ThemeActions.toggleTheme());
   };
 
   useEffect(() => {

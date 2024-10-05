@@ -1,8 +1,10 @@
 import { UIStateSchema, DataSchema } from '../../../app/providers/StoreProvider/types/StateSchema';
+import { AppTheme } from '../../types/appThemes';
 
 export enum LocalStorageKeys {
   UI = 'kanban/ui',
   boards = 'kanban/boards',
+  Theme = 'kanban/theme',
 }
 /**
  * @todo
@@ -11,6 +13,7 @@ export enum LocalStorageKeys {
 interface LocalStorageKeysMap {
   'kanban/ui': UIStateSchema;
   'kanban/boards': DataSchema['boards'];
+  'kanban/theme': AppTheme;
 }
 
 export const saveToLocalStorage = <K extends keyof LocalStorageKeysMap>(key: K, data: LocalStorageKeysMap[K]) => {

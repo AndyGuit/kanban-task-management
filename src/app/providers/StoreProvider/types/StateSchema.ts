@@ -3,7 +3,6 @@ import { IBoard, IColumn, ITask } from '../../../../shared/types/dataTypes';
 import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 
 export interface UIStateSchema {
-  appTheme: AppTheme; // 'dark' | 'light'
   hasSidebar: boolean;
   modal: {
     isVisible: boolean;
@@ -21,4 +20,5 @@ export interface DataSchema {
 export interface StateSchema {
   ui: UIStateSchema;
   data: DataSchema;
+  theme: AppTheme;
 }

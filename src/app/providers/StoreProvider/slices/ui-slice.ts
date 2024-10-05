@@ -5,10 +5,8 @@ import {
   LocalStorageKeys,
   saveToLocalStorage,
 } from '../../../../shared/lib/functions/localStorage';
-import { AppTheme } from '../../../../shared/types/appThemes';
 
 const initialState = loadFromLocalStorage(LocalStorageKeys.UI) || {
-  appTheme: AppTheme.DARK,
   hasSidebar: true,
   modal: {
     isVisible: false,
@@ -20,14 +18,6 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    toggleAppTheme: (state) => {
-      state.appTheme = state.appTheme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK;
-
-      saveToLocalStorage(LocalStorageKeys.UI, {
-        ...state,
-        modal: { isVisible: false, formContent: ModalContent.none },
-      });
-    },
     toggleSidebar: (state) => {
       state.hasSidebar = !state.hasSidebar;
 
