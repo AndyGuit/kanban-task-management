@@ -9,4 +9,13 @@
       color: $light-text-secondary;
     }
   }
+
+  .skeleton-task {
+    box-shadow: $light-shadow;
+    background-color: $light-primary;
+
+    &::before {
+      background: $light-gradient-skeleton;
+    }
+  }
 }
