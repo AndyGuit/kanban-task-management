@@ -1,0 +1,16 @@
+.dark {
+  .sidebar {
+    background-color: $dark-primary;
+    border-right: 1px solid $dark-border;
+
+    h3 {
+      color: $dark-text-secondary;
+    }
+  }
+
+  .menu-mobile-nav {
+    h3 {
+      color: $dark-text-secondary;
+    }
+  }
+}

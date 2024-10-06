@@ -1,0 +1,38 @@
+.dark {
+  .select-options {
+    &::-webkit-scrollbar {
+      background: $dark-primary;
+    }
+    &::-webkit-scrollbar-corner {
+      background: $dark-board-bg;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $dark-scroll-bg;
+
+      &:hover {
+        background: $dark-btn-bg;
+      }
+    }
+  }
+
+  .select-selected {
+    border-color: $dark-border;
+    color: $dark-text-primary;
+  }
+
+  .select-options {
+    box-shadow: $dark-shadow;
+    border-color: $dark-border;
+    background-color: $dark-primary;
+  }
+
+  .select-option {
+    background-color: $dark-primary;
+
+    &:hover {
+      background-color: $dark-btn-bg;
+      border-color: $dark-border;
+      box-shadow: $dark-shadow;
+    }
+  }
+}

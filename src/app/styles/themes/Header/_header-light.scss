@@ -1,0 +1,10 @@
+.light {
+  .header {
+    background-color: $light-primary;
+    border: 1px solid $light-border;
+  }
+
+  .app-logo {
+    border-right-color: $light-border;
+  }
+}

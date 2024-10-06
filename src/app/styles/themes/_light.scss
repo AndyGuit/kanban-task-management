@@ -1,0 +1,28 @@
+@import './Button/btn-light.scss';
+@import './Header/header-light.scss';
+@import './Sidebar/sidebar-light.scss';
+@import './Column/column-light.scss';
+@import './Board/board-light.scss';
+@import './Task/task-light.scss';
+@import './PopupWindow/popup-window-light.scss';
+@import './Checkbox/checkbox-light.scss';
+@import './SelectInput/select-input-light.scss';
+@import './Form/form-light.scss';
+@import './Modal/modal-light.scss';
+@import './Input/input-light.scss';
+@import './InputsList/inputs-list-light.scss';
+@import './Select/select-light.scss';
+
+.light {
+  .App {
+    background: $light-theme-bg;
+    color: $light-text-primary;
+  }
+
+  .error-text {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 0.75em;
+    color: $light-warning;
+  }
+}

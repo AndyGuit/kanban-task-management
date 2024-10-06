@@ -1,0 +1,47 @@
+.popover-wrapper {
+  position: relative;
+}
+
+.trigger {
+  cursor: pointer;
+}
+
+.popover-content {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+  width: 12em;
+  padding: 1em;
+  border-radius: 8px;
+  font-weight: 400;
+  animation: fadeIn 0.3s ease;
+}
+
+.top-left {
+  bottom: 120%;
+  right: 0;
+}
+.top-right {
+  bottom: 120%;
+  left: 0;
+}
+.bottom-left {
+  top: 120%;
+  right: 0;
+}
+.bottom-right {
+  top: 120%;
+  left: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

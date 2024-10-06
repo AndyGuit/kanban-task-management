@@ -1,0 +1,19 @@
+.inputs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  max-height: 6em;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
+}
+
+.scrollable {
+  overflow-y: auto;
+}

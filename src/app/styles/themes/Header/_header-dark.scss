@@ -1,0 +1,10 @@
+.dark {
+  .header {
+    background-color: $dark-primary;
+    border: 1px solid $dark-border;
+  }
+
+  .app-logo {
+    border-right-color: $dark-border;
+  }
+}

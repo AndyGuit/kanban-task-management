@@ -1,0 +1,84 @@
+.select-wrapper {
+  position: relative;
+}
+
+.select-label {
+  display: block;
+  font-size: 0.75em;
+  margin-bottom: 0.5em;
+}
+
+.select-selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+.select-selected,
+.select-option {
+  width: 100%;
+  font-size: 0.75em;
+  padding: 0.5em 1em;
+  outline: none;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+.select-options {
+  width: 100%;
+  max-height: 15vh;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  pointer-events: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  transform: translateY(-15px);
+  transition: transform 0.2s ease, opacity 0.3s ease;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.visible {
+  opacity: 1;
+  z-index: 9;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+
+.select-option {
+  transition: background 150ms ease;
+
+  &:hover {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+  }
+}
