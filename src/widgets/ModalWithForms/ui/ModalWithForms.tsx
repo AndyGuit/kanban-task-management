@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UISelectors, UIActions } from '../../../app/providers/StoreProvider';
 import Modal from '../../../shared/ui/Modal/Modal';
 import { ModalContent } from '../../../shared/types/modalFormContentTypes';
+import { Loader } from '../../../shared/ui/Loader/Loader';
 
 const AddNewBoard = lazy(() => import('../../../features/Forms/ui/AddNewBoard'));
 const AddNewColumn = lazy(() => import('../../../features/Forms/ui/AddNewColumn'));
@@ -56,7 +57,7 @@ export const ModalWithForms = () => {
 
   return (
     <Modal onClose={closeModal}>
-      <Suspense fallback="loading..."> {form}</Suspense>
+      <Suspense fallback={<Loader />}> {form}</Suspense>
     </Modal>
   );
 };
