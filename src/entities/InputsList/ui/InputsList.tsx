@@ -26,7 +26,9 @@ export function InputsList(props: Props) {
 
   return (
     <>
-      <ul className={`inputs-list ${classes['inputs-list']} ${isScrollable && classes['scrollable']}`}>
+      <ul
+        className={`inputs-list ${classes['inputs-list']} ${isScrollable && classes['scrollable']}`}
+      >
         {listItems.map((item, index) => (
           <li key={`${item.name}${index}`}>
             <InputWithValidation
@@ -34,7 +36,9 @@ export function InputsList(props: Props) {
                 setIsInputsNotEmpty(true);
                 blurInputHandler();
               }}
-              onChangeHandler={(value: string) => changeInputHandler(value, index)}
+              onChangeHandler={(value: string) =>
+                changeInputHandler(value, index)
+              }
               disabled={item.isDisabled}
               validateFn={isValidFunc}
               value={item.name}
@@ -45,7 +49,9 @@ export function InputsList(props: Props) {
           </li>
         ))}
       </ul>
-      {!isInputsNotEmpty && <p className="error-text">All columns should have title</p>}
+      {!isInputsNotEmpty && (
+        <p className="error-text">All columns should have title</p>
+      )}
     </>
   );
 }

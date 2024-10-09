@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
+import {
+  DataSelectors,
+  UIActions,
+} from '../../../../app/providers/StoreProvider';
 import { IColumn } from '../../../../shared/types/dataTypes';
 import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 import Button from '../../../../shared/ui/Button/Button';
@@ -31,13 +34,21 @@ export const BoardDragDrop = () => {
       {activeBoard.columns.map((column: IColumn, columnIndex) => (
         <ColumnDroppable column={column} index={columnIndex} key={column.id}>
           {column.tasks.map((task, taskIndex) => (
-            <TaskDraggable key={task.id} task={task} draggableIndex={taskIndex} />
+            <TaskDraggable
+              key={task.id}
+              task={task}
+              draggableIndex={taskIndex}
+            />
           ))}
         </ColumnDroppable>
       ))}
       <Button
         onClick={addNewColumnHandler}
-        styleClass={activeBoard.columns.length > 0 ? ButtonStyle.ADD_COLUMN : ButtonStyle.ADD_COLUMN_EMPTY_BOARD}
+        styleClass={
+          activeBoard.columns.length > 0
+            ? ButtonStyle.ADD_COLUMN
+            : ButtonStyle.ADD_COLUMN_EMPTY_BOARD
+        }
       >
         + New Column
       </Button>

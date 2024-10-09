@@ -4,7 +4,11 @@ import Button from '../../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
 import { IconBoard } from '../../../../shared/ui/Icons/Icons';
 import classes from './BoardsList.module.scss';
-import { DataActions, DataSelectors, UIActions } from '../../../../app/providers/StoreProvider';
+import {
+  DataActions,
+  DataSelectors,
+  UIActions,
+} from '../../../../app/providers/StoreProvider';
 import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
 
 export const BoardsList = () => {

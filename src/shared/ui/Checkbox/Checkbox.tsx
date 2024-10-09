@@ -22,7 +22,11 @@ const Checkbox = (props: Props) => {
 
   return (
     <label className={labelClasses}>
-      <input checked={completed} type="checkbox" onChange={changeCompletedHandler} />
+      <input
+        checked={completed}
+        type="checkbox"
+        onChange={changeCompletedHandler}
+      />
       {title}
     </label>
   );

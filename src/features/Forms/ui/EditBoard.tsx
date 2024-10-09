@@ -10,7 +10,11 @@ import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from '../../../entities/InputsList';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
+import {
+  DataActions,
+  DataSelectors,
+  UIActions,
+} from '../../../app/providers/StoreProvider';
 
 const EditBoard = () => {
   const dispatch = useDispatch();
@@ -18,12 +22,17 @@ const EditBoard = () => {
 
   const boardNameInput = useInput(validate.notEmpty, activeBoard.name);
 
-  const [newColumns, setNewColumns] = useState<IColumn[]>(cloneDeep(activeBoard.columns));
+  const [newColumns, setNewColumns] = useState<IColumn[]>(
+    cloneDeep(activeBoard.columns),
+  );
 
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
-    setNewColumns((state) => [...state, { id: generateRandomId(), name: '', tasks: [] }]);
+    setNewColumns((state) => [
+      ...state,
+      { id: generateRandomId(), name: '', tasks: [] },
+    ]);
   };
 
   const columnChangeHandler = (value: string, index: number) => {
@@ -81,11 +90,16 @@ const EditBoard = () => {
           setIsInputsNotEmpty={setColumnsHasNames}
           isValidFunc={validate.notEmpty}
           blurInputHandler={() => setNewColumns([...newColumns])}
-          changeInputHandler={(value, index) => columnChangeHandler(value, index)}
+          changeInputHandler={(value, index) =>
+            columnChangeHandler(value, index)
+          }
           removeInputHandler={(index) => removeColumnHandler(index)}
         />
       </div>
-      <Button onClick={addColumnHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
+      <Button
+        onClick={addColumnHandler}
+        styleClass={ButtonStyle.FORM_SECONDARY}
+      >
         + Add New Column
       </Button>
       <Button styleClass={ButtonStyle.FORM_PRIMARY} type="submit">

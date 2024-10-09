@@ -11,7 +11,7 @@ type Props = {
   onClickEdit?: () => void;
 };
 
-const PopupWindow: React.FC<Props> = (props) => {
+const PopupWindow = (props: Props) => {
   const [isPopupShown, setIsPopupShown] = useState(false);
 
   const togglePopup = () => {
@@ -46,10 +46,16 @@ const PopupWindow: React.FC<Props> = (props) => {
       </Button>
       {isPopupShown && (
         <div className={`popup-window ${classes['popup-window']}`}>
-          <Button onClick={props.onClickEdit} styleClass={ButtonStyle.TEXT_PRIMARY}>
+          <Button
+            onClick={props.onClickEdit}
+            styleClass={ButtonStyle.TEXT_PRIMARY}
+          >
             Edit {props.btnText}
           </Button>
-          <Button onClick={props.onClickDelete} styleClass={ButtonStyle.TEXT_WARNING}>
+          <Button
+            onClick={props.onClickDelete}
+            styleClass={ButtonStyle.TEXT_WARNING}
+          >
             Delete {props.btnText}
           </Button>
         </div>

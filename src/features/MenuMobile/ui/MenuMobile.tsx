@@ -4,7 +4,11 @@ import { ModalContent } from '../../../shared/types/modalFormContentTypes';
 import { IconBoard } from '../../../shared/ui/Icons/Icons';
 import Button from '../../../shared/ui/Button/Button';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
+import {
+  DataActions,
+  DataSelectors,
+  UIActions,
+} from '../../../app/providers/StoreProvider';
 import { ThemeToggle } from '../../ThemeToggle';
 import classes from './MenuMobile.module.scss';
 
@@ -36,7 +40,10 @@ const MenuMobile = () => {
               </Button>
             </li>
           ))}
-          <Button onClick={handleAddBoard} styleClass={ButtonStyle.CREATE_BOARD}>
+          <Button
+            onClick={handleAddBoard}
+            styleClass={ButtonStyle.CREATE_BOARD}
+          >
             <IconBoard />+ Create New Board
           </Button>
         </ul>

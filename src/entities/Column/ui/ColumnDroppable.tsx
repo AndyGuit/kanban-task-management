@@ -14,7 +14,11 @@ export const ColumnDroppable = (props: Props) => {
 
   return (
     <DroppableComponent key={column.id} droppableId={column.id}>
-      <TasksColumn title={columnTitle} isEmpty={column.tasks.length === 0} dotNumber={index % 6}>
+      <TasksColumn
+        title={columnTitle}
+        isEmpty={column.tasks.length === 0}
+        dotNumber={index % 6}
+      >
         {children}
       </TasksColumn>
     </DroppableComponent>

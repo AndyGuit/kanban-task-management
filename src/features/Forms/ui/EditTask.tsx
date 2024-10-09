@@ -9,7 +9,11 @@ import { ISubtask, ITask } from '../../../shared/types/dataTypes';
 import { InputsList } from '../../../entities/InputsList';
 import Select, { TOptionType } from '../../../shared/ui/Select/Select';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
+import {
+  DataActions,
+  DataSelectors,
+  UIActions,
+} from '../../../app/providers/StoreProvider';
 
 const EditTask = () => {
   const dispatch = useDispatch();
@@ -37,7 +41,9 @@ const EditTask = () => {
     setSubtasksCopy(left.concat(right));
   };
 
-  const [subtasksCopy, setSubtasksCopy] = useState<ISubtask[]>(taskData.subtasks.map((subt) => ({ ...subt })));
+  const [subtasksCopy, setSubtasksCopy] = useState<ISubtask[]>(
+    taskData.subtasks.map((subt) => ({ ...subt })),
+  );
 
   const subtaskChangeHandler = (value: string, index: number) => {
     subtasksCopy[index].title = value;
@@ -55,7 +61,9 @@ const EditTask = () => {
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const subtasksHasValues = subtasksCopy.every((subtask) => subtask.title !== '');
+    const subtasksHasValues = subtasksCopy.every(
+      (subtask) => subtask.title !== '',
+    );
     setSubtasksHasNames(subtasksHasValues);
 
     if (titleInput.isValid && subtasksHasValues) {
@@ -122,11 +130,16 @@ const EditTask = () => {
           setIsInputsNotEmpty={setSubtasksHasNames}
           isValidFunc={validate.notEmpty}
           blurInputHandler={() => setSubtasksCopy([...subtasksCopy])}
-          changeInputHandler={(value, index) => subtaskChangeHandler(value, index)}
+          changeInputHandler={(value, index) =>
+            subtaskChangeHandler(value, index)
+          }
           removeInputHandler={(index) => removeSubtaskHandler(index)}
         />
       </div>
-      <Button onClick={addSubtaskHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
+      <Button
+        onClick={addSubtaskHandler}
+        styleClass={ButtonStyle.FORM_SECONDARY}
+      >
         + Add New Subtask
       </Button>
       <Select

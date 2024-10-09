@@ -24,7 +24,11 @@ const Button = (props: Props) => {
   }
 
   return (
-    <button onClick={props.onClick} type={props.type || 'button'} className={styles}>
+    <button
+      onClick={props.onClick}
+      type={props.type || 'button'}
+      className={styles}
+    >
       {props.children}
     </button>
   );

@@ -10,7 +10,11 @@ import Input from '../../../shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import Select, { TOptionType } from '../../../shared/ui/Select/Select';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
+import {
+  DataActions,
+  DataSelectors,
+  UIActions,
+} from '../../../app/providers/StoreProvider';
 
 const AddNewTask = () => {
   const dispatch = useDispatch();
@@ -19,7 +23,9 @@ const AddNewTask = () => {
   const titleInput = useInput(validate.notEmpty);
   const descriptionInput = useInput(() => true);
 
-  const [subtasks, setSubtasks] = useState<ISubtask[]>([{ title: '', isCompleted: false }]);
+  const [subtasks, setSubtasks] = useState<ISubtask[]>([
+    { title: '', isCompleted: false },
+  ]);
 
   const [subtasksHasNames, setSubtasksHasNames] = useState(true);
 
@@ -108,11 +114,16 @@ const AddNewTask = () => {
           setIsInputsNotEmpty={setSubtasksHasNames}
           isValidFunc={validate.notEmpty}
           blurInputHandler={() => setSubtasks([...subtasks])}
-          changeInputHandler={(value, index) => subtaskChangeHandler(value, index)}
+          changeInputHandler={(value, index) =>
+            subtaskChangeHandler(value, index)
+          }
           removeInputHandler={(index) => removeSubtaskHandler(index)}
         />
       </div>
-      <Button onClick={addSubtaskHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
+      <Button
+        onClick={addSubtaskHandler}
+        styleClass={ButtonStyle.FORM_SECONDARY}
+      >
         + Add New Subtask
       </Button>
       <Select

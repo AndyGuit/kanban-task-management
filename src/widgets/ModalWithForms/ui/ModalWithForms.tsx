@@ -5,14 +5,20 @@ import Modal from '../../../shared/ui/Modal/Modal';
 import { ModalContent } from '../../../shared/types/modalFormContentTypes';
 import { Loader } from '../../../shared/ui/Loader/Loader';
 
-const AddNewBoard = lazy(() => import('../../../features/Forms/ui/AddNewBoard'));
-const AddNewColumn = lazy(() => import('../../../features/Forms/ui/AddNewColumn'));
+const AddNewBoard = lazy(
+  () => import('../../../features/Forms/ui/AddNewBoard'),
+);
+const AddNewColumn = lazy(
+  () => import('../../../features/Forms/ui/AddNewColumn'),
+);
 const AddNewTask = lazy(() => import('../../../features/Forms/ui/AddNewTask'));
 const Confirm = lazy(() => import('../../../features/Forms/ui/Confirm'));
 const EditBoard = lazy(() => import('../../../features/Forms/ui/EditBoard'));
 const EditTask = lazy(() => import('../../../features/Forms/ui/EditTask'));
 const ViewTask = lazy(() => import('../../../features/Forms/ui/ViewTask'));
-const MobileMenu = lazy(() => import('../../../features/MenuMobile/ui/MenuMobile'));
+const MobileMenu = lazy(
+  () => import('../../../features/MenuMobile/ui/MenuMobile'),
+);
 
 export const ModalWithForms = () => {
   const dispatch = useDispatch();

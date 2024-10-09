@@ -1,4 +1,7 @@
-import { UIStateSchema, DataSchema } from '../../../app/providers/StoreProvider/types/StateSchema';
+import {
+  UIStateSchema,
+  DataSchema,
+} from '../../../app/providers/StoreProvider/types/StateSchema';
 import { AppTheme } from '../../types/appThemes';
 
 export enum LocalStorageKeys {
@@ -16,11 +19,16 @@ interface LocalStorageKeysMap {
   'kanban/theme': AppTheme;
 }
 
-export const saveToLocalStorage = <K extends keyof LocalStorageKeysMap>(key: K, data: LocalStorageKeysMap[K]) => {
+export const saveToLocalStorage = <K extends keyof LocalStorageKeysMap>(
+  key: K,
+  data: LocalStorageKeysMap[K],
+) => {
   const json = JSON.stringify(data);
   localStorage.setItem(key, json);
 };
 
-export const loadFromLocalStorage = <K extends keyof LocalStorageKeysMap>(key: K): LocalStorageKeysMap[K] => {
+export const loadFromLocalStorage = <K extends keyof LocalStorageKeysMap>(
+  key: K,
+): LocalStorageKeysMap[K] => {
   return JSON.parse(localStorage.getItem(key)!) as LocalStorageKeysMap[K];
 };

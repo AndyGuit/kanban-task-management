@@ -9,7 +9,11 @@ interface Props {
 }
 
 export const Popover = (props: Props) => {
-  const { children, trigger, direction = PopoverContentPosition.BOTTOM_LEFT } = props;
+  const {
+    children,
+    trigger,
+    direction = PopoverContentPosition.BOTTOM_LEFT,
+  } = props;
   const [isContentVisible, setIsContentVisible] = useState(false);
 
   const contentClasses = `popover-content ${classes['popover-content']} ${classes[direction]}`;

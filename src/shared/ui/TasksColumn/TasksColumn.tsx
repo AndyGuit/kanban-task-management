@@ -17,7 +17,9 @@ export const TasksColumn = (props: Props) => {
   return (
     <div className={classes['column']}>
       <div className={`column-title ${classes['column-title']}`}>
-        <span className={`${classes['column-dot']} column-dot--${dotNumber}`}></span>
+        <span
+          className={`${classes['column-dot']} column-dot--${dotNumber}`}
+        ></span>
         <h4>{title}</h4>
       </div>
       <ul className={columnListClasses}>{children}</ul>

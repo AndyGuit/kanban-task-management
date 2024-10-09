@@ -17,7 +17,10 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
 
   const dispatch = useDispatch();
 
-  const completedSubtasks = useMemo(() => subtasks.filter((subtask) => subtask.isCompleted).length, [subtasks]);
+  const completedSubtasks = useMemo(
+    () => subtasks.filter((subtask) => subtask.isCompleted).length,
+    [subtasks],
+  );
 
   const viewTaskDetails = (columnId: string, taskId: string) => {
     dispatch(DataActions.setSelectedColumn(columnId));

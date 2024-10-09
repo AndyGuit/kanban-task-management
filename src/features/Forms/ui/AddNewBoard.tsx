@@ -16,12 +16,17 @@ const AddNewBoard = () => {
 
   const titleInput = useInput(validate.notEmpty);
 
-  const [newColumns, setNewColumns] = useState<IColumn[]>([{ name: '', id: generateRandomId(), tasks: [] }]);
+  const [newColumns, setNewColumns] = useState<IColumn[]>([
+    { name: '', id: generateRandomId(), tasks: [] },
+  ]);
 
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
-    setNewColumns((state) => [...state, { id: generateRandomId(), name: '', tasks: [] }]);
+    setNewColumns((state) => [
+      ...state,
+      { id: generateRandomId(), name: '', tasks: [] },
+    ]);
   };
 
   const columnChangeHandler = (value: string, index: number) => {
@@ -83,11 +88,16 @@ const AddNewBoard = () => {
           blurInputHandler={() => {
             setNewColumns([...newColumns]);
           }}
-          changeInputHandler={(value, index) => columnChangeHandler(value, index)}
+          changeInputHandler={(value, index) =>
+            columnChangeHandler(value, index)
+          }
           removeInputHandler={(index) => removeColumnHandler(index)}
         />
       </div>
-      <Button onClick={addColumnHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
+      <Button
+        onClick={addColumnHandler}
+        styleClass={ButtonStyle.FORM_SECONDARY}
+      >
         + Add New Column
       </Button>
       <Button styleClass={ButtonStyle.FORM_PRIMARY} type="submit">

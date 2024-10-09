@@ -24,7 +24,11 @@ export const ThemeToggle = () => {
   return (
     <div className={`theme-toggler ${classes['theme-toggler']}`}>
       <IconMoon />
-      <Button onClick={toggleTheme} styleClass={ButtonStyle.TOGGLE} isActive={!isDark}>
+      <Button
+        onClick={toggleTheme}
+        styleClass={ButtonStyle.TOGGLE}
+        isActive={!isDark}
+      >
         <span></span>
       </Button>
       <IconSun />

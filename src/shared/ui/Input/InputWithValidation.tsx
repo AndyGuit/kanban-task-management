@@ -4,7 +4,8 @@ import { IconCross } from '../../../shared/ui/Icons/Icons';
 import Button from '../Button/Button';
 import classes from './Input.module.scss';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+interface Props
+  extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   isRemovable: boolean;
   onBlurHandler?: () => void;
   onChangeHandler?: (val: string) => void;
@@ -18,7 +19,9 @@ const InputWithValidation = (props: Props) => {
 
   const inputClasses = `input ${classes.input} ${inputState.hasError ? 'invalid' : ''}`;
 
-  const changeHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const changeHandler = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     inputState.valueChangeHandler(e);
 
     props.onChangeHandler?.(e.target.value);

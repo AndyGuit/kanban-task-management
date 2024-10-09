@@ -17,7 +17,11 @@ export const DragDropContextProvider = (props: Props) => {
     if (!destination) return;
 
     // if task dropped on the same place
-    if (destination.droppableId === source.droppableId && destination.index === source.index) return;
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    )
+      return;
 
     // if card dropped on same column
     if (destination.droppableId === source.droppableId) {

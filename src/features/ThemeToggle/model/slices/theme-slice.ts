@@ -15,7 +15,8 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     toggleTheme: (state) => {
-      state.theme = state.theme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK;
+      state.theme =
+        state.theme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK;
 
       saveToLocalStorage(LocalStorageKeys.Theme, state.theme);
     },

@@ -15,7 +15,7 @@ export const BoardEmpty = () => {
 
   return (
     <div className={classes['board--empty']}>
-      <p>You don't have boards. Please, create board to get started.</p>
+      <p>You don&apos;t have boards. Please, create board to get started.</p>
       <Button onClick={handleAddBoard} styleClass={ButtonStyle.ADD_TASK}>
         + Create New Board
       </Button>

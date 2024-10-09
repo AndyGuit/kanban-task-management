@@ -7,7 +7,8 @@ import {
 import { IBoard, ITask, IColumn } from '../../../../shared/types/dataTypes';
 import data from '../../../../../db/boards.json';
 
-const storedBoards = loadFromLocalStorage(LocalStorageKeys.boards) || data.boards;
+const storedBoards =
+  loadFromLocalStorage(LocalStorageKeys.boards) || data.boards;
 
 const initialState = {
   boards: storedBoards,
@@ -34,20 +35,24 @@ const dataSlice = createSlice({
     },
 
     setSelectedTask: (state, action: PayloadAction<string>) => {
-      const selectedTask = state.selectedColumn.tasks.find((task) => task.id === action.payload);
+      const selectedTask = state.selectedColumn.tasks.find(
+        (task) => task.id === action.payload,
+      );
 
       state.selectedTask = selectedTask!;
     },
 
     setSelectedColumn: (state, action: PayloadAction<string>) => {
-      const selectedColumn = state.activeBoard.columns.find((col) => col.id === action.payload);
+      const selectedColumn = state.activeBoard.columns.find(
+        (col) => col.id === action.payload,
+      );
 
       state.selectedColumn = selectedColumn!;
     },
 
     replaceTask: (state, action: PayloadAction<ITask>) => {
       state.selectedColumn.tasks = state.selectedColumn.tasks.map((task) =>
-        task.id === action.payload.id ? action.payload : task
+        task.id === action.payload.id ? action.payload : task,
       );
     },
 
@@ -63,7 +68,9 @@ const dataSlice = createSlice({
 
     removeTask: (state, action: PayloadAction<string>) => {
       const id = action.payload;
-      const index = state.selectedColumn.tasks.findIndex((task) => task.id === id);
+      const index = state.selectedColumn.tasks.findIndex(
+        (task) => task.id === id,
+      );
       state.selectedColumn.tasks.splice(index, 1);
     },
 
@@ -106,21 +113,30 @@ const dataSlice = createSlice({
       state.activeBoard = state.boards[0];
     },
 
-    saveChanges: (state, action: PayloadAction<'board' | 'column' | 'task'>) => {
+    saveChanges: (
+      state,
+      action: PayloadAction<'board' | 'column' | 'task'>,
+    ) => {
       // Replace Task in Column
       if (action.payload === 'task') {
-        const taskIndex = state.selectedColumn.tasks.findIndex((task) => task.id === state.selectedTask.id);
+        const taskIndex = state.selectedColumn.tasks.findIndex(
+          (task) => task.id === state.selectedTask.id,
+        );
         state.selectedColumn.tasks[taskIndex] = state.selectedTask;
       }
 
       if (action.payload === 'task' || action.payload === 'column') {
         // Replace Column in Active board
-        const colIndex = state.activeBoard.columns.findIndex((col) => col.id === state.selectedColumn.id);
+        const colIndex = state.activeBoard.columns.findIndex(
+          (col) => col.id === state.selectedColumn.id,
+        );
         state.activeBoard.columns[colIndex] = state.selectedColumn;
       }
 
       // Replace Active board in boards
-      const boardIndex = state.boards.findIndex((board) => board.id === state.activeBoard.id);
+      const boardIndex = state.boards.findIndex(
+        (board) => board.id === state.activeBoard.id,
+      );
       state.boards[boardIndex] = state.activeBoard;
 
       saveToLocalStorage(LocalStorageKeys.boards, state.boards);

@@ -8,7 +8,11 @@ import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from '../../../entities/InputsList';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
+import {
+  DataActions,
+  DataSelectors,
+  UIActions,
+} from '../../../app/providers/StoreProvider';
 
 const AddNewColumn = () => {
   const dispatch = useDispatch();
@@ -20,7 +24,10 @@ const AddNewColumn = () => {
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
-    setNewColumns((state) => [...state, { id: generateRandomId(), name: '', tasks: [] }]);
+    setNewColumns((state) => [
+      ...state,
+      { id: generateRandomId(), name: '', tasks: [] },
+    ]);
   };
 
   const columnChangeHandler = (value: string, index: number) => {
@@ -49,7 +56,13 @@ const AddNewColumn = () => {
       <h3>Add New Column</h3>
       <div className={classes['form-input']}>
         <label htmlFor="board-name">Board Name</label>
-        <Input disabled={true} value={boardName} type="text" id="board-name" isRemovable={false} />
+        <Input
+          disabled={true}
+          value={boardName}
+          type="text"
+          id="board-name"
+          isRemovable={false}
+        />
       </div>
       <div className={classes['form-input']}>
         <label>Columns</label>
@@ -64,11 +77,16 @@ const AddNewColumn = () => {
           isInputsNotEmpty={columnsHasNames}
           setIsInputsNotEmpty={setColumnsHasNames}
           blurInputHandler={() => setNewColumns([...newColumns])}
-          changeInputHandler={(value, index) => columnChangeHandler(value, index)}
+          changeInputHandler={(value, index) =>
+            columnChangeHandler(value, index)
+          }
           removeInputHandler={removeColumnHandler}
         />
       </div>
-      <Button onClick={addColumnHandler} styleClass={ButtonStyle.FORM_SECONDARY}>
+      <Button
+        onClick={addColumnHandler}
+        styleClass={ButtonStyle.FORM_SECONDARY}
+      >
         + Add New Column
       </Button>
       <Button styleClass={ButtonStyle.FORM_PRIMARY} type="submit">

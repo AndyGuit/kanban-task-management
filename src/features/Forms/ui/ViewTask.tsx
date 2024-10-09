@@ -3,14 +3,19 @@ import Checkbox from '../../../shared/ui/Checkbox/Checkbox';
 import classes from './Form.module.scss';
 
 import Select from '../../../shared/ui/Select/Select';
-import { DataActions, DataSelectors } from '../../../app/providers/StoreProvider';
+import {
+  DataActions,
+  DataSelectors,
+} from '../../../app/providers/StoreProvider';
 import { PopupEditTask } from '../../Popup';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
   const selectedTask = useSelector(DataSelectors.getSelectedTask);
   const selectedColumn = useSelector(DataSelectors.getSelectedColumn);
-  const completedSubtasks = useSelector(DataSelectors.getCompletedSubtasksOnSelectedTask);
+  const completedSubtasks = useSelector(
+    DataSelectors.getCompletedSubtasksOnSelectedTask,
+  );
   const columns = useSelector(DataSelectors.getColumnsStatus);
 
   const completedSubtasksString = `(${completedSubtasks.length} of ${selectedTask.subtasks.length})`;

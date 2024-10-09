@@ -18,7 +18,9 @@ interface Props {
 function Select(props: Props) {
   const { options, onSelect, label = 'Select Value', disabled } = props;
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0] || 'select option');
+  const [selectedOption, setSelectedOption] = useState(
+    options[0] || 'select option',
+  );
 
   const handleToggleOptions = () => {
     if (disabled) return;
@@ -36,7 +38,9 @@ function Select(props: Props) {
       const target = e.target as HTMLElement;
 
       const isClickedOnSelect = target.closest(`.${classes['select-wrapper']}`);
-      const isClickedOutside = !target.classList.contains(classes['select-wrapper']);
+      const isClickedOutside = !target.classList.contains(
+        classes['select-wrapper'],
+      );
 
       if (isClickedOutside && !isClickedOnSelect) {
         setIsOptionsVisible(false);
@@ -57,14 +61,27 @@ function Select(props: Props) {
       <div className={classes['select-label']}>{label}</div>
       <div
         onClick={handleToggleOptions}
-        className={'select-selected ' + classes['select-selected'] + ` ${disabled ? classes.disabled : ''}`}
+        className={
+          'select-selected ' +
+          classes['select-selected'] +
+          ` ${disabled ? classes.disabled : ''}`
+        }
       >
         <span>{selectedOption.name}</span>
         {!disabled && (
-          <ChevronDown className={`${classes.chevron} ${isOptionsVisible ? classes.rotate : ''}`} stroke="#828FA3" />
+          <ChevronDown
+            className={`${classes.chevron} ${isOptionsVisible ? classes.rotate : ''}`}
+            stroke="#828FA3"
+          />
         )}
       </div>
-      <div className={'select-options ' + classes['select-options'] + ` ${isOptionsVisible ? classes.visible : ''}`}>
+      <div
+        className={
+          'select-options ' +
+          classes['select-options'] +
+          ` ${isOptionsVisible ? classes.visible : ''}`
+        }
+      >
         {options.map((option) => (
           <div
             onClick={() => handleSelectOption(option)}

@@ -3,7 +3,12 @@ import { ModalContent } from '../../../shared/types/modalFormContentTypes';
 import Button from '../../../shared/ui/Button/Button';
 import classes from './Form.module.scss';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { DataActions, DataSelectors, UIActions, UISelectors } from '../../../app/providers/StoreProvider';
+import {
+  DataActions,
+  DataSelectors,
+  UIActions,
+  UISelectors,
+} from '../../../app/providers/StoreProvider';
 
 const Confirm = () => {
   const dispatch = useDispatch();
@@ -22,8 +27,9 @@ const Confirm = () => {
       headerName = 'task';
       description = (
         <p className={`form-description ${classes['form-description']}`}>
-          Are you sure you want to delete the <span>'{selectedTask.title}'</span> task? This action will remove all
-          subtasks and cannot be reversed.
+          Are you sure you want to delete the{' '}
+          <span>&apos;{selectedTask.title}&apos;</span> task? This action will
+          remove all subtasks and cannot be reversed.
         </p>
       );
 
@@ -37,8 +43,9 @@ const Confirm = () => {
       headerName = 'board';
       description = (
         <p className={`form-description ${classes['form-description']}`}>
-          Are you sure you want to delete the <span>'{selectedBoard.name}'</span> board? This action will remove all
-          columns and tasks and cannot be reversed.
+          Are you sure you want to delete the{' '}
+          <span>&apos;{selectedBoard.name}&apos;</span> board? This action will
+          remove all columns and tasks and cannot be reversed.
         </p>
       );
 
@@ -54,7 +61,9 @@ const Confirm = () => {
 
   return (
     <div className={`form ${classes.form}`}>
-      <h3 className={classes['form-warning-text']}>Delete this {headerName}?</h3>
+      <h3 className={classes['form-warning-text']}>
+        Delete this {headerName}?
+      </h3>
       {description}
       <div className={classes['form-confirm-buttons']}>
         <Button onClick={onConfirm} styleClass={ButtonStyle.FORM_WARNING}>

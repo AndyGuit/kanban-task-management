@@ -30,7 +30,10 @@ export const Header = () => {
       <div className={classes['board-info']}>
         <div className={classes['board-name']}>
           <h2>{title}</h2>
-          <Button onClick={showSidebarModal} styleClass={ButtonStyle.BOARDS_MOBILE}>
+          <Button
+            onClick={showSidebarModal}
+            styleClass={ButtonStyle.BOARDS_MOBILE}
+          >
             <ChevronDown />
           </Button>
         </div>

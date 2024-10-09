@@ -1,9 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeToggle } from '../../../features/ThemeToggle';
-import { DataSelectors, UIActions, UISelectors } from '../../../app/providers/StoreProvider';
+import {
+  DataSelectors,
+  UIActions,
+  UISelectors,
+} from '../../../app/providers/StoreProvider';
 import { BoardsList } from '../../../features/Board/ui/BoardsList/BoardsList';
 import Button from '../../../shared/ui/Button/Button';
-import { IconHideSidebar, IconShowSidebar } from '../../../shared/ui/Icons/Icons';
+import {
+  IconHideSidebar,
+  IconShowSidebar,
+} from '../../../shared/ui/Icons/Icons';
 import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
 import classes from './Sidebar.module.scss';
 
