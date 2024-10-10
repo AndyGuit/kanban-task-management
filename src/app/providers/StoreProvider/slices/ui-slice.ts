@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import {
   loadFromLocalStorage,
   LocalStorageKeys,
   saveToLocalStorage,
-} from '../../../../shared/lib/functions/localStorage';
+} from 'src/shared/lib/functions/localStorage';
 
 const initialState = loadFromLocalStorage(LocalStorageKeys.UI) || {
   hasSidebar: true,

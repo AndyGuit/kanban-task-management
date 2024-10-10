@@ -3,8 +3,8 @@ import {
   loadFromLocalStorage,
   LocalStorageKeys,
   saveToLocalStorage,
-} from '../../../../shared/lib/functions/localStorage';
-import { IBoard, ITask, IColumn } from '../../../../shared/types/dataTypes';
+} from 'src/shared/lib/functions/localStorage';
+import { IBoard, ITask, IColumn } from 'src/shared/types/dataTypes';
 import data from '../../../../../db/boards.json';
 
 const storedBoards =

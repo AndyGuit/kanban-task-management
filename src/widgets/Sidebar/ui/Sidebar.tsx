@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeToggle } from '../../../features/ThemeToggle';
-import {
-  DataSelectors,
-  UIActions,
-  UISelectors,
-} from '../../../app/providers/StoreProvider';
+import { DataSelectors, UIActions, UISelectors } from 'src/app/providers';
 import { BoardsList } from '../../../features/Board/ui/BoardsList/BoardsList';
 import Button from '../../../shared/ui/Button/Button';
 import {

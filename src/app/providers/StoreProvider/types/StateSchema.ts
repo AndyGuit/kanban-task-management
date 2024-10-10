@@ -1,6 +1,6 @@
-import { AppTheme } from '../../../../shared/types/appThemes';
-import { IBoard, IColumn, ITask } from '../../../../shared/types/dataTypes';
-import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
+import { AppTheme } from 'src/shared/types/appThemes';
+import { IBoard, IColumn, ITask } from 'src/shared/types/dataTypes';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 
 export interface UIStateSchema {
   hasSidebar: boolean;
