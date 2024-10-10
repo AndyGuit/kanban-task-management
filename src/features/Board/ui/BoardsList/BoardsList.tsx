@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IBoard } from 'src/shared/types/dataTypes';
-import Button from 'src/shared/ui/Button/Button';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
-import { IconBoard } from 'src/shared/ui/Icons/Icons';
+import { ButtonStyle, Button, Icons } from 'src/shared/ui';
 import classes from './BoardsList.module.scss';
 import {
   DataActions,
@@ -33,12 +31,12 @@ export const BoardsList = () => {
             styleClass={ButtonStyle.SELECT_BOARD}
             isActive={board.isActive}
           >
-            <IconBoard /> {board.name}
+            <Icons.Board /> {board.name}
           </Button>
         </li>
       ))}
       <Button onClick={handleAddBoard} styleClass={ButtonStyle.CREATE_BOARD}>
-        <IconBoard />+ Create New Board
+        <Icons.Board />+ Create New Board
       </Button>
     </ul>
   );

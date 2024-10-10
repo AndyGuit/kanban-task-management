@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import useInput from '../../lib/hooks/use-input';
-import { IconCross } from 'src/shared/ui/Icons/Icons';
-import Button from '../Button/Button';
+import { Cross } from 'src/shared/ui/Icons/Icons';
+import { Button } from '../Button/Button';
 import classes from './Input.module.scss';
 
 interface Props
@@ -13,7 +13,7 @@ interface Props
   onRemove?: () => void;
 }
 
-const InputWithValidation = (props: Props) => {
+export const InputWithValidation = (props: Props) => {
   const { validateFn = () => true } = props;
   const inputState = useInput(validateFn, props.value?.toString() ?? '');
 
@@ -68,7 +68,7 @@ const InputWithValidation = (props: Props) => {
         {content}
         {props.isRemovable && (
           <Button onClick={props.onRemove}>
-            <IconCross />
+            <Cross />
           </Button>
         )}
       </div>
@@ -76,5 +76,3 @@ const InputWithValidation = (props: Props) => {
     </>
   );
 };
-
-export default InputWithValidation;

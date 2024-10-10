@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Button } from '../Button/Button';
+import { ButtonStyle } from '../Button/buttonStyles';
+import { PopupDots } from '../Icons/Icons';
 
 import classes from './PopupWindow.module.scss';
-import Button from '../Button/Button';
-import { ButtonStyle } from '../Button/buttonStyles';
-import { IconPopupDots } from '../Icons/Icons';
 
 type Props = {
   btnText: 'Board' | 'Task';
@@ -11,7 +11,7 @@ type Props = {
   onClickEdit?: () => void;
 };
 
-const PopupWindow = (props: Props) => {
+export const PopupWindow = (props: Props) => {
   const [isPopupShown, setIsPopupShown] = useState(false);
 
   const togglePopup = () => {
@@ -42,7 +42,7 @@ const PopupWindow = (props: Props) => {
   return (
     <div className={classes['popup-wrapper']}>
       <Button onClick={togglePopup} styleClass={ButtonStyle.POPUP}>
-        <IconPopupDots />
+        <PopupDots />
       </Button>
       {isPopupShown && (
         <div className={`popup-window ${classes['popup-window']}`}>
@@ -63,5 +63,3 @@ const PopupWindow = (props: Props) => {
     </div>
   );
 };
-
-export default PopupWindow;

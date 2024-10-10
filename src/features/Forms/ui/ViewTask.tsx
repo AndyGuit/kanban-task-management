@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import Checkbox from 'src/shared/ui/Checkbox/Checkbox';
 import classes from './Form.module.scss';
 
-import Select from 'src/shared/ui/Select/Select';
 import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
 import { PopupEditTask } from '../../Popup';
+import { Select, Checkbox } from 'src/shared/ui';
 
 const ViewTask = () => {
   const dispatch = useDispatch();

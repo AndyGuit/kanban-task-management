@@ -1,6 +1,6 @@
 import { DroppableComponent } from 'src/shared/lib/providers/DragNDrop';
 import { IColumn } from 'src/shared/types/dataTypes';
-import { TasksColumn } from 'src/shared/ui/TasksColumn/TasksColumn';
+import { TasksColumn } from 'src/shared/ui';
 
 interface Props {
   children?: React.ReactNode;

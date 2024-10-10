@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IBoard } from 'src/shared/types/dataTypes';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
-import { IconBoard } from 'src/shared/ui/Icons/Icons';
-import Button from 'src/shared/ui/Button/Button';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { ButtonStyle, Button, Icons } from 'src/shared/ui';
 import {
   DataActions,
   DataSelectors,
@@ -36,7 +34,7 @@ const MenuMobile = () => {
                 styleClass={ButtonStyle.SELECT_BOARD}
                 isActive={board.isActive}
               >
-                <IconBoard /> {board.name}
+                <Icons.Board /> {board.name}
               </Button>
             </li>
           ))}
@@ -44,7 +42,7 @@ const MenuMobile = () => {
             onClick={handleAddBoard}
             styleClass={ButtonStyle.CREATE_BOARD}
           >
-            <IconBoard />+ Create New Board
+            <Icons.Board />+ Create New Board
           </Button>
         </ul>
         <ThemeToggle />

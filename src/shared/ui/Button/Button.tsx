@@ -11,7 +11,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 // type ButtonProps = React.ComponentPropsWithRef<'button'> & { isActive?: boolean, styleClass?: ButtonStyle };
 // type ButtonProps = React.ComponentPropsWithoutRef<'button'> & { isActive?: boolean, styleClass?: ButtonStyle };
 
-const Button = (props: Props) => {
+export const Button = (props: Props) => {
   let styles = `${classes.button} button-${props.styleClass} ${classes[`button-${props.styleClass}`]}`;
 
   if (props.isActive && classes[`active-${props.styleClass}`]) {
@@ -33,5 +33,3 @@ const Button = (props: Props) => {
     </button>
   );
 };
-
-export default Button;

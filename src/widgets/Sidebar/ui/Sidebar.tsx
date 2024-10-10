@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeToggle } from 'src/features/ThemeToggle';
 import { DataSelectors, UIActions, UISelectors } from 'src/app/providers';
-import { BoardsList } from 'src/features/Board/ui/BoardsList/BoardsList';
-import Button from 'src/shared/ui/Button/Button';
-import { IconHideSidebar, IconShowSidebar } from 'src/shared/ui/Icons/Icons';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { BoardsList } from 'src/features/Board';
+import { Icons, Button, ButtonStyle } from 'src/shared/ui';
 import classes from './Sidebar.module.scss';
 
 export const Sidebar = () => {
@@ -28,13 +26,13 @@ export const Sidebar = () => {
         <div>
           <ThemeToggle />
           <Button onClick={toggleAside} styleClass={ButtonStyle.HIDE_SIDEBAR}>
-            <IconHideSidebar /> Hide Sidebar
+            <Icons.HideSidebar /> Hide Sidebar
           </Button>
         </div>
       </aside>
       {!hasSidebar && (
         <Button onClick={toggleAside} styleClass={ButtonStyle.SHOW_SIDEBAR}>
-          <IconShowSidebar />
+          <Icons.ShowSidebar />
         </Button>
       )}
     </>

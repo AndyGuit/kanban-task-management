@@ -9,7 +9,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 // type CheckboxProps = React.ComponentPropsWithRef<'input'> & { title: string };
 // type CheckboxProps = React.ComponentPropsWithoutRef<'input'> & { title: string };
 
-const Checkbox = (props: Props) => {
+export const Checkbox = (props: Props) => {
   const { onChange, checked, title } = props;
   const [completed, setIsCompleted] = useState(checked);
 
@@ -31,5 +31,3 @@ const Checkbox = (props: Props) => {
     </label>
   );
 };
-
-export default Checkbox;

@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import { DraggableComponent } from '../../../shared/lib/providers/DragNDrop';
-import { ITask } from '../../../shared/types/dataTypes';
-import { TaskCard } from '../../../shared/ui/TaskCard/TaskCard';
+import { DraggableComponent } from 'src/shared/lib/providers/DragNDrop';
+import { ITask } from 'src/shared/types/dataTypes';
+import { TaskCard } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
-import { DataActions, UIActions } from '../../../app/providers/StoreProvider';
-import { ModalContent } from '../../../shared/types/modalFormContentTypes';
+import { DataActions, UIActions } from 'src/app/providers/StoreProvider';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 
 interface TaskDraggableProps {
   draggableIndex: number;

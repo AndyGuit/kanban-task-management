@@ -5,16 +5,14 @@ import validate from 'src/shared/lib/functions/validate';
 import useInput from 'src/shared/lib/hooks/use-input';
 import { ISubtask, ITask } from 'src/shared/types/dataTypes';
 import { InputsList } from 'src/entities/InputsList';
-import Button from 'src/shared/ui/Button/Button';
-import Input from 'src/shared/ui/Input/Input';
-import classes from './Form.module.scss';
-import Select, { TOptionType } from 'src/shared/ui/Select/Select';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { ButtonStyle, Button, Input, Select } from 'src/shared/ui';
+import type { TOptionType } from 'src/shared/ui';
 import {
   DataActions,
   DataSelectors,
   UIActions,
 } from 'src/app/providers/StoreProvider';
+import classes from './Form.module.scss';
 
 const AddNewTask = () => {
   const dispatch = useDispatch();

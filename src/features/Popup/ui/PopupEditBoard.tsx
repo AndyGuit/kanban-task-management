@@ -1,8 +1,11 @@
 import { useDispatch } from 'react-redux';
-import Button from 'src/shared/ui/Button/Button';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
-import { IconPopupDots } from 'src/shared/ui/Icons/Icons';
-import { Popover, PopoverContentPosition } from 'src/shared/ui/Popover';
+import {
+  ButtonStyle,
+  Button,
+  Icons,
+  Popover,
+  PopoverContentPosition,
+} from 'src/shared/ui';
 import { UIActions } from 'src/app/providers/StoreProvider';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 
@@ -24,7 +27,7 @@ export const PopupEditBoard = () => {
       direction={PopoverContentPosition.BOTTOM_LEFT}
       trigger={
         <Button styleClass={ButtonStyle.POPUP}>
-          <IconPopupDots />
+          <Icons.PopupDots />
         </Button>
       }
     >

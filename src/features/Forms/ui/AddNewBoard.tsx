@@ -5,9 +5,7 @@ import validate from 'src/shared/lib/functions/validate';
 import useInput from 'src/shared/lib/hooks/use-input';
 import { IBoard, IColumn } from 'src/shared/types/dataTypes';
 import { InputsList } from 'src/entities/InputsList';
-import Button from 'src/shared/ui/Button/Button';
-import Input from 'src/shared/ui/Input/Input';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { Button, Input, ButtonStyle } from 'src/shared/ui';
 import { DataActions, UIActions } from 'src/app/providers/StoreProvider';
 import classes from './Form.module.scss';
 

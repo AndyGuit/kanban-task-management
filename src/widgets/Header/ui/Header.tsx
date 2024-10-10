@@ -1,12 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { AppLogo } from 'src/shared/ui/AppLogo/AppLogo';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
-import Button from 'src/shared/ui/Button/Button';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
-import { ChevronDown } from 'src/shared/ui/Icons/Icons';
-import classes from './Header.module.scss';
+import { ButtonStyle, Button, Icons, AppLogo } from 'src/shared/ui';
 import { PopupEditBoard } from 'src/features/Popup/ui/PopupEditBoard';
+import classes from './Header.module.scss';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -34,7 +31,7 @@ export const Header = () => {
             onClick={showSidebarModal}
             styleClass={ButtonStyle.BOARDS_MOBILE}
           >
-            <ChevronDown />
+            <Icons.ChevronDown />
           </Button>
         </div>
         {activeBoard && (

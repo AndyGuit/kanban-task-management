@@ -1,8 +1,5 @@
 import { useDispatch } from 'react-redux';
-import Button from 'src/shared/ui/Button/Button';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
-import { IconPopupDots } from 'src/shared/ui/Icons/Icons';
-import { Popover } from 'src/shared/ui/Popover';
+import { ButtonStyle, Icons, Button, Popover } from 'src/shared/ui';
 import { UIActions } from 'src/app/providers/StoreProvider';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 
@@ -21,7 +18,7 @@ export const PopupEditTask = () => {
     <Popover
       trigger={
         <Button styleClass={ButtonStyle.POPUP}>
-          <IconPopupDots />
+          <Icons.PopupDots />
         </Button>
       }
     >

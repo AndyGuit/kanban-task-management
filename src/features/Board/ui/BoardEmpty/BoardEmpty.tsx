@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
-import Button from 'src/shared/ui/Button/Button';
-import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { ButtonStyle, Button } from 'src/shared/ui';
 import classes from './BoardEmpty.module.scss';
 import { UIActions } from 'src/app/providers/StoreProvider';
 

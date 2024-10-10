@@ -15,7 +15,7 @@ interface Props {
   disabled?: boolean;
 }
 
-function Select(props: Props) {
+export function Select(props: Props) {
   const { options, onSelect, label = 'Select Value', disabled } = props;
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
@@ -95,5 +95,3 @@ function Select(props: Props) {
     </div>
   );
 }
-
-export default Select;

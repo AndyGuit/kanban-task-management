@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { UISelectors, UIActions } from '../../../app/providers/StoreProvider';
-import Modal from 'src/shared/ui/Modal/Modal';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { Loader } from 'src/shared/ui/Loader/Loader';
+import { Modal } from 'src/shared/ui';
 
 const AddNewBoard = lazy(() => import('src/features/Forms/ui/AddNewBoard'));
 const AddNewColumn = lazy(() => import('src/features/Forms/ui/AddNewColumn'));

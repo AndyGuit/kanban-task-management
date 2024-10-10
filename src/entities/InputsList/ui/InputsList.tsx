@@ -1,5 +1,5 @@
+import { InputWithValidation } from 'src/shared/ui';
 import classes from './InputsList.module.scss';
-import InputWithValidation from 'src/shared/ui/Input/InputWithValidation';
 
 type Props = {
   listItems: { name: string; isDisabled: boolean; isRemovable: boolean }[];
