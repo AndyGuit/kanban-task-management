@@ -1,14 +1,14 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import generateRandomId from '../../../shared/lib/functions/randomId';
-import validate from '../../../shared/lib/functions/validate';
-import useInput from '../../../shared/lib/hooks/use-input';
-import { IBoard, IColumn } from '../../../shared/types/dataTypes';
-import { InputsList } from '../../../entities/InputsList';
-import Button from '../../../shared/ui/Button/Button';
-import Input from '../../../shared/ui/Input/Input';
-import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { DataActions, UIActions } from '../../../app/providers/StoreProvider';
+import generateRandomId from 'src/shared/lib/functions/randomId';
+import validate from 'src/shared/lib/functions/validate';
+import useInput from 'src/shared/lib/hooks/use-input';
+import { IBoard, IColumn } from 'src/shared/types/dataTypes';
+import { InputsList } from 'src/entities/InputsList';
+import Button from 'src/shared/ui/Button/Button';
+import Input from 'src/shared/ui/Input/Input';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { DataActions, UIActions } from 'src/app/providers/StoreProvider';
 import classes from './Form.module.scss';
 
 const AddNewBoard = () => {

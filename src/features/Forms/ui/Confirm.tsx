@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent } from '../../../shared/types/modalFormContentTypes';
-import Button from '../../../shared/ui/Button/Button';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import Button from 'src/shared/ui/Button/Button';
 import classes from './Form.module.scss';
-import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
 import {
   DataActions,
   DataSelectors,
   UIActions,
   UISelectors,
-} from '../../../app/providers/StoreProvider';
+} from 'src/app/providers/StoreProvider';
 
 const Confirm = () => {
   const dispatch = useDispatch();

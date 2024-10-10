@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { IBoard } from '../../../../shared/types/dataTypes';
-import Button from '../../../../shared/ui/Button/Button';
-import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
-import { IconBoard } from '../../../../shared/ui/Icons/Icons';
+import { IBoard } from 'src/shared/types/dataTypes';
+import Button from 'src/shared/ui/Button/Button';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { IconBoard } from 'src/shared/ui/Icons/Icons';
 import classes from './BoardsList.module.scss';
 import {
   DataActions,
   DataSelectors,
   UIActions,
-} from '../../../../app/providers/StoreProvider';
-import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
+} from 'src/app/providers/StoreProvider';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 
 export const BoardsList = () => {
   const dispatch = useDispatch();

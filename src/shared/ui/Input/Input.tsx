@@ -1,5 +1,5 @@
 import { ChangeEvent, Fragment, useState } from 'react';
-import { IconCross } from '../../../shared/ui/Icons/Icons';
+import { IconCross } from 'src/shared/ui/Icons/Icons';
 import Button from '../Button/Button';
 import classes from './Input.module.scss';
 

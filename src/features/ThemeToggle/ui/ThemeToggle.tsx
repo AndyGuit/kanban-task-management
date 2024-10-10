@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../../shared/ui/Button/Button';
-import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { IconMoon, IconSun } from '../../../shared/ui/Icons/Icons';
+import Button from 'src/shared/ui/Button/Button';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { IconMoon, IconSun } from 'src/shared/ui/Icons/Icons';
 import classes from './ThemeToggle.module.scss';
 import { getTheme } from '../model/selectors/get-theme';
-import { AppTheme } from '../../../shared/types/appThemes';
+import { AppTheme } from 'src/shared/types/appThemes';
 import { ThemeActions } from '../model/slices/theme-slice';
 
 export const ThemeToggle = () => {

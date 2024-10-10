@@ -1,24 +1,18 @@
 import { lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { UISelectors, UIActions } from '../../../app/providers/StoreProvider';
-import Modal from '../../../shared/ui/Modal/Modal';
-import { ModalContent } from '../../../shared/types/modalFormContentTypes';
-import { Loader } from '../../../shared/ui/Loader/Loader';
+import Modal from 'src/shared/ui/Modal/Modal';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { Loader } from 'src/shared/ui/Loader/Loader';
 
-const AddNewBoard = lazy(
-  () => import('../../../features/Forms/ui/AddNewBoard'),
-);
-const AddNewColumn = lazy(
-  () => import('../../../features/Forms/ui/AddNewColumn'),
-);
-const AddNewTask = lazy(() => import('../../../features/Forms/ui/AddNewTask'));
-const Confirm = lazy(() => import('../../../features/Forms/ui/Confirm'));
-const EditBoard = lazy(() => import('../../../features/Forms/ui/EditBoard'));
-const EditTask = lazy(() => import('../../../features/Forms/ui/EditTask'));
-const ViewTask = lazy(() => import('../../../features/Forms/ui/ViewTask'));
-const MobileMenu = lazy(
-  () => import('../../../features/MenuMobile/ui/MenuMobile'),
-);
+const AddNewBoard = lazy(() => import('src/features/Forms/ui/AddNewBoard'));
+const AddNewColumn = lazy(() => import('src/features/Forms/ui/AddNewColumn'));
+const AddNewTask = lazy(() => import('src/features/Forms/ui/AddNewTask'));
+const Confirm = lazy(() => import('src/features/Forms/ui/Confirm'));
+const EditBoard = lazy(() => import('src/features/Forms/ui/EditBoard'));
+const EditTask = lazy(() => import('src/features/Forms/ui/EditTask'));
+const ViewTask = lazy(() => import('src/features/Forms/ui/ViewTask'));
+const MobileMenu = lazy(() => import('src/features/MenuMobile/ui/MenuMobile'));
 
 export const ModalWithForms = () => {
   const dispatch = useDispatch();

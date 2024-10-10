@@ -1,14 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  DataSelectors,
-  UIActions,
-} from '../../../../app/providers/StoreProvider';
-import { IColumn } from '../../../../shared/types/dataTypes';
-import { ModalContent } from '../../../../shared/types/modalFormContentTypes';
-import Button from '../../../../shared/ui/Button/Button';
-import { ButtonStyle } from '../../../../shared/ui/Button/buttonStyles';
-import { TaskDraggable } from '../../../../entities/Task';
-import { ColumnDroppable } from '../../../../entities/Column';
+import { DataSelectors, UIActions } from 'src/app/providers/StoreProvider';
+import { IColumn } from 'src/shared/types/dataTypes';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import Button from 'src/shared/ui/Button/Button';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { TaskDraggable } from 'src/entities/Task';
+import { ColumnDroppable } from 'src/entities/Column';
 import { BoardEmpty } from '../BoardEmpty/BoardEmpty';
 import classes from './BoardDragDrop.module.scss';
 

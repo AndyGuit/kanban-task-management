@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
-import Button from '../../../shared/ui/Button/Button';
-import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { IconPopupDots } from '../../../shared/ui/Icons/Icons';
-import { Popover, PopoverContentPosition } from '../../../shared/ui/Popover';
-import { UIActions } from '../../../app/providers/StoreProvider';
-import { ModalContent } from '../../../shared/types/modalFormContentTypes';
+import Button from 'src/shared/ui/Button/Button';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { IconPopupDots } from 'src/shared/ui/Icons/Icons';
+import { Popover, PopoverContentPosition } from 'src/shared/ui/Popover';
+import { UIActions } from 'src/app/providers/StoreProvider';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 
 export const PopupEditBoard = () => {
   const dispatch = useDispatch();

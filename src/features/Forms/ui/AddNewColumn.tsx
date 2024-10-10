@@ -1,18 +1,18 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from '../../../shared/lib/functions/randomId';
-import validate from '../../../shared/lib/functions/validate';
-import Button from '../../../shared/ui/Button/Button';
-import Input from '../../../shared/ui/Input/Input';
+import generateRandomId from 'src/shared/lib/functions/randomId';
+import validate from 'src/shared/lib/functions/validate';
+import Button from 'src/shared/ui/Button/Button';
+import Input from 'src/shared/ui/Input/Input';
 import classes from './Form.module.scss';
 import cloneDeep from 'lodash.clonedeep';
-import { InputsList } from '../../../entities/InputsList';
-import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
+import { InputsList } from 'src/entities/InputsList';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
 import {
   DataActions,
   DataSelectors,
   UIActions,
-} from '../../../app/providers/StoreProvider';
+} from 'src/app/providers/StoreProvider';
 
 const AddNewColumn = () => {
   const dispatch = useDispatch();

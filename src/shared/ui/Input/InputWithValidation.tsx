@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 import useInput from '../../lib/hooks/use-input';
-import { IconCross } from '../../../shared/ui/Icons/Icons';
+import { IconCross } from 'src/shared/ui/Icons/Icons';
 import Button from '../Button/Button';
 import classes from './Input.module.scss';
 

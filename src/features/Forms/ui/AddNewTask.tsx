@@ -1,20 +1,20 @@
 import { useState, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from '../../../shared/lib/functions/randomId';
-import validate from '../../../shared/lib/functions/validate';
-import useInput from '../../../shared/lib/hooks/use-input';
-import { ISubtask, ITask } from '../../../shared/types/dataTypes';
-import { InputsList } from '../../../entities/InputsList';
-import Button from '../../../shared/ui/Button/Button';
-import Input from '../../../shared/ui/Input/Input';
+import generateRandomId from 'src/shared/lib/functions/randomId';
+import validate from 'src/shared/lib/functions/validate';
+import useInput from 'src/shared/lib/hooks/use-input';
+import { ISubtask, ITask } from 'src/shared/types/dataTypes';
+import { InputsList } from 'src/entities/InputsList';
+import Button from 'src/shared/ui/Button/Button';
+import Input from 'src/shared/ui/Input/Input';
 import classes from './Form.module.scss';
-import Select, { TOptionType } from '../../../shared/ui/Select/Select';
-import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
+import Select, { TOptionType } from 'src/shared/ui/Select/Select';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
 import {
   DataActions,
   DataSelectors,
   UIActions,
-} from '../../../app/providers/StoreProvider';
+} from 'src/app/providers/StoreProvider';
 
 const AddNewTask = () => {
   const dispatch = useDispatch();

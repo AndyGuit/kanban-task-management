@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { IBoard } from '../../../shared/types/dataTypes';
-import { ModalContent } from '../../../shared/types/modalFormContentTypes';
-import { IconBoard } from '../../../shared/ui/Icons/Icons';
-import Button from '../../../shared/ui/Button/Button';
-import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
+import { IBoard } from 'src/shared/types/dataTypes';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { IconBoard } from 'src/shared/ui/Icons/Icons';
+import Button from 'src/shared/ui/Button/Button';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
 import {
   DataActions,
   DataSelectors,
   UIActions,
-} from '../../../app/providers/StoreProvider';
+} from 'src/app/providers/StoreProvider';
 import { ThemeToggle } from '../../ThemeToggle';
 import classes from './MenuMobile.module.scss';
 

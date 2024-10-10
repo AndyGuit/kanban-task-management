@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { AppLogo } from '../../../shared/ui/AppLogo/AppLogo';
-import { ModalContent } from '../../../shared/types/modalFormContentTypes';
+import { AppLogo } from 'src/shared/ui/AppLogo/AppLogo';
+import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
-import Button from '../../../shared/ui/Button/Button';
-import { ButtonStyle } from '../../../shared/ui/Button/buttonStyles';
-import { ChevronDown } from '../../../shared/ui/Icons/Icons';
+import Button from 'src/shared/ui/Button/Button';
+import { ButtonStyle } from 'src/shared/ui/Button/buttonStyles';
+import { ChevronDown } from 'src/shared/ui/Icons/Icons';
 import classes from './Header.module.scss';
-import { PopupEditBoard } from '../../../features/Popup/ui/PopupEditBoard';
+import { PopupEditBoard } from 'src/features/Popup/ui/PopupEditBoard';
 
 export const Header = () => {
   const dispatch = useDispatch();
