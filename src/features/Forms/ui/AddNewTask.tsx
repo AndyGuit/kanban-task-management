@@ -7,11 +7,8 @@ import { ISubtask, ITask } from 'src/shared/types/dataTypes';
 import { InputsList } from 'src/entities/InputsList';
 import { ButtonStyle, Button, Input, Select } from 'src/shared/ui';
 import type { TOptionType } from 'src/shared/ui';
-import {
-  DataActions,
-  DataSelectors,
-  UIActions,
-} from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 
 const AddNewTask = () => {
@@ -68,7 +65,7 @@ const AddNewTask = () => {
       dispatch(DataActions.setSelectedColumn(selectedColumn.statusId));
       dispatch(DataActions.addTask(newTask));
       dispatch(DataActions.saveChanges('column'));
-      dispatch(UIActions.hideModal());
+      dispatch(ModalActions.hideModal());
     }
   };
 

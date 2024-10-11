@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
-import { DataSelectors, UIActions } from '../../../app/providers/StoreProvider';
+import { DataSelectors } from '../../../app/providers/StoreProvider';
 import { ButtonStyle, Button, Icons, AppLogo } from 'src/shared/ui';
 import { PopupEditBoard } from 'src/features/Popup/ui/PopupEditBoard';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './Header.module.scss';
 
 export const Header = () => {
@@ -12,13 +13,13 @@ export const Header = () => {
   const title = activeBoard?.name || 'No Boards Found';
 
   const addNewTask = () => {
-    dispatch(UIActions.setModalContent(ModalContent.addNewTask));
-    dispatch(UIActions.showModal());
+    dispatch(ModalActions.setModalContent(ModalContent.addNewTask));
+    dispatch(ModalActions.showModal());
   };
 
   const showSidebarModal = () => {
-    dispatch(UIActions.setModalContent(ModalContent.menuMobile));
-    dispatch(UIActions.showModal());
+    dispatch(ModalActions.setModalContent(ModalContent.menuMobile));
+    dispatch(ModalActions.showModal());
   };
 
   return (

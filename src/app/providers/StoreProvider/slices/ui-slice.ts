@@ -1,5 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   loadFromLocalStorage,
   LocalStorageKeys,
@@ -8,10 +7,6 @@ import {
 
 const initialState = loadFromLocalStorage(LocalStorageKeys.UI) || {
   hasSidebar: true,
-  modal: {
-    isVisible: false,
-    formContent: ModalContent.none,
-  },
 };
 
 const uiSlice = createSlice({
@@ -23,17 +18,7 @@ const uiSlice = createSlice({
 
       saveToLocalStorage(LocalStorageKeys.UI, {
         ...state,
-        modal: { isVisible: false, formContent: ModalContent.none },
       });
-    },
-    showModal: (state) => {
-      state.modal.isVisible = true;
-    },
-    hideModal: (state) => {
-      state.modal.isVisible = false;
-    },
-    setModalContent: (state, action: PayloadAction<ModalContent>) => {
-      state.modal.formContent = action.payload;
     },
   },
 });

@@ -1,24 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { ButtonStyle, Button } from 'src/shared/ui';
-import {
-  DataActions,
-  DataSelectors,
-  UIActions,
-  UISelectors,
-} from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { ModalActions, ModalSelectors } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 
 const Confirm = () => {
   const dispatch = useDispatch();
-  const deletionType = useSelector(UISelectors.getModalFormContent);
+  const deletionType = useSelector(ModalSelectors.getModalFormContent);
   const selectedTask = useSelector(DataSelectors.getSelectedTask);
   const selectedBoard = useSelector(DataSelectors.getActiveBoard);
 
   let headerName = '';
   let description: React.ReactNode;
 
-  const onCancel = () => dispatch(UIActions.hideModal());
+  const onCancel = () => dispatch(ModalActions.hideModal());
   let onConfirm = () => {};
 
   switch (deletionType) {
@@ -35,7 +31,7 @@ const Confirm = () => {
       onConfirm = () => {
         dispatch(DataActions.removeTask(selectedTask.id));
         dispatch(DataActions.saveChanges('column'));
-        dispatch(UIActions.hideModal());
+        dispatch(ModalActions.hideModal());
       };
       break;
     case ModalContent.confirmDeleteBoard:
@@ -51,7 +47,7 @@ const Confirm = () => {
       onConfirm = () => {
         dispatch(DataActions.deleteActiveBoard());
         dispatch(DataActions.saveChanges('board'));
-        dispatch(UIActions.hideModal());
+        dispatch(ModalActions.hideModal());
       };
       break;
     default:

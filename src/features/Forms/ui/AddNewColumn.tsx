@@ -5,11 +5,8 @@ import validate from 'src/shared/lib/functions/validate';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from 'src/entities/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
-import {
-  DataActions,
-  DataSelectors,
-  UIActions,
-} from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 
 const AddNewColumn = () => {
@@ -45,7 +42,7 @@ const AddNewColumn = () => {
     if (inputsNotEmpty) {
       dispatch(DataActions.setColumns(newColumns));
       dispatch(DataActions.saveChanges('board'));
-      dispatch(UIActions.hideModal());
+      dispatch(ModalActions.hideModal());
     }
   };
 

@@ -1,17 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { ButtonStyle, Icons, Button, Popover } from 'src/shared/ui';
-import { UIActions } from 'src/app/providers/StoreProvider';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 
 export const PopupEditTask = () => {
   const dispatch = useDispatch();
 
   const editTaskHandler = () => {
-    dispatch(UIActions.setModalContent(ModalContent.editTask));
+    dispatch(ModalActions.setModalContent(ModalContent.editTask));
   };
 
   const deleteTaskHandler = () => {
-    dispatch(UIActions.setModalContent(ModalContent.confirmDeleteTask));
+    dispatch(ModalActions.setModalContent(ModalContent.confirmDeleteTask));
   };
 
   return (

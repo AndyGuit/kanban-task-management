@@ -3,8 +3,9 @@ import { DraggableComponent } from 'src/shared/lib/providers/DragNDrop';
 import { ITask } from 'src/shared/types/dataTypes';
 import { TaskCard } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
-import { DataActions, UIActions } from 'src/app/providers/StoreProvider';
+import { DataActions } from 'src/app/providers/StoreProvider';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 
 interface TaskDraggableProps {
   draggableIndex: number;
@@ -25,8 +26,8 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
   const viewTaskDetails = (columnId: string, taskId: string) => {
     dispatch(DataActions.setSelectedColumn(columnId));
     dispatch(DataActions.setSelectedTask(taskId));
-    dispatch(UIActions.setModalContent(ModalContent.viewTask));
-    dispatch(UIActions.showModal());
+    dispatch(ModalActions.setModalContent(ModalContent.viewTask));
+    dispatch(ModalActions.showModal());
   };
 
   return (

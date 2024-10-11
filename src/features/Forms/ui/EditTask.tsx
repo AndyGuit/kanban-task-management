@@ -6,11 +6,8 @@ import { ISubtask, ITask } from 'src/shared/types/dataTypes';
 import { InputsList } from 'src/entities/InputsList';
 import type { TOptionType } from 'src/shared/ui';
 import { ButtonStyle, Select, Button, Input } from 'src/shared/ui';
-import {
-  DataActions,
-  DataSelectors,
-  UIActions,
-} from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 
 const EditTask = () => {
@@ -85,7 +82,7 @@ const EditTask = () => {
         dispatch(DataActions.replaceTask(editedTask));
         dispatch(DataActions.saveChanges('column'));
       }
-      dispatch(UIActions.hideModal());
+      dispatch(ModalActions.hideModal());
     }
   };
 

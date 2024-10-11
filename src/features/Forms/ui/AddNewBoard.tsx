@@ -6,7 +6,8 @@ import useInput from 'src/shared/lib/hooks/use-input';
 import { IBoard, IColumn } from 'src/shared/types/dataTypes';
 import { InputsList } from 'src/entities/InputsList';
 import { Button, Input, ButtonStyle } from 'src/shared/ui';
-import { DataActions, UIActions } from 'src/app/providers/StoreProvider';
+import { DataActions } from 'src/app/providers/StoreProvider';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 
 const AddNewBoard = () => {
@@ -52,7 +53,7 @@ const AddNewBoard = () => {
 
       dispatch(DataActions.addBoard(newBoard));
       dispatch(DataActions.setActiveBoard(newBoard.id));
-      dispatch(UIActions.hideModal());
+      dispatch(ModalActions.hideModal());
     }
   };
 

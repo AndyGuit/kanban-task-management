@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { UISelectors, UIActions } from '../../../app/providers/StoreProvider';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { Loader } from 'src/shared/ui/Loader/Loader';
 import { Modal } from 'src/shared/ui';
+import { ModalActions, ModalSelectors } from '..';
 
 const AddNewBoard = lazy(() => import('src/features/Forms/ui/AddNewBoard'));
 const AddNewColumn = lazy(() => import('src/features/Forms/ui/AddNewColumn'));
@@ -16,9 +16,9 @@ const MobileMenu = lazy(() => import('src/features/MenuMobile/ui/MenuMobile'));
 
 export const ModalWithForms = () => {
   const dispatch = useDispatch();
-  const isModal = useSelector(UISelectors.getIsModal);
-  const closeModal = () => dispatch(UIActions.hideModal());
-  const contentType = useSelector(UISelectors.getModalFormContent);
+  const isModal = useSelector(ModalSelectors.getIsModal);
+  const closeModal = () => dispatch(ModalActions.hideModal());
+  const contentType = useSelector(ModalSelectors.getModalFormContent);
 
   if (!isModal) return null;
 

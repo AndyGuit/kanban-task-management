@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { DataSelectors, UIActions } from 'src/app/providers/StoreProvider';
+import { DataSelectors } from 'src/app/providers/StoreProvider';
 import { IColumn } from 'src/shared/types/dataTypes';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { Button, ButtonStyle } from 'src/shared/ui';
 import { TaskDraggable } from 'src/entities/Task';
 import { ColumnDroppable } from 'src/entities/Column';
 import { BoardEmpty } from '../BoardEmpty/BoardEmpty';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './BoardDragDrop.module.scss';
 
 export const BoardDragDrop = () => {
@@ -13,8 +14,8 @@ export const BoardDragDrop = () => {
   const activeBoard = useSelector(DataSelectors.getActiveBoard);
 
   const addNewColumnHandler = () => {
-    dispatch(UIActions.setModalContent(ModalContent.addNewColumn));
-    dispatch(UIActions.showModal());
+    dispatch(ModalActions.setModalContent(ModalContent.addNewColumn));
+    dispatch(ModalActions.showModal());
   };
 
   if (!activeBoard) {

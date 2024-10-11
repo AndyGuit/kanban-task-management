@@ -2,12 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IBoard } from 'src/shared/types/dataTypes';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
-import {
-  DataActions,
-  DataSelectors,
-  UIActions,
-} from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
 import { ThemeToggle } from '../../ThemeToggle';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './MenuMobile.module.scss';
 
 const MenuMobile = () => {
@@ -16,10 +13,10 @@ const MenuMobile = () => {
 
   const setActiveBoard = (boardId: string) => {
     dispatch(DataActions.setActiveBoard(boardId));
-    dispatch(UIActions.hideModal());
+    dispatch(ModalActions.hideModal());
   };
   const handleAddBoard = () => {
-    dispatch(UIActions.setModalContent(ModalContent.addNewBoard));
+    dispatch(ModalActions.setModalContent(ModalContent.addNewBoard));
   };
 
   return (

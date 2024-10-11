@@ -6,20 +6,20 @@ import {
   Popover,
   PopoverContentPosition,
 } from 'src/shared/ui';
-import { UIActions } from 'src/app/providers/StoreProvider';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 
 export const PopupEditBoard = () => {
   const dispatch = useDispatch();
 
   const handleEditBoard = () => {
-    dispatch(UIActions.setModalContent(ModalContent.editBoard));
-    dispatch(UIActions.showModal());
+    dispatch(ModalActions.setModalContent(ModalContent.editBoard));
+    dispatch(ModalActions.showModal());
   };
 
   const handleDeleteBoard = () => {
-    dispatch(UIActions.setModalContent(ModalContent.confirmDeleteBoard));
-    dispatch(UIActions.showModal());
+    dispatch(ModalActions.setModalContent(ModalContent.confirmDeleteBoard));
+    dispatch(ModalActions.showModal());
   };
 
   return (

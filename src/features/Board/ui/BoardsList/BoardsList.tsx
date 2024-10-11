@@ -1,13 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IBoard } from 'src/shared/types/dataTypes';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
-import classes from './BoardsList.module.scss';
-import {
-  DataActions,
-  DataSelectors,
-  UIActions,
-} from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { ModalActions } from 'src/widgets/ModalWithForms';
+import classes from './BoardsList.module.scss';
 
 export const BoardsList = () => {
   const dispatch = useDispatch();
@@ -18,8 +15,8 @@ export const BoardsList = () => {
   };
 
   const handleAddBoard = () => {
-    dispatch(UIActions.setModalContent(ModalContent.addNewBoard));
-    dispatch(UIActions.showModal());
+    dispatch(ModalActions.setModalContent(ModalContent.addNewBoard));
+    dispatch(ModalActions.showModal());
   };
 
   return (

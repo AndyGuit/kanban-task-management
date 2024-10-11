@@ -7,11 +7,8 @@ import { IBoard, IColumn } from 'src/shared/types/dataTypes';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from 'src/entities/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
-import {
-  DataActions,
-  DataSelectors,
-  UIActions,
-} from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 
 const EditBoard = () => {
@@ -56,7 +53,7 @@ const EditBoard = () => {
 
       dispatch(DataActions.replaceActiveBoard(editedBoard));
       dispatch(DataActions.saveChanges('board'));
-      dispatch(UIActions.hideModal());
+      dispatch(ModalActions.hideModal());
     }
   };
 

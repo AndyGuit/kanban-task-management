@@ -1,15 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { ButtonStyle, Button } from 'src/shared/ui';
+import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './BoardEmpty.module.scss';
-import { UIActions } from 'src/app/providers/StoreProvider';
 
 export const BoardEmpty = () => {
   const dispatch = useDispatch();
 
   const handleAddBoard = () => {
-    dispatch(UIActions.setModalContent(ModalContent.addNewBoard));
-    dispatch(UIActions.showModal());
+    dispatch(ModalActions.setModalContent(ModalContent.addNewBoard));
+    dispatch(ModalActions.showModal());
   };
 
   return (
