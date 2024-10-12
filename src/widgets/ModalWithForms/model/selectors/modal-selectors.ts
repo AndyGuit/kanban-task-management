@@ -1,4 +1,4 @@
-import { RootState } from 'src/app/providers/StoreProvider/store/store';
+import { RootState } from 'src/app/providers';
 
 export const getModalFormContent = (state: RootState) =>
   state.modal.formContent;

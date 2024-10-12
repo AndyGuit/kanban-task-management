@@ -1,14 +1,13 @@
 import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import validate from 'src/shared/lib/functions/validate';
 import { ISubtask, ITask } from 'src/shared/types';
 import { InputsList } from 'src/entities/InputsList';
 import type { TOptionType } from 'src/shared/ui';
 import { ButtonStyle, Select, Button, Input } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers';
 import { ModalActions } from 'src/widgets/ModalWithForms';
+import { useInput, validate } from 'src/shared/lib';
 import classes from './Form.module.scss';
-import { useInput } from 'src/shared/lib';
 
 const EditTask = () => {
   const dispatch = useDispatch();

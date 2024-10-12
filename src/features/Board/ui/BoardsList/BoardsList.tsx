@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { IBoard } from 'src/shared/types';
+import { ModalContent, IBoard } from 'src/shared/types';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
-import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { DataActions, DataSelectors } from 'src/app/providers';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './BoardsList.module.scss';
 

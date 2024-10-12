@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
-import { DraggableComponent } from 'src/shared/lib/providers/DragNDrop';
-import { ITask } from 'src/shared/types';
+import { DraggableComponent } from 'src/shared/lib';
+import { ITask, ModalContent } from 'src/shared/types';
 import { TaskCard } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
-import { DataActions } from 'src/app/providers/StoreProvider';
-import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { DataActions } from 'src/app/providers';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 
 interface TaskDraggableProps {

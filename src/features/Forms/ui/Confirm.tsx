@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { ModalContent } from 'src/shared/types';
 import { ButtonStyle, Button } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers';
 import { ModalActions, ModalSelectors } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { ModalContent } from 'src/shared/types';
 
 const initialState = {
   isVisible: false,

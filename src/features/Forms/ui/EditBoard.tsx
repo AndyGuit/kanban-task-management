@@ -1,15 +1,13 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from 'src/shared/lib/functions/randomId';
-import validate from 'src/shared/lib/functions/validate';
 import { IBoard, IColumn } from 'src/shared/types';
+import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from 'src/entities/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
-import { useInput } from 'src/shared/lib';
 
 const EditBoard = () => {
   const dispatch = useDispatch();

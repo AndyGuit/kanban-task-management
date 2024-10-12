@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers';
 import { PopupEditTask } from '../../Popup';
 import { Select, Checkbox } from 'src/shared/ui';
 

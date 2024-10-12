@@ -1,5 +1,3 @@
 import { nanoid } from '@reduxjs/toolkit';
 
-const generateRandomId = () => nanoid();
-
-export default generateRandomId;
+export const generateRandomId = () => nanoid();

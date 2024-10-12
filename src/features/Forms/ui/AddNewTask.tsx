@@ -1,14 +1,12 @@
 import { useState, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import generateRandomId from 'src/shared/lib/functions/randomId';
-import validate from 'src/shared/lib/functions/validate';
 import { ISubtask, ITask } from 'src/shared/types';
 import { InputsList } from 'src/entities/InputsList';
 import { ButtonStyle, Button, Input, Select } from 'src/shared/ui';
 import type { TOptionType } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers/StoreProvider';
+import { DataActions, DataSelectors } from 'src/app/providers';
 import { ModalActions } from 'src/widgets/ModalWithForms';
-import { useInput } from 'src/shared/lib';
+import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import classes from './Form.module.scss';
 
 const AddNewTask = () => {

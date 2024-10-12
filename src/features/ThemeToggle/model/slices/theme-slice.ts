@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppTheme } from 'src/shared/types/appThemes';
+import { AppTheme } from 'src/shared/types';
 import {
   loadFromLocalStorage,
   LocalStorageKeys,
   saveToLocalStorage,
-} from 'src/shared/lib/functions/localStorage';
+} from 'src/shared/lib';
 
 const initialState = {
   theme: loadFromLocalStorage(LocalStorageKeys.Theme) || AppTheme.DARK,

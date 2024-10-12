@@ -1,18 +1,11 @@
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent } from 'src/shared/types/modalFormContentTypes';
-import { Loader } from 'src/shared/ui/Loader/Loader';
+import { ModalContent } from 'src/shared/types';
+import { Loader } from 'src/shared/ui';
 import { Modal } from 'src/shared/ui';
 import { ModalActions, ModalSelectors } from '..';
-
-const AddNewBoard = lazy(() => import('src/features/Forms/ui/AddNewBoard'));
-const AddNewColumn = lazy(() => import('src/features/Forms/ui/AddNewColumn'));
-const AddNewTask = lazy(() => import('src/features/Forms/ui/AddNewTask'));
-const Confirm = lazy(() => import('src/features/Forms/ui/Confirm'));
-const EditBoard = lazy(() => import('src/features/Forms/ui/EditBoard'));
-const EditTask = lazy(() => import('src/features/Forms/ui/EditTask'));
-const ViewTask = lazy(() => import('src/features/Forms/ui/ViewTask'));
-const MobileMenu = lazy(() => import('src/features/MenuMobile/ui/MenuMobile'));
+import { MenuMobile } from 'src/features/MenuMobile';
+import * as Form from 'src/features/Forms';
 
 export const ModalWithForms = () => {
   const dispatch = useDispatch();
@@ -26,29 +19,29 @@ export const ModalWithForms = () => {
 
   switch (contentType) {
     case ModalContent.viewTask:
-      form = <ViewTask />;
+      form = <Form.ViewTask />;
       break;
     case ModalContent.editTask:
-      form = <EditTask />;
+      form = <Form.EditTask />;
       break;
     case ModalContent.addNewTask:
-      form = <AddNewTask />;
+      form = <Form.AddNewTask />;
       break;
     case ModalContent.confirmDeleteTask:
     case ModalContent.confirmDeleteBoard:
-      form = <Confirm />;
+      form = <Form.Confirm />;
       break;
     case ModalContent.addNewColumn:
-      form = <AddNewColumn />;
+      form = <Form.AddNewColumn />;
       break;
     case ModalContent.addNewBoard:
-      form = <AddNewBoard />;
+      form = <Form.AddNewBoard />;
       break;
     case ModalContent.editBoard:
-      form = <EditBoard />;
+      form = <Form.EditBoard />;
       break;
     case ModalContent.menuMobile:
-      form = <MobileMenu />;
+      form = <MenuMobile />;
       break;
     default:
       form = 'No such form found';

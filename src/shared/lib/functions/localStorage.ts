@@ -1,7 +1,4 @@
-import {
-  UIStateSchema,
-  DataSchema,
-} from 'src/app/providers/StoreProvider/types/StateSchema';
+import { UIStateSchema, DataSchema } from 'src/app/providers';
 import { AppTheme } from '../../types/appThemes';
 
 export enum LocalStorageKeys {

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { ButtonStyle, Icons, Button, Popover } from 'src/shared/ui';
-import { ModalContent } from 'src/shared/types/modalFormContentTypes';
+import { ModalContent } from 'src/shared/types';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 
 export const PopupEditTask = () => {
