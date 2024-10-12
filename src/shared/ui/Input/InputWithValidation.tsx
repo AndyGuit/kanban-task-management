@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
-import useInput from '../../lib/hooks/use-input';
-import { Cross } from 'src/shared/ui/Icons/Icons';
 import { Button } from '../Button/Button';
+import { useInput } from 'src/shared/lib';
+import { Icons } from '..';
 import classes from './Input.module.scss';
 
 interface Props
@@ -68,7 +68,7 @@ export const InputWithValidation = (props: Props) => {
         {content}
         {props.isRemovable && (
           <Button onClick={props.onRemove}>
-            <Cross />
+            <Icons.Cross />
           </Button>
         )}
       </div>

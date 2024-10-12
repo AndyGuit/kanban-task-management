@@ -1,5 +1,5 @@
 import { Header } from 'src/widgets/Header';
-import Container from 'src/shared/layout/Container';
+import { Container } from 'src/shared/layout';
 import { BoardDragDrop } from 'src/features/Board';
 import { Sidebar } from 'src/widgets/Sidebar';
 import { ModalWithForms } from 'src/widgets/ModalWithForms';

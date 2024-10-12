@@ -43,7 +43,10 @@ const inputStateReducer = (
   }
 };
 
-const useInput = (validateValue: validateFnType, initialValue?: string) => {
+export const useInput = (
+  validateValue: validateFnType,
+  initialValue?: string,
+) => {
   const [inputState, dispatch] = useReducer(inputStateReducer, {
     value: initialValue ?? '',
     isTouched: false,
@@ -75,5 +78,3 @@ const useInput = (validateValue: validateFnType, initialValue?: string) => {
     reset,
   };
 };
-
-export default useInput;
