@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import generateRandomId from 'src/shared/lib/functions/randomId';
 import validate from 'src/shared/lib/functions/validate';
-import { IBoard, IColumn } from 'src/shared/types/dataTypes';
+import { IBoard, IColumn } from 'src/shared/types';
 import { InputsList } from 'src/entities/InputsList';
 import { Button, Input, ButtonStyle } from 'src/shared/ui';
 import { DataActions } from 'src/app/providers/StoreProvider';

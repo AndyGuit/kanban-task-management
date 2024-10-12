@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import validate from 'src/shared/lib/functions/validate';
-import { ISubtask, ITask } from 'src/shared/types/dataTypes';
+import { ISubtask, ITask } from 'src/shared/types';
 import { InputsList } from 'src/entities/InputsList';
 import type { TOptionType } from 'src/shared/ui';
 import { ButtonStyle, Select, Button, Input } from 'src/shared/ui';

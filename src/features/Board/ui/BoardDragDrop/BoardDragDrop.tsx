@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { DataSelectors } from 'src/app/providers/StoreProvider';
-import { IColumn } from 'src/shared/types/dataTypes';
+import { IColumn } from 'src/shared/types';
 import { ModalContent } from 'src/shared/types/modalFormContentTypes';
 import { Button, ButtonStyle } from 'src/shared/ui';
 import { TaskDraggable } from 'src/entities/Task';

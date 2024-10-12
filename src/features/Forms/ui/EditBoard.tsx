@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import generateRandomId from 'src/shared/lib/functions/randomId';
 import validate from 'src/shared/lib/functions/validate';
-import { IBoard, IColumn } from 'src/shared/types/dataTypes';
+import { IBoard, IColumn } from 'src/shared/types';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from 'src/entities/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';

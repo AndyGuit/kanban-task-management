@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { DraggableComponent } from 'src/shared/lib/providers/DragNDrop';
-import { ITask } from 'src/shared/types/dataTypes';
+import { ITask } from 'src/shared/types';
 import { TaskCard } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
 import { DataActions } from 'src/app/providers/StoreProvider';
