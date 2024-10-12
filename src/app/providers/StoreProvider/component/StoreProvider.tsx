@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import store from '../config/store';
+import store from '../store/store';
 
 interface Props {
   children?: React.ReactNode;

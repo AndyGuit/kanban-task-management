@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '../config/store';
+import { RootState } from '../store/store';
 
 export const getActiveBoard = (state: RootState) => state.data.activeBoard;
 export const getActiveBoardName = (state: RootState) =>

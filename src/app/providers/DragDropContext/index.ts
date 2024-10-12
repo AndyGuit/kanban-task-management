@@ -1,1 +1,1 @@
-export { DragDropContextProvider } from './ui/DragDropContextProvider.tsx';
+export { DragDropContextProvider } from './component/DragDropContextProvider.tsx';
