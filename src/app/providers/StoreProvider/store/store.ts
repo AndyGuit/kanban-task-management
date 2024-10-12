@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { UIReducer } from '../slices/ui-slice';
 import { DataReducer } from '../slices/data-slice';
-import { ThemeReducer } from 'src/features/ThemeToggle/model/slices/theme-slice';
+import { ThemeReducer } from 'src/features/ThemeToggle';
 import { ModalReducer } from 'src/widgets/ModalWithForms';
 
 const rootReducers = {

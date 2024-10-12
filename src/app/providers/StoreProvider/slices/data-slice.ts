@@ -3,7 +3,7 @@ import {
   loadFromLocalStorage,
   LocalStorageKeys,
   saveToLocalStorage,
-} from 'src/shared/lib/functions/localStorage';
+} from 'src/shared/lib';
 import type { IBoard, ITask, IColumn } from 'src/shared/types';
 import data from '../../../../../db/boards.json';
 

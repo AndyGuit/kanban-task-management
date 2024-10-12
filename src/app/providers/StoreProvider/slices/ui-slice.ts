@@ -3,7 +3,7 @@ import {
   loadFromLocalStorage,
   LocalStorageKeys,
   saveToLocalStorage,
-} from 'src/shared/lib/functions/localStorage';
+} from 'src/shared/lib';
 
 const initialState = loadFromLocalStorage(LocalStorageKeys.UI) || {
   hasSidebar: true,
