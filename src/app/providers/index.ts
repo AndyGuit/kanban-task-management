@@ -5,7 +5,6 @@ export {
   UIActions,
   UISelectors,
 } from './StoreProvider';
-export type { RootState, AppDispatch } from './StoreProvider';
 export type {
   DataSchema,
   StateSchema,
