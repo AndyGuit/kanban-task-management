@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ISubtask, ITask } from 'src/shared/types';
-import { InputsList } from 'src/entities/InputsList';
+import { InputsList } from '../InputsLists/InputsList';
 import type { TOptionType } from 'src/shared/ui';
 import { ButtonStyle, Select, Button, Input } from 'src/shared/ui';
 import { DataActions, DataSelectors } from 'src/app/providers';

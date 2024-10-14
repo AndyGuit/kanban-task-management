@@ -4,8 +4,8 @@ import { ModalContent } from 'src/shared/types';
 import { Loader } from 'src/shared/ui';
 import { Modal } from 'src/shared/ui';
 import { ModalActions, ModalSelectors } from '..';
-import { MenuMobile } from 'src/features/MenuMobile';
-import * as Form from 'src/features/Forms';
+import { MenuMobile } from './MenuMobile/MenuMobile.async';
+import * as Form from './Forms/Forms.async';
 
 export const ModalWithForms = () => {
   const dispatch = useDispatch();

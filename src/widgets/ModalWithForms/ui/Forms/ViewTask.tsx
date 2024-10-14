@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { DataActions, DataSelectors } from 'src/app/providers';
-import { PopupEditTask } from '../../Popup';
+import { PopupEditTask } from '../../../../features/Popup';
 import { Select, Checkbox } from 'src/shared/ui';
 
 import classes from './Form.module.scss';

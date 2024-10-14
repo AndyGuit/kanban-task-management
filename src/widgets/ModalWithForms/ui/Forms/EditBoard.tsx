@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IBoard, IColumn } from 'src/shared/types';
 import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import cloneDeep from 'lodash.clonedeep';
-import { InputsList } from 'src/entities/InputsList';
+import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
 import { DataActions, DataSelectors } from 'src/app/providers';
 import { ModalActions } from 'src/widgets/ModalWithForms';

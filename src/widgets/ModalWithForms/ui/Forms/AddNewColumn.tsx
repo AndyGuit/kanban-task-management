@@ -1,22 +1,20 @@
 import { FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { IBoard, IColumn } from 'src/shared/types';
-import { InputsList } from 'src/entities/InputsList';
-import { Button, Input, ButtonStyle } from 'src/shared/ui';
-import { DataActions } from 'src/app/providers';
+import { useDispatch, useSelector } from 'react-redux';
+import cloneDeep from 'lodash.clonedeep';
+import { InputsList } from '../InputsLists/InputsList';
+import { ButtonStyle, Button, Input } from 'src/shared/ui';
+import { DataActions, DataSelectors } from 'src/app/providers';
 import { ModalActions } from 'src/widgets/ModalWithForms';
-import { generateRandomId, useInput, validate } from 'src/shared/lib';
+import { generateRandomId, validate } from 'src/shared/lib';
 import classes from './Form.module.scss';
 
-const AddNewBoard = () => {
+const AddNewColumn = () => {
   const dispatch = useDispatch();
+  const boardName = useSelector(DataSelectors.getActiveBoardName);
 
-  const titleInput = useInput(validate.notEmpty);
+  const columns = useSelector(DataSelectors.getColumns);
 
-  const [newColumns, setNewColumns] = useState<IColumn[]>([
-    { name: '', id: generateRandomId(), tasks: [] },
-  ]);
-
+  const [newColumns, setNewColumns] = useState(cloneDeep(columns));
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {
@@ -39,35 +37,25 @@ const AddNewBoard = () => {
 
     const inputsNotEmpty = newColumns.every((col) => col.name !== '');
     setColumnsHasNames(inputsNotEmpty);
-    titleInput.inputBlurHandler();
 
-    if (titleInput.isValid && inputsNotEmpty) {
-      const newBoard: IBoard = {
-        id: generateRandomId(),
-        isActive: true,
-        columns: newColumns,
-        name: titleInput.value,
-      };
-
-      dispatch(DataActions.addBoard(newBoard));
-      dispatch(DataActions.setActiveBoard(newBoard.id));
+    if (inputsNotEmpty) {
+      dispatch(DataActions.setColumns(newColumns));
+      dispatch(DataActions.saveChanges('board'));
       dispatch(ModalActions.hideModal());
     }
   };
 
   return (
     <form onSubmit={submitHandler} className={`form ${classes.form}`}>
-      <h3>Add New Board</h3>
+      <h3>Add New Column</h3>
       <div className={classes['form-input']}>
         <label htmlFor="board-name">Board Name</label>
         <Input
-          id="board-name"
-          invalid={titleInput.hasError}
-          onChange={titleInput.valueChangeHandler}
-          onBlur={titleInput.inputBlurHandler}
-          value={titleInput.value}
-          isRemovable={false}
+          disabled={true}
+          value={boardName}
           type="text"
+          id="board-name"
+          isRemovable={false}
         />
       </div>
       <div className={classes['form-input']}>
@@ -79,16 +67,14 @@ const AddNewBoard = () => {
             isRemovable: col.tasks.length === 0,
           }))}
           isScrollable={newColumns.length > 1}
+          isValidFunc={validate.notEmpty}
           isInputsNotEmpty={columnsHasNames}
           setIsInputsNotEmpty={setColumnsHasNames}
-          isValidFunc={validate.notEmpty}
-          blurInputHandler={() => {
-            setNewColumns([...newColumns]);
-          }}
+          blurInputHandler={() => setNewColumns([...newColumns])}
           changeInputHandler={(value, index) =>
             columnChangeHandler(value, index)
           }
-          removeInputHandler={(index) => removeColumnHandler(index)}
+          removeInputHandler={removeColumnHandler}
         />
       </div>
       <Button
@@ -104,4 +90,4 @@ const AddNewBoard = () => {
   );
 };
 
-export default AddNewBoard;
+export default AddNewColumn;

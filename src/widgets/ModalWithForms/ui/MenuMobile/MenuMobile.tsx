@@ -3,7 +3,7 @@ import { IBoard } from 'src/shared/types';
 import { ModalContent } from 'src/shared/types';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
 import { DataActions, DataSelectors } from 'src/app/providers';
-import { ThemeToggle } from '../../ThemeToggle';
+import { ThemeToggle } from 'src/features/ThemeToggle';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './MenuMobile.module.scss';
 
