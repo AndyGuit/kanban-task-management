@@ -1,5 +1,5 @@
 import { UIStateSchema, DataSchema } from 'src/app/providers';
-import { AppTheme } from '../../types/appThemes';
+import { AppTheme } from '../../../features/ThemeToggle/model/constants/appThemes';
 
 export enum LocalStorageKeys {
   UI = 'kanban/ui',

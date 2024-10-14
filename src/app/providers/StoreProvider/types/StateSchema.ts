@@ -1,4 +1,5 @@
-import { AppTheme, ModalContent } from 'src/shared/types';
+import { AppTheme } from 'src/features/ThemeToggle';
+import { ModalContent } from 'src/shared/types';
 import type { IBoard, IColumn, ITask } from 'src/shared/types';
 
 export interface UIStateSchema {

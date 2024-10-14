@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
 import { getTheme } from '../model/selectors/get-theme';
-import { AppTheme } from 'src/shared/types';
+import { AppTheme } from '../model/constants/appThemes';
 import { ThemeActions } from '../model/slices/theme-slice';
 import classes from './ThemeToggle.module.scss';
 

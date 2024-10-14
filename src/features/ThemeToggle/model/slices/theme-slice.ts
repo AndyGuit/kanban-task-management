@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppTheme } from 'src/shared/types';
+import { AppTheme } from '../constants/appThemes';
 import {
   loadFromLocalStorage,
   LocalStorageKeys,
