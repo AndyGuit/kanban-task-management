@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeToggle } from 'src/features/ThemeToggle';
 import { DataSelectors, UIActions, UISelectors } from 'src/app/providers';
-import { BoardsList } from 'src/features/Board';
+import { BoardsList } from 'src/pages/Kanban/Board';
 import { Icons, Button, ButtonStyle } from 'src/shared/ui';
 import classes from './Sidebar.module.scss';
 
