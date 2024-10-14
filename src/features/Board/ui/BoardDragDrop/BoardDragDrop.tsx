@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DataSelectors } from 'src/app/providers';
 import { ModalContent, IColumn } from 'src/shared/types';
 import { Button, ButtonStyle } from 'src/shared/ui';
-import { TaskDraggable } from 'src/entities/Task';
-import { ColumnDroppable } from 'src/entities/Column';
 import { BoardEmpty } from '../BoardEmpty/BoardEmpty';
 import { ModalActions } from 'src/widgets/ModalWithForms';
+import { TaskDraggable } from '../TaskDraggable/TaskDraggable';
+import { ColumnDroppable } from '../ColumnDroppable/ColumnDroppable';
 import classes from './BoardDragDrop.module.scss';
 
 export const BoardDragDrop = () => {
