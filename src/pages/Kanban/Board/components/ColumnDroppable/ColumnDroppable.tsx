@@ -1,5 +1,4 @@
 import { DroppableComponent } from 'src/shared/lib';
-import { IColumn } from 'src/shared/types';
 import { TasksColumn } from 'src/shared/ui';
 
 interface Props {

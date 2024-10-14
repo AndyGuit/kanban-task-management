@@ -1,9 +1,9 @@
-export interface ISubtask {
+declare interface ISubtask {
   isCompleted: boolean;
   title: string;
 }
 
-export interface ITask {
+declare interface ITask {
   description: string;
   id: string;
   status: string;
@@ -12,13 +12,13 @@ export interface ITask {
   title: string;
 }
 
-export interface IColumn {
+declare interface IColumn {
   id: string;
   name: string;
   tasks: ITask[];
 }
 
-export interface IBoard {
+declare interface IBoard {
   id: string;
   name: string;
   columns: IColumn[];

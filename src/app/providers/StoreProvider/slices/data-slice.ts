@@ -4,7 +4,6 @@ import {
   LocalStorageKeys,
   saveToLocalStorage,
 } from 'src/shared/lib';
-import type { IBoard, ITask, IColumn } from 'src/shared/types';
 import data from '../../../../../db/boards.json';
 
 const storedBoards =

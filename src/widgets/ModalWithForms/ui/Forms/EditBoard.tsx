@@ -1,6 +1,5 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IBoard, IColumn } from 'src/shared/types';
 import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from '../InputsLists/InputsList';

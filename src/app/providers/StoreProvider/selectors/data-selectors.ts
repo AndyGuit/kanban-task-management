@@ -9,7 +9,7 @@ export const getColumns = (state: RootState) => state.data.activeBoard.columns;
 export const getSelectedColumn = (state: RootState) =>
   state.data.selectedColumn;
 export const getColumnsStatus = createSelector(getColumns, (columns) =>
-  columns.map((column) => ({
+  columns.map((column: IColumn) => ({
     name: column.name,
     statusId: column.id,
   })),

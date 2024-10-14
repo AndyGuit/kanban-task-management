@@ -1,6 +1,5 @@
 import { AppTheme } from 'src/features/ThemeToggle';
 import { ModalContent } from 'src/shared/lib';
-import type { IBoard, IColumn, ITask } from 'src/shared/types';
 
 export interface UIStateSchema {
   hasSidebar: boolean;

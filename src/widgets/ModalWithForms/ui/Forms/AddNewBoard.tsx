@@ -1,6 +1,5 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { IBoard, IColumn } from 'src/shared/types';
 import { InputsList } from '../InputsLists/InputsList';
 import { Button, Input, ButtonStyle } from 'src/shared/ui';
 import { DataActions } from 'src/app/providers';
