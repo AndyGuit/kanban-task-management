@@ -1,18 +1,9 @@
-import { Header } from 'src/widgets/Header';
-import { Container } from 'src/shared/layout';
-import { BoardDragDrop } from 'src/features/Board';
-import { Sidebar } from 'src/widgets/Sidebar';
-import { ModalWithForms } from 'src/widgets/ModalWithForms';
+import { Kanban } from 'src/pages/Kanban';
 
 const App = () => {
   return (
     <div className="App">
-      <Header />
-      <Container>
-        <Sidebar />
-        <BoardDragDrop />
-      </Container>
-      <ModalWithForms />
+      <Kanban />
     </div>
   );
 };
