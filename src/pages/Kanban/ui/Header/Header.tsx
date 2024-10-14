@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent } from 'src/shared/types';
+import { ModalContent } from 'src/shared/lib';
 import { DataSelectors } from 'src/app/providers';
 import { ButtonStyle, Button, Icons, AppLogo } from 'src/shared/ui';
 import { PopupEditBoard } from 'src/features/Popup';

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { DataSelectors } from 'src/app/providers';
-import { ModalContent, IColumn } from 'src/shared/types';
+import { IColumn } from 'src/shared/types';
+import { ModalContent } from 'src/shared/lib';
 import { Button, ButtonStyle } from 'src/shared/ui';
 import { BoardEmpty } from '../BoardEmpty/BoardEmpty';
 import { ModalActions } from 'src/widgets/ModalWithForms';

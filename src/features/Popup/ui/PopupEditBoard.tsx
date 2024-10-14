@@ -6,7 +6,7 @@ import {
   Popover,
   PopoverContentPosition,
 } from 'src/shared/ui';
-import { ModalContent } from 'src/shared/types';
+import { ModalContent } from 'src/shared/lib';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 
 export const PopupEditBoard = () => {

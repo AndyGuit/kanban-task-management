@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent } from 'src/shared/types';
+import { ModalContent } from 'src/shared/lib';
 import { Loader } from 'src/shared/ui';
 import { Modal } from 'src/shared/ui';
 import { ModalActions, ModalSelectors } from '..';

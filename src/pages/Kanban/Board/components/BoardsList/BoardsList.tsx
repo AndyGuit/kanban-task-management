@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent, IBoard } from 'src/shared/types';
+import { IBoard } from 'src/shared/types';
+import { ModalContent } from 'src/shared/lib';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
 import { DataActions, DataSelectors } from 'src/app/providers';
 import { ModalActions } from 'src/widgets/ModalWithForms';

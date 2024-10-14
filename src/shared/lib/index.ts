@@ -1,3 +1,5 @@
+export { ModalContent } from './constants/modalFormContentTypes';
+
 export { DraggableComponent, DroppableComponent } from './providers/DragNDrop';
 export { useAppDispatch } from './hooks/use-app-dispatch';
 export { useAppSelector } from './hooks/use-app-selector';
