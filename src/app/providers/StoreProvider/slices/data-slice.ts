@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  loadFromLocalStorage,
-  LocalStorageKeys,
-  saveToLocalStorage,
-} from 'src/shared/lib';
+import { LocalStorageKeys } from 'src/shared/lib';
 import data from '../../../../../db/boards.json';
 
-const storedBoards =
-  loadFromLocalStorage(LocalStorageKeys.boards) || data.boards;
+const lsStoredBoards = JSON.parse(
+  localStorage.getItem(LocalStorageKeys.boards)!,
+) as IBoard[];
+
+const storedBoards = lsStoredBoards || data.boards;
 
 const initialState = {
   boards: storedBoards,
@@ -30,7 +29,10 @@ const dataSlice = createSlice({
         }
       });
 
-      saveToLocalStorage(LocalStorageKeys.boards, state.boards);
+      localStorage.setItem(
+        LocalStorageKeys.boards,
+        JSON.stringify(state.boards),
+      );
     },
 
     setSelectedTask: (state, action: PayloadAction<string>) => {
@@ -138,7 +140,10 @@ const dataSlice = createSlice({
       );
       state.boards[boardIndex] = state.activeBoard;
 
-      saveToLocalStorage(LocalStorageKeys.boards, state.boards);
+      localStorage.setItem(
+        LocalStorageKeys.boards,
+        JSON.stringify(state.boards),
+      );
     },
   },
 });
