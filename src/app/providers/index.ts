@@ -1,2 +1,2 @@
-export { store, UIActions, UISelectors } from './StoreProvider';
+export { store } from './StoreProvider';
 export { StoreProvider } from './StoreProvider';

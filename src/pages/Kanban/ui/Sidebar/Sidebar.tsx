@@ -1,18 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import { ThemeToggle } from 'src/features/ThemeToggle';
-import { UIActions, UISelectors } from 'src/app/providers';
 import { BoardsList, BoardsSelectors } from 'src/pages/Kanban/Board';
 import { Icons, Button, ButtonStyle } from 'src/shared/ui';
 import classes from './Sidebar.module.scss';
 
 export const Sidebar = () => {
-  const dispatch = useDispatch();
-  const hasSidebar = useSelector(UISelectors.getIsHasSidebar);
+  const [hasSidebar, setHasSidebar] = useState(true);
   const numberOfBoards = useSelector(BoardsSelectors.getAllBoards).length;
 
-  const toggleAside = () => {
-    dispatch(UIActions.toggleSidebar());
-  };
+  const toggleAside = () => setHasSidebar((prev) => !prev);
 
   const asideClasses = `sidebar ${classes['sidebar']} ${hasSidebar ? '' : classes['hidden']}`;
 
