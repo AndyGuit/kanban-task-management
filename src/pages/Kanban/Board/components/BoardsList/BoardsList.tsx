@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers';
+import { BoardsActions, BoardsSelectors } from '../..';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './BoardsList.module.scss';
 
 export const BoardsList = () => {
   const dispatch = useDispatch();
-  const boards = useSelector(DataSelectors.getAllBoards);
+  const boards = useSelector(BoardsSelectors.getAllBoards);
 
   const setActiveBoard = (boardId: string) => {
-    dispatch(DataActions.setActiveBoard(boardId));
+    dispatch(BoardsActions.setActiveBoard(boardId));
   };
 
   const handleAddBoard = () => {

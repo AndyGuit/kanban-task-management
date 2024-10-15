@@ -1,6 +1,6 @@
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
-import { DataActions } from '../../StoreProvider';
+import { BoardsActions } from 'src/pages/Kanban/Board';
 
 interface Props {
   children: React.ReactNode;
@@ -25,23 +25,23 @@ export const DragDropContextProvider = (props: Props) => {
 
     // if card dropped on same column
     if (destination.droppableId === source.droppableId) {
-      dispatch(DataActions.setSelectedColumn(destination.droppableId));
-      dispatch(DataActions.setSelectedTask(draggableId));
-      dispatch(DataActions.removeTask(draggableId));
-      dispatch(DataActions.insertSelectedTask(destination.index));
-      dispatch(DataActions.saveChanges('column'));
+      dispatch(BoardsActions.setSelectedColumn(destination.droppableId));
+      dispatch(BoardsActions.setSelectedTask(draggableId));
+      dispatch(BoardsActions.removeTask(draggableId));
+      dispatch(BoardsActions.insertSelectedTask(destination.index));
+      dispatch(BoardsActions.saveChanges('column'));
     }
 
     // if card dropped on other column
     if (destination.droppableId !== source.droppableId) {
-      dispatch(DataActions.setSelectedColumn(source.droppableId));
-      dispatch(DataActions.setSelectedTask(draggableId));
-      dispatch(DataActions.removeTask(draggableId));
-      dispatch(DataActions.saveChanges('column'));
-      dispatch(DataActions.setSelectedColumn(destination.droppableId));
-      dispatch(DataActions.setNewTaskStatus());
-      dispatch(DataActions.insertSelectedTask(destination.index));
-      dispatch(DataActions.saveChanges('column'));
+      dispatch(BoardsActions.setSelectedColumn(source.droppableId));
+      dispatch(BoardsActions.setSelectedTask(draggableId));
+      dispatch(BoardsActions.removeTask(draggableId));
+      dispatch(BoardsActions.saveChanges('column'));
+      dispatch(BoardsActions.setSelectedColumn(destination.droppableId));
+      dispatch(BoardsActions.setNewTaskStatus());
+      dispatch(BoardsActions.insertSelectedTask(destination.index));
+      dispatch(BoardsActions.saveChanges('column'));
     }
   };
 

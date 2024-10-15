@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { ButtonStyle, Button } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers';
+import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
 import { ModalActions, ModalSelectors } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 
 const Confirm = () => {
   const dispatch = useDispatch();
   const deletionType = useSelector(ModalSelectors.getModalFormContent);
-  const selectedTask = useSelector(DataSelectors.getSelectedTask);
-  const selectedBoard = useSelector(DataSelectors.getActiveBoard);
+  const selectedTask = useSelector(BoardsSelectors.getSelectedTask);
+  const selectedBoard = useSelector(BoardsSelectors.getActiveBoard);
 
   let headerName = '';
   let description: React.ReactNode;
@@ -29,8 +29,8 @@ const Confirm = () => {
       );
 
       onConfirm = () => {
-        dispatch(DataActions.removeTask(selectedTask.id));
-        dispatch(DataActions.saveChanges('column'));
+        dispatch(BoardsActions.removeTask(selectedTask.id));
+        dispatch(BoardsActions.saveChanges('column'));
         dispatch(ModalActions.hideModal());
       };
       break;
@@ -45,8 +45,8 @@ const Confirm = () => {
       );
 
       onConfirm = () => {
-        dispatch(DataActions.deleteActiveBoard());
-        dispatch(DataActions.saveChanges('board'));
+        dispatch(BoardsActions.deleteActiveBoard());
+        dispatch(BoardsActions.saveChanges('board'));
         dispatch(ModalActions.hideModal());
       };
       break;

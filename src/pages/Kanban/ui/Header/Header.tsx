@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
-import { DataSelectors } from 'src/app/providers';
+import { BoardsSelectors } from '../../Board';
 import { ButtonStyle, Button, Icons, AppLogo } from 'src/shared/ui';
 import { PopupEditBoard } from 'src/features/Popup';
 import { ModalActions } from 'src/widgets/ModalWithForms';
@@ -8,7 +8,7 @@ import classes from './Header.module.scss';
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector(DataSelectors.getActiveBoard);
+  const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
 
   const title = activeBoard?.name || 'No Boards Found';
 

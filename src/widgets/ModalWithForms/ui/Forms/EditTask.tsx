@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { InputsList } from '../InputsLists/InputsList';
 import type { TOptionType } from 'src/shared/ui';
 import { ButtonStyle, Select, Button, Input } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers';
+import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import { useInput, validate } from 'src/shared/lib';
 import classes from './Form.module.scss';
 
 const EditTask = () => {
   const dispatch = useDispatch();
-  const taskData = useSelector(DataSelectors.getSelectedTask);
-  const selectedColumn = useSelector(DataSelectors.getSelectedColumn);
-  const activeBoard = useSelector(DataSelectors.getActiveBoard);
+  const taskData = useSelector(BoardsSelectors.getSelectedTask);
+  const selectedColumn = useSelector(BoardsSelectors.getSelectedColumn);
+  const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
   const columns = activeBoard.columns.map((col) => {
     return { name: col.name, statusId: col.id };
   });
@@ -70,15 +70,15 @@ const EditTask = () => {
       };
 
       if (taskData.statusId !== newStatus.statusId) {
-        dispatch(DataActions.removeTask(taskData.id));
-        dispatch(DataActions.saveChanges('column'));
-        dispatch(DataActions.setSelectedColumn(newStatus.statusId));
-        dispatch(DataActions.addTask(editedTask));
-        dispatch(DataActions.setSelectedTask(editedTask.id));
-        dispatch(DataActions.saveChanges('task'));
+        dispatch(BoardsActions.removeTask(taskData.id));
+        dispatch(BoardsActions.saveChanges('column'));
+        dispatch(BoardsActions.setSelectedColumn(newStatus.statusId));
+        dispatch(BoardsActions.addTask(editedTask));
+        dispatch(BoardsActions.setSelectedTask(editedTask.id));
+        dispatch(BoardsActions.saveChanges('task'));
       } else {
-        dispatch(DataActions.replaceTask(editedTask));
-        dispatch(DataActions.saveChanges('column'));
+        dispatch(BoardsActions.replaceTask(editedTask));
+        dispatch(BoardsActions.saveChanges('column'));
       }
       dispatch(ModalActions.hideModal());
     }

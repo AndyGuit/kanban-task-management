@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { InputsList } from '../InputsLists/InputsList';
 import { Button, Input, ButtonStyle } from 'src/shared/ui';
-import { DataActions } from 'src/app/providers';
+import { BoardsActions } from 'src/pages/Kanban/Board';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import classes from './Form.module.scss';
@@ -48,8 +48,8 @@ const AddNewBoard = () => {
         name: titleInput.value,
       };
 
-      dispatch(DataActions.addBoard(newBoard));
-      dispatch(DataActions.setActiveBoard(newBoard.id));
+      dispatch(BoardsActions.addBoard(newBoard));
+      dispatch(BoardsActions.setActiveBoard(newBoard.id));
       dispatch(ModalActions.hideModal());
     }
   };

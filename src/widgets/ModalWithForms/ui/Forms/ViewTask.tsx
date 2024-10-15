@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { DataActions, DataSelectors } from 'src/app/providers';
+import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
 import { PopupEditTask } from '../../../../features/Popup';
 import { Select, Checkbox } from 'src/shared/ui';
 
@@ -7,18 +7,18 @@ import classes from './Form.module.scss';
 
 const ViewTask = () => {
   const dispatch = useDispatch();
-  const selectedTask = useSelector(DataSelectors.getSelectedTask);
-  const selectedColumn = useSelector(DataSelectors.getSelectedColumn);
+  const selectedTask = useSelector(BoardsSelectors.getSelectedTask);
+  const selectedColumn = useSelector(BoardsSelectors.getSelectedColumn);
   const completedSubtasks = useSelector(
-    DataSelectors.getCompletedSubtasksOnSelectedTask,
+    BoardsSelectors.getCompletedSubtasksOnSelectedTask,
   );
-  const columns = useSelector(DataSelectors.getColumnsStatus);
+  const columns = useSelector(BoardsSelectors.getColumnsStatus);
 
   const completedSubtasksString = `(${completedSubtasks.length} of ${selectedTask.subtasks.length})`;
 
   const changeSubtaskStatus = (index: number) => {
-    dispatch(DataActions.toggleSubtaskStatus(index));
-    dispatch(DataActions.saveChanges('task'));
+    dispatch(BoardsActions.toggleSubtaskStatus(index));
+    dispatch(BoardsActions.saveChanges('task'));
   };
 
   const subtasksList = (

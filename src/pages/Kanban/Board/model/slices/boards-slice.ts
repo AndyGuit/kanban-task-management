@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LocalStorageKeys } from 'src/shared/lib';
-import data from '../../../../../db/boards.json';
+import data from '../../../../../../db/boards.json';
 
 const lsStoredBoards = JSON.parse(
   localStorage.getItem(LocalStorageKeys.boards)!,
@@ -15,8 +15,8 @@ const initialState = {
   selectedColumn: {} as IColumn,
 };
 
-const dataSlice = createSlice({
-  name: 'data',
+const boardsSlice = createSlice({
+  name: 'boards',
   initialState,
   reducers: {
     setActiveBoard: (state, action: PayloadAction<string>) => {
@@ -148,4 +148,4 @@ const dataSlice = createSlice({
   },
 });
 
-export const { actions: DataActions, reducer: DataReducer } = dataSlice;
+export const { actions: BoardsActions, reducer: BoardsReducer } = boardsSlice;

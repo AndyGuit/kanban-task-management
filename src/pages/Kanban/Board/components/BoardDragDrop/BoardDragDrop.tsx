@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { DataSelectors } from 'src/app/providers';
+import { BoardsSelectors } from '../..';
 import { ModalContent } from 'src/shared/lib';
 import { Button, ButtonStyle } from 'src/shared/ui';
 import { BoardEmpty } from '../BoardEmpty/BoardEmpty';
@@ -10,7 +10,7 @@ import classes from './BoardDragDrop.module.scss';
 
 export const BoardDragDrop = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector(DataSelectors.getActiveBoard);
+  const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
 
   const addNewColumnHandler = () => {
     dispatch(ModalActions.setModalContent(ModalContent.addNewColumn));

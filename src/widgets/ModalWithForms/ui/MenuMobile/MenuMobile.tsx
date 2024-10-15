@@ -1,17 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers';
+import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
 import { ThemeToggle } from 'src/features/ThemeToggle';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './MenuMobile.module.scss';
 
 const MenuMobile = () => {
   const dispatch = useDispatch();
-  const boards = useSelector(DataSelectors.getAllBoards);
+  const boards = useSelector(BoardsSelectors.getAllBoards);
 
   const setActiveBoard = (boardId: string) => {
-    dispatch(DataActions.setActiveBoard(boardId));
+    dispatch(BoardsActions.setActiveBoard(boardId));
     dispatch(ModalActions.hideModal());
   };
   const handleAddBoard = () => {

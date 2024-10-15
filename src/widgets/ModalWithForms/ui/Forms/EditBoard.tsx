@@ -4,13 +4,13 @@ import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers';
+import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import classes from './Form.module.scss';
 
 const EditBoard = () => {
   const dispatch = useDispatch();
-  const activeBoard = useSelector(DataSelectors.getActiveBoard);
+  const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
 
   const boardNameInput = useInput(validate.notEmpty, activeBoard.name);
 
@@ -48,8 +48,8 @@ const EditBoard = () => {
         columns: newColumns,
       };
 
-      dispatch(DataActions.replaceActiveBoard(editedBoard));
-      dispatch(DataActions.saveChanges('board'));
+      dispatch(BoardsActions.replaceActiveBoard(editedBoard));
+      dispatch(BoardsActions.saveChanges('board'));
       dispatch(ModalActions.hideModal());
     }
   };

@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers';
+import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import { generateRandomId, validate } from 'src/shared/lib';
 import classes from './Form.module.scss';
 
 const AddNewColumn = () => {
   const dispatch = useDispatch();
-  const boardName = useSelector(DataSelectors.getActiveBoardName);
+  const boardName = useSelector(BoardsSelectors.getActiveBoardName);
 
-  const columns = useSelector(DataSelectors.getColumns);
+  const columns = useSelector(BoardsSelectors.getColumns);
 
   const [newColumns, setNewColumns] = useState(cloneDeep(columns));
   const [columnsHasNames, setColumnsHasNames] = useState(true);
@@ -39,8 +39,8 @@ const AddNewColumn = () => {
     setColumnsHasNames(inputsNotEmpty);
 
     if (inputsNotEmpty) {
-      dispatch(DataActions.setColumns(newColumns));
-      dispatch(DataActions.saveChanges('board'));
+      dispatch(BoardsActions.setColumns(newColumns));
+      dispatch(BoardsActions.saveChanges('board'));
       dispatch(ModalActions.hideModal());
     }
   };

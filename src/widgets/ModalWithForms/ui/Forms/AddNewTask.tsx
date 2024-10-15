@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input, Select } from 'src/shared/ui';
 import type { TOptionType } from 'src/shared/ui';
-import { DataActions, DataSelectors } from 'src/app/providers';
+import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import classes from './Form.module.scss';
 
 const AddNewTask = () => {
   const dispatch = useDispatch();
-  const columns = useSelector(DataSelectors.getColumnsStatus);
+  const columns = useSelector(BoardsSelectors.getColumnsStatus);
 
   const titleInput = useInput(validate.notEmpty);
   const descriptionInput = useInput(() => true);
@@ -59,9 +59,9 @@ const AddNewTask = () => {
         subtasks: subtasks,
       };
 
-      dispatch(DataActions.setSelectedColumn(selectedColumn.statusId));
-      dispatch(DataActions.addTask(newTask));
-      dispatch(DataActions.saveChanges('column'));
+      dispatch(BoardsActions.setSelectedColumn(selectedColumn.statusId));
+      dispatch(BoardsActions.addTask(newTask));
+      dispatch(BoardsActions.saveChanges('column'));
       dispatch(ModalActions.hideModal());
     }
   };

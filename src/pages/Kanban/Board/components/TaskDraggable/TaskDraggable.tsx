@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { DraggableComponent, ModalContent } from 'src/shared/lib';
 import { TaskCard } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
-import { DataActions } from 'src/app/providers';
+import { BoardsActions } from '../..';
 import { ModalActions } from 'src/widgets/ModalWithForms';
 
 interface TaskDraggableProps {
@@ -22,8 +22,8 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
   );
 
   const viewTaskDetails = (columnId: string, taskId: string) => {
-    dispatch(DataActions.setSelectedColumn(columnId));
-    dispatch(DataActions.setSelectedTask(taskId));
+    dispatch(BoardsActions.setSelectedColumn(columnId));
+    dispatch(BoardsActions.setSelectedTask(taskId));
     dispatch(ModalActions.setModalContent(ModalContent.viewTask));
     dispatch(ModalActions.showModal());
   };
