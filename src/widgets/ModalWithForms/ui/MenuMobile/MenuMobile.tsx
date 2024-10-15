@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
-import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
+import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
 import { ThemeToggle } from 'src/features/ThemeToggle';
-import { ModalActions } from 'src/widgets/ModalWithForms';
+import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './MenuMobile.module.scss';
 
 const MenuMobile = () => {

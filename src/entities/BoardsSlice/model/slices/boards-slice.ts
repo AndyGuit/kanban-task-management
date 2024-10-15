@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LocalStorageKeys } from 'src/shared/lib';
-import data from '../../../../../../db/boards.json';
+import data from '../../../../../db/boards.json';
 
 const lsStoredBoards = JSON.parse(
   localStorage.getItem(LocalStorageKeys.boards)!,

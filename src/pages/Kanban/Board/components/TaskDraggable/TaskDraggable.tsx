@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import { DraggableComponent, ModalContent } from 'src/shared/lib';
 import { TaskCard } from 'src/shared/ui';
 import { useDispatch } from 'react-redux';
-import { BoardsActions } from '../..';
-import { ModalActions } from 'src/widgets/ModalWithForms';
+import { BoardsActions } from 'src/entities/BoardsSlice';
+import { ModalActions } from 'src/entities/ModalSlice';
 
 interface TaskDraggableProps {
   draggableIndex: number;

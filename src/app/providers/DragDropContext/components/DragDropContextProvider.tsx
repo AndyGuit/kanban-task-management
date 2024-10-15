@@ -1,6 +1,6 @@
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
-import { BoardsActions } from 'src/pages/Kanban/Board';
+import { BoardsActions } from 'src/entities/BoardsSlice';
 
 interface Props {
   children: React.ReactNode;

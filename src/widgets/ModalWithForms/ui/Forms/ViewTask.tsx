@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
+import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
 import { PopupEditTask } from '../../../../features/Popup';
 import { Select, Checkbox } from 'src/shared/ui';
 

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
-import { BoardsActions, BoardsSelectors } from '../..';
-import { ModalActions } from 'src/widgets/ModalWithForms';
+import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
+import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './BoardsList.module.scss';
 
 export const BoardsList = () => {

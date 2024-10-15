@@ -2,8 +2,8 @@ import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { InputsList } from '../InputsLists/InputsList';
 import { Button, Input, ButtonStyle } from 'src/shared/ui';
-import { BoardsActions } from 'src/pages/Kanban/Board';
-import { ModalActions } from 'src/widgets/ModalWithForms';
+import { BoardsActions } from 'src/entities/BoardsSlice';
+import { ModalActions } from 'src/entities/ModalSlice';
 import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import classes from './Form.module.scss';
 

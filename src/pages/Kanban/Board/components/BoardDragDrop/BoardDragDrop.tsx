@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { BoardsSelectors } from '../..';
+import { BoardsSelectors } from 'src/entities/BoardsSlice';
 import { ModalContent } from 'src/shared/lib';
 import { Button, ButtonStyle } from 'src/shared/ui';
 import { BoardEmpty } from '../BoardEmpty/BoardEmpty';
-import { ModalActions } from 'src/widgets/ModalWithForms';
+import { ModalActions } from 'src/entities/ModalSlice';
 import { TaskDraggable } from '../TaskDraggable/TaskDraggable';
 import { ColumnDroppable } from '../ColumnDroppable/ColumnDroppable';
 import classes from './BoardDragDrop.module.scss';

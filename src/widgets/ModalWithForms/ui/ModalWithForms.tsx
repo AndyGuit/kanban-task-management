@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { Loader } from 'src/shared/ui';
 import { Modal } from 'src/shared/ui';
-import { ModalActions, ModalSelectors } from '..';
+import { ModalActions, ModalSelectors } from 'src/entities/ModalSlice';
 import { MenuMobile } from './MenuMobile/MenuMobile.async';
 import * as Form from './Forms/Forms.async';
 

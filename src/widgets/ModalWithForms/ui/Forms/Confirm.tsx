@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { ButtonStyle, Button } from 'src/shared/ui';
-import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
-import { ModalActions, ModalSelectors } from 'src/widgets/ModalWithForms';
+import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
+import { ModalActions, ModalSelectors } from 'src/entities/ModalSlice';
 import classes from './Form.module.scss';
 
 const Confirm = () => {

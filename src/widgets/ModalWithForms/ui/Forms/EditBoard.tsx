@@ -4,8 +4,8 @@ import { generateRandomId, useInput, validate } from 'src/shared/lib';
 import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
-import { BoardsActions, BoardsSelectors } from 'src/pages/Kanban/Board';
-import { ModalActions } from 'src/widgets/ModalWithForms';
+import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
+import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './Form.module.scss';
 
 const EditBoard = () => {

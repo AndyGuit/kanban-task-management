@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { ButtonStyle, Button } from 'src/shared/ui';
-import { ModalActions } from 'src/widgets/ModalWithForms';
+import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './BoardEmpty.module.scss';
 
 export const BoardEmpty = () => {
