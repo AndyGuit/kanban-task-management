@@ -1,23 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppTheme } from '../../../../shared/types/appThemes';
-import {
-  loadFromLocalStorage,
-  LocalStorageKeys,
-  saveToLocalStorage,
-} from '../../../../shared/lib/functions/localStorage';
+import { AppTheme } from '../constants/appThemes';
+import { LocalStorageKeys } from 'src/shared/lib';
 
-const initialState = {
-  theme: loadFromLocalStorage(LocalStorageKeys.Theme) || AppTheme.DARK,
-};
+const localStorageTheme = localStorage.getItem(LocalStorageKeys.Theme);
 
 const themeSlice = createSlice({
   name: 'theme',
-  initialState,
+  initialState: {
+    theme: localStorageTheme || AppTheme.DARK,
+  },
   reducers: {
     toggleTheme: (state) => {
-      state.theme = state.theme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK;
+      state.theme =
+        state.theme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK;
 
-      saveToLocalStorage(LocalStorageKeys.Theme, state.theme);
+      localStorage.setItem(LocalStorageKeys.Theme, state.theme);
     },
   },
 });

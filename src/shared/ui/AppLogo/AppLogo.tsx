@@ -1,4 +1,4 @@
-import { IconAppLogo } from '../Icons/Icons';
+import { AppLogo as IconAppLogo } from '../Icons/Icons';
 import classes from './AppLogo.module.scss';
 
 export const AppLogo = () => {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Button } from '../Button/Button';
+import { ButtonStyle } from '../Button/buttonStyles';
+import { PopupDots } from '../Icons/Icons';
 
 import classes from './PopupWindow.module.scss';
-import Button from '../Button/Button';
-import { ButtonStyle } from '../Button/buttonStyles';
-import { IconPopupDots } from '../Icons/Icons';
 
 type Props = {
   btnText: 'Board' | 'Task';
@@ -11,7 +11,7 @@ type Props = {
   onClickEdit?: () => void;
 };
 
-const PopupWindow: React.FC<Props> = (props) => {
+export const PopupWindow = (props: Props) => {
   const [isPopupShown, setIsPopupShown] = useState(false);
 
   const togglePopup = () => {
@@ -42,14 +42,20 @@ const PopupWindow: React.FC<Props> = (props) => {
   return (
     <div className={classes['popup-wrapper']}>
       <Button onClick={togglePopup} styleClass={ButtonStyle.POPUP}>
-        <IconPopupDots />
+        <PopupDots />
       </Button>
       {isPopupShown && (
         <div className={`popup-window ${classes['popup-window']}`}>
-          <Button onClick={props.onClickEdit} styleClass={ButtonStyle.TEXT_PRIMARY}>
+          <Button
+            onClick={props.onClickEdit}
+            styleClass={ButtonStyle.TEXT_PRIMARY}
+          >
             Edit {props.btnText}
           </Button>
-          <Button onClick={props.onClickDelete} styleClass={ButtonStyle.TEXT_WARNING}>
+          <Button
+            onClick={props.onClickDelete}
+            styleClass={ButtonStyle.TEXT_WARNING}
+          >
             Delete {props.btnText}
           </Button>
         </div>
@@ -57,5 +63,3 @@ const PopupWindow: React.FC<Props> = (props) => {
     </div>
   );
 };
-
-export default PopupWindow;

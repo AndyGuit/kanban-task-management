@@ -1,2 +1,2 @@
-export { DraggableComponent } from './ui/DraggableComponent.tsx';
-export { DroppableComponent } from './ui/DroppableComponent.tsx';
+export { DraggableComponent } from './components/DraggableComponent.tsx';
+export { DroppableComponent } from './components/DroppableComponent.tsx';

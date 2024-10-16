@@ -20,7 +20,7 @@ interface InputState {
 
 const inputStateReducer = (
   state: InputState,
-  action: InputActions
+  action: InputActions,
 ): InputState => {
   switch (action.type) {
     case InputActionType.INPUT:
@@ -43,7 +43,10 @@ const inputStateReducer = (
   }
 };
 
-const useInput = (validateValue: validateFnType, initialValue?: string) => {
+export const useInput = (
+  validateValue: validateFnType,
+  initialValue?: string,
+) => {
   const [inputState, dispatch] = useReducer(inputStateReducer, {
     value: initialValue ?? '',
     isTouched: false,
@@ -53,7 +56,7 @@ const useInput = (validateValue: validateFnType, initialValue?: string) => {
   const hasError = !valueIsValid && inputState.isTouched;
 
   const valueChangeHandler = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     dispatch({ type: InputActionType.INPUT, payload: e.target.value });
   };
@@ -75,5 +78,3 @@ const useInput = (validateValue: validateFnType, initialValue?: string) => {
     reset,
   };
 };
-
-export default useInput;

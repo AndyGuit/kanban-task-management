@@ -1,10 +1,11 @@
 import { ChangeEvent } from 'react';
-import useInput from '../../lib/hooks/use-input';
-import { IconCross } from '../../../shared/ui/Icons/Icons';
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
+import { useInput } from 'src/shared/lib';
+import { Icons } from '..';
 import classes from './Input.module.scss';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+interface Props
+  extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   isRemovable: boolean;
   onBlurHandler?: () => void;
   onChangeHandler?: (val: string) => void;
@@ -12,13 +13,15 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAre
   onRemove?: () => void;
 }
 
-const InputWithValidation = (props: Props) => {
+export const InputWithValidation = (props: Props) => {
   const { validateFn = () => true } = props;
   const inputState = useInput(validateFn, props.value?.toString() ?? '');
 
   const inputClasses = `input ${classes.input} ${inputState.hasError ? 'invalid' : ''}`;
 
-  const changeHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const changeHandler = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     inputState.valueChangeHandler(e);
 
     props.onChangeHandler?.(e.target.value);
@@ -65,7 +68,7 @@ const InputWithValidation = (props: Props) => {
         {content}
         {props.isRemovable && (
           <Button onClick={props.onRemove}>
-            <IconCross />
+            <Icons.Cross />
           </Button>
         )}
       </div>
@@ -73,5 +76,3 @@ const InputWithValidation = (props: Props) => {
     </>
   );
 };
-
-export default InputWithValidation;

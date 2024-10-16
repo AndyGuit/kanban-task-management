@@ -16,7 +16,12 @@ const SelectInput = (props: Props) => {
   return (
     <div className={classes['select-wrapper']}>
       <label>{label}</label>
-      <select value={value} onChange={onChange} disabled={disabled} className={selectClasses}>
+      <select
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+        className={selectClasses}
+      >
         {options.map((option, index) => {
           return (
             <option key={index} value={option.statusId}>

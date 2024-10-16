@@ -9,4 +9,13 @@
       color: $dark-text-secondary;
     }
   }
+
+  .skeleton-task {
+    box-shadow: $dark-shadow;
+    background-color: $dark-primary;
+
+    &::before {
+      background: $dark-gradient-skeleton;
+    }
+  }
 }

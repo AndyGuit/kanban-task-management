@@ -1,0 +1,4 @@
+npm run prettier:write
+tsc
+npm run lint
+npm run steiger
