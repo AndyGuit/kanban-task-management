@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
-import { PopupEditTask } from '../../../../features/Popup';
+import { PopupEditTask } from '../../../Popup';
 import { Select, Checkbox } from 'src/shared/ui';
 
 import classes from './Form.module.scss';

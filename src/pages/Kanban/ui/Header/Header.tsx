@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ModalContent } from 'src/shared/lib';
 import { BoardsSelectors } from 'src/entities/BoardsSlice';
 import { ButtonStyle, Button, Icons, AppLogo } from 'src/shared/ui';
-import { PopupEditBoard } from 'src/features/Popup';
+import { PopupEditBoard } from '../../Popup';
 import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './Header.module.scss';
 

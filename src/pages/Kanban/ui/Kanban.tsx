@@ -1,5 +1,5 @@
 import { Container } from 'src/shared/layout';
-import { ModalWithForms } from 'src/widgets/ModalWithForms';
+import { ModalWithForms } from '../ModalWithForms';
 import { Header } from './Header/Header';
 import { Sidebar } from './Sidebar/Sidebar';
 import { BoardDragDrop } from '../Board';
