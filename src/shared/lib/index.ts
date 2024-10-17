@@ -1,3 +1,4 @@
+export { useClickOutside } from './hooks/use-click-outside';
 export { ModalContent } from './constants/modalFormContentTypes';
 export { LocalStorageKeys } from './constants/localStorageKeys';
 export { DraggableComponent, DroppableComponent } from './providers/DragNDrop';
