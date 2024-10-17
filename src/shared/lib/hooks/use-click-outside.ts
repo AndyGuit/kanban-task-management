@@ -7,14 +7,18 @@ export function useClickOutside(triggerClass: string, contentClass: string) {
     setIsContentVisible((prevState) => !prevState);
   };
 
+  const hideContent = () => {
+    setIsContentVisible(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
 
-      const isClickedOnButton = target.closest(`.${triggerClass}`);
+      const isClickedOnTrigger = target.closest(`.${triggerClass}`);
       const isClickedOutside = !target.classList.contains(contentClass);
 
-      if (isClickedOutside && !isClickedOnButton) {
+      if (isClickedOutside && !isClickedOnTrigger) {
         setIsContentVisible(false);
       }
     };
@@ -28,5 +32,5 @@ export function useClickOutside(triggerClass: string, contentClass: string) {
     };
   }, [isContentVisible, triggerClass, contentClass]);
 
-  return { toggleContent, isContentVisible };
+  return { toggleContent, isContentVisible, hideContent };
 }

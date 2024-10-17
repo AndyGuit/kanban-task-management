@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown } from '../Icons/Icons';
+import { useClickOutside } from 'src/shared/lib';
 import classes from './Select.module.scss';
 
 export type TOptionType = {
@@ -17,50 +18,27 @@ interface Props {
 
 export function Select(props: Props) {
   const { options, onSelect, label = 'Select Value', disabled } = props;
-  const [isOptionsVisible, setIsOptionsVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
     options[0] || 'select option',
   );
 
-  const handleToggleOptions = () => {
-    if (disabled) return;
-    setIsOptionsVisible((prev) => !prev);
-  };
+  const {
+    isContentVisible: isOptionsVisible,
+    toggleContent: toggleOptions,
+    hideContent: hideOptions,
+  } = useClickOutside(classes['select-wrapper'], classes['select-wrapper']);
 
   const handleSelectOption = (option: TOptionType) => {
     onSelect?.(option);
     setSelectedOption(option);
-    setIsOptionsVisible(false);
+    hideOptions();
   };
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-
-      const isClickedOnSelect = target.closest(`.${classes['select-wrapper']}`);
-      const isClickedOutside = !target.classList.contains(
-        classes['select-wrapper'],
-      );
-
-      if (isClickedOutside && !isClickedOnSelect) {
-        setIsOptionsVisible(false);
-      }
-    };
-
-    if (isOptionsVisible) {
-      document.addEventListener('click', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [isOptionsVisible]);
 
   return (
     <div className={classes['select-wrapper']}>
       <div className={classes['select-label']}>{label}</div>
       <div
-        onClick={handleToggleOptions}
+        onClick={!disabled ? toggleOptions : undefined}
         className={
           'select-selected ' +
           classes['select-selected'] +
