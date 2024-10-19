@@ -1,6 +1,5 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
@@ -14,7 +13,7 @@ const AddNewColumn = () => {
 
   const columns = useSelector(BoardsSelectors.getColumns);
 
-  const [newColumns, setNewColumns] = useState(cloneDeep(columns));
+  const [newColumns, setNewColumns] = useState(structuredClone(columns));
   const [columnsHasNames, setColumnsHasNames] = useState(true);
 
   const addColumnHandler = () => {

@@ -1,7 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { generateRandomId, useInput, validate } from 'src/shared/lib';
-import cloneDeep from 'lodash.clonedeep';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
@@ -15,7 +14,7 @@ const EditBoard = () => {
   const boardNameInput = useInput(validate.notEmpty, activeBoard.name);
 
   const [newColumns, setNewColumns] = useState<IColumn[]>(
-    cloneDeep(activeBoard.columns),
+    structuredClone(activeBoard.columns),
   );
 
   const [columnsHasNames, setColumnsHasNames] = useState(true);
