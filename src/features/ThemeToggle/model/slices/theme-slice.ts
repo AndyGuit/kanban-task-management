@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppTheme } from '../constants/appThemes';
 import { LocalStorageKeys } from 'src/shared/lib';
 
@@ -15,10 +15,8 @@ const themeSlice = createSlice({
     theme: localStorageTheme || defaultUserTheme,
   },
   reducers: {
-    toggleTheme: (state) => {
-      state.theme =
-        state.theme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK;
-
+    setTheme: (state, action: PayloadAction<AppTheme>) => {
+      state.theme = action.payload;
       localStorage.setItem(LocalStorageKeys.Theme, state.theme);
     },
   },

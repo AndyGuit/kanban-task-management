@@ -1,3 +1,4 @@
+export { usePreferredColorScheme } from './hooks/use-preferred-color-scheme';
 export { useClickOutside } from './hooks/use-click-outside';
 export { ModalContent } from './constants/modalFormContentTypes';
 export { LocalStorageKeys } from './constants/localStorageKeys';
