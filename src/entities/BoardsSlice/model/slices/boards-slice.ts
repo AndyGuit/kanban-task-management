@@ -1,19 +1,45 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LocalStorageKeys } from 'src/shared/lib';
-import data from '../../../../../db/boards.json';
+import { API_URL } from 'src/shared/lib';
+// import data from '../../../../../db/boards.json';
 
-const lsStoredBoards = JSON.parse(
-  localStorage.getItem(LocalStorageKeys.boards)!,
-) as IBoard[];
+// const lsStoredBoards = JSON.parse(
+//   localStorage.getItem(LocalStorageKeys.boards)!,
+// ) as IBoard[];
 
-const storedBoards = lsStoredBoards || data.boards;
+// const storedBoards = lsStoredBoards || data.boards;
 
-const initialState = {
-  boards: storedBoards,
-  activeBoard: storedBoards.filter((board) => board.isActive)[0],
+interface IBoardsSchema {
+  boards: IBoard[];
+  activeBoard: IBoard;
+  selectedTask: ITask;
+  selectedColumn: IColumn;
+  isLoading: boolean;
+  error: string;
+}
+
+const initialState: IBoardsSchema = {
+  boards: [],
+  activeBoard: {} as IBoard,
   selectedTask: {} as ITask,
   selectedColumn: {} as IColumn,
+  isLoading: false,
+  error: '',
 };
+
+export const fetchAllBoards = createAsyncThunk<
+  IBoard[],
+  void,
+  { rejectValue: string }
+>('boards/fetchAll', async (_, thunkApi) => {
+  try {
+    const res = await fetch(API_URL);
+    const boards = (await res.json()) as IBoard[];
+    return thunkApi.fulfillWithValue(boards);
+  } catch (error) {
+    return thunkApi.rejectWithValue('Error: Failed to fetch boards.');
+  }
+});
 
 const boardsSlice = createSlice({
   name: 'boards',
@@ -145,6 +171,26 @@ const boardsSlice = createSlice({
         JSON.stringify(state.boards),
       );
     },
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchAllBoards.pending, (state) => {
+      state.isLoading = true;
+      state.error = '';
+    });
+
+    builder.addCase(fetchAllBoards.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload || 'Unknown Error';
+    });
+
+    builder.addCase(fetchAllBoards.fulfilled, (state, action) => {
+      const activeBoard = action.payload.find((board) => board.isActive);
+      state.boards = action.payload;
+      if (activeBoard) state.activeBoard = activeBoard;
+      state.isLoading = false;
+      state.error = '';
+    });
   },
 });
 
