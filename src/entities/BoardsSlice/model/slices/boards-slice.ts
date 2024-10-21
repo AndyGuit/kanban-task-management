@@ -168,7 +168,7 @@ const boardsSlice = createSlice({
       const boardIndex = state.boards.findIndex(
         (board) => board.id === state.activeBoard?.id,
       );
-      if (boardIndex && state.activeBoard) {
+      if (boardIndex > -1 && state.activeBoard) {
         state.boards[boardIndex] = state.activeBoard;
       }
 
@@ -187,10 +187,15 @@ const boardsSlice = createSlice({
 
     builder.addCase(fetchAllBoards.rejected, (state, action) => {
       state.isLoading = false;
+      /**
+       * @todo
+       * fix typescript issue
+       */
       state.error = action.payload || 'Unknown Error';
     });
 
     builder.addCase(fetchAllBoards.fulfilled, (state, action) => {
+      console.log('boards fetched');
       const activeBoard = action.payload.find((board) => board.isActive);
       state.boards = action.payload;
       if (activeBoard) state.activeBoard = activeBoard;
