@@ -449,19 +449,13 @@
                   "isCompleted": true
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "c1",
-          "name": "Next",
-          "tasks": [
+            },
             {
               "id": "t20",
               "title": "Launch version one",
               "description": "",
-              "status": "Next",
-              "statusId": "c1",
+              "status": "Now",
+              "statusId": "c0",
               "subtasks": [
                 {
                   "title": "Launch privately to our waitlist",
@@ -474,6 +468,11 @@
               ]
             }
           ]
+        },
+        {
+          "id": "c1",
+          "name": "Next",
+          "tasks": []
         }
       ]
     }
