@@ -39,7 +39,7 @@ const Confirm = () => {
       description = (
         <p className={`form-description ${classes['form-description']}`}>
           Are you sure you want to delete the{' '}
-          <span>&apos;{selectedBoard.name}&apos;</span> board? This action will
+          <span>&apos;{selectedBoard?.name}&apos;</span> board? This action will
           remove all columns and tasks and cannot be reversed.
         </p>
       );

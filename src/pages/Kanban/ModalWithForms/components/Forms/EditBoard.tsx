@@ -11,10 +11,10 @@ const EditBoard = () => {
   const dispatch = useDispatch();
   const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
 
-  const boardNameInput = useInput(validate.notEmpty, activeBoard.name);
+  const boardNameInput = useInput(validate.notEmpty, activeBoard?.name);
 
   const [newColumns, setNewColumns] = useState<IColumn[]>(
-    structuredClone(activeBoard.columns),
+    structuredClone(activeBoard?.columns || []),
   );
 
   const [columnsHasNames, setColumnsHasNames] = useState(true);
@@ -42,7 +42,7 @@ const EditBoard = () => {
 
     if (boardNameInput.isValid && inputsNotEmpty) {
       const editedBoard: IBoard = {
-        ...activeBoard,
+        ...activeBoard!,
         name: boardNameInput.value,
         columns: newColumns,
       };

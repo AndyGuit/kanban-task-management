@@ -24,7 +24,7 @@ const AddNewTask = () => {
   const [selectedColumn, setSelectedColumn] = useState<{
     name: string;
     statusId: string;
-  }>({ ...columns[0] });
+  }>({ ...columns![0] });
 
   const subtaskChangeHandler = (value: string, index: number) => {
     subtasks[index].title = value;
@@ -122,7 +122,7 @@ const AddNewTask = () => {
         value={selectedColumn.name}
         onSelect={statusChangeHandler}
         label="Status"
-        options={columns.map((col) => ({ ...col, id: col.statusId }))}
+        options={columns!.map((col) => ({ ...col, id: col.statusId }))}
       />
       <Button styleClass={ButtonStyle.FORM_PRIMARY} type="submit">
         Create Task

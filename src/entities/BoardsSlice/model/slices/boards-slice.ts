@@ -11,7 +11,7 @@ import { API_URL } from 'src/shared/lib';
 
 interface IBoardsSchema {
   boards: IBoard[];
-  activeBoard: IBoard;
+  activeBoard: IBoard | null;
   selectedTask: ITask;
   selectedColumn: IColumn;
   isLoading: boolean;
@@ -20,7 +20,7 @@ interface IBoardsSchema {
 
 const initialState: IBoardsSchema = {
   boards: [],
-  activeBoard: {} as IBoard,
+  activeBoard: null,
   selectedTask: {} as ITask,
   selectedColumn: {} as IColumn,
   isLoading: false,
@@ -70,11 +70,13 @@ const boardsSlice = createSlice({
     },
 
     setSelectedColumn: (state, action: PayloadAction<string>) => {
-      const selectedColumn = state.activeBoard.columns.find(
-        (col) => col.id === action.payload,
-      );
+      if (state.activeBoard) {
+        const selectedColumn = state.activeBoard.columns.find(
+          (col) => col.id === action.payload,
+        );
 
-      state.selectedColumn = selectedColumn!;
+        state.selectedColumn = selectedColumn!;
+      }
     },
 
     replaceTask: (state, action: PayloadAction<ITask>) => {
@@ -112,7 +114,9 @@ const boardsSlice = createSlice({
     },
 
     setColumns: (state, action: PayloadAction<IColumn[]>) => {
-      state.activeBoard.columns = action.payload;
+      if (state.activeBoard) {
+        state.activeBoard.columns = action.payload;
+      }
     },
 
     addBoard: (state, action: PayloadAction<IBoard>) => {
@@ -153,18 +157,22 @@ const boardsSlice = createSlice({
       }
 
       if (action.payload === 'task' || action.payload === 'column') {
-        // Replace Column in Active board
-        const colIndex = state.activeBoard.columns.findIndex(
-          (col) => col.id === state.selectedColumn.id,
-        );
-        state.activeBoard.columns[colIndex] = state.selectedColumn;
+        if (state.activeBoard) {
+          // Replace Column in Active board
+          const colIndex = state.activeBoard.columns.findIndex(
+            (col) => col.id === state.selectedColumn.id,
+          );
+          state.activeBoard.columns[colIndex] = state.selectedColumn;
+        }
       }
 
       // Replace Active board in boards
       const boardIndex = state.boards.findIndex(
-        (board) => board.id === state.activeBoard.id,
+        (board) => board.id === state.activeBoard?.id,
       );
-      state.boards[boardIndex] = state.activeBoard;
+      if (boardIndex && state.activeBoard) {
+        state.boards[boardIndex] = state.activeBoard;
+      }
 
       localStorage.setItem(
         LocalStorageKeys.boards,

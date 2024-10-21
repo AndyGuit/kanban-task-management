@@ -13,7 +13,7 @@ const EditTask = () => {
   const taskData = useSelector(BoardsSelectors.getSelectedTask);
   const selectedColumn = useSelector(BoardsSelectors.getSelectedColumn);
   const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
-  const columns = activeBoard.columns.map((col) => {
+  const columns = activeBoard!.columns.map((col) => {
     return { name: col.name, statusId: col.id };
   });
 

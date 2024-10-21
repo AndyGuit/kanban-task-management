@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent, useAppSelector } from 'src/shared/lib';
+import { ModalContent, useAppDispatch, useAppSelector } from 'src/shared/lib';
 import { BoardsSelectors } from 'src/entities/BoardsSlice';
 import { ButtonStyle, Button, Icons, AppLogo } from 'src/shared/ui';
 import { PopupEditBoard } from '../../Popup';
@@ -7,15 +6,13 @@ import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './Header.module.scss';
 
 export const Header = () => {
-  const dispatch = useDispatch();
-  const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
-  const { isLoading, error } = useAppSelector((state) => state.boards);
+  const dispatch = useAppDispatch();
+  const activeBoard = useAppSelector(BoardsSelectors.getActiveBoard);
+  const { isLoading } = useAppSelector((state) => state.boards);
 
   const title = activeBoard?.name || 'No Boards Found';
 
   const addNewTask = () => {
-    if (isLoading || error) return;
-
     dispatch(ModalActions.setModalContent(ModalContent.addNewTask));
     dispatch(ModalActions.showModal());
   };
@@ -30,7 +27,7 @@ export const Header = () => {
       <AppLogo />
       <div className={classes['board-info']}>
         <div className={classes['board-name']}>
-          <h2>{title}</h2>
+          <h2>{isLoading ? 'Loading...' : title}</h2>
           <Button
             onClick={showSidebarModal}
             styleClass={ButtonStyle.BOARDS_MOBILE}

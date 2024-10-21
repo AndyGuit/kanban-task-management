@@ -52,7 +52,7 @@ const ViewTask = () => {
         label="Current Status"
         disabled={true}
         value={selectedColumn.name}
-        options={columns.map((col) => ({ id: col.statusId, name: col.name }))}
+        options={columns!.map((col) => ({ id: col.statusId, name: col.name }))}
       />
     </form>
   );
