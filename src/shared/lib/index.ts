@@ -1,3 +1,4 @@
+export { BoardsService } from './services/boardsService';
 export { API_URL } from './constants/api';
 export { usePreferredColorScheme } from './hooks/use-preferred-color-scheme';
 export { useClickOutside } from './hooks/use-click-outside';

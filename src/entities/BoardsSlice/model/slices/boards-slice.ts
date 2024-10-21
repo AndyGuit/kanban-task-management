@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LocalStorageKeys } from 'src/shared/lib';
-import { API_URL } from 'src/shared/lib';
+import { BoardsService, LocalStorageKeys } from 'src/shared/lib';
 // import data from '../../../../../db/boards.json';
 
 // const lsStoredBoards = JSON.parse(
@@ -33,8 +32,7 @@ export const fetchAllBoards = createAsyncThunk<
   { rejectValue: string }
 >('boards/fetchAll', async (_, thunkApi) => {
   try {
-    const res = await fetch(API_URL);
-    const boards = (await res.json()) as IBoard[];
+    const boards = await BoardsService.getAllBoards();
     return thunkApi.fulfillWithValue(boards);
   } catch (error) {
     return thunkApi.rejectWithValue('Error: Failed to fetch boards.');
