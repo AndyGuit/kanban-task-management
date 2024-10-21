@@ -1,12 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BoardsService, LocalStorageKeys } from 'src/shared/lib';
-// import data from '../../../../../db/boards.json';
-
-// const lsStoredBoards = JSON.parse(
-//   localStorage.getItem(LocalStorageKeys.boards)!,
-// ) as IBoard[];
-
-// const storedBoards = lsStoredBoards || data.boards;
+import { BoardsService } from 'src/shared/lib';
 
 interface IBoardsSchema {
   boards: IBoard[];
@@ -52,11 +45,6 @@ const boardsSlice = createSlice({
           return { ...board, isActive: false };
         }
       });
-
-      localStorage.setItem(
-        LocalStorageKeys.boards,
-        JSON.stringify(state.boards),
-      );
     },
 
     setSelectedTask: (state, action: PayloadAction<string>) => {
@@ -119,6 +107,7 @@ const boardsSlice = createSlice({
 
     addBoard: (state, action: PayloadAction<IBoard>) => {
       state.boards.push(action.payload);
+      BoardsService.addNewBoard(action.payload);
     },
 
     replaceActiveBoard: (state, action: PayloadAction<IBoard>) => {
@@ -134,6 +123,9 @@ const boardsSlice = createSlice({
 
     deleteActiveBoard: (state) => {
       state.boards = state.boards.filter((board) => !board.isActive);
+      if (state.activeBoard?.id) {
+        BoardsService.deleteBoard(state.activeBoard.id);
+      }
 
       if (state.boards[0]) {
         state.boards[0].isActive = true;
@@ -170,12 +162,8 @@ const boardsSlice = createSlice({
       );
       if (boardIndex > -1 && state.activeBoard) {
         state.boards[boardIndex] = state.activeBoard;
+        BoardsService.updateBoard(state.activeBoard);
       }
-
-      localStorage.setItem(
-        LocalStorageKeys.boards,
-        JSON.stringify(state.boards),
-      );
     },
   },
 
@@ -195,7 +183,6 @@ const boardsSlice = createSlice({
     });
 
     builder.addCase(fetchAllBoards.fulfilled, (state, action) => {
-      console.log('boards fetched');
       const activeBoard = action.payload.find((board) => board.isActive);
       state.boards = action.payload;
       if (activeBoard) state.activeBoard = activeBoard;
