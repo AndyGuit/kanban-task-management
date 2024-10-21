@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent } from 'src/shared/lib';
+import { ModalContent, useAppDispatch, useAppSelector } from 'src/shared/lib';
 import { Loader } from 'src/shared/ui';
 import { Modal } from 'src/shared/ui';
 import { ModalActions, ModalSelectors } from 'src/entities/ModalSlice';
@@ -8,10 +7,10 @@ import { MenuMobile } from './MenuMobile/MenuMobile.async';
 import * as Form from './Forms/Forms.async';
 
 export const ModalWithForms = () => {
-  const dispatch = useDispatch();
-  const isModal = useSelector(ModalSelectors.getIsModal);
+  const dispatch = useAppDispatch();
+  const isModal = useAppSelector(ModalSelectors.getIsModal);
   const closeModal = () => dispatch(ModalActions.hideModal());
-  const contentType = useSelector(ModalSelectors.getModalFormContent);
+  const contentType = useAppSelector(ModalSelectors.getModalFormContent);
 
   if (!isModal) return null;
 

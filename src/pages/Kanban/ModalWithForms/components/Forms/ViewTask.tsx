@@ -1,18 +1,18 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
 import { PopupEditTask } from '../../../Popup';
 import { Select, Checkbox } from 'src/shared/ui';
 
 import classes from './Form.module.scss';
+import { useAppDispatch, useAppSelector } from 'src/shared/lib';
 
 const ViewTask = () => {
-  const dispatch = useDispatch();
-  const selectedTask = useSelector(BoardsSelectors.getSelectedTask);
-  const selectedColumn = useSelector(BoardsSelectors.getSelectedColumn);
-  const completedSubtasks = useSelector(
+  const dispatch = useAppDispatch();
+  const selectedTask = useAppSelector(BoardsSelectors.getSelectedTask);
+  const selectedColumn = useAppSelector(BoardsSelectors.getSelectedColumn);
+  const completedSubtasks = useAppSelector(
     BoardsSelectors.getCompletedSubtasksOnSelectedTask,
   );
-  const columns = useSelector(BoardsSelectors.getColumnsStatus);
+  const columns = useAppSelector(BoardsSelectors.getColumnsStatus);
 
   const completedSubtasksString = `(${completedSubtasks.length} of ${selectedTask.subtasks.length})`;
 

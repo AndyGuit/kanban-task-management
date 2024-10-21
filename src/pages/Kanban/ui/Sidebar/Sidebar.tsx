@@ -1,14 +1,14 @@
-import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { ThemeToggle } from 'src/features/ThemeToggle';
 import { BoardsSelectors } from 'src/entities/BoardsSlice';
 import { BoardsList } from '../../Board';
 import { Icons, Button, ButtonStyle } from 'src/shared/ui';
+import { useAppSelector } from 'src/shared/lib';
 import classes from './Sidebar.module.scss';
 
 export const Sidebar = () => {
   const [hasSidebar, setHasSidebar] = useState(true);
-  const numberOfBoards = useSelector(BoardsSelectors.getAllBoards).length;
+  const numberOfBoards = useAppSelector(BoardsSelectors.getAllBoards).length;
 
   const toggleAside = () => setHasSidebar((prev) => !prev);
 

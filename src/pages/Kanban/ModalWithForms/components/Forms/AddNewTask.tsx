@@ -1,16 +1,21 @@
 import { useState, FormEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input, Select } from 'src/shared/ui';
 import type { TOptionType } from 'src/shared/ui';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
 import { ModalActions } from 'src/entities/ModalSlice';
-import { generateRandomId, useInput, validate } from 'src/shared/lib';
+import {
+  generateRandomId,
+  useAppDispatch,
+  useAppSelector,
+  useInput,
+  validate,
+} from 'src/shared/lib';
 import classes from './Form.module.scss';
 
 const AddNewTask = () => {
-  const dispatch = useDispatch();
-  const columns = useSelector(BoardsSelectors.getColumnsStatus);
+  const dispatch = useAppDispatch();
+  const columns = useAppSelector(BoardsSelectors.getColumnsStatus);
 
   const titleInput = useInput(validate.notEmpty);
   const descriptionInput = useInput(() => true);

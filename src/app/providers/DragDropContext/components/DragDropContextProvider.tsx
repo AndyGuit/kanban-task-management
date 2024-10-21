@@ -1,6 +1,6 @@
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { useDispatch } from 'react-redux';
 import { BoardsActions } from 'src/entities/BoardsSlice';
+import { useAppDispatch } from 'src/shared/lib';
 
 interface Props {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ interface Props {
 
 export const DragDropContextProvider = (props: Props) => {
   const { children } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;

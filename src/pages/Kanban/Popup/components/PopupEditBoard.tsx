@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import {
   ButtonStyle,
   Button,
@@ -6,11 +5,11 @@ import {
   Popover,
   PopoverContentPosition,
 } from 'src/shared/ui';
-import { ModalContent } from 'src/shared/lib';
+import { ModalContent, useAppDispatch } from 'src/shared/lib';
 import { ModalActions } from 'src/entities/ModalSlice';
 
 export const PopupEditBoard = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleEditBoard = () => {
     dispatch(ModalActions.setModalContent(ModalContent.editBoard));

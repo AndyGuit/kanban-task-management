@@ -1,15 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { ModalContent } from 'src/shared/lib';
+import { ModalContent, useAppDispatch, useAppSelector } from 'src/shared/lib';
 import { ButtonStyle, Button } from 'src/shared/ui';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
 import { ModalActions, ModalSelectors } from 'src/entities/ModalSlice';
 import classes from './Form.module.scss';
 
 const Confirm = () => {
-  const dispatch = useDispatch();
-  const deletionType = useSelector(ModalSelectors.getModalFormContent);
-  const selectedTask = useSelector(BoardsSelectors.getSelectedTask);
-  const selectedBoard = useSelector(BoardsSelectors.getActiveBoard);
+  const dispatch = useAppDispatch();
+  const deletionType = useAppSelector(ModalSelectors.getModalFormContent);
+  const selectedTask = useAppSelector(BoardsSelectors.getSelectedTask);
+  const selectedBoard = useAppSelector(BoardsSelectors.getActiveBoard);
 
   let headerName = '';
   let description: React.ReactNode;

@@ -1,7 +1,10 @@
 import { useMemo } from 'react';
-import { DraggableComponent, ModalContent } from 'src/shared/lib';
+import {
+  DraggableComponent,
+  ModalContent,
+  useAppDispatch,
+} from 'src/shared/lib';
 import { TaskCard } from 'src/shared/ui';
-import { useDispatch } from 'react-redux';
 import { BoardsActions } from 'src/entities/BoardsSlice';
 import { ModalActions } from 'src/entities/ModalSlice';
 
@@ -14,7 +17,7 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
   const { draggableIndex, task } = props;
   const { title, id, statusId, subtasks } = task;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const completedSubtasks = useMemo(
     () => subtasks.filter((subtask) => subtask.isCompleted).length,

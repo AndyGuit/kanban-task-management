@@ -1,11 +1,10 @@
-import { useDispatch } from 'react-redux';
-import { ModalContent } from 'src/shared/lib';
+import { ModalContent, useAppDispatch } from 'src/shared/lib';
 import { ButtonStyle, Button } from 'src/shared/ui';
 import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './BoardEmpty.module.scss';
 
 export const BoardEmpty = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleAddBoard = () => {
     dispatch(ModalActions.setModalContent(ModalContent.addNewBoard));

@@ -1,17 +1,21 @@
 import { FormEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
 import { ModalActions } from 'src/entities/ModalSlice';
-import { generateRandomId, validate } from 'src/shared/lib';
+import {
+  generateRandomId,
+  useAppDispatch,
+  useAppSelector,
+  validate,
+} from 'src/shared/lib';
 import classes from './Form.module.scss';
 
 const AddNewColumn = () => {
-  const dispatch = useDispatch();
-  const boardName = useSelector(BoardsSelectors.getActiveBoardName);
+  const dispatch = useAppDispatch();
+  const boardName = useAppSelector(BoardsSelectors.getActiveBoardName);
 
-  const columns = useSelector(BoardsSelectors.getColumns);
+  const columns = useAppSelector(BoardsSelectors.getColumns);
 
   const [newColumns, setNewColumns] = useState(structuredClone(columns));
   const [columnsHasNames, setColumnsHasNames] = useState(true);

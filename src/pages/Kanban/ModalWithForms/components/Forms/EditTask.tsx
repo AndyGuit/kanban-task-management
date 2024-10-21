@@ -1,18 +1,22 @@
 import { FormEvent, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { InputsList } from '../InputsLists/InputsList';
 import type { TOptionType } from 'src/shared/ui';
 import { ButtonStyle, Select, Button, Input } from 'src/shared/ui';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
 import { ModalActions } from 'src/entities/ModalSlice';
-import { useInput, validate } from 'src/shared/lib';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useInput,
+  validate,
+} from 'src/shared/lib';
 import classes from './Form.module.scss';
 
 const EditTask = () => {
-  const dispatch = useDispatch();
-  const taskData = useSelector(BoardsSelectors.getSelectedTask);
-  const selectedColumn = useSelector(BoardsSelectors.getSelectedColumn);
-  const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
+  const dispatch = useAppDispatch();
+  const taskData = useAppSelector(BoardsSelectors.getSelectedTask);
+  const selectedColumn = useAppSelector(BoardsSelectors.getSelectedColumn);
+  const activeBoard = useAppSelector(BoardsSelectors.getActiveBoard);
   const columns = activeBoard!.columns.map((col) => {
     return { name: col.name, statusId: col.id };
   });

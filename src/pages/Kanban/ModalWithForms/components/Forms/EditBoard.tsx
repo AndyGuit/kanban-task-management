@@ -1,6 +1,11 @@
 import { FormEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { generateRandomId, useInput, validate } from 'src/shared/lib';
+import {
+  generateRandomId,
+  useAppDispatch,
+  useAppSelector,
+  useInput,
+  validate,
+} from 'src/shared/lib';
 import { InputsList } from '../InputsLists/InputsList';
 import { ButtonStyle, Button, Input } from 'src/shared/ui';
 import { BoardsActions, BoardsSelectors } from 'src/entities/BoardsSlice';
@@ -8,8 +13,8 @@ import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './Form.module.scss';
 
 const EditBoard = () => {
-  const dispatch = useDispatch();
-  const activeBoard = useSelector(BoardsSelectors.getActiveBoard);
+  const dispatch = useAppDispatch();
+  const activeBoard = useAppSelector(BoardsSelectors.getActiveBoard);
 
   const boardNameInput = useInput(validate.notEmpty, activeBoard?.name);
 
