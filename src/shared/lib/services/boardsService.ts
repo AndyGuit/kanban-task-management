@@ -117,4 +117,41 @@ export class BoardsService {
     const data = response.json();
     return data;
   }
+
+  static async deleteBoard(boardId: string): Promise<IBoard[]> {
+    const response = await fetch(`${API_URL}/${boardId}`, {
+      method: 'DELETE',
+      headers: this.headers,
+    });
+    const data = response.json();
+    return data;
+  }
+
+  static async deleteColumn(
+    boardId: string,
+    columnId: string,
+  ): Promise<IColumn[]> {
+    const response = await fetch(`${API_URL}/${boardId}/columns/${columnId}`, {
+      method: 'DELETE',
+      headers: this.headers,
+    });
+    const data = response.json();
+    return data;
+  }
+
+  static async deleteTask(
+    boardId: string,
+    columnId: string,
+    taskId: string,
+  ): Promise<ITask[]> {
+    const response = await fetch(
+      `${API_URL}/${boardId}/columns/${columnId}/tasks/${taskId}`,
+      {
+        method: 'DELETE',
+        headers: this.headers,
+      },
+    );
+    const data = response.json();
+    return data;
+  }
 }
