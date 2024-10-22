@@ -6,13 +6,13 @@ export class BoardsService {
   };
 
   static async getAllBoards(): Promise<IBoard[]> {
-    const response = await fetch(API_URL);
+    const response = await fetch(API_URL + '/boards');
     const data = await response.json();
     return data;
   }
 
   static async getBoardById(boardId: string): Promise<IBoard> {
-    const response = await fetch(API_URL + `/${boardId}`);
+    const response = await fetch(API_URL + `/boards/${boardId}`);
     const data = await response.json();
     return data;
   }
@@ -21,7 +21,9 @@ export class BoardsService {
     boardId: string,
     columnId: string,
   ): Promise<IColumn> {
-    const response = await fetch(API_URL + `/${boardId}/columns/${columnId}`);
+    const response = await fetch(
+      API_URL + `/boards/${boardId}/columns/${columnId}`,
+    );
     const data = await response.json();
     return data;
   }
@@ -32,7 +34,7 @@ export class BoardsService {
     taskId: string,
   ): Promise<ITask> {
     const response = await fetch(
-      API_URL + `/${boardId}/columns/${columnId}/tasks/${taskId}`,
+      API_URL + `/boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
     );
     const data = await response.json();
     return data;
@@ -52,7 +54,7 @@ export class BoardsService {
     boardId: string,
     column: IColumn,
   ): Promise<IColumn[]> {
-    const response = await fetch(`${API_URL}/${boardId}/columns`, {
+    const response = await fetch(`${API_URL}/boards/${boardId}/columns`, {
       method: 'PUT',
       headers: this.headers,
       body: JSON.stringify(column),
@@ -67,7 +69,7 @@ export class BoardsService {
     task: ITask,
   ): Promise<ITask[]> {
     const response = await fetch(
-      `${API_URL}/${boardId}/columns/${columnId}/tasks/`,
+      `${API_URL}/boards/${boardId}/columns/${columnId}/tasks/`,
       {
         method: 'PUT',
         headers: this.headers,
@@ -79,7 +81,7 @@ export class BoardsService {
   }
 
   static async updateBoard(board: IBoard): Promise<IBoard> {
-    const response = await fetch(`${API_URL}/${board.id}`, {
+    const response = await fetch(`${API_URL}/boards/${board.id}`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify(board),
@@ -92,11 +94,14 @@ export class BoardsService {
     boardId: string,
     column: IColumn,
   ): Promise<IColumn> {
-    const response = await fetch(`${API_URL}/${boardId}/columns/${column.id}`, {
-      method: 'PATCH',
-      headers: this.headers,
-      body: JSON.stringify(column),
-    });
+    const response = await fetch(
+      `${API_URL}/boards/${boardId}/columns/${column.id}`,
+      {
+        method: 'PATCH',
+        headers: this.headers,
+        body: JSON.stringify(column),
+      },
+    );
     const data = response.json();
     return data;
   }
@@ -107,7 +112,7 @@ export class BoardsService {
     task: ITask,
   ): Promise<ITask> {
     const response = await fetch(
-      `${API_URL}/${boardId}/columns/${columnId}/tasks/${task.id}`,
+      `${API_URL}/boards/${boardId}/columns/${columnId}/tasks/${task.id}`,
       {
         method: 'PATCH',
         headers: this.headers,
@@ -119,7 +124,7 @@ export class BoardsService {
   }
 
   static async deleteBoard(boardId: string): Promise<IBoard[]> {
-    const response = await fetch(`${API_URL}/${boardId}`, {
+    const response = await fetch(`${API_URL}/boards/${boardId}`, {
       method: 'DELETE',
       headers: this.headers,
     });
@@ -131,10 +136,13 @@ export class BoardsService {
     boardId: string,
     columnId: string,
   ): Promise<IColumn[]> {
-    const response = await fetch(`${API_URL}/${boardId}/columns/${columnId}`, {
-      method: 'DELETE',
-      headers: this.headers,
-    });
+    const response = await fetch(
+      `${API_URL}/boards/${boardId}/columns/${columnId}`,
+      {
+        method: 'DELETE',
+        headers: this.headers,
+      },
+    );
     const data = response.json();
     return data;
   }
@@ -145,7 +153,7 @@ export class BoardsService {
     taskId: string,
   ): Promise<ITask[]> {
     const response = await fetch(
-      `${API_URL}/${boardId}/columns/${columnId}/tasks/${taskId}`,
+      `${API_URL}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
       {
         method: 'DELETE',
         headers: this.headers,
