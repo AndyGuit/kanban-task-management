@@ -116,7 +116,7 @@ export const boardsServiceRTK = createApi({
           },
           body: JSON.stringify(column),
         }),
-        invalidatesTags: [RTKTagTypes.Columns],
+        invalidatesTags: [RTKTagTypes.Boards],
       },
     ),
 
@@ -129,7 +129,7 @@ export const boardsServiceRTK = createApi({
         },
         body: JSON.stringify(task),
       }),
-      invalidatesTags: [RTKTagTypes.Tasks],
+      invalidatesTags: [RTKTagTypes.Boards],
     }),
 
     deleteBoard: build.mutation<IBoard[], string>({
@@ -168,7 +168,7 @@ export const boardsServiceRTK = createApi({
           'Content-Type': 'application/json',
         },
       }),
-      invalidatesTags: [RTKTagTypes.Tasks],
+      invalidatesTags: [RTKTagTypes.Boards],
     }),
   }),
 });

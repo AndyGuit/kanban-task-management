@@ -17,10 +17,18 @@ interface Props {
 }
 
 export function Select(props: Props) {
-  const { options, onSelect, label = 'Select Value', disabled } = props;
+  const { options, value, onSelect, label = 'Select Value', disabled } = props;
   const [selectedOption, setSelectedOption] = useState(
-    options[0] || 'select option',
+    options.find((option) => option.name === value) || options[0],
   );
+
+  /**
+   * @todo
+   * @urgent
+   * fix bugs, doesnt show correct current selected option:
+   * 1) on first render in ViewTask modal
+   * 2) on EditTask modal
+   */
 
   const {
     isContentVisible: isOptionsVisible,
