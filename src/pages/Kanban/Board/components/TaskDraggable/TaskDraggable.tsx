@@ -25,8 +25,10 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
   );
 
   const viewTaskDetails = (columnId: string, taskId: string) => {
-    dispatch(BoardsActions.setSelectedColumn(columnId));
-    dispatch(BoardsActions.setSelectedTask(taskId));
+    // dispatch(BoardsActions.setSelectedColumn(columnId));
+    // dispatch(BoardsActions.setSelectedTask(taskId));
+    dispatch(BoardsActions.setColumnId(columnId));
+    dispatch(BoardsActions.setTaskId(taskId));
     dispatch(ModalActions.setModalContent(ModalContent.viewTask));
     dispatch(ModalActions.showModal());
   };
