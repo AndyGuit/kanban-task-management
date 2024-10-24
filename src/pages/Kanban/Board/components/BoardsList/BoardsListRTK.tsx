@@ -1,6 +1,5 @@
 import { boardsServiceRTK, ModalContent, useAppDispatch } from 'src/shared/lib';
 import { ButtonStyle, Button, Icons } from 'src/shared/ui';
-import { BoardsActions } from 'src/entities/BoardsSlice';
 import { ModalActions } from 'src/entities/ModalSlice';
 import classes from './BoardsList.module.scss';
 
@@ -11,9 +10,16 @@ export const BoardsListRTK = () => {
     isLoading,
     error,
   } = boardsServiceRTK.useFetchAllBoardsQuery(null);
+  const [updateBoards] = boardsServiceRTK.useUpdateAllBoardsMutation();
 
   const setActiveBoard = (boardId: string) => {
-    dispatch(BoardsActions.setActiveBoard(boardId));
+    const updatedBoards = boards?.map((board) =>
+      board.id === boardId
+        ? { ...board, isActive: true }
+        : { ...board, isActive: false },
+    );
+
+    updateBoards(updatedBoards!);
   };
 
   const handleAddBoard = () => {

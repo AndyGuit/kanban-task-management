@@ -81,6 +81,18 @@ export const boardsServiceRTK = createApi({
       invalidatesTags: [RTKTagTypes.Tasks],
     }),
 
+    updateAllBoards: build.mutation<IBoard[], IBoard[]>({
+      query: (boards) => ({
+        url: '/boards',
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(boards),
+      }),
+      invalidatesTags: [RTKTagTypes.Boards],
+    }),
+
     updateBoard: build.mutation<IBoard, IBoard>({
       query: (board) => ({
         url: `/boards/${board.id}`,
