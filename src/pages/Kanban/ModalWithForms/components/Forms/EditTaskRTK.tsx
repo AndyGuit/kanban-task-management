@@ -41,7 +41,7 @@ const EditTask = () => {
 
   const titleInput = useInput(validate.notEmpty, taskData!.title);
   const descriptionInput = useInput(() => true, taskData!.description);
-  const statusInput = useInput(validate.notEmpty, selectedColumn!.id);
+  const statusInput = useInput(validate.notEmpty, selectedColumn!.name);
 
   const removeSubtaskHandler = (index: number) => {
     const left = subtasksCopy.slice(0, index);

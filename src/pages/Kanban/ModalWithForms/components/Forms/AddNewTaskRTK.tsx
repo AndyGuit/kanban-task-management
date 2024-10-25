@@ -51,7 +51,6 @@ const AddNewTask = () => {
   };
 
   const statusChangeHandler = (option: TOptionType) => {
-    console.log(option);
     setSelectedColumn({ ...option, statusId: option.id });
   };
 

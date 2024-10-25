@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronDown } from '../Icons/Icons';
 import { useClickOutside } from 'src/shared/lib';
 import classes from './Select.module.scss';
@@ -19,16 +19,22 @@ interface Props {
 export function Select(props: Props) {
   const { options, value, onSelect, label = 'Select Value', disabled } = props;
   const [selectedOption, setSelectedOption] = useState(
-    options.find((option) => option.name === value) || options[0],
+    options.find((option) => option.name === value) || {
+      name: 'Select Value',
+      id: '1',
+    },
   );
 
-  /**
-   * @todo
-   * @urgent
-   * fix bugs, doesnt show correct current selected option:
-   * 1) on first render in ViewTask modal
-   * 2) on EditTask modal
-   */
+  useEffect(() => {
+    setSelectedOption(
+      options.find((option) => option.name === value) || {
+        name: 'Select Value',
+        id: '1',
+      },
+    );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   const {
     isContentVisible: isOptionsVisible,
