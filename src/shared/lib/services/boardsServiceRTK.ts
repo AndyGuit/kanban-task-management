@@ -82,6 +82,24 @@ export const boardsServiceRTK = createApi({
       invalidatesTags: [RTKTagTypes.Boards],
     }),
 
+    insertTaskByIndex: build.mutation<
+      ITask,
+      { boardId: string; task: ITask; index: number }
+    >({
+      query: ({ boardId, task, index }) => ({
+        url: `/boards/${boardId}/columns/${task.statusId}/tasks`,
+        method: 'PUT',
+        params: {
+          _columnIndex: index,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      }),
+      invalidatesTags: [RTKTagTypes.Boards, RTKTagTypes.Tasks],
+    }),
+
     updateAllBoards: build.mutation<IBoard[], IBoard[]>({
       query: (boards) => ({
         url: '/boards',

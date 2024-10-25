@@ -20,7 +20,7 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
   const dispatch = useAppDispatch();
 
   const completedSubtasks = useMemo(
-    () => subtasks.filter((subtask) => subtask.isCompleted).length,
+    () => subtasks?.filter((subtask) => subtask.isCompleted).length,
     [subtasks],
   );
 
@@ -38,7 +38,7 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
       <TaskCard
         onClick={() => viewTaskDetails(statusId, id)}
         title={title}
-        subtitle={`${completedSubtasks} of ${subtasks.length} subtasks`}
+        subtitle={`${completedSubtasks} of ${subtasks?.length} subtasks`}
       />
     </DraggableComponent>
   );
