@@ -28,12 +28,7 @@ export const DragDropContextProviderRTK = (props: Props) => {
     const task = activeBoard?.columns
       .find((column) => column.id === source.droppableId)
       ?.tasks.find((task) => task.id === draggableId);
-    // console.log(task);
-    // console.log('delete from column', source.droppableId);
-    // console.log('add to column', destination.droppableId);
-    // console.log('index in column', destination.index);
 
-    // console.log({ destination, source, draggableId });
     // if card dropped on same column
     if (destination.droppableId === source.droppableId) {
       deleteTask({
@@ -50,7 +45,6 @@ export const DragDropContextProviderRTK = (props: Props) => {
 
     // if card dropped on other column
     if (destination.droppableId !== source.droppableId) {
-      console.log('delete task');
       deleteTask({
         boardId: activeBoard!.id,
         columnId: source.droppableId,
