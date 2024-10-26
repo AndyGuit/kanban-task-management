@@ -1,16 +1,16 @@
 import { Container } from 'src/shared/layout';
 import { ModalWithForms } from '../ModalWithForms';
-import { Header } from './Header/Header';
-import { Sidebar } from './Sidebar/Sidebar';
-import { BoardDragDrop } from '../Board';
+import { BoardRTK } from '../Board';
+import { HeaderRTK } from './Header/HeaderRTK';
+import { SidebarRTK } from './Sidebar/SidebarRTK';
 
 export function Kanban() {
   return (
     <>
-      <Header />
+      <HeaderRTK />
       <Container>
-        <Sidebar />
-        <BoardDragDrop />
+        <SidebarRTK />
+        <BoardRTK />
       </Container>
       <ModalWithForms />
     </>

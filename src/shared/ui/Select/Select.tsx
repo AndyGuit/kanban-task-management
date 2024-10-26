@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronDown } from '../Icons/Icons';
 import { useClickOutside } from 'src/shared/lib';
 import classes from './Select.module.scss';
@@ -17,10 +17,24 @@ interface Props {
 }
 
 export function Select(props: Props) {
-  const { options, onSelect, label = 'Select Value', disabled } = props;
+  const { options, value, onSelect, label = 'Select Value', disabled } = props;
   const [selectedOption, setSelectedOption] = useState(
-    options[0] || 'select option',
+    options.find((option) => option.name === value) || {
+      name: 'Select Value',
+      id: '1',
+    },
   );
+
+  useEffect(() => {
+    setSelectedOption(
+      options.find((option) => option.name === value) || {
+        name: 'Select Value',
+        id: '1',
+      },
+    );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   const {
     isContentVisible: isOptionsVisible,

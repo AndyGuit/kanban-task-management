@@ -20,13 +20,15 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
   const dispatch = useAppDispatch();
 
   const completedSubtasks = useMemo(
-    () => subtasks.filter((subtask) => subtask.isCompleted).length,
+    () => subtasks?.filter((subtask) => subtask.isCompleted).length,
     [subtasks],
   );
 
   const viewTaskDetails = (columnId: string, taskId: string) => {
-    dispatch(BoardsActions.setSelectedColumn(columnId));
-    dispatch(BoardsActions.setSelectedTask(taskId));
+    // dispatch(BoardsActions.setSelectedColumn(columnId));
+    // dispatch(BoardsActions.setSelectedTask(taskId));
+    dispatch(BoardsActions.setColumnId(columnId));
+    dispatch(BoardsActions.setTaskId(taskId));
     dispatch(ModalActions.setModalContent(ModalContent.viewTask));
     dispatch(ModalActions.showModal());
   };
@@ -36,7 +38,7 @@ export const TaskDraggable = (props: TaskDraggableProps) => {
       <TaskCard
         onClick={() => viewTaskDetails(statusId, id)}
         title={title}
-        subtitle={`${completedSubtasks} of ${subtasks.length} subtasks`}
+        subtitle={`${completedSubtasks} of ${subtasks?.length} subtasks`}
       />
     </DraggableComponent>
   );

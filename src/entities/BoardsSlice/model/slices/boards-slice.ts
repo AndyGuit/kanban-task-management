@@ -8,6 +8,8 @@ interface IBoardsSchema {
   selectedColumn: IColumn;
   isLoading: boolean;
   error: string;
+  taskId: string;
+  columnId: string;
 }
 
 const initialState: IBoardsSchema = {
@@ -17,6 +19,8 @@ const initialState: IBoardsSchema = {
   selectedColumn: {} as IColumn,
   isLoading: false,
   error: '',
+  taskId: '',
+  columnId: '',
 };
 
 export const fetchAllBoards = createAsyncThunk<
@@ -164,6 +168,13 @@ const boardsSlice = createSlice({
         state.boards[boardIndex] = state.activeBoard;
         BoardsService.updateBoard(state.activeBoard);
       }
+    },
+
+    setTaskId: (state, action: PayloadAction<string>) => {
+      state.taskId = action.payload;
+    },
+    setColumnId: (state, action: PayloadAction<string>) => {
+      state.columnId = action.payload;
     },
   },
 

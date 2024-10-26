@@ -1,3 +1,4 @@
+export { boardsServiceRTK, RTKTagTypes } from './services/boardsServiceRTK';
 export { BoardsService } from './services/boardsService';
 export { API_URL } from './constants/api';
 export { usePreferredColorScheme } from './hooks/use-preferred-color-scheme';
